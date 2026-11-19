@@ -1,0 +1,192 @@
+# Task Checklist: SANEF & JossyShield Platform Implementation
+
+## Phase 1: Database Development (`[DB]`)
+- [ ] **DB-01**: Multi-Tenancy & Core RBAC Schema Migration (Urgency: High | Dependencies: None)
+  - [ ] `DB-01.1`: Create `organizations` table
+  - [ ] `DB-01.2`: Create `users` table
+  - [ ] `DB-01.3`: Create `organization_memberships` table
+  - [ ] `DB-01.4`: Create `roles` and `permissions` tables
+  - [ ] `DB-01.5`: Create junction tables `membership_roles` and `role_permissions`
+  - [ ] `DB-01.6`: Create `audit_logs` table
+- [ ] **DB-02**: Shared CMS, Media & Site Settings Schema (Urgency: High | Dependencies: DB-01)
+  - [ ] `DB-02.1`: Create `pages` table
+  - [ ] `DB-02.2`: Create `blog_posts` table
+  - [ ] `DB-02.3`: Create `media` table with access levels
+  - [ ] `DB-02.4`: Create `site_settings` table
+- [ ] **DB-03**: SANEF Specific Data Schema (Urgency: High | Dependencies: DB-01, DB-02)
+  - [ ] `DB-03.1`: Create `projects` table
+  - [ ] `DB-03.2`: Create `partnerships` table
+  - [ ] `DB-03.3`: Create `project_partners` pivot table
+  - [ ] `DB-03.4`: Create `events` table
+  - [ ] `DB-03.5`: Create `donation_campaigns` and `donations` tables
+  - [ ] `DB-03.6`: Create `contact_submissions` table
+- [ ] **DB-04**: JossyShield Specific Data Schema (Urgency: High | Dependencies: DB-01, DB-02)
+  - [ ] `DB-04.1`: Create `services` catalog table
+  - [ ] `DB-04.2`: Create `marketplace_requests` table
+  - [ ] `DB-04.3`: Create `jobs` table
+  - [ ] `DB-04.4`: Create `job_applications` table
+  - [ ] `DB-04.5`: Create `interviews` table
+  - [ ] `DB-04.6`: Create `talent_pool_profiles` table
+  - [ ] `DB-04.7`: Create `testimonials` table
+
+## Phase 2: Backend Architecture & Services (`[Back-End]`)
+- [ ] **BE-01**: Multi-Tenant Architecture & Auth Engine (Urgency: High | Dependencies: DB-01)
+  - [ ] `BE-01.1`: Backend framework initialization & logging
+  - [ ] `BE-01.2`: User authentication (JWT, refresh tokens, password reset)
+  - [ ] `BE-01.3`: `OrganizationContextMiddleware` implementation
+  - [ ] `BE-01.4`: Granular RBAC authorization guard
+  - [ ] `BE-01.5`: Super Admin context bypass handlers
+- [ ] **BE-02**: Organization & User Management API (Urgency: High | Dependencies: BE-01)
+  - [ ] `BE-02.1`: Organization CRUD & context switcher endpoints
+  - [ ] `BE-02.2`: User invitation and acceptance workflow
+  - [ ] `BE-02.3`: Membership role assignment endpoints
+  - [ ] `BE-02.4`: Audit log interceptor
+- [ ] **BE-03**: Media Management Service & Secure Storage API (Urgency: High | Dependencies: DB-02, BE-01)
+  - [ ] `BE-03.1`: File upload handler with validation
+  - [ ] `BE-03.2`: Public asset delivery pipeline
+  - [ ] `BE-03.3`: Private storage & signed URL generator for CVs
+  - [ ] `BE-03.4`: Organisation-scoped asset isolation
+- [ ] **BE-04**: Shared CMS & Settings API (Urgency: Medium | Dependencies: DB-02, BE-01)
+  - [ ] `BE-04.1`: CMS pages CRUD & lifecycle status
+  - [ ] `BE-04.2`: Blog posts CRUD & category filtering
+  - [ ] `BE-04.3`: Public content endpoints
+  - [ ] `BE-04.4`: Site settings endpoints
+- [ ] **BE-05**: SANEF Foundation Services API (Urgency: High | Dependencies: DB-03, BE-01, BE-03)
+  - [ ] `BE-05.1`: Projects & evidence archive API
+  - [ ] `BE-05.2`: Partnerships API
+  - [ ] `BE-05.3`: Events API
+  - [ ] `BE-05.4`: Contact enquiry submission endpoint
+  - [ ] `BE-05.5`: Donations & campaign management API
+- [ ] **BE-06**: JossyShield Services & Marketplace Request API (Urgency: High | Dependencies: DB-04, BE-01)
+  - [ ] `BE-06.1`: Services catalog API
+  - [ ] `BE-06.2`: Marketplace service request submission endpoint (generates reference #)
+  - [ ] `BE-06.3`: Marketplace request pipeline API
+  - [ ] `BE-06.4`: Client follow-up history & notes API
+- [ ] **BE-07**: JossyShield Recruitment & Talent Pool Pipeline API (Urgency: High | Dependencies: DB-04, BE-01, BE-03)
+  - [ ] `BE-07.1`: Public vacancies & application submission with CV upload
+  - [ ] `BE-07.2`: Dashboard applicant review & pipeline status API
+  - [ ] `BE-07.3`: Interview management API
+  - [ ] `BE-07.4`: Talent pool profile conversion & directory API
+  - [ ] `BE-07.5`: Candidate availability status API
+
+## Phase 3: Frontend — SANEF Public Website (`[Front-End - SANEF]`)
+- [ ] **FE-SANEF-01**: Layout, Design System & Navigation (Urgency: High | Dependencies: None)
+  - [ ] `FE-SANEF-01.1`: Responsive NGO theme shell & typography
+  - [ ] `FE-SANEF-01.2`: Responsive Navbar (Home, About, Blog, Portfolio, Partners, Events, Careers, Contact, Donate)
+  - [ ] `FE-SANEF-01.3`: Footer with social links & legal details
+- [ ] **FE-SANEF-02**: Home / Landing Page (Urgency: High | Dependencies: FE-SANEF-01, BE-05)
+  - [ ] `FE-SANEF-02.1`: Hero with mission & primary CTA
+  - [ ] `FE-SANEF-02.2`: Impact highlights & verified metrics
+  - [ ] `FE-SANEF-02.3`: Featured projects carousel/grid
+  - [ ] `FE-SANEF-02.4`: Partners logos & news/events preview
+- [ ] **FE-SANEF-03**: About Us & Blog Pages (Urgency: Medium | Dependencies: FE-SANEF-01, BE-04)
+  - [ ] `FE-SANEF-03.1`: About Us page (history, mission, vision, values, team)
+  - [ ] `FE-SANEF-03.2`: Blog list page with categories & search
+  - [ ] `FE-SANEF-03.3`: Blog article detail view
+- [ ] **FE-SANEF-04**: Structured Portfolio & Evidence Archive (Urgency: High | Dependencies: FE-SANEF-01, BE-05)
+  - [ ] `FE-SANEF-04.1`: Project archive gallery with filters
+  - [ ] `FE-SANEF-04.2`: Project detail page with PDF reports, photos & partner links
+- [ ] **FE-SANEF-05**: Partnerships & Events Pages (Urgency: Medium | Dependencies: FE-SANEF-01, BE-05)
+  - [ ] `FE-SANEF-05.1`: Partnerships directory & collaboration history
+  - [ ] `FE-SANEF-05.2`: Events page (upcoming & past events)
+- [ ] **FE-SANEF-06**: Careers, Contact & Donation Pages (Urgency: High | Dependencies: FE-SANEF-01, BE-05)
+  - [ ] `FE-SANEF-06.1`: Careers page with vacancy descriptions
+  - [ ] `FE-SANEF-06.2`: Contact page with enquiry form & WhatsApp button
+  - [ ] `FE-SANEF-06.3`: Donate page with campaign details & payment CTA
+
+## Phase 4: Frontend — JossyShield Public Website (`[Front-End - JossyShield]`)
+- [ ] **FE-JS-01**: Layout, Corporate Branding & Navigation (Urgency: High | Dependencies: None)
+  - [ ] `FE-JS-01.1`: Security corporate design system & theme
+  - [ ] `FE-JS-01.2`: Responsive Navbar (Home, About, Services, Marketplace, Careers, Contact, Testimonials)
+  - [ ] `FE-JS-01.3`: Corporate Footer with certifications & contacts
+- [ ] **FE-JS-02**: Home & About Us Pages (Urgency: High | Dependencies: FE-JS-01, BE-06)
+  - [ ] `FE-JS-02.1`: Hero section with security positioning & quote CTA
+  - [ ] `FE-JS-02.2`: Core service pillars overview
+  - [ ] `FE-JS-02.3`: Testimonials carousel & trust badges
+  - [ ] `FE-JS-02.4`: About Us page (mission, compliance, capabilities)
+- [ ] **FE-JS-03**: Services Showcase Pages (Urgency: Medium | Dependencies: FE-JS-01, BE-06)
+  - [ ] `FE-JS-03.1`: Security Services page
+  - [ ] `FE-JS-03.2`: Consultancy Services page
+  - [ ] `FE-JS-03.3`: Training Services page
+- [ ] **FE-JS-04**: Marketplace / Request a Service Workflow (Urgency: High | Dependencies: FE-JS-01, BE-06)
+  - [ ] `FE-JS-04.1`: Category selection step
+  - [ ] `FE-JS-04.2`: Dynamic forms for Security, Consultancy, and Training
+  - [ ] `FE-JS-04.3`: Submission confirmation with tracking reference number
+- [ ] **FE-JS-05**: Careers & Candidate Application Portal (Urgency: High | Dependencies: FE-JS-01, BE-07)
+  - [ ] `FE-JS-05.1`: Vacancy listings with role/location filters
+  - [ ] `FE-JS-05.2`: General security personnel application option
+  - [ ] `FE-JS-05.3`: Application form with CV file upload
+  - [ ] `FE-JS-05.4`: Submission confirmation with applicant ID
+- [ ] **FE-JS-06**: Testimonials & Contact Pages (Urgency: Low | Dependencies: FE-JS-01, BE-06)
+  - [ ] `FE-JS-06.1`: Testimonials grid
+  - [ ] `FE-JS-06.2`: Contact page with direct phone lines & WhatsApp chat
+
+## Phase 5: Frontend — Unified Admin Dashboard (`[Front-End - Dashboard]`)
+- [ ] **FE-DASH-01**: Admin Shell, Auth & Org Switcher (Urgency: High | Dependencies: BE-01, BE-02)
+  - [ ] `FE-DASH-01.1`: Admin Login & profile management
+  - [ ] `FE-DASH-01.2`: Admin shell layout (Sidebar, Header, Breadcrumbs)
+  - [ ] `FE-DASH-01.3`: Organization Switcher dropdown component
+  - [ ] `FE-DASH-01.4`: Dynamic navigation menu gated by active org & permissions
+- [ ] **FE-DASH-02**: Organization Overview Dashboards (Urgency: Medium | Dependencies: FE-DASH-01, BE-05, BE-06, BE-07)
+  - [ ] `FE-DASH-02.1`: SANEF Overview metrics & activity feed
+  - [ ] `FE-DASH-02.2`: JossyShield Overview metrics & pipeline stats
+- [ ] **FE-DASH-03**: Shared CMS & Media Library Modules (Urgency: High | Dependencies: FE-DASH-01, BE-03, BE-04)
+  - [ ] `FE-DASH-03.1`: CMS Page editor
+  - [ ] `FE-DASH-03.2`: Blog article manager
+  - [ ] `FE-DASH-03.3`: Media Library with drag-and-drop & org isolation
+- [ ] **FE-DASH-04**: SANEF Content Modules (Urgency: High | Dependencies: FE-DASH-01, BE-05)
+  - [ ] `FE-DASH-04.1`: Projects & Evidence Archive manager
+  - [ ] `FE-DASH-04.2`: Partnerships manager
+  - [ ] `FE-DASH-04.3`: Events manager
+  - [ ] `FE-DASH-04.4`: Donations & Campaigns viewer
+  - [ ] `FE-DASH-04.5`: Contact Enquiries inbox
+- [ ] **FE-DASH-05**: JossyShield Marketplace Request Manager (Urgency: High | Dependencies: FE-DASH-01, BE-06)
+  - [ ] `FE-DASH-05.1`: Service request table with filters & status badges
+  - [ ] `FE-DASH-05.2`: Request detail view with requirement details
+  - [ ] `FE-DASH-05.3`: Status pipeline updater & follow-up notes
+- [ ] **FE-DASH-06**: JossyShield Recruitment & Talent Pool Module (Urgency: High | Dependencies: FE-DASH-01, BE-07, BE-03)
+  - [ ] `FE-DASH-06.1`: Vacancies manager
+  - [ ] `FE-DASH-06.2`: Candidate Pipeline board (New -> Under Review -> Shortlisted -> Interview -> Approved -> Talent Pool)
+  - [ ] `FE-DASH-06.3`: Candidate detail view with secure CV viewer
+  - [ ] `FE-DASH-06.4`: Interview scheduler & evaluation modal
+  - [ ] `FE-DASH-06.5`: Ready-to-Work Talent Pool directory with availability filters
+- [ ] **FE-DASH-07**: User, Role & Permissions Administration (Urgency: High | Dependencies: FE-DASH-01, BE-02)
+  - [ ] `FE-DASH-07.1`: User list & invite modal
+  - [ ] `FE-DASH-07.2`: Role and permission editor
+  - [ ] `FE-DASH-07.3`: Security Audit Logs viewer
+
+## Phase 6: DevOps, Testing & Security Hardening (`[DevOps]`)
+- [ ] **OPS-01**: Containerization & Local Dev (Urgency: High | Dependencies: None)
+  - [ ] `OPS-01.1`: Backend production Dockerfile
+  - [ ] `OPS-01.2`: Frontend production Dockerfiles
+  - [ ] `OPS-01.3`: Unified `docker-compose.yml`
+  - [ ] `OPS-01.4`: DB seed script for Super Admin & sample data
+- [ ] **OPS-02**: CI/CD Quality Gates & Automated Pipelines (Urgency: High | Dependencies: OPS-01)
+  - [ ] `OPS-02.1`: CI pipeline for linters & type-checks
+  - [ ] `OPS-02.2`: Automated unit & integration test runner
+  - [ ] `OPS-02.3`: Container image build & vulnerability scanning
+  - [ ] `OPS-02.4`: DB migration check in CI
+- [ ] **OPS-03**: Multi-Tenant Isolation & Security Audit (Urgency: High | Dependencies: BE-01, BE-07, OPS-02)
+  - [ ] `OPS-03.1`: Automated cross-tenant penetration test suite
+  - [ ] `OPS-03.2`: Private S3 bucket & signed URL verification
+  - [ ] `OPS-03.3`: Public form rate-limiting verification
+
+## Phase 7: Infrastructure, Hosting & Site Go-Live (`[Hosting & Live]`)
+- [ ] **HOST-01**: Cloud Infrastructure & Database Provisioning (Urgency: High | Dependencies: OPS-01)
+  - [ ] `HOST-01.1`: Managed PostgreSQL cluster with automated backups
+  - [ ] `HOST-01.2`: Cloud object storage buckets (Public & Private)
+  - [ ] `HOST-01.3`: Secrets management & env configuration
+- [ ] **HOST-02**: Reverse Proxy, Domain Routing & SSL (Urgency: High | Dependencies: HOST-01)
+  - [ ] `HOST-02.1`: Ingress routing (`sanef.example`, `josieshield.example`, `admin.example`, `api.example`)
+  - [ ] `HOST-02.2`: Automated SSL/TLS certificates
+  - [ ] `HOST-02.3`: Security headers configuration (HSTS, CSP, CORS)
+- [ ] **HOST-03**: Staging Deployment & UAT (Urgency: High | Dependencies: HOST-02, All)
+  - [ ] `HOST-03.1`: Deploy to Staging
+  - [ ] `HOST-03.2`: E2E smoke tests across all three frontends
+  - [ ] `HOST-03.3`: Email service deliverability check
+  - [ ] `HOST-03.4`: Stakeholder UAT sign-off
+- [ ] **HOST-04**: Production Go-Live & Monitoring (Urgency: High | Dependencies: HOST-03)
+  - [ ] `HOST-04.1`: Production DB migration & seed check
+  - [ ] `HOST-04.2`: DNS cutover to live production load balancer
+  - [ ] `HOST-04.3`: Uptime monitoring & Sentry alerting setup
+  - [ ] `HOST-04.4`: Documentation & administrative handoff
