@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HeartHandshake, Menu, X, ArrowRight, Heart, ShieldCheck } from "lucide-react";
+import { Menu, X, ArrowUpRight, ShieldCheck } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,123 +12,122 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 16);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "Overview", href: "/" },
     { name: "Evidence Archive", href: "/portfolio" },
+    { name: "Donations & Allocation", href: "/donate" },
     { name: "Partnerships", href: "/partnerships" },
-    { name: "Events", href: "/events" },
-    { name: "Blog & Field Reports", href: "/blog" },
-    { name: "Careers", href: "/careers" },
+    { name: "Civic Forums", href: "/events" },
+    { name: "Field Reports", href: "/blog" },
+    { name: "Charter & About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "civic-glass shadow-md py-3"
-          : "bg-white/70 backdrop-blur-md py-4 border-b border-slate-100"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
-              <ShieldCheck className="w-5 h-5 text-emerald-100" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold tracking-tight text-xl text-slate-900">
-                  SANEF
-                </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
-                  NGO
-                </span>
-              </div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500 font-medium">
-                Safe Neighborhood Foundation
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/80 px-3 py-1 rounded-full border border-slate-200/80">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    isActive
-                      ? "bg-white text-emerald-800 shadow-sm font-semibold border border-slate-200"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Action: Donate CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/donate"
-              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Heart className="w-3.5 h-3.5 fill-white text-white" />
-              <span>Support Our Mission</span>
-            </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
+      <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+        {/* Brand Bar */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-full civic-liquid-glass transition-transform active:scale-[0.98]"
+        >
+          <div className="w-7 h-7 rounded-full bg-[#0D4A2B] flex items-center justify-center text-white shadow-sm">
+            <ShieldCheck className="w-4 h-4" />
           </div>
+          <div className="flex items-baseline gap-1.5 pr-1">
+            <span className="font-semibold text-sm tracking-[-0.02em] text-slate-900">
+              SANEF
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 hidden sm:inline">
+              CIVIC SAFETY
+            </span>
+          </div>
+        </Link>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {isOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 mt-2 shadow-xl animate-in slide-in-from-top-4">
+        {/* Center Nav */}
+        <nav className="hidden lg:flex items-center gap-1 px-2 py-1.5 rounded-full civic-liquid-glass">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${
+                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-800 font-semibold"
-                    : "text-slate-700 hover:bg-slate-100"
+                    ? "bg-[#0D4A2B] text-white font-semibold shadow-sm"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
                 }`}
               >
                 {link.name}
               </Link>
             );
           })}
-          <div className="pt-2 border-t border-slate-200">
+        </nav>
+
+        {/* Right Action */}
+        <div className="hidden sm:flex items-center gap-2">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full civic-liquid-glass text-[11px] font-mono text-slate-600">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 civic-beacon" />
+            <span className="text-slate-800">AUDITED NGO</span>
+          </div>
+          <Link
+            href="/donate"
+            className="flex items-center gap-1.5 bg-[#0D4A2B] hover:bg-[#14633B] text-white text-[13px] font-semibold px-4 py-2 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Fund An Initiative</span>
+            <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden p-2 rounded-full civic-liquid-glass text-slate-700 hover:text-slate-900"
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      {isOpen && (
+        <div className="lg:hidden mt-3 max-w-sm mx-auto rounded-3xl civic-liquid-glass p-5 pointer-events-auto space-y-3">
+          <div className="space-y-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-2 rounded-2xl text-sm font-medium ${
+                    isActive
+                      ? "bg-[#0D4A2B] text-white font-semibold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 civic-beacon" />
+              <span>COMMUNITY WATCH ACTIVE</span>
+            </div>
             <Link
               href="/donate"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold py-3 rounded-lg shadow-md shadow-emerald-600/20"
+              className="bg-[#0D4A2B] text-white text-xs font-semibold px-4 py-2 rounded-full"
             >
-              <Heart className="w-4 h-4 fill-white" />
-              <span>Donate to Active Campaigns</span>
+              Donate
             </Link>
           </div>
         </div>

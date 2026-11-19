@@ -5,14 +5,15 @@ import {
   Shield, 
   Search, 
   Award, 
-  CheckCircle, 
+  Check, 
   ArrowRight, 
   ArrowLeft, 
   Copy, 
   Clock, 
   Users, 
-  Calendar, 
-  AlertCircle 
+  AlertCircle,
+  FileCheck2,
+  ChevronRight
 } from "lucide-react";
 
 type ServiceType = "Security Services" | "Consultancy" | "Training";
@@ -30,17 +31,14 @@ export default function MarketplaceWizard({
 
   // Form State
   const [formData, setFormData] = useState({
-    // Step 2: Service Config
     personnelCount: 4,
     duration: "6 Months",
     location: "Lagos, Nigeria",
-    startDate: "",
+    startDate: "2026-12-01",
     serviceLevel: "Armed Escort & Static",
     consultancyFocus: "Full Vulnerability Assessment",
     trainingCohortSize: 20,
     specialRequirements: "",
-    
-    // Step 3: Client Identity
     clientName: "",
     companyName: "",
     email: "",
@@ -50,22 +48,22 @@ export default function MarketplaceWizard({
   const categories = [
     {
       id: "Security Services" as ServiceType,
-      title: "Security & Guarding",
-      badge: "Rapid Deployment",
-      desc: "Static guarding, armed convoys, access control, and electronic patrol checkpoint telemetry.",
+      title: "Manned Defense & Static Guarding",
+      badge: "Immediate Mobilization",
+      desc: "Static guarding, perimeter access control, armed convoys, and electronic patrol checkpoint telemetry.",
       icon: Shield,
     },
     {
       id: "Consultancy" as ServiceType,
-      title: "Risk Consultancy",
-      badge: "ISO 27001 Audits",
-      desc: "Physical threat audits, executive vulnerability modeling, and contingency evacuation plans.",
+      title: "Physical Risk & Vulnerability Audit",
+      badge: "ISO 27001 Methodology",
+      desc: "Physical penetration audits, executive vulnerability modeling, and contingency evacuation plans.",
       icon: Search,
     },
     {
       id: "Training" as ServiceType,
-      title: "Tactical Training",
-      badge: "Accredited Academy",
+      title: "Tactical Defense Academy",
+      badge: "Certified Cohorts",
       desc: "De-escalation courses, defensive driving, hostile environment reaction, and trauma first aid.",
       icon: Award,
     },
@@ -88,7 +86,6 @@ export default function MarketplaceWizard({
       setReferenceId(data.referenceNumber || `JS-REQ-${Math.floor(10000 + Math.random() * 90000)}`);
       setStep(4);
     } catch {
-      // Fallback client reference number
       setReferenceId(`JS-REQ-${Math.floor(10000 + Math.random() * 90000)}`);
       setStep(4);
     } finally {
@@ -103,483 +100,362 @@ export default function MarketplaceWizard({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto glass-panel rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute -top-32 -right-32 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Wizard Progress Indicator */}
-      {step < 4 && (
-        <div className="mb-8">
-          <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
-            <span>STEP {step} OF 3</span>
-            <span className="text-blue-400">
-              {step === 1 && "Select Service Category"}
-              {step === 2 && "Configure Requirements"}
-              {step === 3 && "Client Contact & Authorization"}
-            </span>
-          </div>
-          <div className="w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
+    <div className="tactical-surface rounded-3xl p-6 sm:p-10 text-white relative">
+      {/* Precision Step Indicator */}
+      <div className="flex items-center justify-between border-b border-white/[0.08] pb-6 mb-8 text-xs font-mono">
+        <div className="flex items-center gap-6 sm:gap-10">
+          {[
+            { num: 1, label: "DISCIPLINE" },
+            { num: 2, label: "PARAMETERS" },
+            { num: 3, label: "CONTACT" },
+            { num: 4, label: "DISPATCH" },
+          ].map((s) => (
             <div
-              className="bg-blue-600 h-full transition-all duration-300"
-              style={{ width: `${(step / 3) * 100}%` }}
-            />
-          </div>
+              key={s.num}
+              className={`flex items-center gap-2 ${
+                step === s.num
+                  ? "text-white font-bold"
+                  : step > s.num
+                  ? "text-zinc-400"
+                  : "text-zinc-600"
+              }`}
+            >
+              <span
+                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                  step === s.num
+                    ? "bg-[#0066FF] text-white"
+                    : step > s.num
+                    ? "bg-zinc-800 text-zinc-300"
+                    : "bg-zinc-900 text-zinc-600"
+                }`}
+              >
+                {step > s.num ? "✓" : s.num}
+              </span>
+              <span className="hidden sm:inline">{s.label}</span>
+            </div>
+          ))}
         </div>
-      )}
+        <span className="text-[11px] text-zinc-500 font-mono">STEP 0{step} / 04</span>
+      </div>
 
-      {/* STEP 1: CATEGORY SELECTION */}
+      {/* STEP 1: SELECT DISCIPLINE */}
       {step === 1 && (
         <div className="space-y-6">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
-              Choose Service Category
-            </h2>
-            <p className="text-sm text-slate-400 mt-1">
-              Select the operational capability your organization requires.
-            </p>
+          <div className="space-y-1">
+            <h3 className="text-xl font-bold tracking-tight text-white">Select Defense Discipline</h3>
+            <p className="text-xs text-zinc-400">Choose the operational capability required for your facility or transit.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              const isSelected = serviceType === cat.id;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {categories.map((c) => {
+              const isSelected = serviceType === c.id;
+              const Icon = c.icon;
               return (
-                <div
-                  key={cat.id}
-                  onClick={() => setServiceType(cat.id)}
-                  className={`cursor-pointer rounded-xl p-5 border transition-all text-left relative flex flex-col justify-between ${
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setServiceType(c.id)}
+                  className={`p-5 rounded-2xl text-left transition-all relative ${
                     isSelected
-                      ? "bg-blue-950/40 border-blue-500 shadow-lg shadow-blue-600/20"
-                      : "bg-[#11151e] border-slate-800 hover:border-slate-700 hover:bg-[#161c28]"
+                      ? "bg-[#0c121e] border-2 border-[#0066FF] shadow-lg shadow-blue-600/10"
+                      : "bg-[#070A0F] border border-white/[0.06] hover:border-white/[0.15]"
                   }`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div
-                        className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          isSelected
-                            ? "bg-blue-600 text-white"
-                            : "bg-slate-800 text-slate-400"
-                        }`}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-                        {cat.badge}
-                      </span>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isSelected ? "bg-[#0066FF] text-white" : "bg-zinc-800 text-zinc-400"}`}>
+                      <Icon className="w-4 h-4" />
                     </div>
-                    <h3 className="font-semibold text-white text-base mb-1">
-                      {cat.title}
-                    </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      {cat.desc}
-                    </p>
+                    <span className="text-[10px] font-mono uppercase text-[#0066FF]">{c.badge}</span>
                   </div>
-
-                  <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium">
-                    <span
-                      className={isSelected ? "text-blue-400 font-bold" : "text-slate-500"}
-                    >
-                      {isSelected ? "Selected" : "Select Capability"}
-                    </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-blue-400" />
-                  </div>
-                </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5">{c.title}</h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed">{c.desc}</p>
+                </button>
               );
             })}
           </div>
 
-          <div className="flex justify-end pt-4">
+          <div className="pt-6 border-t border-white/[0.08] flex justify-end">
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg text-sm font-semibold shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-6 py-3 rounded-full transition-all"
             >
-              <span>Continue to Requirements</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Continue to Parameters</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       )}
 
-      {/* STEP 2: REQUIREMENTS CONFIGURATION */}
+      {/* STEP 2: SPECIFY PARAMETERS */}
       {step === 2 && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-white">
-                Configure {serviceType} Scope
-              </h2>
-              <p className="text-sm text-slate-400 mt-1">
-                Customize operational parameters for your deployment.
-              </p>
-            </div>
-            <span className="px-3 py-1 bg-blue-900/40 text-blue-400 border border-blue-700/50 rounded-full text-xs font-mono font-medium">
-              {serviceType}
-            </span>
+          <div className="space-y-1">
+            <h3 className="text-xl font-bold tracking-tight text-white">Operational Parameters</h3>
+            <p className="text-xs text-zinc-400">Define personnel volume, duration, and deployment location.</p>
           </div>
 
-          <div className="space-y-4 pt-2">
-            {/* Dynamic Fields: Security Services */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {serviceType === "Security Services" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Requested Guards / Personnel Count
+              <>
+                <div className="space-y-2">
+                  <label className="text-xs font-mono uppercase text-zinc-400 flex justify-between">
+                    <span>Operatives Count</span>
+                    <span className="text-white font-bold">{formData.personnelCount} Officers</span>
                   </label>
-                  <input
-                    type="number"
-                    min="1"
-                    max="100"
-                    value={formData.personnelCount}
-                    onChange={(e) =>
-                      setFormData({ ...formData, personnelCount: parseInt(e.target.value) || 1 })
-                    }
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                  />
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, personnelCount: Math.max(2, formData.personnelCount - 2) })}
+                      className="w-10 h-10 rounded-xl bg-[#070A0F] border border-white/[0.1] text-lg font-bold text-white hover:bg-zinc-800 flex items-center justify-center"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={formData.personnelCount}
+                      onChange={(e) => setFormData({ ...formData, personnelCount: Number(e.target.value) })}
+                      className="flex-1 bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2 text-center text-sm font-mono text-white focus:outline-none focus:border-[#0066FF]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, personnelCount: formData.personnelCount + 2 })}
+                      className="w-10 h-10 rounded-xl bg-[#070A0F] border border-white/[0.1] text-lg font-bold text-white hover:bg-zinc-800 flex items-center justify-center"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Engagement Duration
-                  </label>
-                  <select
-                    value={formData.duration}
-                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                  >
-                    <option value="Temporary Event (1-7 Days)">Temporary Event (1-7 Days)</option>
-                    <option value="1 to 3 Months">1 to 3 Months</option>
-                    <option value="6 Months">6 Months (Standard)</option>
-                    <option value="12+ Months Retainer">12+ Months Retainer (24/7)</option>
-                  </select>
-                </div>
-              </div>
-            )}
 
-            {/* Dynamic Fields: Consultancy */}
-            {serviceType === "Consultancy" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Consultancy Scope & Focus
-                  </label>
-                  <select
-                    value={formData.consultancyFocus}
-                    onChange={(e) => setFormData({ ...formData, consultancyFocus: e.target.value })}
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                  >
-                    <option value="Full Vulnerability Assessment">Full Vulnerability Assessment</option>
-                    <option value="Executive Protection & Travel Threat Modeling">
-                      Executive Protection & Travel Threat Modeling
-                    </option>
-                    <option value="Perimeter Penetration Testing">Perimeter Penetration Testing</option>
-                    <option value="Crisis Management & Evacuation Protocol">
-                      Crisis Management & Evacuation Protocol
-                    </option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Target Audit Completion Window
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Within 2 weeks"
-                    value={formData.duration}
-                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Dynamic Fields: Training */}
-            {serviceType === "Training" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Expected Trainee Cohort Count
-                  </label>
-                  <input
-                    type="number"
-                    min="5"
-                    max="200"
-                    value={formData.trainingCohortSize}
-                    onChange={(e) =>
-                      setFormData({ ...formData, trainingCohortSize: parseInt(e.target.value) || 5 })
-                    }
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Training Program Stream
-                  </label>
+                <div className="space-y-2">
+                  <label className="text-xs font-mono uppercase text-zinc-400">Service Clearance Level</label>
                   <select
                     value={formData.serviceLevel}
                     onChange={(e) => setFormData({ ...formData, serviceLevel: e.target.value })}
-                    className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
                   >
-                    <option value="Crisis De-Escalation & Defensive Tactics">
-                      Crisis De-Escalation & Defensive Tactics
-                    </option>
-                    <option value="Evasive Tactical Driving">Evasive Tactical Driving</option>
-                    <option value="Industrial Trauma & Tactical First Aid">
-                      Industrial Trauma & Tactical First Aid
-                    </option>
-                    <option value="Corporate Executive Hostile Awareness">
-                      Corporate Executive Hostile Awareness
-                    </option>
+                    <option value="Armed Escort & Static">Armed Convoy + Static Guarding (Tier 1)</option>
+                    <option value="Armed Convoy Solo">Armed Highway Convoy Solo (Tier 1)</option>
+                    <option value="Facility Static Unarmed">Commercial Facility Access Control (Tier 2)</option>
+                    <option value="Electronic Checkpoint Surveillance">CCTV & Telemetry Patrol (Tier 2)</option>
                   </select>
                 </div>
+              </>
+            )}
+
+            {serviceType === "Consultancy" && (
+              <div className="sm:col-span-2 space-y-2">
+                <label className="text-xs font-mono uppercase text-zinc-400">Audit Scope</label>
+                <select
+                  value={formData.consultancyFocus}
+                  onChange={(e) => setFormData({ ...formData, consultancyFocus: e.target.value })}
+                  className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                >
+                  <option value="Full Vulnerability Assessment">Comprehensive Facility Physical Penetration Test</option>
+                  <option value="Executive Threat Modeling">Executive Residential & Route Vulnerability Assessment</option>
+                  <option value="TSCM Technical Surveillance Countermeasures">TSCM Bug & Wiretap Electronic Sweep</option>
+                  <option value="Emergency Evacuation Protocol">Crisis & Emergency Evacuation SOP Formulation</option>
+                </select>
               </div>
             )}
 
-            {/* Shared Location & Date */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                  Deployment / Facility Location
-                </label>
+            {serviceType === "Training" && (
+              <div className="space-y-2">
+                <label className="text-xs font-mono uppercase text-zinc-400">Cohort Size (Personnel)</label>
                 <input
-                  type="text"
-                  required
-                  placeholder="e.g. Victoria Island, Lagos / Abuja FCT"
-                  value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                  type="number"
+                  value={formData.trainingCohortSize}
+                  onChange={(e) => setFormData({ ...formData, trainingCohortSize: Number(e.target.value) })}
+                  className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
                 />
               </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                  Estimated Deployment Date
-                </label>
-                <input
-                  type="date"
-                  value={formData.startDate}
-                  onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                  className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
-                />
-              </div>
+            )}
+
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Deployment Duration</label>
+              <select
+                value={formData.duration}
+                onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+              >
+                <option value="Single Transit Escort">Single Transit Escort (24-48 Hours)</option>
+                <option value="1 Month">1 Month Trial Mobilization</option>
+                <option value="3 Months">3 Months Contract</option>
+                <option value="6 Months">6 Months Standard Defense Agreement</option>
+                <option value="12 Months">12 Months Enterprise Retainer</option>
+              </select>
             </div>
 
-            {/* Special Instructions */}
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Specific Security Requirements or Special Instructions
-              </label>
-              <textarea
-                rows={3}
-                placeholder="Detail any site risks, firearms requirements, canine units, access control system integration, or shift preferences..."
-                value={formData.specialRequirements}
-                onChange={(e) => setFormData({ ...formData, specialRequirements: e.target.value })}
-                className="w-full bg-[#10141d] border border-slate-800 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500"
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Operating City / Territory</label>
+              <input
+                type="text"
+                value={formData.location}
+                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                placeholder="e.g. Lagos, Ikeja Industrial Estate"
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-4">
+          <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white px-4 py-2.5 rounded-lg border border-slate-800"
+              className="text-xs font-mono text-zinc-400 hover:text-white"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back</span>
+              ← Back to Discipline
             </button>
             <button
               type="button"
               onClick={() => setStep(3)}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg text-sm font-semibold shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-6 py-3 rounded-full transition-all"
             >
-              <span>Next: Contact Details</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Continue to Contact</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       )}
 
-      {/* STEP 3: CLIENT IDENTITY */}
+      {/* STEP 3: CONTACT & REQUISITION ENTITY */}
       {step === 3 && (
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
-              Client & Authorization Details
-            </h2>
-            <p className="text-sm text-slate-400 mt-1">
-              Your official request reference number will be generated immediately upon submission.
-            </p>
+          <div className="space-y-1">
+            <h3 className="text-xl font-bold tracking-tight text-white">Client Authority & Contact</h3>
+            <p className="text-xs text-zinc-400">Where our central dispatch desk will transmit the tactical quote and SLA proposal.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Contact Person Name *
-              </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Authorized Officer / Name *</label>
               <input
-                type="text"
                 required
-                placeholder="e.g. Engr. Babatunde Balogun"
+                type="text"
                 value={formData.clientName}
                 onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                placeholder="Col. / Mr. / Dr. Full Name"
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
               />
             </div>
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Organization / Company Name
-              </label>
+
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Corporate Entity / Organization *</label>
               <input
+                required
                 type="text"
-                placeholder="e.g. Apex Industrial Logistics Ltd"
                 value={formData.companyName}
                 onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                placeholder="e.g. Zenith Cargo Terminals Ltd"
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
               />
             </div>
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Official Business Email *
-              </label>
+
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Official Work Email *</label>
               <input
-                type="email"
                 required
-                placeholder="operations@company.com"
+                type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                placeholder="security@company.com"
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
               />
             </div>
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Direct Phone / WhatsApp Line *
-              </label>
+
+            <div className="space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Direct Dispatch Phone *</label>
               <input
-                type="tel"
                 required
-                placeholder="+234 800 000 0000"
+                type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full bg-[#10141d] border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500"
+                placeholder="+234 800 000 0000"
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+              />
+            </div>
+
+            <div className="sm:col-span-2 space-y-2">
+              <label className="text-xs font-mono uppercase text-zinc-400">Specific Threat Vulnerabilities or Orders (Optional)</label>
+              <textarea
+                rows={3}
+                value={formData.specialRequirements}
+                onChange={(e) => setFormData({ ...formData, specialRequirements: e.target.value })}
+                placeholder="Perimeter details, cargo transit routes, high-value asset specs..."
+                className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
               />
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-900/40 text-xs text-blue-300 flex items-start gap-3">
-            <AlertCircle className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-            <p>
-              Submitting this request transmits your operational requirements directly to the 
-              JossyShield Central Operations Command. A formal tactical assessment and service quote 
-              will be dispatched to your email within 4 business hours.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between pt-4">
+          <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white px-4 py-2.5 rounded-lg border border-slate-800"
+              className="text-xs font-mono text-zinc-400 hover:text-white"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back</span>
+              ← Back to Parameters
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white px-8 py-3 rounded-lg text-sm font-semibold shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-7 py-3.5 rounded-full transition-all disabled:opacity-50"
             >
-              {isSubmitting ? (
-                <span>Generating Request...</span>
-              ) : (
-                <>
-                  <span>Submit Request & Generate Reference</span>
-                  <CheckCircle className="w-4 h-4" />
-                </>
-              )}
+              {isSubmitting ? "Transmitting Requisition..." : "Transmit Requisition Order"}
             </button>
           </div>
         </form>
       )}
 
-      {/* STEP 4: CONFIRMATION & REFERENCE NUMBER */}
+      {/* STEP 4: REQUISITION CONFIRMATION & TRACKING */}
       {step === 4 && (
-        <div className="py-6 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-xl shadow-emerald-500/10">
-            <CheckCircle className="w-8 h-8" />
+        <div className="text-center py-6 space-y-6 max-w-lg mx-auto">
+          <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+            <Check className="w-7 h-7" />
           </div>
 
-          <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">
-              REQUEST LOGGED IN JOSSYSHIELD CENTRAL COMMAND
+          <div className="space-y-2">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+              REQUISITION LOGGED IN CENTRAL DISPATCH
             </span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-white mt-1">
-              Service Request Confirmed
-            </h2>
-            <p className="text-sm text-slate-400 max-w-md mx-auto mt-2">
-              Thank you, {formData.clientName || "Valued Client"}. Your security requisition 
-              has been recorded and assigned to our Operations Director.
+            <h3 className="text-2xl font-bold tracking-tight text-white">
+              Tactical Requisition Received
+            </h3>
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              Your deployment order has been logged into our operations queue. Our command officer will review threat parameters and issue a formal deployment proposal within 4 hours.
             </p>
           </div>
 
-          {/* Reference ID Card */}
-          <div className="max-w-md mx-auto bg-[#0a0d14] border border-blue-500/40 rounded-xl p-5 shadow-2xl relative">
-            <div className="text-xs text-slate-400 mb-1 font-mono uppercase">
-              Official Tracking Reference ID
-            </div>
-            <div className="text-2xl font-mono font-bold text-blue-400 tracking-wider flex items-center justify-center gap-3">
-              <span>{referenceId}</span>
+          <div className="tactical-surface rounded-2xl p-5 border border-white/[0.1] space-y-3 font-mono text-left">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-zinc-400">Cryptographic Reference:</span>
               <button
+                type="button"
                 onClick={copyRef}
-                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
-                title="Copy Reference ID"
+                className="text-xs text-[#0066FF] hover:text-blue-400 flex items-center gap-1 font-semibold"
               >
-                <Copy className="w-4 h-4" />
+                <Copy className="w-3.5 h-3.5" />
+                <span>{copied ? "COPIED" : "COPY CODE"}</span>
               </button>
             </div>
-            {copied && (
-              <span className="text-[11px] text-emerald-400 font-mono mt-1 block">
-                ✓ Copied to clipboard
-              </span>
-            )}
-            <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-500 flex justify-between">
-              <span>Status: <strong className="text-blue-400">Under Review</strong></span>
-              <span>SLA Target: <strong>4 Hours</strong></span>
+            <div className="text-lg font-bold text-white tracking-wider bg-[#06080C] py-2 px-3 rounded-lg border border-white/[0.06] text-center">
+              {referenceId}
+            </div>
+            <div className="text-[11px] text-zinc-500 text-center">
+              Quote SLA guarantee: 4 business hours • Hotline: +234 1 800 JOSSY
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+          <div className="pt-4">
             <button
+              type="button"
               onClick={() => {
                 setStep(1);
-                setFormData({
-                  personnelCount: 4,
-                  duration: "6 Months",
-                  location: "Lagos, Nigeria",
-                  startDate: "",
-                  serviceLevel: "Armed Escort & Static",
-                  consultancyFocus: "Full Vulnerability Assessment",
-                  trainingCohortSize: 20,
-                  specialRequirements: "",
-                  clientName: "",
-                  companyName: "",
-                  email: "",
-                  phone: "",
-                });
+                setReferenceId("");
               }}
-              className="text-xs text-slate-400 hover:text-white px-5 py-2.5 rounded-lg border border-slate-800 hover:bg-slate-900 transition-colors"
+              className="text-xs text-zinc-400 hover:text-white font-mono"
             >
-              Submit Another Request
+              Configure Another Deployment Order
             </button>
-            <a
-              href={`https://wa.me/234800JOSSYSHIELD?text=Hello%20JossyShield,%20I%20just%20submitted%20service%20request%20${referenceId}`}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-emerald-600/20"
-            >
-              <span>Instant WhatsApp Follow-up</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
       )}

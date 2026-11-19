@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Upload, CheckCircle, X, Shield, FileText, AlertCircle } from "lucide-react";
+import { Upload, Check, X, Shield, FileText } from "lucide-react";
 
 export default function JobApplicationModal({
-  jobTitle = "General Security Personnel Application",
+  jobTitle = "General Security Operative Application",
   isOpen,
   onClose,
 }: {
@@ -63,7 +63,7 @@ export default function JobApplicationModal({
         body: JSON.stringify({
           jobTitle,
           ...form,
-          cvFileName: fileName || "Candidate_CV.pdf",
+          cvFileName: fileName || "Candidate_Credentials.pdf",
         }),
       });
       const data = await res.json();
@@ -80,222 +80,171 @@ export default function JobApplicationModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div className="relative w-full max-w-2xl bg-[#0f131c] border border-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div className="relative w-full max-w-xl tactical-surface rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto text-white">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white"
+          className="absolute top-5 right-5 p-2 rounded-full hover:bg-white/[0.08] text-zinc-400 hover:text-white transition-colors"
+          aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {!submitted ? (
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-widest mb-1">
-              <Shield className="w-4 h-4" />
-              <span>JossyShield Talent Pool Vetting</span>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-[11px] font-mono text-[#0066FF] uppercase">
+                <Shield className="w-3.5 h-3.5" />
+                <span>Personnel Clearance Intake</span>
+              </div>
+              <h2 className="text-xl font-bold tracking-tight text-white">
+                Application: {jobTitle}
+              </h2>
+              <p className="text-xs text-zinc-400">
+                All candidates undergo biometric audit and psychological stress screening.
+              </p>
             </div>
-            <h2 className="text-xl font-bold text-white tracking-tight">
-              Apply for: <span className="text-blue-400">{jobTitle}</span>
-            </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              Qualified candidates undergo background verification and enter our ready-to-deploy personnel pool.
-            </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Full Legal Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Ibrahim Danjuma"
-                    value={form.applicantName}
-                    onChange={(e) => setForm({ ...form, applicantName: e.target.value })}
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Phone / WhatsApp Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+234 800 000 0000"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase text-zinc-400">Full Legal Name *</label>
+                <input
+                  required
+                  type="text"
+                  value={form.applicantName}
+                  onChange={(e) => setForm({ ...form, applicantName: e.target.value })}
+                  placeholder="First and Last Name"
+                  className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Email Address *
-                  </label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono uppercase text-zinc-400">Email Address *</label>
                   <input
-                    type="email"
                     required
-                    placeholder="applicant@email.com"
+                    type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
+                    placeholder="officer@email.com"
+                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Years of Active Security Experience *
-                  </label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono uppercase text-zinc-400">Phone Number *</label>
                   <input
-                    type="number"
-                    min="0"
-                    max="40"
                     required
-                    value={form.experienceYears}
-                    onChange={(e) =>
-                      setForm({ ...form, experienceYears: parseInt(e.target.value) || 0 })
-                    }
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    placeholder="+234 800 000 0000"
+                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Primary Deployment Location
-                  </label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono uppercase text-zinc-400">Security Experience (Years)</label>
                   <input
-                    type="text"
-                    required
-                    placeholder="e.g. Lagos Mainland / Lekki / Port Harcourt"
-                    value={form.location}
-                    onChange={(e) => setForm({ ...form, location: e.target.value })}
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
+                    type="number"
+                    min="1"
+                    max="30"
+                    value={form.experienceYears}
+                    onChange={(e) => setForm({ ...form, experienceYears: Number(e.target.value) })}
+                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Availability for Deployment
-                  </label>
-                  <select
-                    value={form.availability}
-                    onChange={(e) => setForm({ ...form, availability: e.target.value })}
-                    className="w-full bg-[#161c28] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
-                  >
-                    <option value="immediate">Immediate (Ready to Deploy)</option>
-                    <option value="2_weeks">Within 2 Weeks</option>
-                    <option value="1_month">Within 1 Month</option>
-                  </select>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono uppercase text-zinc-400">Deployment City</label>
+                  <input
+                    type="text"
+                    value={form.location}
+                    onChange={(e) => setForm({ ...form, location: e.target.value })}
+                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                  />
                 </div>
               </div>
 
-              {/* Skills Multi-select */}
-              <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                  Vetted Competencies & Qualifications (Select all that apply)
-                </label>
+              <div className="space-y-2">
+                <label className="text-xs font-mono uppercase text-zinc-400">Tactical Competencies</label>
                 <div className="flex flex-wrap gap-2">
-                  {availableSkills.map((skill) => {
-                    const selected = form.skills.includes(skill);
+                  {availableSkills.map((sk) => {
+                    const isSelected = form.skills.includes(sk);
                     return (
                       <button
+                        key={sk}
                         type="button"
-                        key={skill}
-                        onClick={() => toggleSkill(skill)}
+                        onClick={() => toggleSkill(sk)}
                         className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
-                          selected
-                            ? "bg-blue-600/30 border-blue-500 text-blue-300 font-medium"
-                            : "bg-[#141923] border-slate-800 text-slate-400 hover:border-slate-700"
+                          isSelected
+                            ? "bg-[#0066FF] border-[#0066FF] text-white font-medium"
+                            : "bg-[#070A0F] border-white/[0.08] text-zinc-400 hover:text-white"
                         }`}
                       >
-                        {selected ? "✓ " : "+ "}
-                        {skill}
+                        {sk}
                       </button>
                     );
                   })}
                 </div>
               </div>
 
-              {/* CV File Upload */}
-              <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
-                  Upload Curriculum Vitae / Certifications (PDF or DOCX max 5MB) *
-                </label>
-                <div className="relative border-2 border-dashed border-slate-700 hover:border-blue-500/80 rounded-xl p-4 text-center cursor-pointer bg-[#141822]/60 transition-colors">
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase text-zinc-400">CV & Credentials Document (PDF)</label>
+                <div className="border border-dashed border-white/[0.15] rounded-xl p-4 text-center cursor-pointer hover:border-[#0066FF] transition-colors relative">
                   <input
                     type="file"
-                    accept=".pdf,.docx,.doc"
+                    accept=".pdf,.doc,.docx"
                     onChange={handleFileChange}
-                    className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                    className="absolute inset-0 opacity-0 cursor-pointer"
                   />
-                  <div className="flex flex-col items-center justify-center space-y-1">
-                    <Upload className="w-6 h-6 text-blue-400" />
-                    <p className="text-xs text-slate-300 font-medium">
-                      {fileName ? (
-                        <span className="text-blue-400 flex items-center gap-1">
-                          <FileText className="w-3.5 h-3.5" />
-                          {fileName}
-                        </span>
-                      ) : (
-                        "Click or drag CV file to upload"
-                      )}
-                    </p>
-                    <p className="text-[10px] text-slate-500">
-                      Encrypted and restricted to authorized recruitment evaluators.
-                    </p>
+                  <div className="flex flex-col items-center justify-center gap-1.5 text-xs text-zinc-400">
+                    <Upload className="w-4 h-4 text-zinc-300" />
+                    <span>{fileName ? fileName : "Upload credentials (PDF, DOCX)"}</span>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="pt-3 flex items-center justify-end gap-3 border-t border-slate-800">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-2 text-xs text-slate-400 hover:text-white"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white px-6 py-2.5 rounded-lg text-xs font-semibold shadow-lg shadow-blue-600/30"
-                >
-                  {submitting ? "Submitting Application..." : "Submit Application & Enter Pool"}
-                </button>
-              </div>
-            </form>
-          </div>
+            <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
+              <button
+                type="button"
+                onClick={onClose}
+                className="text-xs font-mono text-zinc-500 hover:text-zinc-300"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-6 py-3 rounded-full transition-all disabled:opacity-50"
+              >
+                {submitting ? "Submitting Dossier..." : "Submit for Clearance Review"}
+              </button>
+            </div>
+          </form>
         ) : (
-          <div className="text-center py-8 space-y-4">
-            <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
-              <CheckCircle className="w-7 h-7" />
+          <div className="text-center py-6 space-y-5">
+            <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+              <Check className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-white">Application Recorded</h3>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
-              Your profile has been entered into the JossyShield Talent Evaluation Pipeline.
-            </p>
-            <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg max-w-xs mx-auto">
-              <span className="text-[10px] font-mono text-slate-500 block uppercase">
-                Candidate Reference ID
-              </span>
-              <span className="text-lg font-mono font-bold text-blue-400">
-                {applicantId}
-              </span>
+            <div className="space-y-1">
+              <h3 className="text-lg font-bold text-white">Application Received</h3>
+              <p className="text-xs text-zinc-400 max-w-sm mx-auto">
+                Your dossier has been logged into our vetting queue. Our recruitment desk will contact you within 5 business days for biometric scheduling.
+              </p>
             </div>
-            <button
-              onClick={() => {
-                setSubmitted(false);
-                onClose();
-              }}
-              className="bg-blue-600 hover:bg-blue-500 text-white text-xs px-6 py-2.5 rounded-lg font-semibold"
-            >
-              Done
-            </button>
+            <div className="bg-[#070A0F] py-3 px-4 rounded-xl border border-white/[0.08] inline-block font-mono text-xs text-zinc-300">
+              Candidate Reference: <span className="text-[#0066FF] font-bold">{applicantId}</span>
+            </div>
+            <div className="pt-2">
+              <button
+                onClick={onClose}
+                className="bg-white/[0.08] hover:bg-white/[0.14] text-white text-xs px-6 py-2.5 rounded-full"
+              >
+                Close
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -1,109 +1,102 @@
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck, Heart, Users, Target, CheckCircle2, ArrowRight } from "lucide-react";
+import { ShieldCheck, Heart, Target, ArrowUpRight } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-20">
       {/* Header */}
       <div className="max-w-3xl space-y-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-semibold px-3 py-1 rounded bg-emerald-100">
-          ABOUT SAFE NEIGHBORHOOD FOUNDATION
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Empowering Grassroots Safety, Lighting Corridors & Mediating Peace
+        <p className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">
+          Charter & Mission Profile
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-slate-950">
+          Grassroots Safety. Solar Infrastructure. Mediated Peace.
         </h1>
-        <p className="text-base text-slate-600 leading-relaxed">
-          Safe Neighborhood Foundation (SANEF) was incorporated to transform vulnerable urban and peri-urban 
-          neighborhoods into secure, flourishing communities. We reject superficial gestures; our interventions 
-          rely on empirical field research, solar hardware deployment, and grassroots peace circles.
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+          Safe Neighborhood Foundation (SANEF) was incorporated under Nigerian CAMA 2020 NGO guidelines to eliminate predatory vulnerability in urban corridors through measurable environmental design, youth mediation academies, and connected community watch groups.
         </p>
       </div>
 
-      {/* Mission / Vision / Philosophy */}
+      {/* Mission / Vision / Accountability */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="civic-card rounded-2xl p-7 space-y-3">
-          <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
-            <Target className="w-5 h-5" />
+        <div className="monograph-surface rounded-3xl p-8 space-y-3">
+          <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center justify-center">
+            <Target className="w-4 h-4" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">Our Mission</h3>
+          <h3 className="text-lg font-bold text-slate-900 tracking-tight">Our Mission</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            To drastically eliminate night-time vulnerability, reduce youth gang recruitment, and foster resilient 
-            community cohesion through solar infrastructure, conflict mediation, and open evidence archives.
+            To eliminate pedestrian vulnerability along unlit corridors, divert at-risk youth from predatory cycles, and foster durable safety through verified evidence.
           </p>
         </div>
 
-        <div className="civic-card rounded-2xl p-7 space-y-3">
-          <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
-            <ShieldCheck className="w-5 h-5" />
+        <div className="monograph-surface rounded-3xl p-8 space-y-3">
+          <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center justify-center">
+            <ShieldCheck className="w-4 h-4" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">Our Vision</h3>
+          <h3 className="text-lg font-bold text-slate-900 tracking-tight">Our Vision</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            An African urban landscape where every woman, child, and worker can walk freely at night without fear, 
-            and where neighborhood disputes are resolved through mediation rather than violence.
+            Urban neighborhoods across Nigeria where residents walk with dignity at night without fear, and disputes are de-escalated through certified mediation.
           </p>
         </div>
 
-        <div className="civic-card rounded-2xl p-7 space-y-3">
-          <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
-            <Heart className="w-5 h-5" />
+        <div className="monograph-surface rounded-3xl p-8 space-y-3">
+          <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center justify-center">
+            <Heart className="w-4 h-4" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">Our Accountability</h3>
+          <h3 className="text-lg font-bold text-slate-900 tracking-tight">Ledger Accountability</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Every naira and dollar donated to SANEF is logged in our public accountability ledger. All project outcomes 
-            are independently audited with downloadable PDF reports in our Evidence Archive.
+            Every grant received is audited by external accountancy firms. All field hardware coordinates and expenditure records are published in our public Evidence Archive.
           </p>
         </div>
       </div>
 
-      {/* Focus Areas */}
-      <div className="civic-card rounded-3xl p-8 sm:p-12 space-y-6">
+      {/* Focus Strategies */}
+      <div className="monograph-surface rounded-3xl p-8 sm:p-12 space-y-8">
         <div>
-          <span className="text-xs font-mono uppercase text-emerald-800">CORE INTERVENTION STRATEGIES</span>
+          <p className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">
+            Operational Methodology
+          </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            How SANEF Operates on the Ground
+            How SANEF Implements Sustainable Protection
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-slate-600">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-xs text-slate-600">
           <div className="space-y-2">
             <h4 className="text-sm font-bold text-slate-900">1. Autonomous Solar Safe Corridors</h4>
             <p className="leading-relaxed">
-              We identify pitch-black school routes, transit walkways, and markets, deploying heavy-duty solar streetlights 
-              with emergency SOS alarm buttons maintained by trained neighborhood youths.
+              We engineer high-efficiency solar lighting along high-risk school paths and market alleys. Units feature vandal-resistant enclosures and are maintained by local youth custodians.
             </p>
           </div>
           <div className="space-y-2">
             <h4 className="text-sm font-bold text-slate-900">2. Restorative Youth Mediation</h4>
             <p className="leading-relaxed">
-              Instead of criminalizing youth conflict, we provide certified mediation circles, psychological counseling, 
-              and marketable digital skills training to desensitize violence.
+              We operate dispute mediation circles, vocational training courses, and non-violence leadership academies to divert at-risk youth from gang structures.
             </p>
           </div>
           <div className="space-y-2">
-            <h4 className="text-sm font-bold text-slate-900">3. Neighborhood Watch Radio Backbone</h4>
+            <h4 className="text-sm font-bold text-slate-900">3. Community Watch Communication Mesh</h4>
             <p className="leading-relaxed">
-              We connect accredited voluntary neighborhood watch associations with encrypted communication radios, 
-              trauma first-aid packs, and direct liaison to municipal emergency services.
+              We equip volunteer neighborhood watch groups with ruggedized UHF two-way transceivers, protective vests, and direct escalation protocols to police stations.
             </p>
           </div>
           <div className="space-y-2">
-            <h4 className="text-sm font-bold text-slate-900">4. Open Data & Impact Auditing</h4>
+            <h4 className="text-sm font-bold text-slate-900">4. Empirical Audit Transparency</h4>
             <p className="leading-relaxed">
-              We publish crime telemetry, pre- and post-intervention audits, and financial statements freely to the public, 
-              providing research institutions with verifiable community data.
+              We publish pre- and post-intervention incident reports and third-party audit dossiers openly for researchers, municipal authorities, and donors.
             </p>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <p className="text-xs text-slate-500">Learn more about our verified outcomes.</p>
+        <div className="pt-6 border-t border-slate-200 flex items-center justify-between">
+          <p className="text-xs text-slate-500 font-mono">CAC/IT/NO: 148291 • SCUML REGISTERED</p>
           <Link
             href="/portfolio"
-            className="flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800"
+            className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1"
           >
-            <span>Explore Projects in the Archive</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Explore Evidence Archive</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>

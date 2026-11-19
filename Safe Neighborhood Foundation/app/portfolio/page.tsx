@@ -5,12 +5,12 @@ import {
   FileCheck2, 
   MapPin, 
   DownloadCloud, 
-  ExternalLink, 
   Filter, 
   Calendar, 
   Users, 
-  CheckCircle,
-  X
+  Check,
+  X,
+  ArrowUpRight
 } from "lucide-react";
 import { SANEF_PROJECTS, ProjectEvidence } from "@/lib/data";
 
@@ -26,35 +26,33 @@ export default function PortfolioPage() {
       : SANEF_PROJECTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-16">
       {/* Header */}
-      <div className="max-w-3xl space-y-3">
-        <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-semibold px-3 py-1 rounded bg-emerald-100">
-          EMPIRICAL RESEARCH & PROJECT ARCHIVE
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Evidence Archive & Audited Impact
+      <div className="max-w-3xl space-y-4">
+        <p className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">
+          Empirical Project Archive
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-slate-950">
+          Field Evidence & Audited Outcomes
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-          SANEF operates with complete transparency. This archive provides structured records of every 
-          field project, community initiative, partner contribution, and verifiable audit report.
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+          Every SANEF civic intervention is tracked with verifiable geo-coordinates, community committee affidavits, and independent third-party audit reports.
         </p>
       </div>
 
       {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center gap-2 pt-2 border-b border-slate-200 pb-4">
-        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 mr-2">
-          <Filter className="w-3.5 h-3.5" />
-          <span>Filter Focus:</span>
-        </div>
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-4">
+        <span className="text-xs font-mono uppercase tracking-wider text-slate-400 mr-2">
+          Filter Focus:
+        </span>
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
             className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
               selectedCategory === cat
-                ? "bg-emerald-700 text-white shadow-sm"
-                : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                ? "bg-[#0D4A2B] text-white shadow-sm"
+                : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
             }`}
           >
             {cat}
@@ -63,26 +61,26 @@ export default function PortfolioPage() {
       </div>
 
       {/* Project Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="civic-card civic-card-hover rounded-3xl p-7 flex flex-col justify-between"
+            className="monograph-surface rounded-3xl p-7 flex flex-col justify-between space-y-6"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-800 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 font-semibold">
                   {project.category}
                 </span>
-                <span className="text-xs font-mono text-slate-500">{project.date}</span>
+                <span className="text-xs font-mono text-slate-400">{project.date}</span>
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 tracking-tight">
+              <h3 className="text-xl font-bold text-slate-900 tracking-tight leading-snug">
                 {project.title}
               </h3>
 
-              <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono">
+                <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                 <span>{project.location}</span>
               </div>
 
@@ -101,100 +99,94 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs font-mono text-emerald-800 flex items-center gap-1">
-                <FileCheck2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{project.evidenceType}</span>
-              </span>
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
               <button
                 onClick={() => setSelectedProject(project)}
-                className="bg-slate-900 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors"
+                className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1"
               >
-                Inspect Evidence
+                <span>Inspect Evidence Dossier</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
+              <span className="text-[10px] font-mono text-slate-400">AUDITED</span>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Detail Modal / Drawer */}
+      {/* DETAIL MODAL / DRAWER */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-          <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-6">
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 p-1.5 rounded-lg bg-slate-100 text-slate-500 hover:text-slate-900"
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-800 transition-colors"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
 
-            <div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-mono">
-                {selectedProject.category} • {selectedProject.date}
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-800 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+                {selectedProject.category} • CERTIFIED EVIDENCE
               </span>
-              <h2 className="text-2xl font-bold text-slate-900 mt-2">
+              <h2 className="text-2xl font-bold text-slate-950 tracking-tight">
                 {selectedProject.title}
               </h2>
-              <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
-                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                {selectedProject.location}
+              <p className="text-xs text-slate-500 font-mono">
+                Location: {selectedProject.location} • Commissioned: {selectedProject.date}
               </p>
             </div>
 
-            <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
-              <h4 className="font-bold text-slate-900 uppercase text-xs tracking-wider">
-                Project Overview & Empirical Scope
+            <div className="space-y-3 text-xs text-slate-700 leading-relaxed font-sans">
+              <h4 className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                Detailed Field Findings
               </h4>
               <p>{selectedProject.detailedDescription}</p>
             </div>
 
-            {/* Impact Metric Table */}
-            <div className="border border-slate-200 rounded-2xl overflow-hidden">
-              <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-200 text-xs font-bold text-slate-800">
-                Verified On-The-Ground Metrics
-              </div>
-              <div className="divide-y divide-slate-100 p-2">
+            <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-2">
+              <h4 className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                Verified Civic Metrics
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {selectedProject.impactStats.map((stat, i) => (
-                  <div key={i} className="flex justify-between px-3 py-2 text-xs">
-                    <span className="text-slate-600">{stat.label}</span>
-                    <span className="font-bold font-mono text-emerald-800 text-sm">{stat.value}</span>
+                  <div key={i} className="text-xs">
+                    <p className="text-slate-500">{stat.label}</p>
+                    <p className="font-bold text-slate-900 font-mono mt-0.5">{stat.value}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Participating Partners */}
-            <div className="space-y-1">
-              <h4 className="font-bold text-slate-900 uppercase text-xs tracking-wider">
-                Partner Institutions Involved
-              </h4>
-              <p className="text-xs text-slate-600">
-                {selectedProject.partners.join(", ")}
-              </p>
+            <div className="space-y-1 text-xs">
+              <p className="font-mono text-[11px] uppercase text-slate-400">Community Partners:</p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {selectedProject.partners.map((p, i) => (
+                  <span key={i} className="px-2.5 py-1 bg-slate-100 rounded-full text-slate-700 font-medium">
+                    {p}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            {/* Download Audit Evidence */}
-            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center">
-                  <FileCheck2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-900">{selectedProject.downloadFileName}</p>
-                  <p className="text-[11px] text-slate-500">Official Audited PDF Documentation (2.4 MB)</p>
-                </div>
-              </div>
+            <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
               <a
-                href="#"
+                href={`#download-${selectedProject.downloadFileName}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  alert(`Downloading audited documentation: ${selectedProject.downloadFileName}`);
+                  alert(`Certified Dossier [${selectedProject.downloadFileName}] logged for download.`);
                 }}
-                className="flex items-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow-sm"
+                className="inline-flex items-center gap-2 bg-[#0D4A2B] hover:bg-[#14633B] text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all"
               >
-                <DownloadCloud className="w-4 h-4" />
-                <span>Download Report</span>
+                <DownloadCloud className="w-3.5 h-3.5" />
+                <span>Download Verified PDF Dossier</span>
               </a>
+
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="text-xs font-mono text-slate-500 hover:text-slate-800"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

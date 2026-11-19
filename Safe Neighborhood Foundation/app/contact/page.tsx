@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, MessageSquare, CheckCircle, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Check } from "lucide-react";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -32,179 +32,168 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-16">
       {/* Header */}
-      <div className="max-w-3xl space-y-3">
-        <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-semibold px-3 py-1 rounded bg-emerald-100">
-          GET IN TOUCH WITH SANEF
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Community Engagement & Feedback
+      <div className="max-w-3xl space-y-4">
+        <p className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">
+          Civic Secretariat & Field Intake
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-slate-950">
+          Connect with the Foundation
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Report an unlit school corridor, recommend a neighborhood for solar beacon expansion, 
-          or connect with our program leadership for institutional partnerships.
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+          Nominate a vulnerable corridor for solar installation, recommend an at-risk youth cohort for mediation academy entry, or explore philanthropic grants.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <div className="civic-card rounded-3xl p-6 space-y-5">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Contact Information */}
+        <div className="lg:col-span-5 space-y-4">
+          <div className="monograph-surface rounded-3xl p-7 space-y-6">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500">
               Community Channels
             </h3>
 
-            <div className="space-y-4 text-xs">
+            <div className="space-y-5 text-xs">
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-emerald-100 text-emerald-800">
+                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-semibold">Toll-Free Citizen Hotline</p>
-                  <p className="text-slate-600 font-mono">+234 (0) 800-SANEF-COMMUNITY</p>
+                  <p className="text-slate-900 font-semibold">Toll-Free Citizen Line</p>
+                  <p className="text-slate-600 font-mono mt-0.5">+234 (0) 800-SANEF-COMMUNITY</p>
+                  <p className="text-slate-500 text-[11px] font-mono">+234 (0) 802 444 8921</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-emerald-100 text-emerald-800">
-                  <MessageSquare className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-slate-900 font-semibold">WhatsApp Community Line</p>
-                  <a
-                    href="https://wa.me/234800SANEF"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-emerald-700 hover:underline font-mono"
-                  >
-                    +234 800 72633
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-emerald-100 text-emerald-800">
+                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-semibold">Official Email</p>
-                  <p className="text-slate-600">contact@sanefoundation.org</p>
+                  <p className="text-slate-900 font-semibold">Official Secretariat Email</p>
+                  <p className="text-slate-600 mt-0.5">secretariat@sanefoundation.org</p>
+                  <p className="text-slate-500 text-[11px]">programs@sanefoundation.org</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-emerald-100 text-emerald-800">
+                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-semibold">Community Action Center</p>
-                  <p className="text-slate-600">18 Commercial Avenue, Yaba, Lagos</p>
+                  <p className="text-slate-900 font-semibold">National Secretariat</p>
+                  <p className="text-slate-600 mt-0.5">48 Commercial Way, Yaba Innovation Corridor, Lagos</p>
+                  <p className="text-slate-500 text-[11px]">Field stations in Ajegunle, Mushin & Makoko</p>
                 </div>
               </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-200 flex items-center gap-2 text-[11px] font-mono text-slate-500">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 civic-beacon" />
+              <span>FIELD DESK OPEN MON-FRI 8:00 AM - 6:00 PM</span>
             </div>
           </div>
         </div>
 
         {/* Contact Form */}
-        <div className="lg:col-span-2 civic-card rounded-3xl p-8 sm:p-10">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <h2 className="text-2xl font-bold text-slate-900">Send an Enquiry or Report</h2>
-                <p className="text-xs text-slate-500 mt-1">Our field team evaluates all submissions within 24 hours.</p>
-              </div>
+        <div className="lg:col-span-7">
+          <div className="monograph-surface rounded-3xl p-8 space-y-6">
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold tracking-tight text-slate-900">Submit Community Inquiry / Proposal</h3>
+                  <p className="text-xs text-slate-500">Our programs officer will reply within 24 business hours.</p>
+                </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Dr. Ngozi Balogun"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="ngozi@domain.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
-                  />
-                </div>
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono uppercase text-slate-500">Full Name *</label>
+                    <input
+                      required
+                      type="text"
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Your name"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
+                    />
+                  </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp Number</label>
-                  <input
-                    type="tel"
-                    placeholder="+234 800 000 0000"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono uppercase text-slate-500">Email Address *</label>
+                    <input
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="your.email@organization.org"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono uppercase text-slate-500">Phone Number *</label>
+                    <input
+                      required
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+234 800 000 0000"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono uppercase text-slate-500">Category of Inquiry</label>
+                    <select
+                      value={form.subject}
+                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
+                    >
+                      <option value="Corridor Lighting Nomination">Nominate Dark School Corridor</option>
+                      <option value="Youth Academy Referral">Youth Conflict Mediation Referral</option>
+                      <option value="Philanthropic Grant Discussion">Philanthropic Grant / Partnership</option>
+                      <option value="General Information">General Civic Information</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono uppercase text-slate-500">Message / Neighborhood Location Details *</label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Specify community name, LGA, school boundary, or partnership framework..."
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Inquiry Category</label>
-                  <select
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
+
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="bg-[#0D4A2B] hover:bg-[#14633B] text-white text-xs font-semibold px-7 py-3 rounded-full transition-all disabled:opacity-50"
                   >
-                    <option value="Community Safety Inquiry">Community Safety Inquiry</option>
-                    <option value="Report Dark/Dangerous Corridor">Report Dark/Dangerous Corridor</option>
-                    <option value="Youth Mediation Center Request">Youth Mediation Center Request</option>
-                    <option value="Institutional Partnership">Institutional Partnership</option>
-                    <option value="Donation & Financial Verification">Donation & Financial Verification</option>
-                  </select>
+                    {submitting ? "Transmitting..." : "Submit Community Message"}
+                  </button>
                 </div>
+              </form>
+            ) : (
+              <div className="text-center py-10 space-y-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center mx-auto">
+                  <Check className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900">Message Logged Successfully</h3>
+                <p className="text-xs text-slate-600 max-w-sm mx-auto">
+                  Thank you for reaching out. Our community field officer will review your nomination or inquiry promptly.
+                </p>
               </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Detailed Message *</label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Provide context, location specifics, or details regarding your inquiry..."
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={submitting}
-                className="flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 text-white text-xs font-semibold px-6 py-3 rounded-lg shadow-sm"
-              >
-                {submitting ? "Sending..." : "Submit Inquiry"}
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </form>
-          ) : (
-            <div className="py-12 text-center space-y-4">
-              <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto">
-                <CheckCircle className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900">Message Received</h3>
-              <p className="text-xs text-slate-600 max-w-sm mx-auto">
-                Thank you for reaching out to Safe Neighborhood Foundation. Your enquiry has been routed to our community directorate.
-              </p>
-              <button
-                onClick={() => setSubmitted(false)}
-                className="text-xs text-emerald-700 font-semibold hover:underline"
-              >
-                Send another message
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

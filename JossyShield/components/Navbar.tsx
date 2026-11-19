@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, Menu, X, ArrowRight, PhoneCall } from "lucide-react";
+import { Shield, Menu, X, ArrowUpRight, Radio } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,127 +12,121 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 16);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "Overview", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Marketplace", href: "/marketplace" },
-    { name: "Careers & Talent", href: "/careers" },
-    { name: "Testimonials", href: "/testimonials" },
-    { name: "Contact", href: "/contact" },
+    { name: "Requisition Portal", href: "/marketplace" },
+    { name: "Talent Roster", href: "/careers" },
+    { name: "Field Cases", href: "/testimonials" },
+    { name: "Command & About", href: "/about" },
+    { name: "Dispatch", href: "/contact" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#090a0d]/90 backdrop-blur-md border-b border-slate-800/80 shadow-2xl py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform border border-blue-400/30">
-              <Shield className="w-5 h-5 text-blue-100" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold tracking-tight text-xl text-white">
-                  Jossy<span className="text-blue-500">Shield</span>
-                </span>
-                <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              </div>
-              <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
-                Security Services
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#131722]/80 px-4 py-1.5 rounded-full border border-slate-800 backdrop-blur-sm">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    isActive
-                      ? "bg-blue-600 text-white shadow-sm shadow-blue-500/30 font-semibold"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Action */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="tel:+234800JOSSYSHIELD"
-              className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-slate-800/50 transition-colors"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-blue-400" />
-              <span className="font-mono font-medium">24/7 Hotline</span>
-            </a>
-            <Link
-              href="/marketplace"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <span>Request Quote</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
+      <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+        {/* Brand Bar */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-full liquid-glass transition-transform active:scale-[0.98]"
+        >
+          <div className="w-7 h-7 rounded-full bg-[#0066FF] flex items-center justify-center text-white shadow-sm">
+            <Shield className="w-3.5 h-3.5 fill-white/20 stroke-white stroke-[2.2]" />
           </div>
+          <div className="flex items-baseline gap-1.5 pr-1">
+            <span className="font-semibold text-sm tracking-[-0.02em] text-white">
+              Jossy<span className="text-zinc-400">Shield</span>
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 hidden sm:inline">
+              OPS
+            </span>
+          </div>
+        </Link>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {isOpen && (
-        <div className="lg:hidden bg-[#0c0f16] border-b border-slate-800 px-4 pt-3 pb-6 space-y-2 mt-3 animate-in slide-in-from-top-4">
+        {/* Center Navigation - Floating Liquid Glass Island */}
+        <nav className="hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full liquid-glass">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${
+                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all ${
                   isActive
-                    ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
-                    : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                    ? "bg-white/10 text-white font-semibold shadow-inner"
+                    : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
                 {link.name}
               </Link>
             );
           })}
-          <div className="pt-2 border-t border-slate-800">
+        </nav>
+
+        {/* Right Tactical Action */}
+        <div className="hidden sm:flex items-center gap-2">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full liquid-glass text-[11px] font-mono text-zinc-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-pulse" />
+            <span className="text-zinc-300">HQ LIVE</span>
+          </div>
+          <Link
+            href="/marketplace"
+            className="flex items-center gap-1.5 bg-[#0066FF] hover:bg-[#1A75FF] text-white text-[13px] font-semibold px-4 py-2 rounded-full shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Request Guard</span>
+            <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 rounded-full liquid-glass text-zinc-300 hover:text-white"
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile Drawer Sheet */}
+      {isOpen && (
+        <div className="md:hidden mt-3 max-w-sm mx-auto rounded-3xl liquid-glass p-5 pointer-events-auto space-y-3">
+          <div className="space-y-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-2.5 rounded-2xl text-sm font-medium ${
+                    isActive
+                      ? "bg-white/10 text-white font-semibold"
+                      : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between">
+            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 beacon-pulse" />
+              <span>HQ DISPATCH READY</span>
+            </div>
             <Link
               href="/marketplace"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-3 rounded-lg shadow-lg shadow-blue-600/25"
+              className="bg-[#0066FF] text-white text-xs font-semibold px-4 py-2 rounded-full"
             >
-              <span>Request a Service & Quote</span>
-              <ArrowRight className="w-4 h-4" />
+              Requisition
             </Link>
           </div>
         </div>

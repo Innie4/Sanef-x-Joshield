@@ -3,42 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #090c12;
-  --foreground: #f1f5f9;
+  --background: #080b10;
+  --foreground: #f1f4f9;
+  --console-border: rgba(255, 255, 255, 0.07);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbars */
+/* Precision console scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d121c;
+  background: #080b10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232d3f;
-  border-radius: 3px;
+  background: #1c2433;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #0066ff;
 }
 
-.dash-card {
-  background: #111622;
-  border: 1px solid #1f2838;
+/* Console surfaces */
+.console-surface {
+  background: #0c1017;
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.dash-card-hover {
-  transition: all 0.2s ease;
+.console-surface-hover {
+  background: #0c1017;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.15s ease;
 }
-.dash-card-hover:hover {
-  border-color: #33425b;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+.console-surface-hover:hover {
+  background: #10151f;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Hairline borders */
+.hairline {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.hairline-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.hairline-t {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.hairline-r {
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
 }

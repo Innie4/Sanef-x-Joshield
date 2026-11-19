@@ -3,49 +3,83 @@
 @tailwind utilities;
 
 :root {
-  --background: #08090c;
-  --foreground: #f8fafc;
+  --background: #06080c;
+  --foreground: #f4f6fb;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --accent-blue: #0066ff;
+  --accent-blue-hover: #1f7aff;
+  --carbon-900: #0b0f17;
+  --carbon-800: #121824;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Precision scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1017;
+  background: #06080c;
 }
 ::-webkit-scrollbar-thumb {
-  background: #252e40;
-  border-radius: 4px;
+  background: #1e2636;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #0066ff;
 }
 
-/* Glassmorphism utility */
-.glass-panel {
-  background: rgba(22, 27, 36, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(42, 50, 66, 0.8);
+/* Hairline borders - Apple Human Interface standard */
+.hairline {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-t {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-r {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-panel-hover:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.12);
-  transform: translateY(-2px);
+/* Liquid Glass Navigation layer */
+.liquid-glass {
+  background: rgba(10, 14, 22, 0.82);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
-.glow-blue {
-  box-shadow: 0 0 35px -5px rgba(37, 99, 235, 0.25);
+/* Solid Tactical Surface */
+.tactical-surface {
+  background: #0b0f17;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.tactical-surface-interactive {
+  background: #0b0f17;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tactical-surface-interactive:hover {
+  background: #0e1420;
+  border-color: rgba(0, 102, 255, 0.4);
+}
+
+/* Status indicator pulse */
+@keyframes beaconPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.92); }
+}
+.beacon-pulse {
+  animation: beaconPulse 2.4s ease-in-out infinite;
 }

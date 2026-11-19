@@ -3,51 +3,80 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #fafaf9;
+  --foreground: #0a0d14;
+  --hairline: rgba(0, 0, 0, 0.08);
+  --forest-900: #08331e;
+  --forest-800: #0d4a2b;
+  --forest-700: #14633b;
+  --forest-50: #ebf4ee;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Precision subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #fafaf9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #d6d9e0;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background: #0d4a2b;
 }
 
-/* Glass & Card utilities */
-.civic-card {
+/* Hairlines */
+.hairline {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.hairline-t {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.hairline-b {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Civic Liquid Glass navigation */
+.civic-liquid-glass {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Monograph Paper Surface */
+.monograph-surface {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.civic-card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.monograph-surface-interactive {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.civic-card-hover:hover {
-  border-color: #a7f3d0;
-  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.1), 0 8px 10px -6px rgba(5, 150, 105, 0.05);
-  transform: translateY(-2px);
+.monograph-surface-interactive:hover {
+  border-color: #0d4a2b;
+  box-shadow: 0 8px 24px -6px rgba(13, 74, 43, 0.08);
 }
 
-.civic-glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+/* Live Beacon Indicator */
+@keyframes civicBeacon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.92); }
+}
+.civic-beacon {
+  animation: civicBeacon 2.2s ease-in-out infinite;
 }
