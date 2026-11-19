@@ -20,27 +20,27 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Overview", href: "/" },
-    { name: "Evidence Archive", href: "/portfolio" },
-    { name: "Donations & Allocation", href: "/donate" },
-    { name: "Partnerships", href: "/partnerships" },
-    { name: "Civic Forums", href: "/events" },
-    { name: "Field Reports", href: "/blog" },
-    { name: "Charter & About", href: "/about" },
+    { name: "Archive", href: "/portfolio" },
+    { name: "Donate", href: "/donate" },
+    { name: "Partners", href: "/partnerships" },
+    { name: "Forums", href: "/events" },
+    { name: "Reports", href: "/blog" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
-      <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 pointer-events-auto">
         {/* Brand Bar */}
         <Link
           href="/"
-          className="flex items-center gap-3 px-3.5 py-2 rounded-full civic-liquid-glass transition-transform active:scale-[0.98]"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-full civic-liquid-glass transition-transform active:scale-[0.98] shrink-0"
         >
-          <div className="w-7 h-7 rounded-full bg-[#0D4A2B] flex items-center justify-center text-white shadow-sm">
+          <div className="w-7 h-7 rounded-full bg-[#0D4A2B] flex items-center justify-center text-white shadow-sm shrink-0">
             <ShieldCheck className="w-4 h-4" />
           </div>
-          <div className="flex items-baseline gap-1.5 pr-1">
+          <div className="flex items-baseline gap-1.5 pr-1 whitespace-nowrap">
             <span className="font-semibold text-sm tracking-[-0.02em] text-slate-900">
               SANEF
             </span>
@@ -51,14 +51,14 @@ export default function Navbar() {
         </Link>
 
         {/* Center Nav */}
-        <nav className="hidden lg:flex items-center gap-1 px-2 py-1.5 rounded-full civic-liquid-glass">
+        <nav className="hidden lg:flex items-center gap-0.5 px-2 py-1 rounded-full civic-liquid-glass shrink-0">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all ${
+                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all whitespace-nowrap ${
                   isActive
                     ? "bg-[#0D4A2B] text-white font-semibold shadow-sm"
                     : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
@@ -71,7 +71,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action */}
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2 shrink-0">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full civic-liquid-glass text-[11px] font-mono text-slate-600">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 civic-beacon" />
             <span className="text-slate-800">AUDITED NGO</span>

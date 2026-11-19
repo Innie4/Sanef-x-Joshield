@@ -21,25 +21,25 @@ export default function Navbar() {
   const navLinks = [
     { name: "Overview", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Requisition Portal", href: "/marketplace" },
+    { name: "Requisition", href: "/marketplace" },
     { name: "Talent Roster", href: "/careers" },
-    { name: "Field Cases", href: "/testimonials" },
-    { name: "Command & About", href: "/about" },
+    { name: "Cases", href: "/testimonials" },
+    { name: "About", href: "/about" },
     { name: "Dispatch", href: "/contact" },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
-      <div className="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 pointer-events-auto">
         {/* Brand Bar */}
         <Link
           href="/"
-          className="flex items-center gap-3 px-3.5 py-2 rounded-full liquid-glass transition-transform active:scale-[0.98]"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-full liquid-glass transition-transform active:scale-[0.98] shrink-0"
         >
-          <div className="w-7 h-7 rounded-full bg-[#0066FF] flex items-center justify-center text-white shadow-sm">
+          <div className="w-7 h-7 rounded-full bg-[#0066FF] flex items-center justify-center text-white shadow-sm shrink-0">
             <Shield className="w-3.5 h-3.5 fill-white/20 stroke-white stroke-[2.2]" />
           </div>
-          <div className="flex items-baseline gap-1.5 pr-1">
+          <div className="flex items-baseline gap-1.5 pr-1 whitespace-nowrap">
             <span className="font-semibold text-sm tracking-[-0.02em] text-white">
               Jossy<span className="text-zinc-400">Shield</span>
             </span>
@@ -50,14 +50,14 @@ export default function Navbar() {
         </Link>
 
         {/* Center Navigation - Floating Liquid Glass Island */}
-        <nav className="hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full liquid-glass">
+        <nav className="hidden lg:flex items-center gap-0.5 px-2 py-1 rounded-full liquid-glass shrink-0">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all ${
+                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all whitespace-nowrap ${
                   isActive
                     ? "bg-white/10 text-white font-semibold shadow-inner"
                     : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
@@ -70,7 +70,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Tactical Action */}
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2 shrink-0">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full liquid-glass text-[11px] font-mono text-zinc-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-pulse" />
             <span className="text-zinc-300">HQ LIVE</span>
