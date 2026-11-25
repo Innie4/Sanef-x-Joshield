@@ -3,7 +3,7 @@ import { db } from "@/lib/data-store";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const orgId = searchParams.get("organizationId") || "org-jossyshield";
+  const orgId = searchParams.get("organizationId") || "org-josieshield";
   return NextResponse.json({
     success: true,
     requests: db.getMarketplaceRequests(orgId),

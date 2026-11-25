@@ -27,3 +27,11 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Design capture and audit screenshots
+**/shots/
+**/audit/
+**/app-designer/
+design/imagery/**/*.png
+
+

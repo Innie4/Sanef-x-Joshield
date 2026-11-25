@@ -1,134 +1,117 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
+
+const NAV_LINKS = [
+  { href: "/about", label: "About Us" },
+  { href: "/blog", label: "Blog" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/partnerships", label: "Partnerships" },
+  { href: "/events", label: "Events" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 16);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: "Overview", href: "/" },
-    { name: "Archive", href: "/portfolio" },
-    { name: "Donate", href: "/donate" },
-    { name: "Partners", href: "/partnerships" },
-    { name: "Forums", href: "/events" },
-    { name: "Reports", href: "/blog" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 pointer-events-auto">
-        {/* Brand Bar */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 px-3.5 py-2 rounded-full civic-liquid-glass transition-transform active:scale-[0.98] shrink-0"
-        >
-          <div className="w-7 h-7 rounded-full bg-[#0D4A2B] flex items-center justify-center text-white shadow-sm shrink-0">
-            <ShieldCheck className="w-4 h-4" />
-          </div>
-          <div className="flex items-baseline gap-1.5 pr-1 whitespace-nowrap">
-            <span className="font-semibold text-sm tracking-[-0.02em] text-slate-900">
+    <header className="sticky top-0 z-40 border-b border-[#E7E5E4] bg-[#FAF8F5]">
+      <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Left: SANEF wordmark + simple geometric emblem */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-[#1B4332] text-[#FAF8F5]">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M10 2.5L16.5 6.25V13.75L10 17.5L3.5 13.75V6.25L10 2.5Z"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+              <circle cx="10" cy="10" r="2.6" fill="#C85A32" />
+            </svg>
+          </span>
+          <div className="leading-none">
+            <span className="block font-serif text-[20px] font-semibold tracking-[-0.02em] text-[#1C1917]">
               SANEF
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 hidden sm:inline">
-              CIVIC SAFETY
+            <span className="mt-0.5 hidden text-[12px] font-medium text-[#57534E] sm:block">
+              Safe Neighborhood Foundation
             </span>
           </div>
         </Link>
 
-        {/* Center Nav */}
-        <nav className="hidden lg:flex items-center gap-0.5 px-2 py-1 rounded-full civic-liquid-glass shrink-0">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+        {/* Center: Public Navigation */}
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary Navigation">
+          {NAV_LINKS.map((link) => {
+            const active =
+              link.href === "/" ? pathname === "/" : pathname?.startsWith(link.href);
             return (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
-                className={`px-3 py-1 rounded-full text-[13px] font-medium transition-all whitespace-nowrap ${
-                  isActive
-                    ? "bg-[#0D4A2B] text-white font-semibold shadow-sm"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                className={`text-[14px] transition-colors ${
+                  active
+                    ? "font-semibold text-[#1B4332]"
+                    : "font-medium text-[#57534E] hover:text-[#1C1917]"
                 }`}
               >
-                {link.name}
+                {link.label}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right Action */}
-        <div className="hidden sm:flex items-center gap-2 shrink-0">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full civic-liquid-glass text-[11px] font-mono text-slate-600">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 civic-beacon" />
-            <span className="text-slate-800">AUDITED NGO</span>
-          </div>
+        {/* Right: Solid #C85A32 Donate Pill Button */}
+        <div className="flex items-center gap-3">
           <Link
             href="/donate"
-            className="flex items-center gap-1.5 bg-[#0D4A2B] hover:bg-[#14633B] text-white text-[13px] font-semibold px-4 py-2 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center rounded-full bg-[#C85A32] px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#AE4B27]"
           >
-            <span>Fund An Initiative</span>
-            <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+            Donate
           </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[#E7E5E4] bg-white text-[#1C1917] lg:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-full civic-liquid-glass text-slate-700 hover:text-slate-900"
-          aria-label="Toggle navigation"
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
       </div>
 
-      {/* Mobile Drawer */}
-      {isOpen && (
-        <div className="lg:hidden mt-3 max-w-sm mx-auto rounded-3xl civic-liquid-glass p-5 pointer-events-auto space-y-3">
-          <div className="space-y-1">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-2 rounded-2xl text-sm font-medium ${
-                    isActive
-                      ? "bg-[#0D4A2B] text-white font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </div>
-          <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 civic-beacon" />
-              <span>COMMUNITY WATCH ACTIVE</span>
-            </div>
+      {/* Mobile Menu */}
+      {open && (
+        <div className="border-t border-[#E7E5E4] bg-white px-4 py-4 lg:hidden">
+          <div className="flex flex-col space-y-1">
             <Link
-              href="/donate"
-              onClick={() => setIsOpen(false)}
-              className="bg-[#0D4A2B] text-white text-xs font-semibold px-4 py-2 rounded-full"
+              href="/"
+              onClick={() => setOpen(false)}
+              className="rounded-[8px] px-3 py-2 text-[15px] font-medium text-[#1C1917] hover:bg-[#FAF8F5]"
             >
-              Donate
+              Home
             </Link>
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-[8px] px-3 py-2 text-[15px] font-medium text-[#1C1917] hover:bg-[#FAF8F5]"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       )}

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unified Dashboard — iPhone 17 Pro High-Fidelity Mockup Set (Round 2)</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    :root {
+      --ground: #0A0C10;
+      --raised: #11151C;
+      --raised-2: #171C26;
+      --ink: #ECF0F6;
+      --ink-2: #9BA6B8;
+      --ink-3: #738096;
+      --rule: #1E2532;
+      --accent: #2563EB;
+      --accent-ink: #60A5FA;
+      --tab-pill: rgba(37, 99, 235, 0.22);
+      --on-accent: #FFFFFF;
+    }
+
+    .screen {
+      container-type: size;
+      background: var(--ground);
+      color: var(--ink);
+    }
+
+    .screen.sanef-light {
+      --ground: #F2F4F1;
+      --raised: #E4E9E3;
+      --raised-2: #D8E0D7;
+      --ink: #111714;
+      --ink-2: #3B4740;
+      --ink-3: #536159;
+      --rule: #C5CEC4;
+      --accent: #0B6134;
+      --accent-ink: #0B6134;
+      --tab-pill: rgba(16, 133, 72, 0.16);
+      background: var(--ground);
+      color: var(--ink);
+    }
+
+    .body-col {
+      position: absolute;
+      inset: var(--safe-top) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      padding: 8px 18px 94px 18px;
+    }
+
+    .bus-bar {
+      display: flex;
+      background: var(--raised);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 4px;
+    }
+    .bus-seg {
+      flex: 1;
+      min-height: 36px;
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bus-seg.active {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+    .bus-seg.inactive {
+      color: var(--ink-2);
+    }
+
+    .hero-num {
+      font-family: var(--sf);
+      font-stretch: 80%;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+    }
+
+    .title-lg {
+      font-family: var(--sf);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+      margin: 0;
+    }
+
+    .panel-box {
+      background: var(--raised);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .row-line {
+      padding: 10px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ledger-block {
+      padding: 10px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .cta-capsule {
+      min-height: 48px;
+      border-radius: 24px;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+    }
+
+    .tabbar {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 20px;
+      height: 62px;
+      border-radius: 31px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 6px;
+      z-index: 20;
+    }
+    .tab-item {
+      flex: 1;
+      height: 52px;
+      border-radius: 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tab-item.active {
+      background: var(--tab-pill);
+    }
+    .tab-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+
+    /* Small-phone (375 x 667) responsive container query */
+    @container (max-height: 760px) {
+      .screen .optional-row {
+        display: none !important;
+      }
+      .screen .body-col {
+        padding: 4px 16px 86px 16px;
+      }
+      .screen .compact-gap {
+        margin-top: 6px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================
+       1. CORE SCREEN: Duty Desk (JossyShield CH-01 Active)
+       =================================================================== -->
+  <section class="screen" data-name="01-duty-desk-jossyshield" data-theme="dark" data-chrome="light" data-time="18:42">
+    <div class="body-col">
+      <div class="bus-bar">
+        <div class="bus-seg active">
+          <span>JossyShield</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-01</span>
+        </div>
+        <div class="bus-seg inactive">
+          <span>SANEF NGO</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-02</span>
+        </div>
+      </div>
+
+      <div class="compact-gap" style="margin-top: 12px; display: flex; align-items: baseline; justify-content: space-between;">
+        <div>
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">JS-OPS · SHIFT B WATCH</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px;">
+            <span class="hero-num">412</span>
+            <span style="font-size: 17px; font-weight: 600; color: var(--ink);">officers on post</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: var(--sf-mono); font-size: 15px; font-weight: 600; color: var(--ink);">₦18.64M</div>
+          <div style="font-size: 12px; color: var(--ink-2);">19 sites active</div>
+        </div>
+      </div>
+
+      <!-- Richness Source: Full-Container Interactive Nigeria Sector Schematic (All 4 Sectors) -->
+      <div class="panel-box" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin: 10px 0; padding: 10px 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 13px; font-weight: 600; color: var(--ink);">Regional sector schematic (WGS-84)</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">4 / 4 ONLINE</span>
+        </div>
+
+        <svg viewBox="0 0 336 285" style="width: 100%; flex: 1; min-height: 0; margin: 6px 0;" preserveAspectRatio="xMidYMid meet">
+          <!-- Coordinate Grid & Axis Ticks -->
+          <rect x="0" y="0" width="336" height="285" rx="10" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <g style="stroke: #1E2532;" stroke-width="1">
+            <line x1="0" y1="57" x2="336" y2="57" />
+            <line x1="0" y1="114" x2="336" y2="114" />
+            <line x1="0" y1="171" x2="336" y2="171" />
+            <line x1="0" y1="228" x2="336" y2="228" />
+            <line x1="84" y1="0" x2="84" y2="285" />
+            <line x1="168" y1="0" x2="168" y2="285" />
+            <line x1="252" y1="0" x2="252" y2="285" />
+          </g>
+          <!-- Regional Sector Boundary Polygon & Niger-Benue River Vector -->
+          <path d="M 16 38 L 128 18 L 258 24 L 320 68 L 306 232 L 220 262 L 54 250 L 12 162 Z" style="fill: #141A24; stroke: #2563EB;" stroke-opacity="0.55" stroke-width="1.5" />
+          <path d="M 150 20 C 170 88, 192 132, 212 160 C 224 198, 236 230, 246 260 M 316 116 C 272 136, 240 150, 212 160" fill="none" style="stroke: #1E2532;" stroke-width="2" stroke-dasharray="4 3" />
+          <path d="M 10 268 Q 160 256, 326 272" fill="none" style="stroke: #2563EB;" stroke-opacity="0.4" stroke-width="1.5" />
+
+          <!-- Relay Trunks Connecting SEC-01, SEC-02, SEC-03, SEC-04 -->
+          <g style="stroke: #2563EB;" stroke-opacity="0.55" stroke-dasharray="4 3" stroke-width="1.5">
+            <line x1="56" y1="204" x2="56" y2="112" />
+            <line x1="56" y1="112" x2="186" y2="56" />
+            <line x1="186" y1="56" x2="212" y2="208" />
+            <line x1="56" y1="204" x2="212" y2="208" />
+          </g>
+
+          <!-- SEC-02: Ikeja Industrial (116) — aligned to x=85 vertical with SEC-01 -->
+          <circle cx="56" cy="112" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="56" cy="112" r="4.5" style="fill: #2563EB;" />
+          <rect x="78" y="90" width="114" height="42" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="85" y="106" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-02 · 116</text>
+          <text x="85" y="124" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Ikeja Industrial</text>
+
+          <!-- SEC-03: Maitama Abuja (64) -->
+          <circle cx="186" cy="56" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="186" cy="56" r="4.5" style="fill: #2563EB;" />
+          <rect x="204" y="34" width="112" height="42" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="211" y="50" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-03 · 64</text>
+          <text x="211" y="68" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Maitama Abuja</text>
+
+          <!-- SEC-01: Victoria Island (148) - Locked Focus -->
+          <circle cx="56" cy="204" r="18" style="fill: rgba(37,99,235,0.22); stroke: #60A5FA;" stroke-width="1.75" />
+          <circle cx="56" cy="204" r="5.5" style="fill: #60A5FA;" />
+          <rect x="78" y="182" width="114" height="42" rx="5" style="fill: #0A0C10; stroke: #2563EB;" stroke-width="1.25" />
+          <text x="85" y="198" style="fill: currentColor; color: #FFFFFF; font: 600 12px 'SF Mono', monospace;">SEC-01 · 148</text>
+          <text x="85" y="216" style="fill: currentColor; color: #E2E8F0; font: 500 12px 'SF Pro', sans-serif;">Victoria Island</text>
+
+          <!-- SEC-04: Onne Wharf (84) -->
+          <circle cx="212" cy="208" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="212" cy="208" r="4.5" style="fill: #2563EB;" />
+          <rect x="228" y="186" width="98" height="42" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="234" y="202" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-04 · 84</text>
+          <text x="234" y="220" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Onne Wharf</text>
+        </svg>
+
+        <div style="padding-top: 6px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-2); font-family: var(--sf-mono);">
+          <span>UHF CH-04 · Capt. T. Bakare</span>
+          <span style="color: var(--accent-ink);">Relief 02h 18m</span>
+        </div>
+      </div>
+
+      <!-- Actionable Requisition Triage -->
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span style="font-size: 15px; font-weight: 600;">Inbound requisition triage</span>
+          <span style="font-size: 13px; color: var(--accent-ink); font-weight: 600;">5 open</span>
+        </div>
+        <div class="row-line">
+          <div>
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink);">Apex Freight Terminal</div>
+            <div style="font-size: 13px; color: var(--ink-2);">JS-REQ-10492 · 12 guards · Onne Wharf</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600;">₦1,840,000</div>
+            <div style="font-size: 12px; color: var(--accent-ink);">Assign post</div>
+          </div>
+        </div>
+        <div class="row-line optional-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink);">Meridian Towers VI</div>
+            <div style="font-size: 13px; color: var(--ink-2);">JS-REQ-10489 · 9 guards · Adeola Odeku</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600;">₦1,425,000</div>
+            <div style="font-size: 12px; color: var(--ink-2);">Quote sent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Duty Desk</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       2. DETAIL SCREEN: Requisition Dossier & Post Assignment
+       =================================================================== -->
+  <section class="screen" data-name="02-requisition-dossier" data-theme="dark" data-chrome="light" data-time="18:43">
+    <div class="body-col">
+      <div style="display: flex; justify-content: space-between; align-items: center; white-space: nowrap; gap: 8px;">
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">JS-REQ-10492 · SEC-04 ONNE</span>
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2); white-space: nowrap;">4.72°N, 7.15°E</span>
+      </div>
+
+      <h1 class="title-lg" style="margin-top: 8px;">Apex Freight Terminal</h1>
+      <p style="font-size: 13px; color: var(--ink-2); margin: 4px 0 12px 0;">Static &amp; perimeter guarding · 12 officers (24/7 rotation)</p>
+
+      <!-- Site Survey Photo -->
+      <div style="position: relative; flex: 1; min-height: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule);">
+        <img src="file:///home/inimfon-udoh/SANEF/Unified Dashboard/public/images/gate-checkpoint.jpg" alt="Onne Wharf Gatehouse" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        <div style="position: absolute; inset: auto 0 0 0; padding: 12px; background: linear-gradient(to top, rgba(10,12,16,0.94) 20%, rgba(10,12,16,0.0) 100%);">
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">Site survey · JS-EVD-904</div>
+          <div style="font-size: 13px; color: #FFFFFF; margin-top: 2px;">North Gatehouse lane 2 weighbridge &amp; seal check.</div>
+        </div>
+      </div>
+
+      <!-- Tariff & Officer Roster Lock -->
+      <div class="panel-box" style="margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 13px; color: var(--ink-2);">Monthly commercial tariff</span>
+          <span style="font-family: var(--sf-mono); font-size: 17px; font-weight: 700; color: var(--ink);">₦1,840,000 / mo</span>
+        </div>
+        <div class="row-line" style="margin-top: 8px; padding-bottom: 0;">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">WHISKEY-03 · Chinedu Eze</div>
+            <div style="font-size: 12px; color: var(--ink-2);">NIN verified · Drill score 94/100</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">Ready</span>
+        </div>
+        <div class="row-line optional-row" style="padding-bottom: 0;">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">WHISKEY-07 · Obinna Nwankwo</div>
+            <div style="font-size: 12px; color: var(--ink-2);">NIN verified · Drill score 92/100</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">Ready</span>
+        </div>
+      </div>
+
+      <div class="cta-capsule" role="button">
+        <span>Assign 2 lead officers &amp; issue post order</span>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Duty Desk</span>
+      </div>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       3. SECOND CORE LOOP: Applicant Vetting & Standby Clearance Pipeline
+       =================================================================== -->
+  <section class="screen" data-name="03-vetting-pipeline" data-theme="dark" data-chrome="light" data-time="18:44">
+    <div class="body-col">
+      <!-- Single Allowed Eyebrow -->
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">VETTING &amp; NIMC NIN CLEARANCE</span>
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2);">8 in pipeline</span>
+      </div>
+
+      <div style="margin-top: 8px; display: flex; align-items: baseline; gap: 10px;">
+        <span class="hero-num">38</span>
+        <span style="font-size: 17px; font-weight: 600; color: var(--ink);">officers cleared on standby</span>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-2); margin: 8px 0 10px 0;">4-stage progression: Submitted → NIN check → Field drill → Cleared.</p>
+
+      <!-- Hairline-Divided Candidate Ledger Rows (Sentence Case, No Card Stack) -->
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="ledger-block" style="background: var(--raised); padding: 10px 12px; border-radius: 10px; border: 1px solid var(--accent);">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">ECHO-14 · SEC-01</span>
+              <span style="color: var(--ink-2);">Stage 3 · Field drill</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 3px;">
+              <span style="font-size: 17px; font-weight: 700;">Emmanuel Okafor</span>
+              <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink); font-weight: 600;">Drill 91/100</span>
+            </div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 2px;">Convoy &amp; Bullion Escort Lead · NIN-8492-1104</div>
+          </div>
+
+          <div class="ledger-block" style="margin-top: 6px;">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">VICTOR-02 · SEC-01</span>
+              <span style="color: var(--ink-2);">Stage 4 · Cleared for post</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 3px;">
+              <span style="font-size: 17px; font-weight: 700;">Amina Yusuf</span>
+              <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink); font-weight: 600;">Drill 96/100</span>
+            </div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 2px;">Access Control Shift Supervisor · NIN-6012-3389</div>
+          </div>
+
+          <div class="ledger-block">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">SIERRA-08 · SEC-03</span>
+              <span style="color: var(--ink-2);">Stage 2 · NIN check</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 3px;">
+              <span style="font-size: 17px; font-weight: 700;">Fatima Al-Hassan</span>
+              <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2);">Drill 88/100</span>
+            </div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 2px;">Control Room CCTV Operator · NIN-5520-8831</div>
+          </div>
+
+          <div class="ledger-block optional-row">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">DELTA-19 · SEC-02</span>
+              <span style="color: var(--ink-2);">Stage 1 · Submitted</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 3px;">
+              <span style="font-size: 17px; font-weight: 700;">Sadiq Danladi</span>
+              <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2);">Drill 84/100</span>
+            </div>
+            <div style="font-size: 13px; color: var(--ink-2); margin-top: 2px;">Night Patrol Supervisor · NIN-9034-1182</div>
+          </div>
+        </div>
+
+        <div class="cta-capsule" role="button" style="margin-top: 8px;">
+          <span>Advance ECHO-14 to cleared post roster</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Duty Desk</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       4. SIGNATURE INTERACTION STORYBOARD
+       =================================================================== -->
+  <section class="screen" data-name="04-signature-tenant-switch" data-chrome="none" style="background: #0A0C10; color: #ECF0F6; padding: 26px 18px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="font-family: var(--sf-mono); font-size: 12px; color: #60A5FA;">SIGNATURE INTERACTION · DUAL-TENANT BUS SWITCH</div>
+      <h1 class="title-lg" style="margin-top: 6px;">Mechanical channel bus &amp; schematic re-index</h1>
+      <p style="font-size: 13px; color: #9BA6B8; margin-top: 6px;">Tapping CH-02 slides the bus indicator on a snappy spring (280ms), rolls tabular numerals (412 → 142), and re-indexes the schematic from commercial guard sectors to solar corridor wards.</p>
+    </div>
+
+    <!-- 3 Populated Mini Frames Side-by-Side -->
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; margin: 8px 0;">
+      <!-- Mini 1: 0ms CH-01 Cobalt Lock -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div class="mini" style="--mini: 0.28; border: 1px solid #2563EB;">
+          <div class="mini-screen" data-chrome="light" data-time="18:45" style="background: #0A0C10; color: #ECF0F6; padding: 68px 18px 24px 18px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="background: #2563EB; color: #FFF; padding: 10px 12px; border-radius: 10px; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between;">
+                <span>JossyShield</span><span>CH-01</span>
+              </div>
+              <div style="font-size: 62px; font-weight: 800; margin-top: 16px; line-height: 1;">412</div>
+              <div style="font-size: 18px; color: #60A5FA; font-weight: 600;">officers on post</div>
+            </div>
+            <svg viewBox="0 0 340 240" style="width: 100%; height: 250px; background: #11151C; border: 2px solid #2563EB; border-radius: 16px; padding: 8px;">
+              <path d="M 24 44 L 148 22 L 288 34 L 312 178 L 198 208 L 44 192 Z" fill="#171C26" stroke="#2563EB" stroke-width="3" />
+              <line x1="88" y1="158" x2="218" y2="74" stroke="#60A5FA" stroke-width="3" stroke-dasharray="6 4" />
+              <circle cx="88" cy="158" r="22" fill="rgba(37,99,235,0.3)" stroke="#60A5FA" stroke-width="3" />
+              <circle cx="88" cy="158" r="8" fill="#60A5FA" />
+              <circle cx="218" cy="74" r="16" fill="rgba(37,99,235,0.25)" stroke="#2563EB" stroke-width="3" />
+              <circle cx="218" cy="74" r="7" fill="#2563EB" />
+            </svg>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="padding: 12px; background: #11151C; border-radius: 10px; border-left: 4px solid #2563EB; font-size: 16px; font-weight: 600;">Apex Freight · ₦1.84M</div>
+              <div style="padding: 12px; background: #11151C; border-radius: 10px; border-left: 4px solid #2563EB; font-size: 16px; font-weight: 600;">Meridian VI · ₦1.42M</div>
+            </div>
+          </div>
+        </div>
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: #9BA6B8;">0ms · CH-01</span>
+      </div>
+
+      <!-- Mini 2: 140ms Spring Bus Transit -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div class="mini" style="--mini: 0.28; border: 1px solid #34D399;">
+          <div class="mini-screen" data-chrome="light" data-time="18:45" style="background: #0D1412; color: #ECF0F6; padding: 68px 18px 24px 18px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="background: #17201C; border: 2px solid #34D399; color: #FFF; padding: 10px 12px; border-radius: 10px; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between;">
+                <span>Bus Transit →</span><span>CH-02</span>
+              </div>
+              <div style="font-size: 62px; font-weight: 800; margin-top: 16px; line-height: 1; color: #34D399;">142</div>
+              <div style="font-size: 18px; color: #34D399; font-weight: 600;">rolling tabular count</div>
+            </div>
+            <svg viewBox="0 0 340 240" style="width: 100%; height: 250px; background: #111715; border: 2px dashed #34D399; border-radius: 16px; padding: 8px;">
+              <path d="M 24 44 L 148 22 L 288 34 L 312 178 L 198 208 L 44 192 Z" fill="#17201C" stroke="#34D399" stroke-width="3" stroke-dasharray="8 5" />
+              <line x1="78" y1="162" x2="152" y2="112" stroke="#34D399" stroke-width="3" />
+              <line x1="152" y1="112" x2="254" y2="68" stroke="#34D399" stroke-width="3" />
+              <circle cx="78" cy="162" r="20" fill="rgba(52,211,153,0.25)" stroke="#34D399" stroke-width="3" />
+              <circle cx="152" cy="112" r="16" fill="rgba(52,211,153,0.25)" stroke="#34D399" stroke-width="3" />
+              <circle cx="254" cy="68" r="16" fill="rgba(52,211,153,0.25)" stroke="#34D399" stroke-width="3" />
+            </svg>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="padding: 12px; background: #17201C; border-radius: 10px; border-left: 4px solid #34D399; font-size: 16px; font-weight: 600;">WRD-01 Solar · 68 poles</div>
+              <div style="padding: 12px; background: #17201C; border-radius: 10px; border-left: 4px solid #34D399; font-size: 16px; font-weight: 600;">WRD-02 Mushin · 46 poles</div>
+            </div>
+          </div>
+        </div>
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: #60A5FA;">140ms · Spring</span>
+      </div>
+
+      <!-- Mini 3: 320ms SANEF Civic Forest Locked -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div class="mini" style="--mini: 0.28; border: 1px solid #0B6134;">
+          <div class="mini-screen" data-time="18:45" style="background: #F2F4F1; color: #111714; padding: 68px 18px 24px 18px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="background: #0B6134; color: #FFF; padding: 10px 12px; border-radius: 10px; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between;">
+                <span>SANEF NGO</span><span>CH-02</span>
+              </div>
+              <div style="font-size: 62px; font-weight: 800; margin-top: 16px; line-height: 1; color: #111714;">142</div>
+              <div style="font-size: 18px; color: #0B6134; font-weight: 700;">solar poles reporting</div>
+            </div>
+            <svg viewBox="0 0 340 240" style="width: 100%; height: 250px; background: #E4E9E3; border: 2px solid #0B6134; border-radius: 16px; padding: 8px;">
+              <path d="M 24 44 L 148 22 L 288 34 L 312 178 L 198 208 L 44 192 Z" fill="#D8E0D7" stroke="#0B6134" stroke-width="3" />
+              <line x1="78" y1="162" x2="152" y2="112" stroke="#0B6134" stroke-width="3.5" />
+              <line x1="152" y1="112" x2="254" y2="68" stroke="#0B6134" stroke-width="3.5" />
+              <circle cx="78" cy="162" r="22" fill="rgba(11,97,52,0.22)" stroke="#0B6134" stroke-width="3" />
+              <circle cx="78" cy="162" r="8" fill="#0B6134" />
+              <circle cx="152" cy="112" r="16" fill="rgba(11,97,52,0.18)" stroke="#0B6134" stroke-width="3" />
+              <circle cx="152" cy="112" r="7" fill="#0B6134" />
+            </svg>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="padding: 12px; background: #E4E9E3; border-radius: 10px; border-left: 4px solid #0B6134; font-size: 16px; font-weight: 700; color: #111714;">Ajegunle Phase II · ₦22.6M</div>
+              <div style="padding: 12px; background: #E4E9E3; border-radius: 10px; border-left: 4px solid #0B6134; font-size: 16px; font-weight: 700; color: #111714;">Makoko VHF Net · ₦11.8M</div>
+            </div>
+          </div>
+        </div>
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: #9BA6B8;">320ms · CH-02</span>
+      </div>
+    </div>
+
+    <div class="panel-box" style="font-size: 12px; color: #9BA6B8; line-height: 1.45;">
+      <div style="font-family: var(--sf-mono); color: #ECF0F6; font-weight: 600;">Spring &amp; haptic choreography</div>
+      <div style="margin-top: 4px;">Trigger: Bus toggle · Curve: .spring(duration: 0.28, bounce: 0.08) · Haptic: .sensoryFeedback(.selection) · Reduced motion: 120ms opacity cross-fade.</div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. ADAPTIVE TENANT MODE: SANEF Ward & Solar Corridor Desk (Light)
+       =================================================================== -->
+  <section class="screen sanef-light" data-name="05-sanef-ward-desk" data-time="18:45">
+    <div class="body-col">
+      <div class="bus-bar">
+        <div class="bus-seg inactive">
+          <span>JossyShield</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-01</span>
+        </div>
+        <div class="bus-seg active">
+          <span>SANEF NGO</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-02</span>
+        </div>
+      </div>
+
+      <div class="compact-gap" style="margin-top: 14px; display: flex; align-items: baseline; justify-content: space-between;">
+        <div>
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink); font-weight: 600;">SANEF-FIELD · WARD W-01</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px;">
+            <span class="hero-num">142</span>
+            <span style="font-size: 17px; font-weight: 600; color: var(--ink);">solar poles reporting</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: var(--sf-mono); font-size: 15px; font-weight: 700; color: var(--ink);">₦41.28M</div>
+          <div style="font-size: 12px; color: var(--ink-2);">356 donors</div>
+        </div>
+      </div>
+
+      <!-- Verified Corridor Photograph -->
+      <div style="position: relative; flex: 1; min-height: 0; border-radius: 14px; overflow: hidden; margin: 12px 0; border: 1px solid var(--rule);">
+        <img src="file:///home/inimfon-udoh/SANEF/Unified Dashboard/public/images/lagos-corridor.jpg" alt="Ajegunle school route solar corridor" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        <div style="position: absolute; inset: auto 0 0 0; padding: 12px; background: linear-gradient(to top, rgba(17,23,20,0.92) 25%, rgba(17,23,20,0.0) 100%);">
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: #86EFAC;">SAN-PRJ-204 · 6.45°N, 3.33°E</div>
+          <div style="font-size: 15px; font-weight: 700; color: #FFFFFF; margin-top: 2px;">Ajegunle &amp; Orile School Route Corridor</div>
+          <div style="font-size: 12px; color: #E2E8F0;">42.8% night incident drop · 64,850 daily pedestrians</div>
+        </div>
+      </div>
+
+      <!-- Grant Tranche Rows -->
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span style="font-size: 15px; font-weight: 600;">Audited ward disbursements</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink); font-weight: 600;">SHA-256 verified</span>
+        </div>
+        <div class="row-line">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">Ajegunle Solar Walkways Phase II</div>
+            <div style="font-size: 13px; color: var(--ink-2);">SAN-GRT-401 · Lead: Chidinma Nwosu</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 13px; font-weight: 700; color: var(--accent-ink);">₦22.64M</span>
+        </div>
+        <div class="row-line optional-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">Makoko Waterfront VHF Radio Net</div>
+            <div style="font-size: 13px; color: var(--ink-2);">SAN-GRT-394 · 28 watch posts linked</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 13px; font-weight: 700; color: var(--ink);">₦11.89M</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item active" style="color: #0B6134;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Ward Desk</span>
+      </div>
+      <div class="tab-item" style="color: #3B4740;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Grants</span>
+      </div>
+      <div class="tab-item" style="color: #3B4740;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Evidence</span>
+      </div>
+      <div class="tab-item" style="color: #3B4740;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       6. RBAC & TENANT ISOLATION VERIFICATION STATE
+       =================================================================== -->
+  <section class="screen" data-name="06-rbac-isolation-matrix" data-theme="dark" data-chrome="light" data-time="18:46">
+    <div class="body-col">
+      <!-- Single Allowed Eyebrow -->
+      <div style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">MULTI-TENANT RBAC &amp; BOUNDARY GUARD</div>
+      <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 6px;">
+        <span class="hero-num">0</span>
+        <span style="font-size: 17px; font-weight: 600; color: var(--ink);">cross-tenant leaks detected</span>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-2); margin: 8px 0 10px 0;">3 of 3 boundary probes passed at 18:44:12 WAT. Commercial security records and NGO donor ledgers are strictly partitioned.</p>
+
+      <!-- Hairline-Divided Operator Scope Ledger (Sentence Case) + Live Probe Log -->
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="ledger-block">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">CMD-01 · Hardware key</span>
+              <span style="color: var(--ink-2);">Scope: CH-01 + CH-02</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; margin-top: 3px;">Inimfon Udoh · Super Admin</div>
+            <div style="font-size: 12px; color: var(--ink-2); margin-top: 2px;">Full cross-tenant switchboard &amp; RBAC policy sign-off.</div>
+          </div>
+
+          <div class="ledger-block">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">SEC-01-LEAD · Hardware key</span>
+              <span style="color: var(--ink-2);">Scope: CH-01 only</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; margin-top: 3px;">Capt. Tunde Bakare · Operations Cmdr</div>
+            <div style="font-size: 12px; color: var(--ink-2); margin-top: 2px;">JossyShield sector dispatch only · SANEF scope blocked.</div>
+          </div>
+
+          <div class="ledger-block optional-row">
+            <div style="display: flex; justify-content: space-between; font-family: var(--sf-mono); font-size: 12px;">
+              <span style="color: var(--accent-ink); font-weight: 600;">WRD-01-LEAD · Hardware key</span>
+              <span style="color: var(--ink-2);">Scope: CH-02 only</span>
+            </div>
+            <div style="font-size: 15px; font-weight: 700; margin-top: 3px;">Chidinma Nwosu · Foundation Director</div>
+            <div style="font-size: 12px; color: var(--ink-2); margin-top: 2px;">SANEF solar corridor audits only · JossyShield blocked.</div>
+          </div>
+
+          <!-- Live Cross-Tenant Boundary Probe Log Box -->
+          <div class="panel-box" style="margin-top: 8px; padding: 10px 12px; font-family: var(--sf-mono); font-size: 12px; line-height: 1.45;">
+            <div style="color: var(--accent-ink); font-weight: 600;">Live boundary probe log · SHA-256 8f14e45f</div>
+            <div style="color: var(--ink); margin-top: 4px;">Probe #01: jossyshield → sanef donor table [403 Blocked]</div>
+            <div style="color: var(--ink-2); margin-top: 2px;">Probe #02: sanef → jossyshield NIN vault [403 Blocked]</div>
+          </div>
+        </div>
+
+        <div class="cta-capsule" role="button" style="margin-top: 8px;">
+          <span>Run tenant isolation boundary check</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Duty Desk</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       7. APP ICON (1032px at 3x)
+       =================================================================== -->
+  <section class="app-icon" data-name="icon" style="background: #0A0C10; display: flex; align-items: center; justify-content: center;">
+    <svg viewBox="0 0 344 344" width="344" height="344">
+      <rect x="0" y="0" width="344" height="344" fill="#0A0C10" />
+      <rect x="28" y="28" width="288" height="288" rx="56" fill="#11151C" stroke="#1E2532" stroke-width="3" />
+      <path d="M 172 64 A 108 108 0 0 0 172 280 Z" fill="#2563EB" />
+      <path d="M 172 64 A 108 108 0 0 1 172 280 Z" fill="#108548" />
+      <circle cx="172" cy="172" r="64" fill="#0A0C10" />
+      <line x1="172" y1="88" x2="172" y2="256" stroke="#ECF0F6" stroke-width="4" />
+      <line x1="88" y1="172" x2="256" y2="172" stroke="#ECF0F6" stroke-width="4" />
+      <circle cx="172" cy="172" r="18" fill="#ECF0F6" />
+    </svg>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

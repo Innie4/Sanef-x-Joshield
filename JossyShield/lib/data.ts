@@ -1,125 +1,221 @@
-export interface SecurityService {
-  id: string;
-  category: 'security' | 'consultancy' | 'training';
+// ==============================================================================
+// JOSIE SHIELD SECURITY SERVICES — COMMERCIAL OPERATIONS DATA
+// ==============================================================================
+
+export type ServiceCategoryKey = "security" | "consultancy" | "training";
+
+export interface ServicePillar {
+  key: ServiceCategoryKey;
+  code: string;
   title: string;
-  badge: string;
-  shortDesc: string;
-  fullDesc: string;
-  features: string[];
-  specs: { label: string; value: string }[];
-  iconName: string;
+  tagline: string;
+  description: string;
+  image: string;
+  imageCaption: string;
+  scopes: string[];
+  deliverables: string[];
+  idealClients: string;
 }
 
-export const SECURITY_SERVICES: SecurityService[] = [
-  {
-    id: "guarding-patrol",
-    category: "security",
-    title: "Static Guarding & Armed Patrol Units",
-    badge: "Commercial & Industrial",
-    shortDesc: "Vetted, military-grade security personnel with 24/7 centralized dispatch and electronic checkpoint verification.",
-    fullDesc: "JossyShield provides elite uniformed static guards and rapid response armed escort teams for high-value facilities, corporate offices, and transit convoys. Every officer undergoes rigorous tactical, defensive, and de-escalation vetting.",
-    features: [
-      "Rigorous background check & biometric clearance",
-      "RFID electronic checkpoint wanding & real-time telemetry",
-      "Dedicated armed quick response unit (QRF) dispatch",
-      "Discreet VIP close protection officers (CPO)"
-    ],
-    specs: [
-      { label: "Deployment Notice", value: "< 24 Hours" },
-      { label: "Vetting Standard", value: "Level 4 Military/Police Clear" },
-      { label: "Shift Rotations", value: "12h Dedicated / 24h Coverage" }
-    ],
-    iconName: "Shield"
-  },
-  {
-    id: "corporate-consultancy",
-    category: "consultancy",
-    title: "Risk Analysis & Threat Assessment",
-    badge: "Advisory & Compliance",
-    shortDesc: "Comprehensive physical security audits, crisis response planning, and executive vulnerability modeling.",
-    fullDesc: "Our senior advisory team diagnoses security vulnerabilities across your physical architecture, supply chain hubs, and personnel protocols to deliver actionable hardening blueprints.",
-    features: [
-      "Physical facility penetration testing & vulnerability audits",
-      "Executive kidnapping & extortion risk profiling",
-      "Emergency evacuation & crisis contingency blueprints",
-      "Regulatory compliance & safety policy drafting"
-    ],
-    specs: [
-      { label: "Audit Timeline", value: "3 to 7 Business Days" },
-      { label: "Report Type", value: "Classified Executive Dossier" },
-      { label: "Standards", value: "ISO 27001 / ASIS Certified" }
-    ],
-    iconName: "Search"
-  },
-  {
-    id: "tactical-training",
-    category: "training",
-    title: "Tactical Defense & Emergency Readiness",
-    badge: "Accredited Academy",
-    shortDesc: "High-intensity simulations in crisis de-escalation, defensive driving, tactical first aid, and active threat neutralization.",
-    fullDesc: "Certified instruction for in-house security teams, corporate travel executives, and facility personnel, led by seasoned instructors with active field experience.",
-    features: [
-      "Armed & unarmed close combat de-escalation",
-      "Tactical evasive driving & convoy survival maneuvers",
-      "Trauma first-aid (Stop-The-Bleed & TCCC certified)",
-      "Hostile scenario simulations and hostage reaction drills"
-    ],
-    specs: [
-      { label: "Cohort Size", value: "10 to 30 Candidates" },
-      { label: "Certification", value: "JossyShield Tactical Academy" },
-      { label: "Venue Options", value: "On-Premise or Tactical Field Range" }
-    ],
-    iconName: "Award"
-  }
+export interface ClientTestimonial {
+  id: string;
+  quote: string;
+  clientName: string;
+  role: string;
+  organisation: string;
+  category: "Security Services" | "Consultancy" | "Training";
+  contractDuration: string;
+}
+
+export interface SecurityVacancy {
+  id: string;
+  refId: string;
+  title: string;
+  department: string;
+  location: string;
+  roleType: "Full-Time" | "Shift Roster" | "Contract";
+  deadline: string;
+  experience: string;
+  summary: string;
+  requirements: string[];
+}
+
+export const OPERATIONAL_CREDENTIALS = [
+  { label: "Shift Check-In Compliance", value: "98.4%", detail: "Verified across 19 active commercial posts" },
+  { label: "Personnel Vetting Standard", value: "3-Tier", detail: "NIN biometric, guarantor & police clearance" },
+  { label: "Command Response SLA", value: "< 15 min", detail: "24/7 UHF dispatch across Lagos, Abuja & PH" },
+  { label: "Ready-to-Work Talent Pool", value: "38+ Vetted", detail: "Assessed officers cleared for rapid mobilisation" },
 ];
 
-export const JOSSY_JOBS = [
+export const SERVICE_PILLARS: ServicePillar[] = [
   {
-    id: "job-1",
-    title: "Senior Tactical Escort Officer",
-    location: "Lagos & Interstate",
-    type: "Full-Time",
-    experience: "5+ Years",
-    requirements: "Valid military/police discharge or certified private security officer badge. Defensive driving license.",
-    status: "Active Recruitment"
+    key: "security",
+    code: "PILLAR 01 · OPERATIONS",
+    title: "Security Services",
+    tagline: "Disciplined static guarding, access control, and transit protection.",
+    description:
+      "Uniformed, vetted commercial officers operating under written post orders, timed shift handovers, and 24/7 supervisory inspections across high-rise, industrial, and maritime facilities.",
+    image: "/images/hero-commercial-guard.jpg",
+    imageCaption: "Commercial lobby shift supervisor checking credentials · Victoria Island Sector",
+    scopes: [
+      "24/7 static & perimeter facility guarding",
+      "Corporate lobby turnstile & visitor badge control",
+      "Industrial warehouse gatehouse & weighbridge manifest audits",
+      "Executive, diplomatic & high-value transit convoy escort",
+    ],
+    deliverables: [
+      "Site-specific written Post Orders & escalation matrix",
+      "Digital shift check-in logs & weekly client compliance summary",
+      "Dedicated Sector Supervisor with unannounced night inspections",
+    ],
+    idealClients: "Commercial towers, maritime terminals, manufacturing depots, banking vaults, diplomatic residences.",
   },
   {
-    id: "job-2",
-    title: "CCTV Control Room Surveillance Analyst",
-    location: "Abuja HQ",
-    type: "Full-Time",
-    experience: "3+ Years",
-    requirements: "Proficiency in enterprise VMS (Milestone, Hikvision, Avigilon), alarm matrix verification, and incident report drafting.",
-    status: "Active Recruitment"
+    key: "consultancy",
+    code: "PILLAR 02 · ADVISORY",
+    title: "Consultancy Services",
+    tagline: "Independent physical risk audits and operational protocol design.",
+    description:
+      "Structured facility vulnerability assessments, CCTV blind-spot mapping, and corporate security architecture led by senior risk auditors—delivered as actionable written remediation plans.",
+    image: "/images/consultancy-site-audit.jpg",
+    imageCaption: "Perimeter access audit & CCTV sightline review · Abuja & Lagos",
+    scopes: [
+      "Comprehensive physical site risk & vulnerability assessments",
+      "Access control architecture & visitor screening SOP design",
+      "CCTV blind-spot mapping & control room workflow audits",
+      "Emergency evacuation, muster & crisis continuity planning",
+    ],
+    deliverables: [
+      "14-day written Vulnerability & Risk Remediation Report",
+      "Prioritised capital vs. procedural mitigation matrix",
+      "Board-ready executive briefing & 90-day implementation review",
+    ],
+    idealClients: "Facility directors, corporate campuses, diplomatic missions, hospitals, logistics hubs.",
   },
   {
-    id: "job-3",
-    title: "Corporate Facility Protection Specialist",
-    location: "Port Harcourt",
-    type: "Full-Time",
-    experience: "2+ Years",
-    requirements: "Immaculate presentation, crisis communication skills, access-control software literacy, and CPR/First-Aid certificate.",
-    status: "Active Recruitment"
-  }
+    key: "training",
+    code: "PILLAR 03 · ACADEMY",
+    title: "Training Services",
+    tagline: "Practical certification drills for security teams and corporate staff.",
+    description:
+      "Scenario-based instruction for in-house guard units, corporate reception personnel, and travelling executives—combining conflict de-escalation, access discipline, and emergency first response.",
+    image: "/images/training-operations-drill.jpg",
+    imageCaption: "Guard certification & radio dispatch briefing · Ikeja Training Bay",
+    scopes: [
+      "Commercial guard certification & shift handover discipline",
+      "Conflict de-escalation & reception access screening drills",
+      "Control room CCTV triage & incident documentation standards",
+      "Individual & corporate travel situational awareness workshops",
+    ],
+    deliverables: [
+      "Hands-on practical drills with individual competency scoring",
+      "Certificate of completion aligned with NSCDC private guard standards",
+      "Post-training assessment report for corporate HR & security leads",
+    ],
+    idealClients: "Organisations with in-house security teams, hotel & hospital front desks, travelling executives, individual applicants.",
+  },
 ];
 
-export const JOSSY_TESTIMONIALS = [
+export const CLIENT_TESTIMONIALS: ClientTestimonial[] = [
   {
-    name: "Tunde Balogun",
-    title: "Head of Operations, Apex Freight Logistics",
-    quote: "JossyShield secured our 45-acre bonded terminal within 48 hours of engagement. Zero pilferage in 18 months, and their automated guard verification gives us complete peace of mind.",
-    rating: 5
+    id: "t-1",
+    quote:
+      "Shift handovers at Meridian Towers run to the minute. Every contractor badge, basement sweep, and generator fuel lock is logged cleanly without our facilities team having to chase supervisors.",
+    clientName: "Bankole Coker",
+    role: "Director of Facilities",
+    organisation: "Meridian Towers VI, Lagos",
+    category: "Security Services",
+    contractDuration: "24-Month Contract",
   },
   {
-    name: "Ngozi Achebe",
-    title: "Facility Director, Meridian Towers Victoria Island",
-    quote: "Their tactical consultancy overhaul pinpointed access gaps our previous security vendor overlooked for years. Professional, disciplined, and genuinely elite.",
-    rating: 5
+    id: "t-2",
+    quote:
+      "Their physical risk audit identified three rear-perimeter camera blind spots and an unlogged vendor delivery gate our previous provider missed for two years. The remediation roadmap was clear and immediate.",
+    clientName: "Kemi Adesina",
+    role: "Head of Operations",
+    organisation: "Zenith Diplomatic Advisory, Abuja",
+    category: "Consultancy",
+    contractDuration: "14-Day Site Audit",
   },
   {
-    name: "David Sterling",
-    title: "Regional Security Attache, Global Energy Consortium",
-    quote: "The tactical training program conducted for our 60 field drivers dramatically upgraded our convoy defensive readiness. Exceptional instruction standards.",
-    rating: 5
-  }
+    id: "t-3",
+    quote:
+      "Within ten days of Josie Shield's gatehouse protocol drill, weighbridge manifest discrepancies across our three depot shifts dropped to zero. Practical training with zero classroom fluff.",
+    clientName: "Uche Nnamdi",
+    role: "Depot Logistics Manager",
+    organisation: "Oba Akran Distribution Yard, Ikeja",
+    category: "Training",
+    contractDuration: "24-Staff Cohort",
+  },
+];
+
+export const SECURITY_VACANCIES: SecurityVacancy[] = [
+  {
+    id: "vac-1",
+    refId: "JS-VAC-044",
+    title: "Convoy & Executive Escort Lead",
+    department: "Field Operations",
+    location: "Victoria Island, Lagos",
+    roleType: "Full-Time",
+    deadline: "12 Dec 2026",
+    experience: "5+ years commercial escort or military police",
+    summary:
+      "Lead daytime high-value transit escorts and executive route reconnaissance across Victoria Island, Ikoyi, and Lagos Mainland corridors.",
+    requirements: [
+      "Valid commercial defensive driving qualification and clean record.",
+      "Demonstrated experience with UHF/VHF radio check-in procedures.",
+      "Pass full NIN biometric, guarantor, and police character vetting.",
+    ],
+  },
+  {
+    id: "vac-2",
+    refId: "JS-VAC-043",
+    title: "Control Room CCTV & Access Operator",
+    department: "Monitoring & Dispatch",
+    location: "Maitama, Abuja",
+    roleType: "Shift Roster",
+    deadline: "08 Dec 2026",
+    experience: "3+ years VMS / CCTV control desk",
+    summary:
+      "Monitor multi-zone IP camera arrays, triage access alarms, and maintain exact timestamped incident logs across diplomatic client compounds.",
+    requirements: [
+      "Hands-on proficiency with Hikvision or Milestone VMS platforms.",
+      "Clear written English for incident escalation and shift handover logs.",
+      "Available for structured 12-hour day/night rotation.",
+    ],
+  },
+  {
+    id: "vac-3",
+    refId: "JS-VAC-041",
+    title: "Corporate Facility Shift Supervisor",
+    department: "Commercial Guarding",
+    location: "Ikeja & Victoria Island, Lagos",
+    roleType: "Full-Time",
+    deadline: "18 Dec 2026",
+    experience: "5+ years supervising 10+ static guards",
+    summary:
+      "Oversee daily parade inspections, relief punctuality, visitor access discipline, and client SLA reporting across commercial office towers.",
+    requirements: [
+      "Proven leadership of multi-shift guarding rosters with high attendance.",
+      "Certified fire warden and basic trauma first-aid competence.",
+      "Strong client communication and incident documentation rigour.",
+    ],
+  },
+  {
+    id: "vac-4",
+    refId: "JS-VAC-039",
+    title: "Security Risk Auditor (Consultancy)",
+    department: "Advisory Practice",
+    location: "Port Harcourt / Hybrid",
+    roleType: "Contract",
+    deadline: "30 Nov 2026",
+    experience: "5+ years physical security auditing",
+    summary:
+      "Conduct on-site physical vulnerability inspections for maritime terminals and industrial depots, producing board-ready remediation reports.",
+    requirements: [
+      "ISPS Code, CPP/PSP, or ISO 27001 physical controls familiarity.",
+      "Track record delivering written site vulnerability assessments.",
+      "Ability to travel across Rivers, Lagos, and FCT client sites.",
+    ],
+  },
 ];

@@ -8,27 +8,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          dark: "#0b0f17",
-          card: "#121824",
-          border: "#1f293d",
-          muted: "#94a3b8",
-          jossy: {
-            blue: "#2563eb",
-            blueGlow: "#3b82f6",
-            dark: "#0a0c10"
-          },
-          sanef: {
-            green: "#059669",
-            emerald: "#047857",
-            light: "#ecfdf5"
-          }
-        }
+        canvas: "#FAFAFA",
+        surface: "#FFFFFF",
+        border: "#E4E4E7",
+        brand: "#18181B",
+        focus: "#2563EB",
+        ink: "#09090B",
+        muted: "#71717A",
+        sanef: "#1B4332",
+        josie: "#0F172A",
       },
       fontFamily: {
-        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        mono: ["JetBrains Mono", "SF Mono", "Menlo", "monospace"],
-      }
+        sans: ["'Inter Variable'", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["'JetBrains Mono Variable'", "'JetBrains Mono'", "monospace"],
+      },
+      borderRadius: {
+        control: "6px",
+      },
     },
   },
   plugins: [],

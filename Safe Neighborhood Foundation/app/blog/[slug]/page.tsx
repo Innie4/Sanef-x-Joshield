@@ -1,55 +1,79 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Calendar, User, Share2 } from "lucide-react";
-import { SANEF_BLOG } from "@/lib/data";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import { SANEF_BLOG_POSTS } from "@/lib/data";
 
-export default function BlogPostDetail({ params }: { params: { slug: string } }) {
-  const post = SANEF_BLOG.find((p) => p.slug === params.slug) || SANEF_BLOG[0];
+export function generateStaticParams() {
+  return SANEF_BLOG_POSTS.map((post) => ({ slug: post.slug }));
+}
 
-  if (!post) {
-    notFound();
-  }
+export default function BlogArticlePage({ params }: { params: { slug: string } }) {
+  const article = SANEF_BLOG_POSTS.find((p) => p.slug === params.slug);
+  if (!article) return notFound();
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-emerald-700 font-semibold"
-      >
-        <ArrowLeft className="w-3.5 h-3.5" />
-        <span>Back to Field Reports</span>
-      </Link>
-
-      <div className="space-y-4">
-        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
-          {post.category}
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          {post.title}
-        </h1>
-        <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-b border-slate-200 pb-4">
-          <span className="font-semibold text-slate-700">{post.author}</span>
-          <span>•</span>
-          <span>{post.date}</span>
-          <span>•</span>
-          <span>{post.readTime}</span>
-        </div>
-      </div>
-
-      <div
-        className="prose prose-slate max-w-none text-sm sm:text-base leading-relaxed text-slate-700 space-y-4"
-        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-      />
-
-      <div className="pt-10 mt-12 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
-        <span>Published by Safe Neighborhood Foundation Research Directorate</span>
+    <article className="bg-[#FAF8F5] py-12 lg:py-16">
+      <div className="mx-auto max-w-[780px] px-4 sm:px-6">
         <Link
-          href="/portfolio"
-          className="text-emerald-700 font-semibold hover:underline"
+          href="/blog"
+          className="inline-flex items-center gap-2 rounded-full border border-[#E7E5E4] bg-white px-4 py-2 text-[13px] font-semibold text-[#1C1917] hover:border-[#1B4332]"
         >
-          View Related Evidence Archives →
+          <ArrowLeft className="h-4 w-4" /> Back to Field Notes
         </Link>
+
+        <header className="mt-8 border-b border-[#E7E5E4] pb-8">
+          <div className="flex flex-wrap items-center gap-2 text-[12px]">
+            <span className="rounded-full border border-[#1B4332]/20 bg-[#1B4332]/5 px-2.5 py-0.5 font-semibold text-[#1B4332]">
+              {article.category}
+            </span>
+            <span className="font-mono text-[#57534E]">{article.publishedDate}</span>
+            <span className="text-[#D6D3D1]">·</span>
+            <span className="text-[#57534E]">{article.readTime}</span>
+          </div>
+          <h1 className="mt-4 font-serif text-[34px] font-medium leading-[1.12] tracking-[-0.02em] text-[#1C1917] sm:text-[44px]">
+            {article.title}
+          </h1>
+          <p className="mt-4 text-[14px] text-[#57534E]">
+            By <strong className="text-[#1C1917]">{article.author}</strong> — {article.authorRole}
+          </p>
+        </header>
+
+        <figure className="mt-8 overflow-hidden rounded-[10px] border border-[#E7E5E4] bg-white">
+          <div className="aspect-[16/10] bg-[#E7E5E4]">
+            <img
+              src={article.coverImage}
+              alt={article.title}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <figcaption className="border-t border-[#E7E5E4] px-4 py-3 text-[12px] text-[#57534E]">
+            {article.coverCaption}
+          </figcaption>
+        </figure>
+
+        <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-[#1C1917]">
+          {article.body.map((para, idx) => (
+            <p key={idx}>{para}</p>
+          ))}
+        </div>
+
+        <div className="mt-12 rounded-[10px] border border-[#E7E5E4] bg-white p-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div>
+            <p className="font-serif text-[20px] font-medium text-[#1C1917]">
+              Inspect the underlying field data
+            </p>
+            <p className="mt-1 text-[13px] text-[#57534E]">
+              Download the verified photometric and ward survey PDFs in our archive.
+            </p>
+          </div>
+          <Link
+            href="/portfolio"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#1B4332] px-5 py-2.5 text-[13px] font-semibold text-white"
+          >
+            Open Evidence Archive
+          </Link>
+        </div>
       </div>
     </article>
   );

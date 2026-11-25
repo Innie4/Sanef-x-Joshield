@@ -1,18 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Check } from "lucide-react";
+import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
+    organisation: "",
     email: "",
-    phone: "",
-    subject: "Community Safety Inquiry",
+    topic: "Community Safety Assessment",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,175 +24,175 @@ export default function ContactPage() {
         body: JSON.stringify(form),
       });
       setSubmitted(true);
-    } catch {
-      setSubmitted(true);
+      setForm({
+        name: "",
+        organisation: "",
+        email: "",
+        topic: "Community Safety Assessment",
+        message: "",
+      });
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-16">
-      {/* Header */}
-      <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold">
-          Civic Secretariat & Field Intake
-        </p>
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-slate-950">
-          Connect with the Foundation
-        </h1>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-          Nominate a vulnerable corridor for solar installation, recommend an at-risk youth cohort for mediation academy entry, or explore philanthropic grants.
-        </p>
-      </div>
+    <div className="bg-[#FAF8F5] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          {/* Left: Direct Channels */}
+          <div className="lg:col-span-5">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#1B4332]">
+              Secretariat & Ward Desk
+            </p>
+            <h1 className="mt-2 font-serif text-[38px] font-medium leading-[1.1] tracking-[-0.02em] text-[#1C1917] sm:text-[44px]">
+              Contact SANEF
+            </h1>
+            <p className="mt-4 text-[15px] leading-relaxed text-[#57534E]">
+              Reach our field desk for municipal lighting surveys, institutional partnership
+              proposals, press verification, or evidence dataset citations.
+            </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Contact Information */}
-        <div className="lg:col-span-5 space-y-4">
-          <div className="monograph-surface rounded-3xl p-7 space-y-6">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500">
-              Community Channels
-            </h3>
-
-            <div className="space-y-5 text-xs">
+            <div className="mt-8 space-y-4 rounded-[10px] border border-[#E7E5E4] bg-white p-6">
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  <Phone className="w-4 h-4" />
-                </div>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1B4332]" />
                 <div>
-                  <p className="text-slate-900 font-semibold">Toll-Free Citizen Line</p>
-                  <p className="text-slate-600 font-mono mt-0.5">+234 (0) 800-SANEF-COMMUNITY</p>
-                  <p className="text-slate-500 text-[11px] font-mono">+234 (0) 802 444 8921</p>
+                  <p className="text-[13px] font-semibold text-[#1C1917]">Lagos Secretariat</p>
+                  <p className="text-[13px] text-[#57534E]">14 Herbert Macaulay Way, Yaba, Lagos</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  <Mail className="w-4 h-4" />
-                </div>
+              <div className="flex items-start gap-3 border-t border-[#E7E5E4] pt-4">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#1B4332]" />
                 <div>
-                  <p className="text-slate-900 font-semibold">Official Secretariat Email</p>
-                  <p className="text-slate-600 mt-0.5">secretariat@sanefoundation.org</p>
-                  <p className="text-slate-500 text-[11px]">programs@sanefoundation.org</p>
+                  <p className="text-[13px] font-semibold text-[#1C1917]">Phone & WhatsApp Desk</p>
+                  <p className="font-mono text-[13px] text-[#57534E]">+234 809 441 2200</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  <MapPin className="w-4 h-4" />
-                </div>
+              <div className="flex items-start gap-3 border-t border-[#E7E5E4] pt-4">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#1B4332]" />
                 <div>
-                  <p className="text-slate-900 font-semibold">National Secretariat</p>
-                  <p className="text-slate-600 mt-0.5">48 Commercial Way, Yaba Innovation Corridor, Lagos</p>
-                  <p className="text-slate-500 text-[11px]">Field stations in Ajegunle, Mushin & Makoko</p>
+                  <p className="text-[13px] font-semibold text-[#1C1917]">Secretariat Email</p>
+                  <p className="font-mono text-[13px] text-[#57534E]">secretariat@sanefoundation.org.ng</p>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-4 border-t border-slate-200 flex items-center gap-2 text-[11px] font-mono text-slate-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 civic-beacon" />
-              <span>FIELD DESK OPEN MON-FRI 8:00 AM - 6:00 PM</span>
+              <div className="flex flex-wrap gap-3 border-t border-[#E7E5E4] pt-4">
+                <a
+                  href="https://wa.me/2348094412200"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-[#1B4332] px-4 py-2 text-[12px] font-semibold text-white hover:bg-[#143326]"
+                >
+                  Message on WhatsApp
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-[#E7E5E4] bg-[#FAF8F5] px-4 py-2 text-[12px] font-semibold text-[#1C1917] hover:border-[#1B4332]"
+                >
+                  Facebook Page
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Contact Form */}
-        <div className="lg:col-span-7">
-          <div className="monograph-surface rounded-3xl p-8 space-y-6">
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold tracking-tight text-slate-900">Submit Community Inquiry / Proposal</h3>
-                  <p className="text-xs text-slate-500">Our programs officer will reply within 24 business hours.</p>
+          {/* Right: Enquiry Form */}
+          <div className="lg:col-span-7">
+            <div className="rounded-[10px] border border-[#E7E5E4] bg-white p-6 sm:p-8">
+              <h2 className="font-serif text-[26px] font-medium text-[#1C1917]">
+                Send an Enquiry
+              </h2>
+              <p className="mt-1 text-[14px] text-[#57534E]">
+                Enquiries are routed directly to the relevant programme or partnerships officer.
+              </p>
+
+              {submitted ? (
+                <div className="mt-6 rounded-[10px] border border-[#1B4332]/25 bg-[#1B4332]/5 p-6">
+                  <p className="flex items-center gap-2 text-[16px] font-semibold text-[#1B4332]">
+                    <CheckCircle2 className="h-5 w-5" /> Enquiry delivered to SANEF Secretariat
+                  </p>
+                  <p className="mt-2 text-[14px] text-[#57534E]">
+                    Thank you for writing. A programme coordinator will respond within two working days.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="mt-4 rounded-full border border-[#1B4332] px-4 py-1.5 text-[13px] font-semibold text-[#1B4332]"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-slate-500">Full Name *</label>
-                    <input
+              ) : (
+                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[13px] font-medium text-[#1C1917]">Your Name</label>
+                      <input
+                        required
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        className="mt-1 w-full rounded-[8px] border border-[#E7E5E4] bg-[#FAF8F5] px-3.5 py-2.5 text-[14px] focus:border-[#1B4332] focus:bg-white focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[13px] font-medium text-[#1C1917]">
+                        Community / Organisation
+                      </label>
+                      <input
+                        type="text"
+                        value={form.organisation}
+                        onChange={(e) => setForm({ ...form, organisation: e.target.value })}
+                        className="mt-1 w-full rounded-[8px] border border-[#E7E5E4] bg-[#FAF8F5] px-3.5 py-2.5 text-[14px] focus:border-[#1B4332] focus:bg-white focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[13px] font-medium text-[#1C1917]">Email Address</label>
+                      <input
+                        required
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        className="mt-1 w-full rounded-[8px] border border-[#E7E5E4] bg-[#FAF8F5] px-3.5 py-2.5 text-[14px] focus:border-[#1B4332] focus:bg-white focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[13px] font-medium text-[#1C1917]">Enquiry Topic</label>
+                      <select
+                        value={form.topic}
+                        onChange={(e) => setForm({ ...form, topic: e.target.value })}
+                        className="mt-1 w-full rounded-[8px] border border-[#E7E5E4] bg-white px-3.5 py-2.5 text-[14px] focus:border-[#1B4332] focus:outline-none"
+                      >
+                        <option>Community Safety Assessment</option>
+                        <option>Institutional Partnership</option>
+                        <option>Grant or Donation Reconciliation</option>
+                        <option>Media & Research Citation</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-[13px] font-medium text-[#1C1917]">Message</label>
+                    <textarea
                       required
-                      type="text"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
+                      rows={4}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Share ward location, partnership details, or questions..."
+                      className="mt-1 w-full rounded-[8px] border border-[#E7E5E4] bg-[#FAF8F5] px-3.5 py-2.5 text-[14px] focus:border-[#1B4332] focus:bg-white focus:outline-none"
                     />
                   </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-slate-500">Email Address *</label>
-                    <input
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="your.email@organization.org"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-slate-500">Phone Number *</label>
-                    <input
-                      required
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      placeholder="+234 800 000 0000"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-slate-500">Category of Inquiry</label>
-                    <select
-                      value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
-                    >
-                      <option value="Corridor Lighting Nomination">Nominate Dark School Corridor</option>
-                      <option value="Youth Academy Referral">Youth Conflict Mediation Referral</option>
-                      <option value="Philanthropic Grant Discussion">Philanthropic Grant / Partnership</option>
-                      <option value="General Information">General Civic Information</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-slate-500">Message / Neighborhood Location Details *</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Specify community name, LGA, school boundary, or partnership framework..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#0D4A2B]"
-                  />
-                </div>
-
-                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="bg-[#0D4A2B] hover:bg-[#14633B] text-white text-xs font-semibold px-7 py-3 rounded-full transition-all disabled:opacity-50"
+                    className="rounded-full bg-[#1B4332] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#143326] disabled:opacity-60"
                   >
-                    {submitting ? "Transmitting..." : "Submit Community Message"}
+                    {submitting ? "Sending..." : "Submit Enquiry"}
                   </button>
-                </div>
-              </form>
-            ) : (
-              <div className="text-center py-10 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center mx-auto">
-                  <Check className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900">Message Logged Successfully</h3>
-                <p className="text-xs text-slate-600 max-w-sm mx-auto">
-                  Thank you for reaching out. Our community field officer will review your nomination or inquiry promptly.
-                </p>
-              </div>
-            )}
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>

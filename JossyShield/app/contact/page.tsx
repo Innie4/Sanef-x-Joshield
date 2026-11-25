@@ -1,18 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Check, Shield } from "lucide-react";
+import { Phone, Mail, MapPin, MessageSquare, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
+    organisation: "",
     email: "",
     phone: "",
-    subject: "General Security Inquiry",
+    subject: "Commercial Guarding Enquiry",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,176 +24,170 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      setSubmitted(true);
-    } catch {
-      setSubmitted(true);
+      setSent(true);
+      setForm({
+        name: "",
+        organisation: "",
+        email: "",
+        phone: "",
+        subject: "Commercial Guarding Enquiry",
+        message: "",
+      });
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-16">
-      {/* Header */}
-      <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold">
-          Central Dispatch & Inquiries
-        </p>
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white">
-          Contact Central Command
-        </h1>
-        <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
-          Whether you require immediate armed transit dispatch, a commercial facility audit, or corporate partnership clearance, our operations room is active 24/7.
-        </p>
-      </div>
+    <div className="bg-[#F8FAFC] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="font-heading text-[12px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
+              24/7 Operations & Regional Offices
+            </p>
+            <h1 className="mt-2 font-heading text-[36px] font-bold leading-[1.08] text-[#0F172A] sm:text-[44px]">
+              Contact Josie Shield
+            </h1>
+            <p className="mt-3 text-[15px] leading-relaxed text-[#475569]">
+              Speak directly with our duty operations desk for urgent site mobilisation, vendor
+              qualification packs, or general commercial enquiries.
+            </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Contact Info Channels */}
-        <div className="lg:col-span-5 space-y-4">
-          <div className="tactical-surface rounded-3xl p-7 space-y-6">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-500">
-              Direct Operational Channels
-            </h3>
-
-            <div className="space-y-5 text-xs">
+            <div className="mt-8 space-y-4 rounded-[4px] border border-[#E2E8F0] bg-white p-6">
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20">
-                  <Phone className="w-4 h-4" />
-                </div>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B45309]" />
                 <div>
-                  <p className="text-white font-semibold">24/7 Command Hotline</p>
-                  <p className="text-zinc-400 font-mono mt-0.5">+234 (0) 800-JOSSY-SHIELD</p>
-                  <p className="text-zinc-500 text-[11px] font-mono">+234 (0) 803 555 0192</p>
+                  <p className="text-[13px] font-semibold text-[#0F172A]">Lagos Head Office</p>
+                  <p className="text-[13px] text-[#475569]">18 Oba Akran Avenue, Ikeja, Lagos</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20">
-                  <Mail className="w-4 h-4" />
-                </div>
+              <div className="flex items-start gap-3 border-t border-[#E2E8F0] pt-4">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#B45309]" />
                 <div>
-                  <p className="text-white font-semibold">Official Dispatch Email</p>
-                  <p className="text-zinc-400 mt-0.5">operations@jossyshield.com</p>
-                  <p className="text-zinc-500 text-[11px]">inquiries@jossyshield.com</p>
+                  <p className="text-[13px] font-semibold text-[#0F172A]">24/7 Dispatch Line</p>
+                  <p className="font-mono text-[13px] text-[#475569]">+234 803 552 0900</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20">
-                  <MapPin className="w-4 h-4" />
-                </div>
+              <div className="flex items-start gap-3 border-t border-[#E2E8F0] pt-4">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#B45309]" />
                 <div>
-                  <p className="text-white font-semibold">National Command Center</p>
-                  <p className="text-zinc-400 mt-0.5">Plot 12, Commercial Corridor, Victoria Island, Lagos</p>
-                  <p className="text-zinc-500 text-[11px]">Regional stations in Abuja FCT & Port Harcourt</p>
+                  <p className="text-[13px] font-semibold text-[#0F172A]">Commercial Desk</p>
+                  <p className="font-mono text-[13px] text-[#475569]">ops@josieshield.ng</p>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-[11px] font-mono text-zinc-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-pulse" />
-              <span>LIVE SATELLITE DISPATCH MONITORING ACTIVE</span>
+              <div className="border-t border-[#E2E8F0] pt-4">
+                <a
+                  href="https://wa.me/2348035520900"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-[4px] bg-[#0F172A] px-4 py-2.5 text-[13px] font-semibold text-white hover:bg-[#1E293B]"
+                >
+                  <MessageSquare className="h-4 w-4 text-[#F59E0B]" />
+                  Message WhatsApp Dispatch
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Contact Form */}
-        <div className="lg:col-span-7">
-          <div className="tactical-surface rounded-3xl p-8 text-white">
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold tracking-tight text-white">Transmit Tactical Message</h3>
-                  <p className="text-xs text-zinc-400">Our duty watch officer will respond within 60 minutes.</p>
+          <div className="lg:col-span-7">
+            <div className="rounded-[4px] border border-[#E2E8F0] bg-white p-6 sm:p-8">
+              <h2 className="font-heading text-[26px] font-semibold text-[#0F172A]">
+                Direct Enquiry Form
+              </h2>
+              <p className="mt-1 text-[14px] text-[#475569]">
+                For full service scoping with an assigned reference ID, use our Marketplace intake.
+              </p>
+
+              {sent ? (
+                <div className="mt-6 rounded-[4px] border border-[#0F172A] bg-[#F8FAFC] p-6">
+                  <p className="flex items-center gap-2 font-heading text-[18px] font-semibold text-[#0F172A]">
+                    <CheckCircle2 className="h-5 w-5 text-[#B45309]" /> Enquiry Logged by Operations
+                  </p>
+                  <p className="mt-2 text-[14px] text-[#475569]">
+                    A duty officer will follow up within 4 business hours.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSent(false)}
+                    className="mt-4 rounded-[4px] bg-[#0F172A] px-4 py-2 text-[13px] font-semibold text-white"
+                  >
+                    Send Another Enquiry
+                  </button>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-zinc-400">Full Name *</label>
-                    <input
+              ) : (
+                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[12px] font-semibold  text-[#475569]">
+                        Full Name *
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 text-[14px]"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-semibold  text-[#475569]">
+                        Organisation
+                      </label>
+                      <input
+                        type="text"
+                        value={form.organisation}
+                        onChange={(e) => setForm({ ...form, organisation: e.target.value })}
+                        className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 text-[14px]"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-semibold  text-[#475569]">
+                        Email *
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 text-[14px]"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-semibold  text-[#475569]">
+                        Phone *
+                      </label>
+                      <input
+                        required
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 font-mono text-[14px]"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-semibold  text-[#475569]">
+                      Message *
+                    </label>
+                    <textarea
                       required
-                      type="text"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                      className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                      rows={4}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 text-[14px]"
                     />
                   </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-zinc-400">Work Email *</label>
-                    <input
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="name@company.com"
-                      className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-zinc-400">Phone Number *</label>
-                    <input
-                      required
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      placeholder="+234 800 000 0000"
-                      className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase text-zinc-400">Inquiry Nature</label>
-                    <select
-                      value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                      className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                    >
-                      <option value="General Security Inquiry">General Security Inquiry</option>
-                      <option value="Armed Escort Deployment">Urgent Armed Convoy / Escort</option>
-                      <option value="Facility Guarding RFP">Corporate Facility RFP / Requisition</option>
-                      <option value="Vulnerability Audit">Physical Threat Audit Request</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-zinc-400">Message / Threat Scope *</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Provide facility details, transit corridors, or deployment timelines..."
-                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                  />
-                </div>
-
-                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-7 py-3 rounded-full transition-all disabled:opacity-50"
+                    className="rounded-[4px] bg-[#B45309] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#92400E] disabled:opacity-60"
                   >
-                    {submitting ? "Transmitting..." : "Send Secure Message"}
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
-                </div>
-              </form>
-            ) : (
-              <div className="text-center py-10 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-                  <Check className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white">Transmission Successful</h3>
-                <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-                  Your communication has been registered with the command desk. An operational coordinator will follow up immediately.
-                </p>
-              </div>
-            )}
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>

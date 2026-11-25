@@ -1,0 +1,10 @@
+# Image Credits (Creative Commons / Public Domain via Openverse)
+
+- **guard-shoulder.jpg** (Perimeter guard on watch at compound gate): "Security guard at Virtual University, Multan Campus" by liber(the poet);, licensed under BY-SA 2.0 (https://www.flickr.com/photos/22179411@N06/4131636300)
+- **gate-checkpoint.jpg** (Patrol vehicle and guard post at facility entrance): "Open Close" by Go-tea 郭天, licensed under BY 2.0 (https://www.flickr.com/photos/131814204@N04/32530244510)
+- **night-watchbox.jpg** (Night shift control room watch window): "The guardian" by Go-tea 郭天, licensed under BY 2.0 (https://www.flickr.com/photos/131814204@N04/50318761671)
+- **uhf-radios.jpg** (Motorola UHF handheld dispatch radios): "Motorola walkie talkies, location unknown" by Public Domain, licensed under CC0 1.0 (https://www.rawpixel.com/image/6112864/photo-image-public-domain-table-free)
+- **field-handset.jpg** (Field transceiver handset on duty desk): "Baofeng walktie talkie, location unknown" by Public Domain, licensed under CC0 1.0 (https://www.rawpixel.com/image/6112863/photo-image-public-domain-table-free)
+- **officers-briefing.jpg** (Field supervisors during radio readiness briefing): "190408-Z-FD650-5014.jpg" by Like us on Facebook at CAGuard, licensed under BY 2.0 (https://www.flickr.com/photos/63080087@N06/32703696177)
+- **command-table.jpg** (Operations supervisors reviewing sector map): "190408-Z-FD650-5011.jpg" by Like us on Facebook at CAGuard, licensed under BY 2.0 (https://www.flickr.com/photos/63080087@N06/47593312702)
+- **port-night.jpg** (Commercial port and waterfront perimeter at night): "Puerto Madero - Buenos Aires" by Tiago Cata, licensed under BY 2.0 (https://www.flickr.com/photos/23556679@N03/3210947641)

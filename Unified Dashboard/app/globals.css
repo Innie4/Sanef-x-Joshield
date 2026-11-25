@@ -2,63 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #080b10;
-  --foreground: #f1f4f9;
-  --console-border: rgba(255, 255, 255, 0.07);
+@layer base {
+  html {
+    background-color: #FAFAFA;
+    color: #09090B;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  * {
+    border-color: #E4E4E7;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Precision console scrollbar */
+/* Crisp custom scrollbars for dense tables & stage tabs */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #080b10;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #1c2433;
-  border-radius: 9999px;
+  background: #D4D4D8;
+  border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #0066ff;
-}
-
-/* Console surfaces */
-.console-surface {
-  background: #0c1017;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.console-surface-hover {
-  background: #0c1017;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: all 0.15s ease;
-}
-.console-surface-hover:hover {
-  background: #10151f;
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-/* Hairline borders */
-.hairline {
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-.hairline-b {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-.hairline-t {
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-.hairline-r {
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: #A1A1AA;
 }

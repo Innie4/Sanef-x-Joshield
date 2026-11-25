@@ -1,73 +1,71 @@
 import React from "react";
 import Link from "next/link";
-import { Shield, ArrowUpRight } from "lucide-react";
+import { Shield } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-[#05070A] text-zinc-400 text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          {/* Brand & Purpose */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-[#0066FF] flex items-center justify-center text-white">
-                <Shield className="w-3 h-3 fill-white/20 stroke-white stroke-[2.2]" />
-              </div>
-              <span className="font-semibold text-sm tracking-tight text-white">
-                Jossy<span className="text-zinc-400">Shield</span>
+    <footer className="border-t border-[#E2E8F0] bg-[#0F172A] text-white">
+      <div className="mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-3">
+              <span className="flex h-8 w-8 items-center justify-center rounded-[4px] border border-white/15 bg-white/5">
+                <Shield className="h-4 w-4 text-[#B45309]" />
               </span>
-            </Link>
-            <p className="text-zinc-400 leading-relaxed max-w-sm">
-              Commercial defense operations, rapid armed dispatch, and an audited talent pool of vetted officers serving commercial infrastructure across Nigeria.
+              <span className="font-heading text-[18px] font-bold uppercase tracking-[0.03em] text-white">
+                Josie Shield Security Services
+              </span>
+            </div>
+            <p className="mt-4 max-w-[380px] text-[14px] leading-relaxed text-[#94A3B8]">
+              Commercial facility guarding, physical risk consultancy, and certified personnel
+              training across Lagos, Abuja, and Port Harcourt. Operated with strict vetting and
+              measurable shift SLAs.
             </p>
-            <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-pulse" />
-              <span>CENTRAL COMMAND DISPATCH ONLINE 24/7/365</span>
+            <div className="mt-5 flex flex-wrap gap-4 font-mono text-[12px] text-[#CBD5E1]">
+              <span>24/7 Dispatch: +234 803 552 0900</span>
+              <span>·</span>
+              <a
+                href="https://wa.me/2348035520900"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#F59E0B] underline underline-offset-4 hover:text-white"
+              >
+                WhatsApp Operations
+              </a>
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="lg:col-span-2 space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Capabilities</p>
-            <ul className="space-y-2">
-              <li><Link href="/services" className="hover:text-white transition-colors">Static Perimeter Defense</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Armed Escort & Transit</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Vulnerability & TSCM Audits</Link></li>
-              <li><Link href="/marketplace" className="hover:text-white transition-colors">Requisition Portal</Link></li>
+          <div className="md:col-span-3">
+            <h3 className="font-heading text-[12px] font-semibold  text-[#94A3B8]">
+              Service Lines
+            </h3>
+            <ul className="mt-4 space-y-2.5 text-[14px] text-[#CBD5E1]">
+              <li><Link href="/services#security" className="hover:text-white">Security Services</Link></li>
+              <li><Link href="/services#consultancy" className="hover:text-white">Consultancy Services</Link></li>
+              <li><Link href="/services#training" className="hover:text-white">Training Services</Link></li>
+              <li><Link href="/marketplace" className="font-semibold text-[#F59E0B] hover:text-white">Request a Service</Link></li>
             </ul>
           </div>
 
-          <div className="lg:col-span-2 space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Personnel</p>
-            <ul className="space-y-2">
-              <li><Link href="/careers" className="hover:text-white transition-colors">Vetted Talent Roster</Link></li>
-              <li><Link href="/careers" className="hover:text-white transition-colors">Officer Application Portal</Link></li>
-              <li><Link href="/testimonials" className="hover:text-white transition-colors">Field Case Studies</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">Command Leadership</Link></li>
+          <div className="md:col-span-4">
+            <h3 className="font-heading text-[12px] font-semibold  text-[#94A3B8]">
+              Company & Recruitment
+            </h3>
+            <ul className="mt-4 space-y-2.5 text-[14px] text-[#CBD5E1]">
+              <li><Link href="/about" className="hover:text-white">About Josie Shield</Link></li>
+              <li><Link href="/careers" className="hover:text-white">Active Vacancies & Talent Pool</Link></li>
+              <li><Link href="/testimonials" className="hover:text-white">Approved Client Testimonials</Link></li>
+              <li><Link href="/contact" className="hover:text-white">Operations Offices & Contact</Link></li>
             </ul>
-          </div>
-
-          <div className="lg:col-span-4 space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Command Desk</p>
-            <div className="tactical-surface rounded-2xl p-4 space-y-2">
-              <p className="text-zinc-300 font-mono text-xs">24/7 Hotline: +234 1 800 JOSSY (56779)</p>
-              <p className="text-zinc-500 text-[11px]">Primary Command: Plot 12, Commercial Corridor, Victoria Island, Lagos</p>
-              <div className="pt-2 flex items-center justify-between border-t border-white/[0.06] text-[10px] font-mono text-zinc-500">
-                <span>NSCDC CATEGORY A</span>
-                <span className="text-[#0066FF]">ISO 27001 AUDITED</span>
-              </div>
-            </div>
+            <p className="mt-4 text-[12px] text-[#94A3B8]">
+              Head Office: 18 Oba Akran Avenue, Ikeja, Lagos · Regional Desks in Abuja & Port Harcourt
+            </p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-600 font-mono">
-          <p>© {new Date().getFullYear()} JossyShield Security Ltd. All tactical rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <Link href="/contact" className="hover:text-zinc-400">Security Clearance Protocols</Link>
-            <span>•</span>
-            <Link href="/contact" className="hover:text-zinc-400">Encrypted Dispatch Line</Link>
-          </div>
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-[12px] text-[#94A3B8] sm:flex-row sm:items-center">
+          <p>© {new Date().getFullYear()} Josie Shield Security Services Ltd. All rights reserved.</p>
+          <p className="font-mono">ops@josieshield.ng · NSCDC Licensed Private Security Operator</p>
         </div>
       </div>
     </footer>

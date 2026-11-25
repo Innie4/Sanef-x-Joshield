@@ -1,21 +1,17 @@
+import "@fontsource-variable/newsreader/index.css";
+import "@fontsource-variable/newsreader/wght-italic.css";
+import "@fontsource-variable/plus-jakarta-sans/index.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Safe Neighborhood Foundation (SANEF) | Grassroots Community Safety & Evidence",
+  title: "Safe Neighborhood Foundation (SANEF) — Community Safety & Verified Impact",
   description:
-    "SANEF empowers resilient communities with solar safe corridors, youth conflict mediation, neighborhood radio dispatch, and verified evidence-backed reporting.",
-  keywords: [
-    "Safe Neighborhood Foundation",
-    "SANEF",
-    "community safety NGO",
-    "solar street lighting",
-    "youth mediation",
-    "neighborhood watch",
-    "evidence archive"
-  ],
+    "Documentary evidence archive, public infrastructure programmes, and community partnerships led by Safe Neighborhood Foundation (SANEF).",
 };
 
 export default function RootLayout({
@@ -25,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-50 text-slate-850 flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
+      <body className="min-h-screen bg-[#FAF8F5] text-[#1C1917] font-sans antialiased flex flex-col selection:bg-[#1B4332]/15 selection:text-[#1C1917]">
         <Navbar />
-        <main className="flex-grow pt-20">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

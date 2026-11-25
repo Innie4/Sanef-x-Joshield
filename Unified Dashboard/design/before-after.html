@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unified Dashboard — Before / After Redesign Comparison</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    .screen {
+      container-type: size;
+      background: #0A0C10;
+      color: #ECF0F6;
+    }
+    .body-col {
+      position: absolute;
+      inset: var(--safe-top) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      padding: 8px 18px 94px 18px;
+    }
+    .hero-num {
+      font-family: var(--sf);
+      font-stretch: 80%;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      font-variant-numeric: tabular-nums;
+      color: #ECF0F6;
+    }
+    .panel-box {
+      background: #11151C;
+      border: 1px solid #1E2532;
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .row-line {
+      padding: 10px 0;
+      border-top: 1px solid #1E2532;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .tabbar {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 20px;
+      height: 62px;
+      border-radius: 31px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 6px;
+      z-index: 20;
+    }
+    .tab-item {
+      flex: 1;
+      height: 52px;
+      border-radius: 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tab-item.active {
+      background: rgba(37, 99, 235, 0.22);
+    }
+    .tab-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BEFORE: Old Dashboard Audit Summary Screen -->
+  <section class="screen" data-name="01-before-legacy-dashboard" data-theme="dark" data-chrome="light" data-time="09:41" style="background: #090C12; color: #F1F5F9;">
+    <div class="body-col">
+      <div style="font-family: var(--sf-mono); font-size: 12px; color: #94A3B8;">BEFORE REDESIGN · AUDIT DEFECTS</div>
+      <h1 style="font-size: 28px; font-weight: 700; letter-spacing: -0.6px; margin: 8px 0 4px 0;">Legacy Command Center</h1>
+      <p style="font-size: 13px; color: #94A3B8; margin: 0 0 14px 0;">70% empty dark void, fixed 256px sidebar overflowing 390px viewports, and 4 isolated stat boxes.</p>
+
+      <!-- Old 2x2 Stat Box Reflex -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="panel-box">
+          <div style="font-size: 12px; color: #94A3B8;">New requisitions</div>
+          <div style="font-family: var(--sf-mono); font-size: 28px; font-weight: 700; margin-top: 4px;">3</div>
+          <div style="font-size: 12px; color: #60A5FA; margin-top: 2px;">Pending review</div>
+        </div>
+        <div class="panel-box">
+          <div style="font-size: 12px; color: #94A3B8;">Candidates</div>
+          <div style="font-family: var(--sf-mono); font-size: 28px; font-weight: 700; margin-top: 4px;">4</div>
+          <div style="font-size: 12px; color: #94A3B8; margin-top: 2px;">In pipeline</div>
+        </div>
+      </div>
+
+      <!-- Bare 2-Row Activity List + Empty Void -->
+      <div class="panel-box" style="margin-top: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 13px; font-weight: 600; color: #E2E8F0; padding-bottom: 8px; border-bottom: 1px solid #1E2532;">Recent activity feed (2 bare rows)</div>
+          <div class="row-line" style="border-top: none;">
+            <div>
+              <div style="font-size: 13px; font-weight: 600;">Shortlisted Candidate</div>
+              <div style="font-size: 12px; color: #94A3B8;">Emmanuel Okafor</div>
+            </div>
+            <span style="font-family: var(--sf-mono); font-size: 12px; color: #94A3B8;">09:12 AM</span>
+          </div>
+          <div class="row-line">
+            <div>
+              <div style="font-size: 13px; font-weight: 600;">Service Request Updated</div>
+              <div style="font-size: 12px; color: #94A3B8;">Request #JS-REQ-84908</div>
+            </div>
+            <span style="font-family: var(--sf-mono); font-size: 12px; color: #94A3B8;">05:45 PM</span>
+          </div>
+        </div>
+
+        <div style="padding: 12px; border-radius: 10px; background: #0A0C10; border: 1px dashed #1E2532; font-family: var(--sf-mono); font-size: 12px; color: #94A3B8;">
+          Audit findings: No sector map, no inline triage dossier, Inter default font, 3 mobile overflows.
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Overview</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- AFTER: Redesigned Precision Duty Desk & Sector Switchboard -->
+  <section class="screen" data-name="02-after-duty-desk-switchboard" data-theme="dark" data-chrome="light" data-time="18:42">
+    <div class="body-col">
+      <div style="display: flex; background: #11151C; border: 1px solid #1E2532; border-radius: 10px; padding: 3px; gap: 4px;">
+        <div style="flex: 1; min-height: 36px; padding: 6px 10px; border-radius: 7px; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; background: #2563EB; color: #FFF;">
+          <span>JossyShield</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-01</span>
+        </div>
+        <div style="flex: 1; min-height: 36px; padding: 6px 10px; border-radius: 7px; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; color: #9BA6B8;">
+          <span>SANEF NGO</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-02</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 12px; display: flex; align-items: baseline; justify-content: space-between;">
+        <div>
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: #60A5FA;">AFTER · JS-OPS SHIFT B WATCH</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px;">
+            <span class="hero-num">412</span>
+            <span style="font-size: 17px; font-weight: 600; color: #ECF0F6;">officers on post</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: var(--sf-mono); font-size: 15px; font-weight: 600; color: #ECF0F6;">₦18.64M</div>
+          <div style="font-size: 12px; color: #9BA6B8;">19 sites active</div>
+        </div>
+      </div>
+
+      <!-- Full-Height Interactive Nigeria Sector Schematic -->
+      <div class="panel-box" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin: 10px 0; padding: 10px 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 13px; font-weight: 600; color: #ECF0F6;">Regional sector schematic (WGS-84)</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: #60A5FA;">4 / 4 ONLINE</span>
+        </div>
+
+        <svg viewBox="0 0 336 285" style="width: 100%; flex: 1; min-height: 0; margin: 6px 0;" preserveAspectRatio="xMidYMid meet">
+          <rect x="0" y="0" width="336" height="285" rx="10" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <g style="stroke: #1E2532;" stroke-width="1">
+            <line x1="0" y1="57" x2="336" y2="57" />
+            <line x1="0" y1="114" x2="336" y2="114" />
+            <line x1="0" y1="171" x2="336" y2="171" />
+            <line x1="0" y1="228" x2="336" y2="228" />
+            <line x1="84" y1="0" x2="84" y2="285" />
+            <line x1="168" y1="0" x2="168" y2="285" />
+            <line x1="252" y1="0" x2="252" y2="285" />
+          </g>
+          <path d="M 16 38 L 128 18 L 258 24 L 320 68 L 306 232 L 220 262 L 54 250 L 12 162 Z" style="fill: #141A24; stroke: #2563EB;" stroke-opacity="0.55" stroke-width="1.5" />
+          <g style="stroke: #2563EB;" stroke-opacity="0.55" stroke-dasharray="4 3" stroke-width="1.5">
+            <line x1="56" y1="204" x2="56" y2="112" />
+            <line x1="56" y1="112" x2="186" y2="56" />
+            <line x1="186" y1="56" x2="212" y2="208" />
+            <line x1="56" y1="204" x2="212" y2="208" />
+          </g>
+          <circle cx="56" cy="112" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="56" cy="112" r="4.5" style="fill: #2563EB;" />
+          <rect x="78" y="94" width="114" height="36" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="85" y="109" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-02 · 116</text>
+          <text x="85" y="123" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Ikeja Industrial</text>
+
+          <circle cx="186" cy="56" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="186" cy="56" r="4.5" style="fill: #2563EB;" />
+          <rect x="204" y="38" width="112" height="36" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="211" y="53" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-03 · 64</text>
+          <text x="211" y="67" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Maitama Abuja</text>
+
+          <circle cx="56" cy="204" r="18" style="fill: rgba(37,99,235,0.22); stroke: #60A5FA;" stroke-width="1.75" />
+          <circle cx="56" cy="204" r="5.5" style="fill: #60A5FA;" />
+          <rect x="78" y="185" width="114" height="38" rx="5" style="fill: #0A0C10; stroke: #2563EB;" stroke-width="1.25" />
+          <text x="85" y="200" style="fill: currentColor; color: #FFFFFF; font: 600 12px 'SF Mono', monospace;">SEC-01 · 148</text>
+          <text x="85" y="215" style="fill: currentColor; color: #E2E8F0; font: 500 12px 'SF Pro', sans-serif;">Victoria Island</text>
+
+          <circle cx="212" cy="208" r="12" style="fill: rgba(37,99,235,0.16); stroke: #2563EB;" stroke-width="1.25" />
+          <circle cx="212" cy="208" r="4.5" style="fill: #2563EB;" />
+          <rect x="228" y="190" width="98" height="36" rx="5" style="fill: #0A0C10; stroke: #1E2532;" stroke-width="1" />
+          <text x="234" y="205" style="fill: currentColor; color: #E2E8F0; font: 600 12px 'SF Mono', monospace;">SEC-04 · 84</text>
+          <text x="234" y="219" style="fill: currentColor; color: #9BA6B8; font: 500 12px 'SF Pro', sans-serif;">Onne Wharf</text>
+        </svg>
+
+        <div style="padding-top: 6px; border-top: 1px solid #1E2532; display: flex; justify-content: space-between; font-size: 12px; color: #9BA6B8; font-family: var(--sf-mono);">
+          <span>UHF CH-04 · Capt. T. Bakare</span>
+          <span style="color: #60A5FA;">Relief 02h 18m</span>
+        </div>
+      </div>
+
+      <!-- Actionable Requisition Triage -->
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span style="font-size: 15px; font-weight: 600;">Inbound requisition triage</span>
+          <span style="font-size: 13px; color: #60A5FA; font-weight: 600;">5 open</span>
+        </div>
+        <div class="row-line">
+          <div>
+            <div style="font-size: 15px; font-weight: 600; color: #ECF0F6;">Apex Freight Terminal</div>
+            <div style="font-size: 13px; color: #9BA6B8;">JS-REQ-10492 · 12 guards · Onne Wharf</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600;">₦1,840,000</div>
+            <div style="font-size: 12px; color: #60A5FA;">Assign post</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item active" style="color: #60A5FA;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Duty Desk</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M4 13h4l2 3h4l2-3h4"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>Requests</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-3 8.8-7 10-4-1.2-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span>Pipeline</span>
+      </div>
+      <div class="tab-item" style="color: #9BA6B8;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>RBAC</span>
+      </div>
+    </nav>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

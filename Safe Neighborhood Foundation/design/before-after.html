@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SANEF — Before &amp; After Redesign Comparison</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    @font-face {
+      font-family: "Newsreader Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2") format("woff2");
+      font-weight: 200 800;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Newsreader Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-italic.woff2") format("woff2");
+      font-weight: 200 800;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    button { font-family: inherit; }
+    .serif { font-family: "Newsreader Variable", Georgia, serif; }
+    .mono { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+    .tab-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; color: #3E4C43;
+    }
+    .tab-item.active { font-weight: 600; color: #0E5A36; background: rgba(14, 90, 54, 0.12); }
+    .tab-item svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</head>
+<body>
+
+  <!-- BEFORE: Prior Card-Stack & USD Preset Look -->
+  <section class="screen" data-name="01-before-redesign" data-time="09:41" style="background:#F8FAFC; color:#0F172A;">
+    <div style="position:absolute; inset:var(--safe-top) 0 var(--safe-bottom) 0; padding:12px 20px 16px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div>
+        <div style="font-size:12px; color:#047857; font-weight:600; background:#ECFDF5; display:inline-block; padding:4px 12px; border-radius:12px; border:1px solid #A7F3D0;">
+          BEFORE · ROUNDED CARD STACK &amp; USD PILLS
+        </div>
+        <h1 style="font-size:30px; line-height:1.1; font-weight:800; margin:12px 0 8px; color:#0F172A;">
+          Lighting Every Street. Protecting Every Child.
+        </h1>
+        <p style="font-size:14px; line-height:1.45; color:#475569; margin:0 0 14px;">
+          Prior template used generic rounded cards, zero field photography, a 4-stat row, and USD $25/$50/$100 pills on a 75% bar.
+        </p>
+
+        <!-- Old 2x2 Stat Box Grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; padding:10px; border-radius:8px;">
+            <div style="font-size:12px; color:#64748B;">Night Crime</div>
+            <div style="font-size:20px; font-weight:700; color:#0F172A;">-42.8%</div>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; padding:10px; border-radius:8px;">
+            <div style="font-size:12px; color:#64748B;">Solar Units</div>
+            <div style="font-size:20px; font-weight:700; color:#047857;">140 Beacons</div>
+          </div>
+        </div>
+
+        <!-- Old USD Campaign Box -->
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; padding:14px; border-radius:8px;">
+          <div style="font-size:15px; font-weight:700; color:#0F172A;">Solar Safe Corridors</div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:#475569; margin:8px 0 6px;">
+            <span>$45,200 raised</span>
+            <span>75% Complete</span>
+          </div>
+          <div style="height:8px; background:#E2E8F0; border-radius:4px; overflow:hidden; margin-bottom:10px;">
+            <div style="width:75%; height:100%; background:#0D4A2B;"></div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px;">
+            <div style="text-align:center; padding:6px; background:#F1F5F9; font-size:13px; font-weight:600;">$25</div>
+            <div style="text-align:center; padding:6px; background:#0D4A2B; color:#FFFFFF; font-size:13px; font-weight:600;">$50</div>
+            <div style="text-align:center; padding:6px; background:#F1F5F9; font-size:13px; font-weight:600;">$100</div>
+            <div style="text-align:center; padding:6px; background:#F1F5F9; font-size:13px; font-weight:600;">$250</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" style="width:100%; min-height:46px; background:#0D4A2B; color:#FFFFFF; border:none; border-radius:8px; font-size:15px; font-weight:600;">
+        Contribute $50 to Active Corridors
+      </button>
+    </div>
+  </section>
+
+  <!-- AFTER: Ward Surveyor's Field Monograph & Lit Street Atlas -->
+  <section class="screen" data-name="02-after-redesign" data-time="18:42" style="background:#F7F8F5; color:#111914;">
+    <div style="position:absolute; inset:var(--safe-top) 0 var(--safe-bottom) 0; padding:8px 20px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid #D5DDD7;">
+          <span class="mono" style="font-size:12px; color:#0E5A36; font-weight:500;">AFTER · FIELD ATLAS MONOGRAPH</span>
+          <span class="mono" style="font-size:12px; color:#3E4C43;">6.4474° N, 3.3326° E</span>
+        </div>
+
+        <h1 class="serif" style="font-size:34px; line-height:1.06; letter-spacing:-0.025em; font-weight:500; margin:10px 0 6px; color:#111914;">
+          Light along the school walk, before the <em style="font-style:italic; font-weight:400; color:#0E5A36;">bell</em>.
+        </h1>
+
+        <div style="border:1px solid #D5DDD7; background:#FFFFFF;">
+          <div style="position:relative; height:152px; overflow:hidden; border-bottom:1px solid #D5DDD7;">
+            <img src="file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/public/images/lagos-corridor.jpg" alt="Ajegunle canal corridor" style="width:100%; height:100%; object-fit:cover; filter:contrast(1.04) saturate(0.92); display:block;" />
+            <div class="mono" style="position:absolute; top:8px; left:8px; background:#111914; color:#F7F8F5; padding:3px 8px; font-size:12px;">
+              Ajegunle Canal Walk · 32 poles
+            </div>
+            <div class="mono" style="position:absolute; bottom:8px; right:8px; background:#0E5A36; color:#F7F8F5; padding:3px 8px; font-size:12px; font-weight:500;">
+              -58.4% dusk robberies
+            </div>
+          </div>
+
+          <div style="padding:8px 12px; background:#EEF1EC;">
+            <svg viewBox="0 0 330 50" style="width:100%; height:42px; display:block;">
+              <line x1="0" y1="25" x2="330" y2="25" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="3 3" />
+              <path d="M 14 38 L 95 32 L 172 19 L 248 24 L 314 13" fill="none" stroke="#111914" stroke-width="2" />
+              <circle cx="20" cy="37" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="95" cy="32" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="172" cy="19" r="12" style="fill:rgba(14,90,54,0.18); stroke:#0E5A36; stroke-width:1.2;" />
+              <circle cx="172" cy="19" r="5" style="fill:#0E5A36; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="248" cy="24" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="310" cy="13" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+            </svg>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding-top:4px; border-top:1px solid #D5DDD7;">
+              <span class="mono" style="font-size:12px; color:#111914; font-weight:500;">Pole AJ-16: Canal Footbridge</span>
+              <span class="mono" style="font-size:12px; color:#0E5A36; font-weight:500;">22.4 lux verified</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px; border-top:1px solid #D5DDD7; border-bottom:1px solid #D5DDD7; padding:8px 0;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <span style="font-size:15px; font-weight:600; color:#111914; flex:1;">1 complete 6m solar mast</span>
+            <span class="mono" style="font-size:17px; font-weight:500; color:#111914; flex-shrink:0;">₦284,000</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:2px;">
+            <span style="font-size:13px; color:#3E4C43;">74.2% hardware · 16.8% stipend · 9.0% audit</span>
+            <span class="mono" style="font-size:12px; color:#0E5A36; font-weight:500;">64/84 funded</span>
+          </div>
+        </div>
+
+        <div style="margin-top:10px; padding:9px 12px; background:#FFFFFF; border:1px solid #D5DDD7;">
+          <p class="serif" style="font-size:13px; font-style:italic; color:#111914; margin:0;">
+            &ldquo;All 32 poles remain lit from 18:15 to 06:30 daily.&rdquo;
+          </p>
+          <div style="display:flex; justify-content:space-between; margin-top:4px; padding-top:4px; border-top:1px solid #D5DDD7;">
+            <span class="mono" style="font-size:12px; color:#3E4C43;">Signed: Chief O. Lawal (CDC)</span>
+            <span class="mono" style="font-size:12px; color:#0E5A36; font-weight:500;">Custodian: S. Balogun</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:#0E5A36; color:#F7F8F5; border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Underwrite corridor unit</span>
+          <span class="mono" style="font-size:13px;">₦45,000+ →</span>
+        </button>
+
+        <div class="glass" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

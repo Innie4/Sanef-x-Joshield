@@ -1,67 +1,142 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { BookOpen, Calendar, User, ArrowRight } from "lucide-react";
-import { SANEF_BLOG } from "@/lib/data";
+import { ArrowRight } from "lucide-react";
+import { SANEF_BLOG_POSTS } from "@/lib/data";
 
 export default function BlogPage() {
+  const [category, setCategory] = useState("All");
+  const categories = ["All", "Field Evidence", "School Safety", "Youth Mediation"];
+
+  const filtered =
+    category === "All"
+      ? SANEF_BLOG_POSTS
+      : SANEF_BLOG_POSTS.filter((p) => p.category === category);
+
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-      {/* Header */}
-      <div className="max-w-3xl space-y-3">
-        <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-semibold px-3 py-1 rounded bg-emerald-100">
-          FIELD DISPATCHES & POLICY JOURNAL
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Field Insights & Community Research
-        </h1>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Read investigative articles, statistical findings from our ongoing projects, and policy recommendations 
-          for sustainable community defense.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {SANEF_BLOG.map((post) => (
-          <article
-            key={post.id}
-            className="civic-card rounded-3xl p-8 space-y-4 flex flex-col justify-between"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between text-xs text-slate-500">
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
-                  {post.category}
-                </span>
-                <span className="font-mono">{post.readTime}</span>
-              </div>
-
-              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-                {post.title}
-              </h2>
-
-              <p className="text-xs text-slate-500 flex items-center gap-2">
-                <User className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{post.author}</span>
-                <span>•</span>
-                <Calendar className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{post.date}</span>
-              </p>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
-                {post.summary}
-              </p>
-            </div>
-
-            <div className="pt-6 border-t border-slate-100">
-              <Link
-                href={`/blog/${post.slug}`}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800"
+    <div className="bg-[#FAF8F5] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="border-b border-[#E7E5E4] pb-8">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[#1B4332]">
+            Journal & Announcements
+          </p>
+          <h1 className="mt-2 font-serif text-[38px] font-medium leading-[1.1] tracking-[-0.02em] text-[#1C1917] sm:text-[46px]">
+            Field Notes & Research
+          </h1>
+          <p className="mt-3 max-w-[660px] text-[16px] leading-relaxed text-[#57534E]">
+            Long-form field dispatches, evaluation lessons, and public governance updates written
+            by SANEF ward leads and researchers.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setCategory(cat)}
+                className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
+                  category === cat
+                    ? "bg-[#1B4332] text-[#FAF8F5]"
+                    : "border border-[#E7E5E4] bg-white text-[#57534E] hover:border-[#1B4332]"
+                }`}
               >
-                <span>Read Full Article</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Featured Story */}
+        {featured && (
+          <article className="mt-10 grid grid-cols-1 overflow-hidden rounded-[10px] border border-[#E7E5E4] bg-white lg:grid-cols-12">
+            <div className="aspect-[16/10] bg-[#E7E5E4] lg:col-span-6 lg:aspect-auto">
+              <img
+                src={featured.coverImage}
+                alt={featured.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-between p-7 sm:p-9 lg:col-span-6">
+              <div>
+                <div className="flex flex-wrap items-center gap-2 text-[12px]">
+                  <span className="rounded-full border border-[#1B4332]/20 bg-[#1B4332]/5 px-2.5 py-0.5 font-semibold text-[#1B4332]">
+                    Featured · {featured.category}
+                  </span>
+                  <span className="font-mono text-[#57534E]">{featured.publishedDate}</span>
+                </div>
+                <h2 className="mt-4 font-serif text-[28px] font-medium leading-snug text-[#1C1917] sm:text-[32px]">
+                  <Link href={`/blog/${featured.slug}`} className="hover:text-[#1B4332]">
+                    {featured.title}
+                  </Link>
+                </h2>
+                <p className="mt-3 text-[15px] leading-relaxed text-[#57534E]">
+                  {featured.excerpt}
+                </p>
+              </div>
+              <div className="mt-6 flex items-center justify-between border-t border-[#E7E5E4] pt-4 text-[13px]">
+                <div>
+                  <p className="font-semibold text-[#1C1917]">{featured.author}</p>
+                  <p className="text-[#57534E]">{featured.authorRole}</p>
+                </div>
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="inline-flex items-center gap-1.5 font-semibold text-[#1B4332] hover:text-[#C85A32]"
+                >
+                  Read dispatch <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </article>
-        ))}
+        )}
+
+        {/* Remaining Articles */}
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {rest.map((post) => (
+            <article
+              key={post.slug}
+              className="flex flex-col overflow-hidden rounded-[10px] border border-[#E7E5E4] bg-white"
+            >
+              <div className="aspect-[16/9] overflow-hidden bg-[#E7E5E4]">
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col justify-between p-6">
+                <div>
+                  <div className="flex items-center gap-2 text-[12px] text-[#57534E]">
+                    <span className="font-semibold text-[#1B4332]">{post.category}</span>
+                    <span>·</span>
+                    <span className="font-mono">{post.publishedDate}</span>
+                    <span>·</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="mt-3 font-serif text-[23px] font-medium leading-snug text-[#1C1917]">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-[#1B4332]">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2.5 text-[14px] leading-relaxed text-[#57534E]">
+                    {post.excerpt}
+                  </p>
+                </div>
+                <div className="mt-5 flex items-center justify-between border-t border-[#E7E5E4] pt-4 text-[13px]">
+                  <span className="text-[#57534E]">{post.author}</span>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="font-semibold text-[#1B4332] hover:text-[#C85A32]"
+                  >
+                    Read article →
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   );

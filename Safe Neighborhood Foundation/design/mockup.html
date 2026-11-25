@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SANEF — iPhone 17 Pro Mockup Suite (Round 2)</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    @font-face {
+      font-family: "Newsreader Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2") format("woff2");
+      font-weight: 200 800;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Newsreader Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-italic.woff2") format("woff2");
+      font-weight: 200 800;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    :root {
+      --ground: #F7F8F5;
+      --raised: #EEF1EC;
+      --sheet: #FFFFFF;
+      --ink: #111914;
+      --ink-2: #3E4C43;
+      --ink-3: #57665C;
+      --rule: #D5DDD7;
+      --accent: #0E5A36;
+      --on-accent: #F7F8F5;
+      --glass: rgba(247, 248, 245, 0.82);
+    }
+
+    .screen {
+      container-type: size;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: var(--sf);
+    }
+
+    .screen[data-theme="dark"] {
+      --ground: #0B120E;
+      --raised: #131D17;
+      --sheet: #18241D;
+      --ink: #EBF0EC;
+      --ink-2: #9BB0A2;
+      --ink-3: #7A9182;
+      --rule: #24332A;
+      --accent: #279B61;
+      --on-accent: #08120C;
+      --glass-dark: rgba(19, 29, 23, 0.82);
+      background: var(--ground);
+      color: var(--ink);
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .serif {
+      font-family: "Newsreader Variable", Georgia, serif;
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .body-wrap {
+      position: absolute;
+      inset: var(--safe-top) 0 var(--safe-bottom) 0;
+      padding: 8px 20px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+    .tab-item.active {
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(14, 90, 54, 0.12);
+    }
+    .screen[data-theme="dark"] .tab-item.active {
+      background: rgba(39, 155, 97, 0.18);
+    }
+    .tab-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.75;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Small-phone (375 x 667) adaptation: drop secondary blocks, never shrink type */
+    @container (max-height: 760px) {
+      .screen .se-hide {
+        display: none !important;
+      }
+      .screen .photo-box {
+        height: 112px !important;
+      }
+      .screen .mini-Adaptive {
+        --mini: 0.24 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================================
+       1. CORE SCREEN: WARD CORRIDOR ATLAS (AJEGUNLE CANAL WALK)
+       ===================================================================== -->
+  <section class="screen" data-name="01-core-ward-atlas" data-time="18:42">
+    <div class="body-wrap">
+      <div>
+        <!-- Registry Header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule);">
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">CAC/IT 148291 · WARD-AJ-04</span>
+          <span class="mono" style="font-size:12px; color:var(--ink-2);">6.4474° N, 3.3326° E</span>
+        </div>
+
+        <!-- Hero Headline with One Meaning Italic Word -->
+        <h1 class="serif" style="font-size:34px; line-height:1.06; letter-spacing:-0.025em; font-weight:500; margin:10px 0 6px; color:var(--ink);">
+          Light along the school walk, before the <em style="font-style:italic; font-weight:400; color:var(--accent);">bell</em>.
+        </h1>
+        <p class="se-hide" style="font-size:15px; line-height:1.38; color:var(--ink-2); margin:0 0 10px;">
+          142 off-grid solar poles lit across 6 Lagos and Kaduna wards, maintained by paid neighborhood youth apprentices.
+        </p>
+
+        <!-- Documentary Field Photo + Plotted SVG Corridor Schematic -->
+        <div style="border:1px solid var(--rule); background:var(--sheet);">
+          <div class="photo-box" style="position:relative; height:152px; overflow:hidden; border-bottom:1px solid var(--rule);">
+            <img src="file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/public/images/lagos-corridor.jpg" alt="Ajegunle canal corridor" style="width:100%; height:100%; object-fit:cover; filter:contrast(1.04) saturate(0.92); display:block;" />
+            <div class="mono" style="position:absolute; top:8px; left:8px; background:#111914; color:#F7F8F5; padding:3px 8px; font-size:12px;">
+              Ajegunle Canal Walk · 32 poles
+            </div>
+            <div class="mono" style="position:absolute; bottom:8px; right:8px; background:#0E5A36; color:#F7F8F5; padding:3px 8px; font-size:12px; font-weight:500;">
+              -58.4% dusk robberies
+            </div>
+          </div>
+
+          <div style="padding:8px 12px; background:var(--raised);">
+            <svg viewBox="0 0 330 50" style="width:100%; height:42px; display:block;">
+              <line x1="0" y1="25" x2="330" y2="25" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="3 3" />
+              <path d="M 14 38 L 95 32 L 172 19 L 248 24 L 314 13" fill="none" stroke="#111914" stroke-width="2" />
+              <circle cx="20" cy="37" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="95" cy="32" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="172" cy="19" r="12" style="fill:rgba(14,90,54,0.18); stroke:#0E5A36; stroke-width:1.2;" />
+              <circle cx="172" cy="19" r="5" style="fill:#0E5A36; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="248" cy="24" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+              <circle cx="310" cy="13" r="4" style="fill:#111914; stroke:#FFFFFF; stroke-width:1.5;" />
+            </svg>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding-top:4px; border-top:1px solid var(--rule);">
+              <span class="mono" style="font-size:12px; color:var(--ink); font-weight:500;">Pole AJ-16: Canal Footbridge</span>
+              <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">22.4 lux verified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Featured Allocation Row -->
+        <div style="margin-top:10px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <span style="font-size:15px; font-weight:600; color:var(--ink); flex:1;">1 complete 6m solar mast</span>
+            <span class="mono" style="font-size:17px; font-weight:500; color:var(--ink); flex-shrink:0;">₦284,000</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:2px;">
+            <span style="font-size:13px; color:var(--ink-2);">74.2% hardware · 16.8% stipend · 9.0% audit</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">64/84 funded</span>
+          </div>
+        </div>
+
+        <!-- Signed Ward Affidavit & Custodian Row (Fills bottom rhythm cleanly) -->
+        <div class="se-hide" style="margin-top:10px; padding:9px 12px; background:var(--sheet); border:1px solid var(--rule);">
+          <p class="serif" style="font-size:13px; font-style:italic; color:var(--ink); margin:0; line-height:1.35;">
+            &ldquo;All 32 poles remain lit from 18:15 to 06:30 daily.&rdquo;
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px; padding-top:4px; border-top:1px solid var(--rule);">
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">Signed: Chief O. Lawal (CDC)</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">Custodian: S. Balogun</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Thumb-Zone CTA & Glass Tab Bar with 18px SVG Glyphs -->
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:var(--accent); color:var(--on-accent); border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Underwrite corridor unit</span>
+          <span class="mono" style="font-size:13px;">₦45,000+ →</span>
+        </button>
+
+        <div class="glass" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       2. DETAIL SCREEN: AUDITED WARD DOSSIER & ITEMIZED VOUCHER
+       ===================================================================== -->
+  <section class="screen" data-name="02-corridor-dossier" data-time="18:43">
+    <div class="body-wrap">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule);">
+          <span class="mono" style="font-size:12px; color:var(--ink-2);">← Back to Atlas</span>
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">SANEF-AUD-2026-014</span>
+        </div>
+
+        <h1 class="serif" style="font-size:28px; line-height:1.12; letter-spacing:-0.02em; font-weight:500; margin:10px 0 4px; color:var(--ink);">
+          Ajegunle Canal Walk <em style="font-style:italic; font-weight:400; color:var(--accent);">ledger</em>.
+        </h1>
+        <p class="mono" style="font-size:13px; color:var(--ink-2); margin:0 0 10px;">
+          Commissioned 14 March 2026 · Total: <strong style="font-size:17px; color:var(--ink);">₦14,820,500</strong>
+        </p>
+
+        <!-- Photo & Witness Affidavit -->
+        <div class="se-hide" style="border:1px solid var(--rule); background:var(--sheet); margin-bottom:10px;">
+          <div style="height:106px; overflow:hidden; border-bottom:1px solid var(--rule);">
+            <img src="file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/public/images/solar-committee.jpg" alt="Ward committee sign-off" style="width:100%; height:100%; object-fit:cover; filter:contrast(1.04) saturate(0.92); display:block;" />
+          </div>
+          <div style="padding:7px 12px; background:var(--raised);">
+            <p style="font-size:13px; color:var(--ink); margin:0; font-weight:600;">
+              Signed: Chief O. Lawal (Ajeromi Ward 4 CDC)
+            </p>
+            <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">
+              32 poles verified active · 18,420 daily pedestrians
+            </p>
+          </div>
+        </div>
+
+        <!-- Itemized Naira Expenditure Table with 12px gap on every row -->
+        <div style="border-top:1px solid var(--rule);">
+          <div style="padding:8px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">32 galvanized 6m solar masts</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">80W mono panels &amp; 3,200lm heads</p>
+            </div>
+            <span class="mono" style="font-size:15px; font-weight:500; color:var(--ink); flex-shrink:0;">₦10,984,000</span>
+          </div>
+
+          <div style="padding:8px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">Concrete plinths &amp; shear bolts</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">Ajeromi Direct Labor Guild (19 masons)</p>
+            </div>
+            <span class="mono" style="font-size:15px; font-weight:500; color:var(--ink); flex-shrink:0;">₦1,412,500</span>
+          </div>
+
+          <div style="padding:8px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">12-month custodian stipends</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">8 ward electrical apprentices</p>
+            </div>
+            <span class="mono" style="font-size:15px; font-weight:500; color:var(--ink); flex-shrink:0;">₦1,680,000</span>
+          </div>
+
+          <div style="padding:8px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">External quantity survey &amp; audit</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">Adetola &amp; Co. Chartered Accountants</p>
+            </div>
+            <span class="mono" style="font-size:15px; font-weight:500; color:var(--ink); flex-shrink:0;">₦744,000</span>
+          </div>
+        </div>
+
+        <!-- Divisional Police Blotter & Lux Verification Summary (Eliminates bottom gap) -->
+        <div class="se-hide" style="margin-top:10px; padding:9px 12px; background:var(--raised); border:1px solid var(--rule);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="mono" style="font-size:12px; color:var(--ink); font-weight:500;">Ajeromi Division 6-Mo Blotter</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">-58.4% robberies</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px; padding-top:4px; border-top:1px solid var(--rule); gap:12px;">
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">Mean lux: 22.4 lx</span>
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">Battery audit: 14 Sep</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:var(--ink); color:var(--on-accent); border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Download audited PDF dossier</span>
+          <span class="mono" style="font-size:12px;">1.4 MB ↓</span>
+        </button>
+
+        <div class="glass" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. SECOND CORE-LOOP SCREEN: ITEMIZED GRANT & POLE ALLOCATION LEDGER
+       ===================================================================== -->
+  <section class="screen" data-name="03-grant-ledger" data-time="18:45">
+    <div class="body-wrap">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule);">
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">SCUML RN 084192 · ESCROW</span>
+          <span class="mono" style="font-size:12px; color:var(--ink-2);">64 / 84 poles funded</span>
+        </div>
+
+        <h1 class="serif" style="font-size:28px; line-height:1.12; letter-spacing:-0.02em; font-weight:500; margin:10px 0 4px; color:var(--ink);">
+          Allocate a corridor <em style="font-style:italic; font-weight:400; color:var(--accent);">unit</em>.
+        </h1>
+        <p style="font-size:15px; line-height:1.38; color:var(--ink-2); margin:0 0 10px;">
+          Phase II Orile &amp; Bariga School Footpaths: ₦18,420,500 committed of ₦23,856,000 target.
+        </p>
+
+        <!-- Selectable Hardware Units (Shortened GR-04 title + 12px gap so zero collision) -->
+        <div style="border:1px solid var(--rule); background:var(--sheet);">
+          <div style="padding:9px 12px; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">1 youth mediator monthly stipend</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">GR-01 · 30 days ward coverage</p>
+            </div>
+            <span class="mono" style="font-size:15px; color:var(--ink); flex-shrink:0;">₦45,000</span>
+          </div>
+
+          <div style="padding:9px 12px; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">1 LiFePO4 battery reserve pack</p>
+              <p class="mono" style="font-size:12px; color:var(--ink-2); margin:2px 0 0;">GR-02 · 12.8V 54Ah deep-cycle</p>
+            </div>
+            <span class="mono" style="font-size:15px; color:var(--ink); flex-shrink:0;">₦68,500</span>
+          </div>
+
+          <div style="padding:9px 12px; background:#E4ECE7; border-left:4px solid var(--accent); display:flex; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="flex:1;">
+              <p style="font-size:15px; font-weight:600; color:var(--ink); margin:0;">1 complete 6m solar mast</p>
+              <p class="mono" style="font-size:12px; color:var(--accent); margin:2px 0 0; font-weight:500;">GR-04 · 80W panel &amp; 3,200lm head</p>
+            </div>
+            <span class="mono" style="font-size:17px; font-weight:500; color:var(--ink); flex-shrink:0;">₦284,000</span>
+          </div>
+        </div>
+
+        <!-- Statutory Split Breakdown -->
+        <div style="margin-top:10px; padding:9px 12px; background:var(--raised); border:1px solid var(--rule);">
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--ink-2); margin-bottom:3px;">
+            <span>74.2% Direct field hardware</span>
+            <span class="mono" style="color:var(--ink); font-weight:500;">₦210,728</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--ink-2); margin-bottom:3px;">
+            <span>16.8% Ward youth custodian stipend</span>
+            <span class="mono" style="color:var(--ink); font-weight:500;">₦47,712</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--ink-2);">
+            <span>9.0% External audit &amp; right-of-way</span>
+            <span class="mono" style="color:var(--ink); font-weight:500;">₦25,560</span>
+          </div>
+        </div>
+
+        <!-- Quantity Stepper & Pole Assignment Strip (Fills the 190px bottom gap cleanly) -->
+        <div class="se-hide" style="margin-top:10px; border:1px solid var(--rule); background:var(--sheet); padding:9px 12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:6px; border-bottom:1px solid var(--rule);">
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">Quantity to underwrite</span>
+            <div class="mono" style="display:flex; gap:6px; font-size:12px;">
+              <span style="background:var(--ink); color:var(--on-accent); padding:2px 8px; font-weight:500;">1x</span>
+              <span style="background:var(--raised); color:var(--ink-2); padding:2px 8px; border:1px solid var(--rule);">2x</span>
+              <span style="background:var(--raised); color:var(--ink-2); padding:2px 8px; border:1px solid var(--rule);">4x</span>
+            </div>
+          </div>
+          <div style="padding-top:6px; display:flex; justify-content:space-between; align-items:center;">
+            <span class="mono" style="font-size:12px; color:var(--ink); font-weight:500;">Pole OR-65: St. Finbarr&apos;s Gate</span>
+            <span class="mono" style="font-size:12px; color:var(--accent);">6.5354°N, 3.3892°E</span>
+          </div>
+          <div style="padding-top:4px; display:flex; justify-content:space-between; align-items:center;">
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">First Bank: 1018491028</span>
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">Zenith: 1224890315</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:var(--accent); color:var(--on-accent); border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Register ₦284,000 voucher</span>
+          <span class="mono" style="font-size:13px;">Pole OR-65 →</span>
+        </button>
+
+        <div class="glass" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       4. SIGNATURE INTERACTION STORYBOARD PANEL (Status Bar + Dynamic Island)
+       ===================================================================== -->
+  <section class="screen" data-name="04-signature-storyboard" data-time="18:44">
+    <div class="body-wrap">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule); gap:8px;">
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500; white-space:nowrap;">SIGNATURE INTERACTION</span>
+          <span class="mono" style="font-size:12px; color:var(--ink-2); white-space:nowrap;">320ms spring · haptic</span>
+        </div>
+
+        <h1 class="serif" style="font-size:28px; line-height:1.12; letter-spacing:-0.02em; font-weight:500; margin:8px 0 4px; color:var(--ink);">
+          Corridor schematic &amp; grant <em style="font-style:italic; font-weight:400; color:var(--accent);">split</em>.
+        </h1>
+        <p style="font-size:15px; line-height:1.35; color:var(--ink-2); margin:0;">
+          Tap a pole node to lock GPS, expand the 22.4-lux radius, and compute the Naira split.
+        </p>
+      </div>
+
+      <!-- Three Fully-Populated Mini iPhone Frames Side by Side -->
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+        <!-- Mini Frame 1: 0ms Tap Node -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div class="mini mini-Adaptive" style="--mini:0.275; border:1px solid var(--rule);">
+            <div class="mini-screen" data-time="18:44" style="background:#F7F8F5; padding:66px 18px 28px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#0E5A36; padding-bottom:8px; border-bottom:2px solid #D5DDD7;">WARD-AJ-04 · 32 Poles</div>
+                <div style="font-size:26px; font-weight:700; color:#111914; margin:12px 0 8px;">1. Tap Pole AJ-16</div>
+                <!-- Mini Photo Strip -->
+                <div style="height:175px; border:2px solid #D5DDD7; overflow:hidden;">
+                  <img src="file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/public/images/lagos-corridor.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" />
+                </div>
+                <!-- Mini SVG Plot -->
+                <div style="margin-top:12px; height:165px; background:#EEF1EC; border:2px solid #D5DDD7; padding:14px;">
+                  <svg viewBox="0 0 300 110" style="width:100%; height:105px;">
+                    <path d="M 20 85 L 150 48 L 280 26" fill="none" stroke="#111914" stroke-width="5" />
+                    <circle cx="50" cy="76" r="8" style="fill:#111914;" />
+                    <circle cx="150" cy="48" r="14" style="fill:#111914; stroke:#FFFFFF; stroke-width:3;" />
+                    <circle cx="245" cy="34" r="8" style="fill:#111914;" />
+                  </svg>
+                  <div style="font-size:16px; font-weight:600; color:#111914;">Touch: AJ-16 Footbridge</div>
+                </div>
+                <!-- Mini Unit Row -->
+                <div style="margin-top:14px; padding:14px; background:#FFFFFF; border:2px solid #D5DDD7; display:flex; justify-content:space-between;">
+                  <span style="font-size:18px; font-weight:600; color:#111914;">1 Solar Mast</span>
+                  <span style="font-size:18px; font-weight:700; color:#111914;">₦284,000</span>
+                </div>
+              </div>
+              <!-- Mini Bottom CTA + Tab Bar -->
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="height:54px; background:#111914; color:#F7F8F5; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;">Select Pole AJ-16</div>
+                <div style="height:46px; background:#EEF1EC; border-radius:23px; border:2px solid #D5DDD7; display:flex; align-items:center; justify-content:space-around; font-size:15px; font-weight:600; color:#3E4C43;">
+                  <span style="color:#0E5A36;">Atlas</span><span>Dossiers</span><span>Grant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="mono" style="font-size:12px; color:var(--ink); font-weight:500;">0ms · Tap</span>
+        </div>
+
+        <!-- Mini Frame 2: 140ms Lux Ring & GPS Lock -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div class="mini mini-Adaptive" style="--mini:0.275; border:1px solid var(--accent);">
+            <div class="mini-screen" data-time="18:44" style="background:#F7F8F5; padding:66px 18px 28px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#0E5A36; padding-bottom:8px; border-bottom:2px solid #0E5A36;">6.4474°N, 3.3326°E</div>
+                <div style="font-size:26px; font-weight:700; color:#0E5A36; margin:12px 0 8px;">2. Lux &amp; GPS Lock</div>
+                <!-- Mini SVG Plot with Expanded Emerald Lux Radius -->
+                <div style="height:210px; background:#EEF1EC; border:3px solid #0E5A36; padding:14px;">
+                  <svg viewBox="0 0 300 135" style="width:100%; height:135px;">
+                    <path d="M 20 95 L 150 58 L 280 32" fill="none" stroke="#111914" stroke-width="5" />
+                    <circle cx="150" cy="58" r="46" style="fill:rgba(14,90,54,0.24); stroke:#0E5A36; stroke-width:4;" />
+                    <circle cx="150" cy="58" r="13" style="fill:#0E5A36; stroke:#FFFFFF; stroke-width:3;" />
+                  </svg>
+                  <div style="font-size:17px; font-weight:700; color:#0E5A36;">22.4 Lux Canopy Locked</div>
+                </div>
+                <!-- Mini CDC Affidavit Box -->
+                <div style="margin-top:14px; padding:16px; background:#FFFFFF; border:2px solid #0E5A36;">
+                  <div style="font-size:16px; font-weight:700; color:#111914;">CDC Witness Verified</div>
+                  <div style="font-size:15px; color:#3E4C43; margin-top:6px;">Signed: Chief O. Lawal</div>
+                  <div style="font-size:15px; color:#0E5A36; font-weight:600; margin-top:6px;">-58.4% dusk robberies</div>
+                </div>
+              </div>
+              <!-- Mini Bottom CTA + Tab Bar -->
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="height:54px; background:#0E5A36; color:#F7F8F5; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;">Compute Naira Split →</div>
+                <div style="height:46px; background:#EEF1EC; border-radius:23px; border:2px solid #D5DDD7; display:flex; align-items:center; justify-content:space-around; font-size:15px; font-weight:600; color:#3E4C43;">
+                  <span style="color:#0E5A36;">Atlas</span><span>Dossiers</span><span>Grant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">140ms · Lock</span>
+        </div>
+
+        <!-- Mini Frame 3: 320ms Voucher Split -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div class="mini mini-Adaptive" style="--mini:0.275; border:1px solid var(--rule);">
+            <div class="mini-screen" data-time="18:44" style="background:#F7F8F5; padding:66px 18px 28px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#0E5A36; padding-bottom:8px; border-bottom:2px solid #D5DDD7;">VOUCHER GR-04 · OR-65</div>
+                <div style="font-size:26px; font-weight:700; color:#111914; margin:12px 0 8px;">3. Naira Split</div>
+                <!-- Mini Voucher Card -->
+                <div style="padding:18px; background:#FFFFFF; border:2px solid #111914;">
+                  <div style="font-size:15px; color:#3E4C43;">1 Complete 6m Solar Mast</div>
+                  <div style="font-size:34px; font-weight:700; color:#0E5A36; margin:6px 0 12px;">₦284,000</div>
+                  <div style="height:14px; width:100%; display:flex; background:#EEF1EC; margin-bottom:14px;">
+                    <div style="width:74%; background:#0E5A36;"></div>
+                    <div style="width:17%; background:#111914;"></div>
+                    <div style="width:9%; background:#57665C;"></div>
+                  </div>
+                  <div style="font-size:16px; color:#111914; font-weight:600; padding:6px 0; border-bottom:1px solid #D5DDD7;">74.2% Hardware: ₦210,728</div>
+                  <div style="font-size:16px; color:#111914; font-weight:600; padding:6px 0; border-bottom:1px solid #D5DDD7;">16.8% Stipend: ₦47,712</div>
+                  <div style="font-size:16px; color:#111914; font-weight:600; padding:6px 0;">9.0% Audit: ₦25,560</div>
+                </div>
+                <div style="margin-top:12px; padding:12px; background:#E4ECE7; border-left:5px solid #0E5A36; font-size:15px; font-weight:600; color:#111914;">
+                  Escrow: First Bank 1018491028
+                </div>
+              </div>
+              <!-- Mini Bottom CTA + Tab Bar -->
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="height:54px; background:#0E5A36; color:#F7F8F5; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;">Register ₦284,000 Voucher</div>
+                <div style="height:46px; background:#EEF1EC; border-radius:23px; border:2px solid #D5DDD7; display:flex; align-items:center; justify-content:space-around; font-size:15px; font-weight:600; color:#3E4C43;">
+                  <span>Atlas</span><span>Dossiers</span><span style="color:#0E5A36;">Grant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="mono" style="font-size:12px; color:var(--ink); font-weight:500;">320ms · Split</span>
+        </div>
+      </div>
+
+      <!-- Storyboard Specification Ledger -->
+      <div style="border-top:1px solid var(--rule); padding-top:8px;">
+        <div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--rule);">
+          <span style="font-size:13px; color:var(--ink-2);">Trigger &amp; Haptic</span>
+          <span class="mono" style="font-size:12px; color:var(--ink);">.sensoryFeedback(.selection)</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--rule);">
+          <span style="font-size:13px; color:var(--ink-2);">Spring Curve</span>
+          <span class="mono" style="font-size:12px; color:var(--ink);">.spring(duration: 0.32, bounce: 0.08)</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:5px 0;">
+          <span style="font-size:13px; color:var(--ink-2);">Reduced Motion</span>
+          <span class="mono" style="font-size:12px; color:var(--accent);">120ms opacity cross-fade</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5. DARK MODE CORE SCREEN: NIGHT CORRIDOR LUX WALK (data-theme="dark")
+       ===================================================================== -->
+  <section class="screen" data-name="05-dark-night-patrol" data-theme="dark" data-chrome="light" data-time="21:48">
+    <div class="body-wrap">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule);">
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">NIGHT LUX WALK · WARD-IB-07</span>
+          <span class="mono" style="font-size:12px; color:var(--ink-2);">7.3569° N, 3.8744° E</span>
+        </div>
+
+        <h1 class="serif" style="font-size:34px; line-height:1.06; letter-spacing:-0.025em; font-weight:500; margin:10px 0 6px; color:var(--ink);">
+          Every lamp verified after <em style="font-style:italic; font-weight:400; color:var(--accent);">dusk</em>.
+        </h1>
+        <p class="se-hide" style="font-size:15px; line-height:1.38; color:var(--ink-2); margin:0 0 10px;">
+          Ibadan South-West &amp; Makoko night watch mesh: 56 licensed VHF radios and 142 active solar masts.
+        </p>
+
+        <!-- Night Documentary Photo + Schematic -->
+        <div style="border:1px solid var(--rule); background:var(--sheet);">
+          <div class="photo-box" style="position:relative; height:152px; overflow:hidden; border-bottom:1px solid var(--rule);">
+            <img src="file:///home/inimfon-udoh/SANEF/Safe%20Neighborhood%20Foundation/public/images/lit-night-road.jpg" alt="Lit night corridor" style="width:100%; height:100%; object-fit:cover; display:block;" />
+            <div class="mono" style="position:absolute; top:8px; left:8px; background:#0B120E; color:#EBF0EC; padding:3px 8px; font-size:12px; border:1px solid #24332A;">
+              Molete Repeater CH-03
+            </div>
+            <div class="mono" style="position:absolute; bottom:8px; right:8px; background:#279B61; color:#08120C; padding:3px 8px; font-size:12px; font-weight:500;">
+              8.5 min mean dispatch
+            </div>
+          </div>
+
+          <div style="padding:8px 12px; background:var(--raised);">
+            <svg viewBox="0 0 330 50" style="width:100%; height:42px; display:block;">
+              <line x1="0" y1="25" x2="330" y2="25" stroke="#24332A" stroke-width="1" stroke-dasharray="3 3" />
+              <path d="M 18 36 L 105 22 L 195 28 L 310 15" fill="none" stroke="#9BB0A2" stroke-width="2" />
+              <circle cx="22" cy="35" r="4" style="fill:#279B61;" />
+              <circle cx="105" cy="22" r="12" style="fill:rgba(39,155,97,0.22); stroke:#279B61; stroke-width:1.5;" />
+              <circle cx="105" cy="22" r="5" style="fill:#279B61;" />
+              <circle cx="195" cy="28" r="4" style="fill:#279B61;" />
+              <circle cx="308" cy="15" r="4" style="fill:#279B61;" />
+            </svg>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding-top:4px; border-top:1px solid var(--rule);">
+              <span class="mono" style="font-size:12px; color:var(--ink);">Battery reserve: 13.2V (94%)</span>
+              <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">31.7 / 32 poles lit</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+          <span style="font-size:15px; font-weight:600; color:var(--ink); flex:1;">1 licensed VHF watch radio pair</span>
+          <span class="mono" style="font-size:17px; font-weight:500; color:var(--accent); flex-shrink:0;">₦112,000</span>
+        </div>
+
+        <!-- 2-Row Live Night Repeater Check-In Log (Fills the 150px dark void cleanly) -->
+        <div class="se-hide" style="margin-top:10px; border:1px solid var(--rule); background:var(--raised); padding:8px 12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:5px; border-bottom:1px solid var(--rule);">
+            <span class="mono" style="font-size:12px; color:var(--ink);">21:40 WAT · Pole IB-14 Molete Bridge</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">21.8 lx · OK</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-top:5px;">
+            <span class="mono" style="font-size:12px; color:var(--ink-2);">21:32 WAT · Pole IB-09 Ring Rd Clinic</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">22.4 lx · OK</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:var(--accent); color:var(--on-accent); border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Log night pole inspection</span>
+          <span class="mono" style="font-size:13px;">WARD-IB-07 →</span>
+        </button>
+
+        <div class="glass-dark" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       6. EMPTY / FIRST-RUN STATE: UNMAPPED WARD CORRIDOR NOMINATION
+       ===================================================================== -->
+  <section class="screen" data-name="06-empty-corridor-intake" data-time="17:50">
+    <div class="body-wrap">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid var(--rule);">
+          <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500;">NEW WARD SURVEY · BARIGA WARD B</span>
+          <span class="mono" style="font-size:12px; color:var(--ink-2);">0 poles plotted</span>
+        </div>
+
+        <h1 class="serif" style="font-size:34px; line-height:1.06; letter-spacing:-0.025em; font-weight:500; margin:10px 0 6px; color:var(--ink);">
+          No poles plotted on this <em style="font-style:italic; font-weight:400; color:var(--accent);">footpath</em> yet.
+        </h1>
+        <p style="font-size:15px; line-height:1.4; color:var(--ink-2); margin:0 0 12px;">
+          Walk the school route between 18:00 and 19:30 to record zero-lux blind spots, culvert crossings, and school gate coordinates for Phase II funding.
+        </p>
+
+        <!-- Empty Cartographic Survey Grid (Single-line nowrap GPS coordinate) -->
+        <div style="border:1px solid var(--rule); background:var(--sheet); padding:12px;">
+          <svg viewBox="0 0 320 126" style="width:100%; height:114px; display:block;">
+            <rect x="1" y="1" width="318" height="124" fill="#EEF1EC" stroke="#D5DDD7" stroke-width="1" />
+            <line x1="0" y1="42" x2="320" y2="42" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="0" y1="84" x2="320" y2="84" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="106" y1="0" x2="106" y2="126" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="212" y1="0" x2="212" y2="126" stroke="#D5DDD7" stroke-width="1" stroke-dasharray="4 4" />
+            <!-- Unmapped dashed path -->
+            <path d="M 28 96 L 160 63 L 292 32" fill="none" stroke="#57665C" stroke-width="2" stroke-dasharray="6 4" />
+            <circle cx="28" cy="96" r="6" style="fill:#FFFFFF; stroke:#0E5A36; stroke-width:2;" />
+            <circle cx="292" cy="32" r="6" style="fill:#FFFFFF; stroke:#57665C; stroke-width:2;" />
+          </svg>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top:8px; border-top:1px solid var(--rule); margin-top:8px;">
+            <span class="mono" style="font-size:12px; color:var(--ink); white-space:nowrap;">St. Finbarr&apos;s Gate</span>
+            <span class="mono" style="font-size:12px; color:var(--accent); font-weight:500; white-space:nowrap;">GPS Ready · 6.5354°N</span>
+          </div>
+        </div>
+
+        <!-- Required Specifications & Field Surveyor Checklist (Eliminates 120px bottom gap) -->
+        <div class="se-hide" style="margin-top:10px; border-top:1px solid var(--rule);">
+          <div style="padding:7px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between;">
+            <span style="font-size:14px; color:var(--ink-2);">Minimum school corridor standard</span>
+            <span class="mono" style="font-size:13px; color:var(--ink); font-weight:500;">15.0 lux horizontal</span>
+          </div>
+          <div style="padding:7px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between;">
+            <span style="font-size:14px; color:var(--ink-2);">Pole interval spacing</span>
+            <span class="mono" style="font-size:13px; color:var(--ink); font-weight:500;">38 meters center</span>
+          </div>
+          <div style="padding:7px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between;">
+            <span style="font-size:14px; color:var(--ink-2);">Target commissioning cohort</span>
+            <span class="mono" style="font-size:13px; color:var(--accent); font-weight:500;">Phase II (Q1 2027)</span>
+          </div>
+        </div>
+
+        <div class="se-hide" style="margin-top:8px; padding:8px 10px; background:var(--raised); border:1px solid var(--rule);">
+          <p class="mono" style="font-size:12px; color:var(--ink); font-weight:500; margin:0;">
+            1. Calibrate lux meter · 2. Log culverts · 3. PTA co-sign
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" style="width:100%; min-height:46px; background:var(--accent); color:var(--on-accent); border:none; font-size:15px; font-weight:600; display:flex; align-items:center; justify-content:space-between; padding:0 16px;">
+          <span>Start dusk GPS &amp; lux walk</span>
+          <span class="mono" style="font-size:13px;">Mark Pole #01 →</span>
+        </button>
+
+        <div class="glass" data-system style="height:56px; border-radius:28px; display:flex; align-items:center; justify-content:space-around; padding:0 8px;">
+          <div class="tab-item active">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <span>Atlas</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+            <span>Dossiers</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="11" y2="15"/></svg>
+            <span>Grant</span>
+          </div>
+          <div class="tab-item">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M14.5 19c0-2 1.6-3.6 3.5-3.6s3.5 1.6 3.5 3.6"/></svg>
+            <span>Forums</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       7. APP ICON (1024pt master inside 344pt .app-icon squircle)
+       ===================================================================== -->
+  <section class="app-icon" data-name="07-app-icon" style="background:#0B120E;">
+    <svg viewBox="0 0 344 344" style="width:100%; height:100%; display:block;">
+      <!-- Deep Night-Ward Forest Ground -->
+      <rect width="344" height="344" fill="#0B120E" />
+      <!-- Subtle Cartographic Ward Grid -->
+      <line x1="0" y1="258" x2="344" y2="258" stroke="#18281F" stroke-width="3" />
+      <line x1="86" y1="0" x2="86" y2="344" stroke="#18281F" stroke-width="2" />
+      <line x1="258" y1="0" x2="258" y2="344" stroke="#18281F" stroke-width="2" />
+
+      <!-- Emerald Illumination Cone on the School Corridor -->
+      <polygon points="184,96 306,286 78,286" style="fill:#0E5A36;" />
+      <polygon points="184,96 274,286 110,286" style="fill:#279B61;" />
+
+      <!-- Lit Footpath Base Bar -->
+      <rect x="56" y="280" width="232" height="14" rx="2" fill="#F7F8F5" />
+
+      <!-- Galvanized Solar Mast Silhouette -->
+      <path d="M 116 286 L 116 92 L 196 92" fill="none" stroke="#F7F8F5" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter" />
+      <!-- Inclined Solar PV Panel Cap -->
+      <line x1="94" y1="74" x2="154" y2="56" stroke="#279B61" stroke-width="12" stroke-linecap="square" />
+      <!-- Luminaire Lamp Head -->
+      <circle cx="192" cy="106" r="11" fill="#F7F8F5" />
+    </svg>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

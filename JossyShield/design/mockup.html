@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>JossyShield — iOS 26 Native Device Suite (Round 2)</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    @font-face {
+      font-family: "Archivo Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/JossyShield/node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+      font-weight: 100 900;
+      font-stretch: 62% 125%;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/JossyShield/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    :root {
+      --ground: #F3F5F8;
+      --raised: #FFFFFF;
+      --ink: #0B0F17;
+      --ink-2: #3B4659;
+      --ink-3: #5E6B80;
+      --rule: #D5DCE6;
+      --accent: #1D4ED8;
+      --on-accent: #FFFFFF;
+      --positive: #1E40AF;
+      --pill-bg: rgba(29, 78, 216, 0.12);
+    }
+
+    .screen[data-theme="dark"] {
+      --ground: #0A0D12;
+      --raised: #11161F;
+      --ink: #F1F5F9;
+      --ink-2: #A3B1C6;
+      --ink-3: #8494AB;
+      --rule: #1E2634;
+      --accent: #2563EB;
+      --on-accent: #F8FAFC;
+      --positive: #93C5FD;
+      --pill-bg: rgba(37, 99, 235, 0.24);
+      background: var(--ground);
+      color: var(--ink);
+    }
+
+    .screen {
+      background: var(--ground);
+      color: var(--ink);
+      font-family: "Archivo Variable", var(--sf);
+      display: flex;
+      flex-direction: column;
+      padding: calc(var(--safe-top) + 6px) 18px calc(var(--safe-bottom) + 68px);
+    }
+
+    .display {
+      font-family: "Archivo Variable", var(--sf);
+      font-stretch: 112%;
+      letter-spacing: -0.03em;
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", var(--sf-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tabbar {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      height: 60px;
+      border-radius: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      padding: 4px;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 52px;
+      border-radius: 26px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink-2);
+    }
+
+    .tab-item.active {
+      background: var(--pill-bg);
+      color: var(--positive);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCREEN 1: CORE SCREEN (DARK PRIMARY) — Live Post Desk -->
+  <section class="screen" data-name="01-post-desk" data-theme="dark" data-chrome="light" data-time="22:15">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+      <span class="mono" style="font-size:12px;color:var(--positive);">SEC-01 · Victoria Island</span>
+      <span class="mono" style="font-size:12px;color:var(--ink-2);">UHF 453.225 MHz</span>
+    </div>
+
+    <div style="padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div>
+        <div class="display" style="font-size:48px;font-weight:800;line-height:0.96;">38</div>
+        <div style="font-size:15px;color:var(--ink-2);margin-top:4px;">Cleared guards on standby tonight</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="mono" style="font-size:13px;color:var(--positive);">ETA 9m 20s</div>
+        <div class="mono" style="font-size:12px;color:var(--ink-3);margin-top:2px;">Capt. M. Briggs</div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;border:1px solid var(--rule);background:var(--raised);position:relative;flex:1;min-height:175px;overflow:hidden;">
+      <img src="file:///home/inimfon-udoh/SANEF/JossyShield/public/images/guard-shoulder.jpg" alt="Perimeter guard on watch" style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.12) brightness(0.92);" />
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(10,13,18,0.92);border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span class="mono" style="font-size:12px;color:var(--ink);">Post 02 · Adeola Odeku Gate</span>
+        <span class="mono" style="font-size:12px;color:var(--positive);">NFC #VI-019</span>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;padding:8px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:13px;color:var(--ink-2);">Active posts in sector</span>
+      <span class="mono" style="font-size:13px;color:var(--ink);">14 sites · 112 guards on watch</span>
+    </div>
+
+    <div style="margin-top:10px;border:1px solid var(--rule);background:var(--raised);padding:12px;display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+        <span style="font-size:15px;font-weight:600;">Standing post (12h relief)</span>
+        <span class="mono" style="font-size:13px;color:var(--positive);">6 officers</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-size:13px;color:var(--ink-2);">Monthly allocation</span>
+        <span class="display" style="font-size:28px;font-weight:700;">₦1,119,000</span>
+      </div>
+      <button style="width:100%;height:46px;background:var(--accent);color:var(--on-accent);border:none;font-size:15px;font-weight:600;">
+        Issue requisition ticket
+      </button>
+    </div>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 2: DETAIL SCREEN — Rich Architectural Compound Schematic & NFC Checkpoint Log -->
+  <section class="screen" data-name="02-post-detail" data-theme="dark" data-chrome="light" data-time="22:18">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+      <span class="mono" style="font-size:12px;color:var(--ink-2);">← Post desk</span>
+      <span class="mono" style="font-size:12px;color:var(--positive);">LOG-2025-114</span>
+    </div>
+
+    <div style="padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div>
+        <h1 class="display" style="font-size:28px;font-weight:800;line-height:1.1;margin:0;">
+          Apapa Bonded Terminal
+        </h1>
+        <div class="mono" style="font-size:13px;color:var(--ink-2);margin-top:3px;">
+          Ch 07 (453.475 MHz) · 19 months zero loss
+        </div>
+      </div>
+      <div class="display" style="font-size:48px;font-weight:800;line-height:0.95;color:var(--positive);">28</div>
+    </div>
+
+    <!-- Rich Multi-Node Architectural SVG Compound Perimeter Schematic -->
+    <div style="margin-top:10px;border:1px solid var(--rule);background:var(--raised);display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:0;overflow:hidden;">
+      <div style="padding:6px 10px;border-bottom:1px solid var(--rule);background:#0D1118;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+        <span class="mono" style="font-size:12px;color:var(--ink-2);white-space:nowrap;">45-acre perimeter plot</span>
+        <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">6.4412°N, 3.3681°E</span>
+      </div>
+      <div style="padding:6px 8px;flex:1;min-height:0;display:flex;align-items:stretch;">
+        <svg viewBox="0 0 330 176" preserveAspectRatio="none" style="width:100%;height:100%;">
+          <!-- Background grid -->
+          <rect x="2" y="2" width="326" height="172" fill="#0A0D12" stroke="#1E2634" stroke-width="1" />
+          <line x1="82" y1="2" x2="82" y2="174" stroke="#151C28" stroke-width="1" />
+          <line x1="165" y1="2" x2="165" y2="174" stroke="#151C28" stroke-width="1" />
+          <line x1="248" y1="2" x2="248" y2="174" stroke="#151C28" stroke-width="1" />
+          <line x1="2" y1="58" x2="328" y2="58" stroke="#151C28" stroke-width="1" />
+          <line x1="2" y1="116" x2="328" y2="116" stroke="#151C28" stroke-width="1" />
+
+          <!-- Outer compound perimeter boundary -->
+          <rect x="18" y="16" width="294" height="144" fill="rgba(37,99,235,0.06)" stroke="#2563EB" stroke-width="1.5" />
+          <!-- Internal bonded warehouse blocks -->
+          <rect x="108" y="32" width="104" height="46" fill="#11161F" stroke="#1E2634" stroke-width="1.2" />
+          <rect x="108" y="96" width="104" height="46" fill="#11161F" stroke="#1E2634" stroke-width="1.2" />
+          <!-- Double-gate vehicle airlock bay on west wall -->
+          <rect x="18" y="62" width="68" height="52" fill="#161D29" stroke="#60A5FA" stroke-width="1.5" />
+          <line x1="86" y1="54" x2="86" y2="122" stroke="#93C5FD" stroke-width="2.5" />
+
+          <!-- Patrol circuit path -->
+          <polyline points="42,88 156,18 296,56 296,144 42,88" fill="none" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="4 3" />
+
+          <!-- 4 Plotted NFC Nodes -->
+          <circle cx="42" cy="88" r="6" fill="#2563EB" stroke="#93C5FD" stroke-width="1.5" />
+          <circle cx="156" cy="18" r="5.5" fill="#2563EB" stroke="#93C5FD" stroke-width="1.5" />
+          <circle cx="296" cy="56" r="5.5" fill="#2563EB" stroke="#93C5FD" stroke-width="1.5" />
+          <circle cx="296" cy="144" r="5.5" fill="#11161F" stroke="#8494AB" stroke-width="1.5" />
+
+          <!-- Node Callouts on solid dark backing -->
+          <rect x="24" y="24" width="76" height="18" fill="#0A0D12" />
+          <text x="28" y="37" style="fill:currentColor;color:#93C5FD;" font-size="12" font-family="IBM Plex Mono">AP-01 Gate</text>
+
+          <rect x="222" y="24" width="82" height="18" fill="#0A0D12" />
+          <text x="226" y="37" style="fill:currentColor;color:#F1F5F9;" font-size="12" font-family="IBM Plex Mono">AP-06 Subst</text>
+
+          <rect x="218" y="132" width="70" height="18" fill="#0A0D12" />
+          <text x="222" y="145" style="fill:currentColor;color:#A3B1C6;" font-size="12" font-family="IBM Plex Mono">Berth 03</text>
+        </svg>
+      </div>
+      <div style="padding:5px 10px;border-top:1px solid var(--rule);background:#0D1118;display:flex;justify-content:space-between;align-items:center;" class="mono">
+        <span style="font-size:12px;color:var(--ink-2);">4 NFC checkpoints active</span>
+        <span style="font-size:12px;color:var(--positive);">30m patrol cycle</span>
+      </div>
+    </div>
+
+    <!-- Ruled NFC Boundary Scan Rows -->
+    <div style="margin-top:8px;border-top:1px solid var(--rule);">
+      <div style="padding:9px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:15px;font-weight:600;">Gate B weighbridge seal check</div>
+          <div class="mono" style="font-size:12px;color:var(--ink-2);">Sgt. I. Musa · NFC #AP-01</div>
+        </div>
+        <span class="mono" style="font-size:12px;color:var(--positive);">22:00 OK</span>
+      </div>
+      <div style="padding:9px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:15px;font-weight:600;">Diesel manifold north wall</div>
+          <div class="mono" style="font-size:12px;color:var(--ink-2);">Cpl. D. Eze · NFC #AP-04</div>
+        </div>
+        <span class="mono" style="font-size:12px;color:var(--positive);">21:30 OK</span>
+      </div>
+      <div style="padding:9px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:15px;font-weight:600;">Bonded warehouse east substation</div>
+          <div class="mono" style="font-size:12px;color:var(--ink-2);">Cpl. K. Balarabe · NFC #AP-06</div>
+        </div>
+        <span class="mono" style="font-size:12px;color:var(--positive);">21:00 OK</span>
+      </div>
+      <div style="padding:9px 0;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:15px;font-weight:600;">Quayside container berth 03</div>
+          <div class="mono" style="font-size:12px;color:var(--ink-2);">Next scan window</div>
+        </div>
+        <span class="mono" style="font-size:12px;color:var(--ink-3);">Due 22:30</span>
+      </div>
+    </div>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 3: SECOND CORE-LOOP SCREEN — Interactive Requisition Switchboard -->
+  <section class="screen" data-name="03-requisition" data-theme="dark" data-chrome="light" data-time="22:20">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:1px solid var(--rule);">
+      <span class="mono" style="font-size:12px;color:var(--positive);">Form JS-104</span>
+      <span class="mono" style="font-size:12px;color:var(--ink-2);">Step 2 of 3</span>
+    </div>
+
+    <h1 class="display" style="font-size:28px;font-weight:800;line-height:1.08;margin:8px 0 2px;">
+      Configure standing post
+    </h1>
+    <div style="font-size:13px;color:var(--ink-2);">
+      Victoria Island &amp; Lekki · Watch: Capt. M. Briggs
+    </div>
+
+    <!-- Tariff & Interactive Stepper Control Bay -->
+    <div style="margin-top:8px;padding:10px 12px;border:1px solid var(--rule);background:var(--raised);display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <div>
+          <div class="mono" style="font-size:12px;color:var(--ink-2);">Monthly retainer (₦186,500 × 8)</div>
+          <div class="display" style="font-size:48px;font-weight:800;line-height:0.94;margin-top:2px;">₦1.49M</div>
+        </div>
+        <span class="mono" style="font-size:13px;color:var(--positive);">₦1,492,000</span>
+      </div>
+
+      <!-- Native Stepper Control Row -->
+      <div style="padding-top:8px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:15px;font-weight:600;">Assigned headcount</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button aria-label="Decrease guards" style="width:44px;height:44px;border:1px solid var(--rule);background:#0A0D12;color:var(--ink);font-size:15px;font-weight:700;">−</button>
+          <span class="mono" style="font-size:15px;font-weight:600;padding:0 4px;">8 guards</span>
+          <button aria-label="Increase guards" style="width:44px;height:44px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);font-size:15px;font-weight:700;">+</button>
+        </div>
+      </div>
+
+      <!-- Segmented Shift Relief Control -->
+      <div data-system style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);background:#0A0D12;padding:3px;gap:4px;">
+        <div style="padding:6px 8px;background:var(--accent);color:var(--on-accent);font-size:12px;font-weight:600;text-align:center;">
+          12h relief (2-shift)
+        </div>
+        <div style="padding:6px 8px;color:var(--ink-2);font-size:12px;text-align:center;">
+          8h relief (3-shift)
+        </div>
+      </div>
+    </div>
+
+    <!-- Hairline Parameter Rows -->
+    <div style="margin-top:8px;border-top:1px solid var(--rule);">
+      <div style="padding:7px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:15px;color:var(--ink-2);">Site location</span>
+        <span style="font-size:15px;font-weight:600;">Plot 14 Adeola Odeku, VI</span>
+      </div>
+      <div style="padding:7px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:15px;color:var(--ink-2);">Mobilisation date</span>
+        <span class="mono" style="font-size:13px;">01 Dec 2026 · 06:00</span>
+      </div>
+      <div style="padding:7px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:15px;color:var(--ink-2);">Issued hardware</span>
+        <span class="mono" style="font-size:13px;color:var(--positive);">2 UHF + 6 NFC tags</span>
+      </div>
+    </div>
+
+    <!-- Perimeter Post Distribution Strip -->
+    <div style="margin-top:8px;padding:9px 10px;border:1px solid var(--rule);background:var(--raised);display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+        <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">Post split (4 day / 4 night)</span>
+        <span class="mono" style="font-size:12px;color:var(--ink);white-space:nowrap;">4 posts</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;" class="mono">
+        <div style="padding:5px 8px;background:#0A0D12;border:1px solid var(--rule);display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--ink);">P1 Main Gate</span>
+          <span style="color:var(--positive);">2</span>
+        </div>
+        <div style="padding:5px 8px;background:#0A0D12;border:1px solid var(--rule);display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--ink);">P2 Loading</span>
+          <span style="color:var(--positive);">2</span>
+        </div>
+        <div style="padding:5px 8px;background:#0A0D12;border:1px solid var(--rule);display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--ink);">P3 Gen Yard</span>
+          <span style="color:var(--positive);">2</span>
+        </div>
+        <div style="padding:5px 8px;background:#0A0D12;border:1px solid var(--rule);display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--ink);">P4 Quayside</span>
+          <span style="color:var(--positive);">2</span>
+        </div>
+      </div>
+    </div>
+
+    <button style="margin-top:auto;width:100%;height:44px;background:var(--accent);color:var(--on-accent);border:none;font-size:15px;font-weight:600;">
+      Log requisition JS-REQ-10492
+    </button>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 4: SIGNATURE INTERACTION STORYBOARD — Visual 3-Stage Perimeter & Tariff Roll -->
+  <section class="screen" data-name="04-signature-motion" data-theme="dark" data-chrome="light" data-time="22:21">
+    <div style="border-bottom:1px solid var(--rule);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">Signature motion</span>
+      <span class="mono" style="font-size:12px;color:var(--ink-2);white-space:nowrap;">260ms spring</span>
+    </div>
+
+    <div style="padding-top:10px;">
+      <h1 class="display" style="font-size:28px;font-weight:800;line-height:1.08;margin:0;">
+        Post Allocation &amp; Relief Dial
+      </h1>
+      <p style="font-size:13px;color:var(--ink-2);margin:4px 0 0;line-height:1.4;">
+        Stepping headcount re-plots active perimeter checkpoints on the compound schematic and rolls the tabular Naira retainer.
+      </p>
+    </div>
+
+    <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;flex:1;">
+      <!-- Stage 1: 0ms Trigger -->
+      <div style="border:1px solid var(--rule);background:var(--raised);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:6px;flex:1;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+          <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">01 · 0ms Trigger</span>
+          <span class="mono" style="font-size:12px;color:var(--ink-2);white-space:nowrap;">Haptic selection</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#0A0D12;border:1px solid var(--rule);padding:8px 10px;">
+          <span style="font-size:15px;font-weight:600;">Headcount step</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span class="mono" style="font-size:12px;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-2);">4</span>
+            <span class="mono" style="font-size:12px;color:var(--positive);">→</span>
+            <span class="mono" style="font-size:12px;padding:3px 8px;background:var(--accent);color:var(--on-accent);font-weight:600;">6 guards</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;" class="mono">
+          <span style="font-size:12px;color:var(--ink-2);">SEC-01 Victoria Island</span>
+          <span style="font-size:12px;color:var(--ink);">3 per 12h watch</span>
+        </div>
+      </div>
+
+      <!-- Stage 2: 120ms SVG Perimeter Re-Plot & Tabular Roll -->
+      <div style="border:1.5px solid #2563EB;background:#161D29;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:6px;flex:1;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+          <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">02 · 120ms Perimeter plot</span>
+          <span class="mono" style="font-size:12px;color:var(--ink);white-space:nowrap;">P5 &amp; P6 lock</span>
+        </div>
+        <div style="display:grid;grid-template-columns:124px 1fr;gap:10px;align-items:center;">
+          <svg viewBox="0 0 130 64" style="width:124px;height:62px;background:#0A0D12;border:1px solid #1E2634;">
+            <rect x="12" y="10" width="106" height="44" fill="none" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3 2" />
+            <circle cx="12" cy="10" r="3.5" fill="#60A5FA" />
+            <circle cx="65" cy="10" r="3.5" fill="#60A5FA" />
+            <circle cx="118" cy="10" r="3.5" fill="#60A5FA" />
+            <circle cx="12" cy="54" r="3.5" fill="#60A5FA" />
+            <circle cx="65" cy="54" r="4.5" fill="#2563EB" stroke="#F1F5F9" stroke-width="1.2" />
+            <circle cx="118" cy="54" r="4.5" fill="#2563EB" stroke="#F1F5F9" stroke-width="1.2" />
+            <text x="34" y="36" style="fill:currentColor;color:#93C5FD;" font-size="12" font-family="IBM Plex Mono">P1..P6</text>
+          </svg>
+          <div style="text-align:right;">
+            <div class="mono" style="font-size:12px;color:var(--ink-2);text-decoration:line-through;">₦746,000</div>
+            <div class="display" style="font-size:28px;font-weight:800;line-height:1.05;color:var(--ink);">₦1,119,000</div>
+            <div class="mono" style="font-size:12px;color:var(--positive);">6 × ₦186,500 / mo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3: 260ms Quota & Callsign Locked -->
+      <div style="border:1px solid var(--rule);background:var(--raised);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:6px;flex:1;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+          <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">03 · 260ms Quota locked</span>
+          <span class="mono" style="font-size:12px;color:var(--positive);white-space:nowrap;">JS-REQ-10492</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#0A0D12;border:1px solid var(--rule);padding:8px 10px;">
+          <span style="font-size:15px;font-weight:600;">Sierra-01 · Capt. Briggs</span>
+          <span class="mono" style="font-size:12px;color:var(--ink-2);">UHF Ch 04</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;" class="mono">
+          <span style="font-size:12px;color:var(--ink-2);">2 UHF + 6 NFC tags</span>
+          <span style="font-size:12px;color:var(--positive);">ETA 9m 20s</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Motion Spec Ledger -->
+    <div style="margin-top:10px;border-top:1px solid var(--rule);padding-top:8px;display:flex;justify-content:space-between;align-items:center;gap:8px;" class="mono">
+      <span style="font-size:12px;color:var(--ink-2);white-space:nowrap;">spring(0.26s, bounce 0)</span>
+      <span style="font-size:12px;color:var(--ink-3);white-space:nowrap;">Reduced: instant swap</span>
+    </div>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 5: DAYTIME LIGHT MODE — Field Supervisor Inspection Sheet -->
+  <section class="screen" data-name="05-daytime-inspection" data-time="09:41">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+      <span class="mono" style="font-size:12px;color:var(--accent);">SEC-01 · Daytime Watch</span>
+      <span class="mono" style="font-size:12px;color:var(--ink-2);">09:41 WAT</span>
+    </div>
+
+    <div style="padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div>
+        <div class="display" style="font-size:48px;font-weight:800;line-height:0.96;">38</div>
+        <div style="font-size:15px;color:var(--ink-2);margin-top:4px;">Cleared guards on standby</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="mono" style="font-size:13px;color:var(--accent);">ETA 9m 20s</div>
+        <div class="mono" style="font-size:12px;color:var(--ink-3);margin-top:2px;">Capt. M. Briggs</div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;border:1px solid var(--rule);background:var(--raised);position:relative;flex:1;min-height:175px;overflow:hidden;">
+      <img src="file:///home/inimfon-udoh/SANEF/JossyShield/public/images/gate-checkpoint.jpg" alt="Daytime gate checkpoint" style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08);" />
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(255,255,255,0.94);border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span class="mono" style="font-size:12px;color:var(--ink);">Post 01 · Morning relief muster</span>
+        <span class="mono" style="font-size:12px;color:var(--accent);">06:00 OK</span>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;padding:8px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:13px;color:var(--ink-2);">Active posts in sector</span>
+      <span class="mono" style="font-size:13px;color:var(--ink);">14 sites · 112 guards on watch</span>
+    </div>
+
+    <div style="margin-top:10px;border:1px solid var(--rule);background:var(--raised);padding:12px;display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+        <span style="font-size:15px;font-weight:600;">Standing post (12h relief)</span>
+        <span class="mono" style="font-size:13px;color:var(--accent);">6 officers</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-size:13px;color:var(--ink-2);">Monthly allocation</span>
+        <span class="display" style="font-size:28px;font-weight:700;">₦1,119,000</span>
+      </div>
+      <button style="width:100%;height:46px;background:var(--accent);color:var(--on-accent);border:none;font-size:15px;font-weight:600;">
+        Issue requisition ticket
+      </button>
+    </div>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 6: EMPTY / FIRST-RUN STATE — Architectural Blueprint & Calibration Checklist -->
+  <section class="screen" data-name="06-empty-posts" data-theme="dark" data-chrome="light" data-time="22:22">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule);">
+      <span class="mono" style="font-size:12px;color:var(--positive);">New Client Facility</span>
+      <span class="mono" style="font-size:12px;color:var(--ink-2);">0 posts active</span>
+    </div>
+
+    <div style="padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div class="display" style="font-size:48px;font-weight:800;line-height:0.95;color:var(--ink-3);">00</div>
+      <span class="mono" style="font-size:12px;color:var(--positive);">Awaiting site walk</span>
+    </div>
+
+    <!-- Rich Architectural Blueprint Schematic for Unmapped Compound -->
+    <div style="margin-top:10px;border:1px solid var(--rule);background:var(--raised);display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:145px;">
+      <div style="padding:5px 10px;border-bottom:1px solid var(--rule);background:#0D1118;display:flex;justify-content:space-between;align-items:center;gap:8px;" class="mono">
+        <span style="font-size:12px;color:var(--ink-2);white-space:nowrap;">Perimeter blueprint</span>
+        <span style="font-size:12px;color:var(--positive);white-space:nowrap;">0 / 4 sockets calibrated</span>
+      </div>
+      <div style="padding:6px 8px;flex:1;display:flex;align-items:stretch;">
+        <svg viewBox="0 0 320 148" preserveAspectRatio="none" style="width:100%;height:100%;">
+          <rect x="4" y="4" width="312" height="140" fill="#0A0D12" stroke="#1E2634" stroke-width="1" />
+          <line x1="160" y1="4" x2="160" y2="144" stroke="#151C28" stroke-width="1" />
+          <line x1="4" y1="74" x2="316" y2="74" stroke="#151C28" stroke-width="1" />
+          <rect x="34" y="22" width="252" height="104" fill="rgba(37,99,235,0.04)" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="6 4" />
+          <circle cx="34" cy="74" r="5.5" fill="#0A0D12" stroke="#60A5FA" stroke-width="1.5" />
+          <circle cx="160" cy="22" r="5.5" fill="#0A0D12" stroke="#60A5FA" stroke-width="1.5" />
+          <circle cx="286" cy="74" r="5.5" fill="#0A0D12" stroke="#60A5FA" stroke-width="1.5" />
+          <circle cx="160" cy="126" r="5.5" fill="#0A0D12" stroke="#60A5FA" stroke-width="1.5" />
+          <rect x="80" y="62" width="160" height="24" fill="#0A0D12" />
+          <text x="90" y="78" style="fill:currentColor;color:#A3B1C6;" font-size="12" font-family="IBM Plex Mono">4 Gate Sockets Unmapped</text>
+        </svg>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <h1 class="display" style="font-size:28px;font-weight:800;line-height:1.1;margin:0;">
+        No standing posts assigned to this compound yet.
+      </h1>
+      <p style="font-size:15px;color:var(--ink-2);line-height:1.42;margin:6px 0 0;">
+        Our sector commander walks your boundary, bolts NFC checkpoint tags to blind corners, and links your gatehouse UHF base.
+      </p>
+    </div>
+
+    <!-- Pre-Mobilisation Checklist Rows -->
+    <div style="margin-top:10px;border-top:1px solid var(--rule);">
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:var(--ink-2);">01 · Physical perimeter &amp; night lux walk</span>
+        <span class="mono" style="font-size:12px;color:var(--positive);">24h notice</span>
+      </div>
+      <div style="padding:8px 0;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:var(--ink-2);">02 · NFC wall-tag &amp; UHF repeater test</span>
+        <span class="mono" style="font-size:12px;color:var(--ink-3);">Included</span>
+      </div>
+    </div>
+
+    <button style="margin-top:10px;width:100%;height:46px;background:var(--accent);color:var(--on-accent);border:none;font-size:15px;font-weight:600;">
+      Schedule 24-hour site walk
+    </button>
+
+    <nav class="glass tabbar" data-system>
+      <div class="tab-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L20 6.5V12.5C20 17.5 16.5 20.8 12 22C7.5 20.8 4 17.5 4 12.5V6.5L12 3Z"/></svg>
+        <span>Post desk</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10H16M8 14H13"/></svg>
+        <span>Order</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 16.7 8.1 14 12 14C15.9 14 19 16.7 19 20"/></svg>
+        <span>Roster</span>
+      </div>
+      <div class="tab-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12H8L10 6L14 18L16 12H20"/></svg>
+        <span>Logs</span>
+      </div>
+    </nav>
+  </section>
+
+  <!-- SCREEN 7: APP ICON (1032px) -->
+  <section class="app-icon" data-name="07-app-icon" style="background:#0A0D12;display:flex;align-items:center;justify-content:center;position:relative;">
+    <svg viewBox="0 0 240 240" style="width:76%;height:76%;">
+      <path d="M120 18L206 54V124C206 178 168 214 120 226C72 214 34 178 34 124V54L120 18Z" fill="#11161F" stroke="#2563EB" stroke-width="10" />
+      <path d="M120 56V188" stroke="#F1F5F9" stroke-width="12" stroke-linecap="square" />
+      <path d="M68 116H172" stroke="#2563EB" stroke-width="12" stroke-linecap="square" />
+      <circle cx="120" cy="116" r="16" fill="#0A0D12" stroke="#F1F5F9" stroke-width="8" />
+    </svg>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

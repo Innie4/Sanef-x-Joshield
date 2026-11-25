@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>JossyShield — Three-Direction Exploration</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    @font-face {
+      font-family: "Archivo Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/JossyShield/node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+      font-weight: 100 900;
+      font-stretch: 62% 125%;
+    }
+    @font-face {
+      font-family: "Newsreader Variable";
+      src: url("file:///home/inimfon-udoh/SANEF/Safe Neighborhood Foundation/node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2") format("woff2-variations");
+      font-weight: 200 800;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("file:///home/inimfon-udoh/SANEF/JossyShield/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* Direction A: Object — Anodised UHF Switchboard */
+    .dir-a {
+      background: #0A0D12;
+      color: #F1F5F9;
+      font-family: "Archivo Variable", var(--sf);
+      display: flex;
+      flex-direction: column;
+      padding: calc(var(--safe-top) + 10px) 18px calc(var(--safe-bottom) + 74px);
+    }
+    .dir-a .display {
+      font-family: "Archivo Variable", var(--sf);
+      font-stretch: 112%;
+      letter-spacing: -0.03em;
+    }
+    .dir-a .mono {
+      font-family: "IBM Plex Mono", var(--sf-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Direction B: Printed — NSCDC Inspection Ledger */
+    .dir-b {
+      background: #F0EFEA;
+      color: #141413;
+      font-family: "Newsreader Variable", var(--ny);
+      display: flex;
+      flex-direction: column;
+      padding: calc(var(--safe-top) + 12px) 20px calc(var(--safe-bottom) + 74px);
+    }
+    .dir-b .mono {
+      font-family: "IBM Plex Mono", var(--sf-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Direction C: Place — Floodlit Port Gatehouse */
+    .dir-c {
+      background: #0B2126;
+      color: #F1F5F9;
+      font-family: "Archivo Variable", var(--sf);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    .dir-c .condensed {
+      font-family: "Archivo Variable", var(--sf);
+      font-stretch: 78%;
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DIRECTION A (WINNER): Object — Anodised UHF Switchboard -->
+  <section class="screen dir-a" data-name="01-dir-a-uhf-switchboard" data-theme="dark" data-chrome="light" data-time="22:15">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid #1E2634;">
+      <span class="mono" style="font-size:12px;color:#60A5FA;">SEC-01 · Victoria Island</span>
+      <span class="mono" style="font-size:12px;color:#A3B1C6;">UHF 453.225 MHz</span>
+    </div>
+
+    <div style="padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;">
+      <div>
+        <div class="display" style="font-size:48px;font-weight:800;line-height:1.0;color:#F1F5F9;">38</div>
+        <div style="font-size:15px;color:#A3B1C6;margin-top:4px;">Cleared guards on standby tonight</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="mono" style="font-size:13px;color:#93C5FD;">ETA 9m 20s</div>
+        <div class="mono" style="font-size:12px;color:#8494AB;margin-top:2px;">Capt. M. Briggs</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;border:1px solid #1E2634;background:#11161F;position:relative;height:190px;overflow:hidden;">
+      <img src="file:///home/inimfon-udoh/SANEF/JossyShield/public/images/guard-shoulder.jpg" alt="Perimeter guard on watch" style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.12) brightness(0.92);" />
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(10,13,18,0.92);border-top:1px solid #1E2634;display:flex;justify-content:space-between;align-items:center;">
+        <span class="mono" style="font-size:12px;color:#F1F5F9;">Post 02 · Adeola Odeku Gate</span>
+        <span class="mono" style="font-size:12px;color:#60A5FA;">NFC #VI-019</span>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;border:1px solid #1E2634;background:#11161F;padding:14px;flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid #1E2634;">
+        <span style="font-size:15px;font-weight:600;color:#F1F5F9;">Standing post relief (12h)</span>
+        <span class="mono" style="font-size:13px;color:#60A5FA;">6 officers</span>
+      </div>
+      <div style="padding:10px 0;display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-size:13px;color:#A3B1C6;">Monthly retainer</span>
+        <span class="display" style="font-size:28px;font-weight:700;color:#F1F5F9;">₦1,119,000</span>
+      </div>
+      <button style="width:100%;height:48px;background:#2563EB;color:#F8FAFC;border:none;font-size:15px;font-weight:600;">
+        Issue requisition ticket
+      </button>
+    </div>
+
+    <nav class="glass" data-system style="position:absolute;left:20px;right:20px;bottom:21px;height:60px;border-radius:30px;background:rgba(17,22,31,0.9);border:1px solid #1E2634;display:flex;justify-content:space-around;align-items:center;padding:0 12px;">
+      <span style="font-size:12px;font-weight:600;color:#93C5FD;background:rgba(37,99,235,0.24);padding:6px 14px;border-radius:18px;">Post desk</span>
+      <span style="font-size:12px;color:#A3B1C6;">Order</span>
+      <span style="font-size:12px;color:#A3B1C6;">Roster</span>
+      <span style="font-size:12px;color:#A3B1C6;">Logs</span>
+    </nav>
+  </section>
+
+  <!-- DIRECTION B: Printed — NSCDC Site Inspection Ledger -->
+  <section class="screen dir-b" data-name="02-dir-b-inspection-ledger" data-time="09:41">
+    <div style="display:flex;justify-content:space-between;border-bottom:1.5px solid #141413;padding-bottom:8px;">
+      <span class="mono" style="font-size:12px;color:#9A3412;">Form NSCDC-A11</span>
+      <span class="mono" style="font-size:12px;color:#4B4A46;">19 Nov 2026</span>
+    </div>
+
+    <h1 style="font-size:36px;font-weight:700;line-height:1.08;margin:16px 0 8px;letter-spacing:-0.02em;">
+      Victoria Island <i style="font-weight:500;">standing</i> post ledger.
+    </h1>
+    <p style="font-size:15px;color:#4B4A46;margin:0 0 14px;line-height:1.4;">
+      38 cleared guards registered at Adeola Odeku hub. Two-shift 12-hour relief verified.
+    </p>
+
+    <div style="border:1px solid #141413;background:#FFFFFF;padding:12px;height:175px;">
+      <svg viewBox="0 0 320 140" style="width:100%;height:100%;">
+        <rect x="10" y="10" width="300" height="120" fill="none" stroke="#141413" stroke-width="1.5" />
+        <line x1="110" y1="10" x2="110" y2="130" stroke="#D6D3CD" stroke-width="1" />
+        <line x1="210" y1="10" x2="210" y2="130" stroke="#D6D3CD" stroke-width="1" />
+        <circle cx="60" cy="70" r="8" fill="#9A3412" />
+        <circle cx="160" cy="45" r="8" fill="#9A3412" />
+        <circle cx="260" cy="90" r="8" fill="#9A3412" />
+        <text x="24" y="116" style="fill:currentColor;color:#141413;" font-size="12" font-family="IBM Plex Mono">Gate Airlock Spec 01</text>
+      </svg>
+    </div>
+
+    <div style="margin-top:16px;border-top:1px solid #D6D3CD;flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-top:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-size:13px;color:#4B4A46;">6 guards × ₦186,500</span>
+        <span class="mono" style="font-size:22px;font-weight:600;color:#141413;">₦1,119,000 / mo</span>
+      </div>
+      <button style="width:100%;height:50px;background:#9A3412;color:#FFFFFF;border:none;font-size:15px;font-weight:600;">
+        Stamp &amp; issue post order
+      </button>
+    </div>
+
+    <nav class="glass" data-system style="position:absolute;left:20px;right:20px;bottom:21px;height:60px;border-radius:30px;display:flex;justify-content:space-around;align-items:center;">
+      <span style="font-size:12px;font-weight:600;color:#9A3412;background:rgba(154,52,18,0.12);padding:6px 14px;border-radius:18px;">Ledger</span>
+      <span style="font-size:12px;color:#4B4A46;">Order</span>
+      <span style="font-size:12px;color:#4B4A46;">Roster</span>
+    </nav>
+  </section>
+
+  <!-- DIRECTION C: Place — Floodlit Port Gatehouse Colour Field -->
+  <section class="screen dir-c" data-name="03-dir-c-port-gatehouse" data-theme="dark" data-chrome="light" data-time="23:40">
+    <div style="position:relative;height:360px;width:100%;">
+      <img src="file:///home/inimfon-udoh/SANEF/JossyShield/public/images/port-night.jpg" alt="Night port perimeter" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,33,38,0.55) 0%,rgba(11,33,38,0.98) 95%);"></div>
+      <div style="position:absolute;left:20px;right:20px;bottom:20px;">
+        <div style="font-size:13px;color:#5EEAD4;">Apapa Wharf Sector 02</div>
+        <div class="condensed" style="font-size:48px;font-weight:800;line-height:0.96;color:#FFFFFF;margin-top:4px;">
+          44 Guards on Watch
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:18px 20px calc(var(--safe-bottom) + 74px);flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div style="font-size:15px;font-weight:600;color:#F1F5F9;">Night shift relief · 6 officers</div>
+        <div style="font-size:13px;color:#CBD5E1;margin-top:4px;">Watch Commander Capt. T. Danjuma · Ch 07</div>
+        <div class="condensed" style="font-size:28px;font-weight:700;color:#5EEAD4;margin-top:14px;">₦1,164,000 / month</div>
+      </div>
+      <button style="width:100%;height:50px;background:#5EEAD4;color:#0B2126;border:none;font-size:15px;font-weight:700;">
+        Deploy Wharf Guard Squad
+      </button>
+    </div>
+
+    <nav class="glass" data-system style="position:absolute;left:20px;right:20px;bottom:21px;height:60px;border-radius:30px;background:rgba(11,33,38,0.92);border:1px solid #1E3A40;display:flex;justify-content:space-around;align-items:center;">
+      <span style="font-size:12px;font-weight:600;color:#5EEAD4;background:rgba(94,234,212,0.16);padding:6px 14px;border-radius:18px;">Watch</span>
+      <span style="font-size:12px;color:#CBD5E1;">Convoy</span>
+      <span style="font-size:12px;color:#CBD5E1;">Audits</span>
+    </nav>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

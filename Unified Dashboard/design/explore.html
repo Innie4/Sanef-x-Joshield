@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unified Dashboard — Three-Direction Exploration</title>
+  <link rel="stylesheet" href="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.css" />
+  <style>
+    .screen { container-type: size; }
+    .body-wrap {
+      position: absolute;
+      inset: var(--safe-top) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      padding: 8px 18px 98px 18px;
+    }
+
+    /* =====================================================================
+       DIRECTION A: Precision Duty Desk & Sector Switchboard (Winner)
+       Source: place | Ground: dark | Type: condensed | Accent: blue | Richness: shape
+       ===================================================================== */
+    .dir-a {
+      --ground: #0A0C10;
+      --raised: #11151C;
+      --raised-2: #171C26;
+      --ink: #ECF0F6;
+      --ink-2: #9BA6B8;
+      --ink-3: #738096;
+      --rule: #1E2532;
+      --accent: #2563EB;
+      --accent-ink: #60A5FA;
+      background: var(--ground);
+      color: var(--ink);
+    }
+    .dir-a .bus-bar {
+      display: flex;
+      background: var(--raised);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 4px;
+    }
+    .dir-a .bus-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dir-a .bus-btn.active {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+    .dir-a .bus-btn.inactive {
+      color: var(--ink-2);
+    }
+    .dir-a .hero-num {
+      font-family: var(--sf);
+      font-stretch: 80%;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -1.8px;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+    }
+    .dir-a .map-panel {
+      flex: 1;
+      min-height: 0;
+      background: var(--raised);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 14px 0;
+    }
+    .dir-a .req-row {
+      padding: 11px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    /* =====================================================================
+       DIRECTION B: Split-Ledger Brass Switchboard
+       Source: object | Ground: light | Type: grotesque | Accent: green | Richness: colour-material
+       ===================================================================== */
+    .dir-b {
+      --ground: #EAE8DF;
+      --raised: #DFDDD2;
+      --ink: #131815;
+      --ink-2: #3A443E;
+      --ink-3: #525E57;
+      --rule: #C6C3B5;
+      --accent: #0B6134;
+      background: var(--ground);
+      color: var(--ink);
+    }
+    .dir-b .brass-plate {
+      background: #D7D4C6;
+      border: 1px solid #B7B3A2;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .dir-b .hero-num {
+      font-family: var(--sf);
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -1.6px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+    }
+    .dir-b .ledger-row {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    /* =====================================================================
+       DIRECTION C: Operations Broadcast Rundown Desk
+       Source: media | Ground: colour-field | Type: serif | Accent: orange | Richness: photo
+       ===================================================================== */
+    .dir-c {
+      --ground: #132238;
+      --raised: #1B2E4B;
+      --ink: #F7F4EE;
+      --ink-2: #B8C5D6;
+      --ink-3: #8899B0;
+      --rule: #2A4163;
+      --accent: #E05A2B;
+      --glass: rgba(27, 46, 75, 0.72);
+      background: var(--ground);
+      color: var(--ink);
+    }
+    .dir-c .serif-head {
+      font-family: var(--ny);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+    }
+    .dir-c .photo-stage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 12px 0;
+      border: 1px solid var(--rule);
+    }
+    .dir-c .photo-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .dir-c .photo-scrim {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 55%;
+      background: linear-gradient(to top, rgba(19,34,56,0.96) 15%, rgba(19,34,56,0.0) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 14px;
+    }
+
+    /* Native floating tab bar */
+    .tabbar {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 22px;
+      height: 60px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 10px;
+      z-index: 20;
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================
+       SCREEN 1: DIRECTION A — Precision Duty Desk & Sector Switchboard
+       =================================================================== -->
+  <section class="screen dir-a" data-name="dir-a-duty-desk" data-theme="dark" data-chrome="light" data-time="18:42">
+    <div class="body-wrap">
+      <!-- Dual-Tenant Bus Switcher -->
+      <div class="bus-bar">
+        <div class="bus-btn active">
+          <span>JossyShield</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-01</span>
+        </div>
+        <div class="bus-btn inactive">
+          <span>SANEF NGO</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px;">CH-02</span>
+        </div>
+      </div>
+
+      <!-- Hero Display Numeral -->
+      <div style="margin-top: 16px; display: flex; align-items: baseline; justify-content: space-between;">
+        <div>
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">JS-OPS · SHIFT B WATCH</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px;">
+            <span class="hero-num">412</span>
+            <span style="font-size: 17px; font-weight: 600; color: var(--ink);">officers on post</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600; color: var(--ink);">₦18.64M</div>
+          <div style="font-size: 12px; color: var(--ink-2);">19 sites active</div>
+        </div>
+      </div>
+
+      <!-- Richness Source: Interactive Sector Schematic -->
+      <div class="map-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 13px; font-weight: 600; color: var(--ink);">Regional sector schematic</span>
+          <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--accent-ink);">UHF CH-04 LOCKED</span>
+        </div>
+
+        <svg viewBox="0 0 330 175" style="width: 100%; flex: 1; min-height: 0; margin: 6px 0;" overflow="visible">
+          <g style="stroke: #1E2532;" stroke-width="1">
+            <line x1="0" y1="44" x2="330" y2="44" />
+            <line x1="0" y1="88" x2="330" y2="88" />
+            <line x1="0" y1="132" x2="330" y2="132" />
+            <line x1="82" y1="0" x2="82" y2="175" />
+            <line x1="165" y1="0" x2="165" y2="175" />
+            <line x1="248" y1="0" x2="248" y2="175" />
+          </g>
+          <path d="M 18 32 L 122 18 L 245 24 L 308 58 L 292 142 L 210 158 L 62 152 L 16 96 Z" style="fill: #171C26; stroke: #2563EB;" stroke-opacity="0.45" stroke-width="1.5" />
+          <line x1="78" y1="126" x2="188" y2="56" style="stroke: #2563EB;" stroke-dasharray="4 3" stroke-width="1.5" />
+          <line x1="188" y1="56" x2="236" y2="134" style="stroke: #2563EB;" stroke-dasharray="4 3" stroke-width="1.5" />
+          <!-- SEC-01 Node -->
+          <circle cx="66" cy="126" r="16" style="fill: rgba(37,99,235,0.18); stroke: #2563EB;" stroke-width="1.5" />
+          <circle cx="66" cy="126" r="5" style="fill: #60A5FA;" />
+          <rect x="88" y="108" width="118" height="36" rx="5" style="fill: #0A0C10;" />
+          <text x="95" y="123" style="fill: currentColor; color: #FFFFFF; font: 600 12px 'SF Mono', monospace;">SEC-01 · 148</text>
+          <text x="95" y="137" style="fill: currentColor; color: #E2E8F0; font: 500 12px 'SF Pro', sans-serif;">Victoria Island</text>
+          <!-- SEC-03 Node -->
+          <circle cx="188" cy="56" r="11" style="fill: rgba(37,99,235,0.12); stroke: #2563EB;" stroke-width="1" />
+          <circle cx="188" cy="56" r="4" style="fill: #2563EB;" />
+          <rect x="204" y="42" width="96" height="24" rx="4" style="fill: #0A0C10;" />
+          <text x="210" y="58" style="fill: currentColor; color: #E2E8F0; font: 500 12px 'SF Mono', monospace;">SEC-03 · 64</text>
+          <!-- SEC-04 Node -->
+          <circle cx="236" cy="134" r="11" style="fill: rgba(37,99,235,0.12); stroke: #2563EB;" stroke-width="1" />
+          <circle cx="236" cy="134" r="4" style="fill: #2563EB;" />
+        </svg>
+
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-2); font-family: var(--sf-mono);">
+          <span>Cmdr: Capt. T. Bakare</span>
+          <span>Relief in 02h 18m</span>
+        </div>
+      </div>
+
+      <!-- Actionable Requisition Queue -->
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="font-size: 15px; font-weight: 600;">Inbound requisition triage</span>
+          <span style="font-size: 13px; color: var(--accent-ink); font-weight: 600;">5 open</span>
+        </div>
+        <div class="req-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink);">Apex Freight Terminal</div>
+            <div style="font-size: 13px; color: var(--ink-2);">JS-REQ-10492 · 12 guards · Onne Wharf</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600;">₦1,840,000</div>
+            <div style="font-size: 12px; color: var(--accent-ink);">Assign post</div>
+          </div>
+        </div>
+        <div class="req-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink);">Meridian Towers VI</div>
+            <div style="font-size: 13px; color: var(--ink-2);">JS-REQ-10489 · 9 guards · Adeola Odeku</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: var(--sf-mono); font-size: 13px; font-weight: 600;">₦1,425,000</div>
+            <div style="font-size: 12px; color: var(--ink-2);">Quote sent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #60A5FA;"><span>Duty Desk</span></div>
+      <div class="tab-item" style="color: #9BA6B8;"><span>Requests</span></div>
+      <div class="tab-item" style="color: #9BA6B8;"><span>Pipeline</span></div>
+      <div class="tab-item" style="color: #9BA6B8;"><span>RBAC</span></div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       SCREEN 2: DIRECTION B — Split-Ledger Brass Switchboard
+       =================================================================== -->
+  <section class="screen dir-b" data-name="dir-b-brass-ledger" data-time="18:42">
+    <div class="body-wrap">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2);">REGISTER · CH-02 SANEF</span>
+        <span style="font-family: var(--sf-mono); font-size: 12px; padding: 4px 8px; border-radius: 6px; background: var(--accent); color: #FFF;">SANEF ACTIVE</span>
+      </div>
+
+      <h1 style="font-size: 28px; font-weight: 700; letter-spacing: -0.6px; margin: 12px 0 14px 0;">Safe Neighborhood Foundation Ledger</h1>
+
+      <div class="brass-plate">
+        <div style="font-size: 13px; color: var(--ink-2); font-weight: 600;">Ajegunle &amp; Orile solar corridors</div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px;">
+          <span class="hero-num">142</span>
+          <span style="font-size: 15px; font-weight: 600; color: var(--accent);">poles reporting</span>
+        </div>
+        <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #B7B3A2; display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-2);">
+          <span>Audited grant book</span>
+          <strong style="font-family: var(--sf-mono); color: var(--ink);">₦41,280,000</strong>
+        </div>
+      </div>
+
+      <div style="margin-top: 22px; flex: 1;">
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">Ward disbursement queue</div>
+        <div class="ledger-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">WRD-01 · Ajegunle School Route</div>
+            <div style="font-size: 13px; color: var(--ink-2);">68 solar poles · Lead: C. Nwosu</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 15px; font-weight: 600; color: var(--accent);">₦14.82M</span>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">WRD-02 · Mushin Transit Walkways</div>
+            <div style="font-size: 13px; color: var(--ink-2);">46 solar poles · Lead: S. Adebayo</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 15px; font-weight: 600;">₦11.45M</span>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div style="font-size: 15px; font-weight: 600;">WRD-04 · Kafanchan Youth Hub</div>
+            <div style="font-size: 13px; color: var(--ink-2);">318 trainees · Lead: M. Abdullahi</div>
+          </div>
+          <span style="font-family: var(--sf-mono); font-size: 15px; font-weight: 600;">₦8.62M</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #108548;"><span>Ledger</span></div>
+      <div class="tab-item" style="color: #4A544E;"><span>Wards</span></div>
+      <div class="tab-item" style="color: #4A544E;"><span>Evidence</span></div>
+      <div class="tab-item" style="color: #4A544E;"><span>Roles</span></div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================
+       SCREEN 3: DIRECTION C — Operations Broadcast Rundown Desk
+       =================================================================== -->
+  <section class="screen dir-c" data-name="dir-c-broadcast-rundown" data-chrome="light" data-time="18:42">
+    <div class="body-wrap">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-family: var(--sf-mono); font-size: 12px; color: var(--ink-2);">RUNDOWN · 19 NOV 18:42 WAT</span>
+        <span style="font-family: var(--sf-mono); font-size: 12px; font-weight: 700; color: #131815; background: #FF9E7A; padding: 3px 8px; border-radius: 6px;">ON WATCH</span>
+      </div>
+
+      <h1 class="serif-head" style="margin: 12px 0 4px 0;">Evening shift dispatch &amp; gatehouse log</h1>
+      <p style="font-size: 13px; color: var(--ink-2); margin: 0;">412 static guards checked in across 19 client sites.</p>
+
+      <div class="photo-stage">
+        <img src="file:///home/inimfon-udoh/SANEF/Unified Dashboard/public/images/gate-checkpoint.jpg" alt="Onne Wharf Gatehouse checkpoint" />
+        <div class="photo-scrim">
+          <div style="font-family: var(--sf-mono); font-size: 12px; color: #FFB49A;">JS-REQ-10492 · SEC-04 ONNE WHARF</div>
+          <div style="font-size: 17px; font-weight: 700; color: #FFFFFF; margin-top: 2px;">Apex Freight Terminal</div>
+          <div style="font-size: 13px; color: #E2E8F0; margin-top: 2px;">12 guards requested · ₦1,840,000 / mo</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: var(--raised); border-radius: 12px; border: 1px solid var(--rule);">
+        <div>
+          <div style="font-size: 15px; font-weight: 600;">Next relief handover</div>
+          <div style="font-size: 12px; color: var(--ink-2);">Capt. Tunde Bakare · UHF CH-04</div>
+        </div>
+        <span style="font-family: var(--sf-mono); font-size: 17px; font-weight: 700; color: #FFFFFF;">02h 18m</span>
+      </div>
+    </div>
+
+    <nav class="tabbar glass" data-system>
+      <div class="tab-item" style="color: #FFFFFF;"><span>Rundown</span></div>
+      <div class="tab-item" style="color: #B8C5D6;"><span>Queue</span></div>
+      <div class="tab-item" style="color: #B8C5D6;"><span>Roster</span></div>
+      <div class="tab-item" style="color: #B8C5D6;"><span>Audit</span></div>
+    </nav>
+  </section>
+
+  <script src="file:///home/inimfon-udoh/.gemini/config/plugins/app-designer/skills/app-designer/assets/device.js"></script>
+</body>
+</html>

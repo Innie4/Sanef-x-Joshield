@@ -1,252 +1,262 @@
 "use client";
 
 import React, { useState } from "react";
-import { Upload, Check, X, Shield, FileText } from "lucide-react";
+import { X, Upload, ShieldAlert, CheckCircle2, ChevronDown } from "lucide-react";
+
+interface JobApplicationModalProps {
+  open: boolean;
+  onClose: () => void;
+  roleTitle: string;
+  isGeneralPool?: boolean;
+}
 
 export default function JobApplicationModal({
-  jobTitle = "General Security Operative Application",
-  isOpen,
+  open,
   onClose,
-}: {
-  jobTitle?: string;
-  isOpen: boolean;
-  onClose: () => void;
-}) {
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [applicantId, setApplicantId] = useState("");
-  const [fileName, setFileName] = useState("");
-
+  roleTitle,
+  isGeneralPool = false,
+}: JobApplicationModalProps) {
   const [form, setForm] = useState({
-    applicantName: "",
+    fullName: "",
     email: "",
     phone: "",
-    experienceYears: 3,
-    location: "Lagos, Nigeria",
-    availability: "immediate",
-    skills: ["Static Guarding", "Access Control"],
+    location: "",
+    experienceYears: "",
+    qualifications: "",
+    availability: "Immediate",
+    cvFileName: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [refId, setRefId] = useState<string | null>(null);
 
-  const availableSkills = [
-    "Static Guarding",
-    "Armed Escort",
-    "VIP Close Protection",
-    "Defensive Driving",
-    "CCTV Control Room",
-    "Access Control",
-    "First Aid & CPR",
-    "Crisis De-escalation",
-  ];
-
-  const toggleSkill = (skill: string) => {
-    if (form.skills.includes(skill)) {
-      setForm({ ...form, skills: form.skills.filter((s) => s !== skill) });
-    } else {
-      setForm({ ...form, skills: [...form.skills, skill] });
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
-    }
-  };
+  if (!open) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-
     try {
       const res = await fetch("/api/careers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          jobTitle,
+          roleTitle,
+          isGeneralPool,
           ...form,
-          cvFileName: fileName || "Candidate_Credentials.pdf",
         }),
       });
-      const data = await res.json();
-      setApplicantId(data.applicantId || `JS-CAND-${Math.floor(1000 + Math.random() * 9000)}`);
-      setSubmitted(true);
-    } catch {
-      setApplicantId(`JS-CAND-${Math.floor(1000 + Math.random() * 9000)}`);
-      setSubmitted(true);
+      const json = await res.json();
+      setRefId(json.applicantId || "JS-APP-2026-0412");
     } finally {
       setSubmitting(false);
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div className="relative w-full max-w-xl tactical-surface rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto text-white">
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full hover:bg-white/[0.08] text-zinc-400 hover:text-white transition-colors"
-          aria-label="Close modal"
-        >
-          <X className="w-4 h-4" />
-        </button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+      <div className="fixed inset-0 bg-[#0F172A]/60" onClick={onClose} aria-hidden="true" />
+      <div className="relative z-10 max-h-[90vh] w-full max-w-[660px] overflow-y-auto rounded-[4px] border border-[#E2E8F0] bg-white">
+        {/* Header */}
+        <div className="sticky top-0 flex items-start justify-between gap-4 border-b border-[#E2E8F0] bg-white px-6 py-4">
+          <div>
+            <p className="font-mono text-[12px] font-medium text-[#B45309]">
+              {isGeneralPool ? "Vetted Talent Pool Intake" : "Vacancy Application"}
+            </p>
+            <h2 className="mt-0.5 font-heading text-[22px] font-semibold text-[#0F172A]">
+              {roleTitle}
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close application modal"
+            className="flex h-8 w-8 items-center justify-center rounded-[4px] border border-[#E2E8F0] text-[#475569] hover:bg-[#F8FAFC]"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
 
-        {!submitted ? (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-[11px] font-mono text-[#0066FF] uppercase">
-                <Shield className="w-3.5 h-3.5" />
-                <span>Personnel Clearance Intake</span>
-              </div>
-              <h2 className="text-xl font-bold tracking-tight text-white">
-                Application: {jobTitle}
-              </h2>
-              <p className="text-xs text-zinc-400">
-                All candidates undergo biometric audit and psychological stress screening.
-              </p>
-            </div>
-
+        <div className="p-6">
+          {refId ? (
             <div className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono uppercase text-zinc-400">Full Legal Name *</label>
-                <input
-                  required
-                  type="text"
-                  value={form.applicantName}
-                  onChange={(e) => setForm({ ...form, applicantName: e.target.value })}
-                  placeholder="First and Last Name"
-                  className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                />
+              <div className="rounded-[4px] border border-[#0F172A] bg-[#F8FAFC] p-5">
+                <p className="flex items-center gap-2 font-heading text-[18px] font-semibold text-[#0F172A]">
+                  <CheckCircle2 className="h-5 w-5 text-[#B45309]" /> Application Recorded
+                </p>
+                <p className="mt-2 font-mono text-[14px] font-semibold text-[#0F172A]">
+                  Applicant Reference: {refId}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#475569]">
+                  Our Recruitment Manager will review your credentials against active vetting criteria.
+                  Shortlisted candidates are contacted for in-person screening and field drills.
+                </p>
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-zinc-400">Email Address *</label>
+              <button
+                type="button"
+                onClick={() => {
+                  setRefId(null);
+                  onClose();
+                }}
+                className="rounded-[4px] bg-[#0F172A] px-5 py-2.5 text-[13px] font-semibold text-white"
+              >
+                Return to Careers
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Full Name *
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    value={form.fullName}
+                    onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+                    placeholder="e.g., Emmanuel Okafor"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 text-[14px] focus:border-[#0F172A] focus:bg-white focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Email Address *
+                  </label>
                   <input
                     required
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="officer@email.com"
-                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                    placeholder="name@email.ng"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 text-[14px]"
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-zinc-400">Phone Number *</label>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Phone Number *
+                  </label>
                   <input
                     required
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+234 800 000 0000"
-                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                    placeholder="+234 805 000 0000"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 font-mono text-[14px]"
                   />
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-zinc-400">Security Experience (Years)</label>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Current Location / Deployment Area *
+                  </label>
                   <input
-                    type="number"
-                    min="1"
-                    max="30"
-                    value={form.experienceYears}
-                    onChange={(e) => setForm({ ...form, experienceYears: Number(e.target.value) })}
-                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono uppercase text-zinc-400">Deployment City</label>
-                  <input
+                    required
                     type="text"
                     value={form.location}
                     onChange={(e) => setForm({ ...form, location: e.target.value })}
-                    className="w-full bg-[#070A0F] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#0066FF]"
+                    placeholder="e.g., Ikeja, Lagos or Maitama, Abuja"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 text-[14px]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Years of Security Experience *
+                  </label>
+                  <input
+                    required
+                    type="number"
+                    min={0}
+                    value={form.experienceYears}
+                    onChange={(e) => setForm({ ...form, experienceYears: e.target.value })}
+                    placeholder="e.g., 5"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 font-mono text-[14px]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Availability *
+                  </label>
+                  <div className="relative mt-1">
+                    <select
+                      value={form.availability}
+                      onChange={(e) => setForm({ ...form, availability: e.target.value })}
+                      className="w-full appearance-none rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] py-2 pl-3 pr-9 text-[14px] text-[#0F172A] focus:border-[#0F172A] focus:bg-white focus:outline-none"
+                    >
+                      <option>Immediate</option>
+                      <option>7 days notice</option>
+                      <option>14 days notice</option>
+                      <option>30 days notice</option>
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-[#475569]" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[12px] font-semibold text-[#475569]">
+                    Key Qualifications / Certifications *
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    value={form.qualifications}
+                    onChange={(e) => setForm({ ...form, qualifications: e.target.value })}
+                    placeholder="e.g., NSCDC Cert, First Aid, VMS"
+                    className="mt-1 w-full rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 text-[14px]"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-mono uppercase text-zinc-400">Tactical Competencies</label>
-                <div className="flex flex-wrap gap-2">
-                  {availableSkills.map((sk) => {
-                    const isSelected = form.skills.includes(sk);
-                    return (
-                      <button
-                        key={sk}
-                        type="button"
-                        onClick={() => toggleSkill(sk)}
-                        className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
-                          isSelected
-                            ? "bg-[#0066FF] border-[#0066FF] text-white font-medium"
-                            : "bg-[#070A0F] border-white/[0.08] text-zinc-400 hover:text-white"
-                        }`}
-                      >
-                        {sk}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono uppercase text-zinc-400">CV & Credentials Document (PDF)</label>
-                <div className="border border-dashed border-white/[0.15] rounded-xl p-4 text-center cursor-pointer hover:border-[#0066FF] transition-colors relative">
+              {/* CV / Document Upload Dropzone */}
+              <div>
+                <label className="block text-[12px] font-semibold text-[#475569]">
+                  Upload CV / Supporting Documents *
+                </label>
+                <label className="mt-1.5 flex cursor-pointer flex-col items-center justify-center rounded-[4px] border border-dashed border-[#94A3B8] bg-[#F8FAFC] px-4 py-5 text-center hover:border-[#0F172A]">
+                  <Upload className="h-5 w-5 text-[#475569]" />
+                  <span className="mt-2 text-[13px] font-medium text-[#0F172A]">
+                    {form.cvFileName ? form.cvFileName : "Click to select CV or certificates"}
+                  </span>
+                  <span className="mt-1 font-mono text-[12px] text-[#475569]">
+                    Accepted: PDF, DOC, DOCX · Maximum file size 5 MB
+                  </span>
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
-                    onChange={handleFileChange}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
+                    className="hidden"
+                    onChange={(e) =>
+                      setForm({ ...form, cvFileName: e.target.files?.[0]?.name || "" })
+                    }
                   />
-                  <div className="flex flex-col items-center justify-center gap-1.5 text-xs text-zinc-400">
-                    <Upload className="w-4 h-4 text-zinc-300" />
-                    <span>{fileName ? fileName : "Upload credentials (PDF, DOCX)"}</span>
-                  </div>
-                </div>
+                </label>
               </div>
-            </div>
 
-            <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
-              <button
-                type="button"
-                onClick={onClose}
-                className="text-xs font-mono text-zinc-500 hover:text-zinc-300"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold px-6 py-3 rounded-full transition-all disabled:opacity-50"
-              >
-                {submitting ? "Submitting Dossier..." : "Submit for Clearance Review"}
-              </button>
-            </div>
-          </form>
-        ) : (
-          <div className="text-center py-6 space-y-5">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-              <Check className="w-6 h-6" />
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-lg font-bold text-white">Application Received</h3>
-              <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-                Your dossier has been logged into our vetting queue. Our recruitment desk will contact you within 5 business days for biometric scheduling.
-              </p>
-            </div>
-            <div className="bg-[#070A0F] py-3 px-4 rounded-xl border border-white/[0.08] inline-block font-mono text-xs text-zinc-300">
-              Candidate Reference: <span className="text-[#0066FF] font-bold">{applicantId}</span>
-            </div>
-            <div className="pt-2">
-              <button
-                onClick={onClose}
-                className="bg-white/[0.08] hover:bg-white/[0.14] text-white text-xs px-6 py-2.5 rounded-full"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+              {/* Privacy & Data-Retention Notice */}
+              <div className="flex items-start gap-2.5 rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-[12px] leading-relaxed text-[#475569]">
+                <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-[#0F172A]" />
+                <p>
+                  <strong className="text-[#0F172A]">Privacy & Data Retention Notice:</strong>{" "}
+                  Uploaded CVs, references, and assessment records are restricted to authorised
+                  Josie Shield recruitment staff, never exposed publicly, and retained for up to
+                  12 months unless you request earlier removal or opt into our Ready-to-Work Talent Pool.
+                </p>
+              </div>
+
+              <div className="flex justify-end gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="rounded-[4px] border border-[#E2E8F0] bg-white px-4 py-2 text-[13px] font-semibold text-[#475569]"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="rounded-[4px] bg-[#B45309] px-5 py-2 text-[13px] font-semibold text-white hover:bg-[#92400E] disabled:opacity-60"
+                >
+                  {submitting ? "Submitting..." : "Submit Application"}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );

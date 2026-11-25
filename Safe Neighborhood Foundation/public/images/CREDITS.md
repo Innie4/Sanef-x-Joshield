@@ -1,0 +1,13 @@
+# Image Credits (Creative Commons / Public Domain via Openverse)
+
+- **lagos-corridor.jpg** (Pedestrian footbridge and transit corridor, Lagos): "Lagos Street" by oneVillage Initiative, licensed under BY-SA 2.0 (https://www.flickr.com/photos/10411029@N08/3058557622)
+- **lekki-community.jpg** (Parents and pupils in Lekki Peninsula, Lagos): "Lekki-Peninsula, Lagos" by Common Language Project, licensed under BY-SA 2.0 (https://www.flickr.com/photos/51515265@N08/9392808033)
+- **school-assembly.jpg** (Primary school pupils lined up outside classroom block): "Nigeria_2010_Katie-Faber" by SIM USA, licensed under BY-SA 2.0 (https://www.flickr.com/photos/124218704@N03/15358666668)
+- **schoolboys-uniform.jpg** (Primary school pupils walking home after afternoon bell): "Hillcrest-School_Nigeria_2005_Elizabeth-Macintosh" by SIM USA, licensed under BY-SA 2.0 (https://www.flickr.com/photos/124218704@N03/14982572865)
+- **classroom-student.jpg** (Secondary school student during evening study session): "Star student" by DFID - UK Department for International Development, licensed under BY-SA 2.0 (https://www.flickr.com/photos/14214150@N02/7138906747)
+- **classroom-full.jpg** (Classroom session in Nigerian public school): "A classroom of students" by DFID - UK Department for International Development, licensed under BY-SA 2.0 (https://www.flickr.com/photos/14214150@N02/7138907393)
+- **lagos-digital-hub.jpg** (Mariam and Uche at Lagos youth digital skills workshop): "Mariam and Uche, a statistician and a software developer in Lagos" by DFID - UK Department for International Development, licensed under BY 2.0 (https://www.flickr.com/photos/14214150@N02/8102029130)
+- **market-walkway.jpg** (Traders and pedestrians along Lagos market lane): "Wax market" by zouzouwizman, licensed under BY 2.0 (https://www.flickr.com/photos/61111202@N00/12129005)
+- **solar-committee.jpg** (Ward committee signing solar street-light handover agreement): "Contract Signing: Solar street lights for E.O. Leblanc and Liverpool Highways" by roosevelt.skerrit, licensed under PDM 1.0 (https://www.flickr.com/photos/130984787@N07/34256896873)
+- **neighborhood-children.jpg** (Children gathered on neighborhood compound steps): "Neighborhood Kids" by Topotom, licensed under BY-SA 2.0 (https://www.flickr.com/photos/47125576@N00/24441034700)
+- **lit-night-road.jpg** (Evening footpath illuminated by overhead street lamp): "Starry Nights" by Yenkassa, licensed under BY 2.0 (https://www.flickr.com/photos/88059007@N03/8116496026)

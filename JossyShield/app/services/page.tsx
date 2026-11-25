@@ -1,99 +1,131 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { SECURITY_SERVICES } from "@/lib/data";
+import { ArrowRight, Check } from "lucide-react";
+import { SERVICE_PILLARS } from "@/lib/data";
 
 export default function ServicesPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-20">
-      {/* Header */}
-      <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold">
-          Operational Capabilities Index
-        </p>
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white">
-          Defense Specifications & Service Standards
-        </h1>
-        <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
-          From static facility guarding and tactical highway escorts to risk penetration audits and certified corporate academies, JossyShield operates certified, auditable protective infrastructure.
-        </p>
-      </div>
-
-      {/* Services List */}
-      <div className="space-y-12">
-        {SECURITY_SERVICES.map((service, index) => (
-          <div
-            key={service.id}
-            id={service.category}
-            className="tactical-surface rounded-3xl p-8 sm:p-10 space-y-8"
+    <div className="bg-[#F8FAFC] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col justify-between gap-6 border-b border-[#E2E8F0] pb-8 lg:flex-row lg:items-end">
+          <div className="max-w-[720px]">
+            <p className="font-heading text-[12px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
+              Operational Scope & Deliverables
+            </p>
+            <h1 className="mt-2 font-heading text-[36px] font-bold leading-[1.08] text-[#0F172A] sm:text-[46px]">
+              Security, Consultancy & Training Services
+            </h1>
+            <p className="mt-3 text-[15px] leading-relaxed text-[#475569]">
+              Every engagement operates under written Post Orders, defined service-level
+              standards, and direct supervisory oversight.
+            </p>
+          </div>
+          <Link
+            href="/marketplace"
+            className="inline-flex shrink-0 items-center gap-2 rounded-[4px] bg-[#B45309] px-5 py-3 text-[14px] font-semibold text-white hover:bg-[#92400E]"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Left Column: Title & Description */}
-              <div className="lg:col-span-7 space-y-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20">
-                    {service.badge}
-                  </span>
-                  <span className="text-xs font-mono text-zinc-600">
-                    DISCIPLINE 0{index + 1}
-                  </span>
-                </div>
+            Request a Service Quote
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
 
-                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  {service.title}
-                </h2>
+        {/* Jump Tabs */}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {SERVICE_PILLARS.map((p) => (
+            <a
+              key={p.key}
+              href={`#${p.key}`}
+              className="rounded-[4px] border border-[#E2E8F0] bg-white px-4 py-2 text-[13px] font-semibold text-[#0F172A] hover:border-[#0F172A]"
+            >
+              {p.title}
+            </a>
+          ))}
+        </div>
 
-                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                  {service.fullDesc}
-                </p>
-
-                {/* Features List */}
-                <div className="space-y-2.5 pt-2">
-                  <p className="text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-                    Mandatory Inclusions
-                  </p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-zinc-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Right Column: Specs & Actions */}
-              <div className="lg:col-span-5 bg-[#070A0F] border border-white/[0.07] rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <div>
-                  <h4 className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mb-4 pb-2 border-b border-white/[0.06]">
-                    Service Level Agreement (SLA)
-                  </h4>
-                  <div className="space-y-4">
-                    {service.specs.map((spec, i) => (
-                      <div key={i}>
-                        <p className="text-[11px] text-zinc-500">{spec.label}</p>
-                        <p className="text-sm font-semibold text-white font-mono mt-0.5">
-                          {spec.value}
-                        </p>
-                      </div>
-                    ))}
+        <div className="mt-10 space-y-10">
+          {SERVICE_PILLARS.map((pillar) => (
+            <section
+              key={pillar.key}
+              id={pillar.key}
+              className="scroll-mt-24 overflow-hidden rounded-[4px] border border-[#E2E8F0] bg-white"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12">
+                <div className="border-b border-[#E2E8F0] bg-[#0F172A] lg:col-span-5 lg:border-b-0 lg:border-r">
+                  <div className="aspect-[16/11] w-full overflow-hidden">
+                    <img
+                      src={pillar.image}
+                      alt={pillar.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5 text-white">
+                    <p className="font-mono text-[12px] uppercase text-[#F59E0B]">{pillar.code}</p>
+                    <p className="mt-1.5 text-[12px] text-[#CBD5E1]">{pillar.imageCaption}</p>
+                    <div className="mt-4 border-t border-white/10 pt-3">
+                      <p className="text-[12px] font-semibold  text-[#94A3B8]">
+                        Typical Clients
+                      </p>
+                      <p className="mt-1 text-[13px] text-white">{pillar.idealClients}</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.06]">
-                  <Link
-                    href={`/marketplace?category=${encodeURIComponent(service.title)}`}
-                    className="w-full flex items-center justify-center gap-2 bg-[#0066FF] hover:bg-[#1A75FF] text-white text-xs font-semibold py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition-all"
-                  >
-                    <span>Requisition This Discipline</span>
-                    <ArrowUpRight className="w-4 h-4 opacity-80" />
-                  </Link>
+                <div className="flex flex-col justify-between p-6 sm:p-8 lg:col-span-7">
+                  <div>
+                    <h2 className="font-heading text-[30px] font-semibold text-[#0F172A]">
+                      {pillar.title}
+                    </h2>
+                    <p className="mt-2.5 text-[15px] leading-relaxed text-[#475569]">
+                      {pillar.description}
+                    </p>
+
+                    <div className="mt-6 grid grid-cols-1 gap-6 border-t border-[#E2E8F0] pt-6 md:grid-cols-2">
+                      <div>
+                        <h3 className="font-heading text-[13px] font-semibold  text-[#0F172A]">
+                          Scope of Work
+                        </h3>
+                        <ul className="mt-3 space-y-2 text-[13px] text-[#0F172A]">
+                          {pillar.scopes.map((s) => (
+                            <li key={s} className="flex items-start gap-2">
+                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#B45309]" />
+                              <span>{s}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-[13px] font-semibold  text-[#0F172A]">
+                          Client Deliverables
+                        </h3>
+                        <ul className="mt-3 space-y-2 text-[13px] text-[#475569]">
+                          {pillar.deliverables.map((d) => (
+                            <li key={d} className="flex items-start gap-2">
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#0F172A]" />
+                              <span>{d}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex items-center justify-between border-t border-[#E2E8F0] pt-5">
+                    <span className="font-mono text-[12px] text-[#475569]">
+                      SLA proposal issued after site scoping
+                    </span>
+                    <Link
+                      href={`/marketplace?category=${pillar.key}`}
+                      className="inline-flex items-center gap-2 rounded-[4px] bg-[#0F172A] px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-[#1E293B]"
+                    >
+                      Request {pillar.title}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+            </section>
+          ))}
+        </div>
       </div>
     </div>
   );

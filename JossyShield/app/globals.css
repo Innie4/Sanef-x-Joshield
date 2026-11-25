@@ -2,89 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #05070b;
-  --foreground: #f4f6fb;
-  --accent-blue: #0066ff;
-  --accent-cyan: #00d2ff;
-  --hairline: rgba(255, 255, 255, 0.08);
-}
+@layer base {
+  html {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  h1, h2, h3, .font-heading {
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: -0.015em;
+  }
 
-/* Precision scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #05070b;
-}
-::-webkit-scrollbar-thumb {
-  background: #182234;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #0066ff;
-}
-
-/* Subtle background spotlight glow */
-.hero-glow {
-  background: radial-gradient(1000px circle at 50% -10%, rgba(0, 102, 255, 0.16), transparent 70%);
-}
-
-.mesh-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Bento card styling */
-.bento-card {
-  position: relative;
-  background: rgba(11, 15, 23, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.bento-card:hover {
-  border-color: rgba(0, 102, 255, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -15px rgba(0, 102, 255, 0.15);
-}
-
-/* Liquid Glass Pill Navigation */
-.liquid-glass {
-  background: rgba(10, 14, 22, 0.82);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-}
-
-/* Radar pulse animation */
-@keyframes radarSweep {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 0.3; }
-  100% { transform: scale(0.95); opacity: 0.8; }
-}
-.radar-pulse {
-  animation: radarSweep 3s ease-in-out infinite;
-}
-
-@keyframes beaconPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.9); }
-}
-.beacon-pulse {
-  animation: beaconPulse 2s ease-in-out infinite;
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
 }

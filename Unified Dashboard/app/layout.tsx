@@ -1,9 +1,12 @@
+import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/jetbrains-mono/index.css";
 import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Unified Administration Console | SANEF & JossyShield",
-  description: "Shared multi-organization administration dashboard with scoped RBAC, tenant context switching, and isolated operational modules.",
+  title: "Unified Platform Console | SANEF & Josie Shield Security Services",
+  description:
+    "Multi-organisation administration platform for Safe Neighborhood Foundation (SANEF) and Josie Shield Security Services.",
 };
 
 export default function RootLayout({
@@ -12,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#090c12] text-slate-100 flex flex-col font-sans">
+    <html lang="en">
+      <body className="min-h-screen bg-[#FAFAFA] text-[#09090B] font-sans antialiased selection:bg-[#2563EB]/15 selection:text-[#09090B]">
         {children}
       </body>
     </html>

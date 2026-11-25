@@ -1,100 +1,102 @@
 import React from "react";
 import Link from "next/link";
-import { Shield, Target, Award, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { OPERATIONAL_CREDENTIALS } from "@/lib/data";
+
+const COMMAND_PRINCIPLES = [
+  {
+    code: "STD-01",
+    title: "Three-Tier Personnel Vetting",
+    detail:
+      "Every guard and supervisor passes NIN biometric verification, two verified guarantor checks, and police character clearance prior to uniform issue.",
+  },
+  {
+    code: "STD-02",
+    title: "Written Post Orders & Shift Logs",
+    detail:
+      "No officer stands on a post without a site-specific operational manual, timed relief sign-in ledger, and defined emergency escalation tree.",
+  },
+  {
+    code: "STD-03",
+    title: "Independent Commercial Operations",
+    detail:
+      "Josie Shield Security Services operates strictly as a licensed private commercial enterprise with dedicated sector managers in Lagos, Abuja, and Rivers.",
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-20">
-      {/* Header */}
-      <div className="max-w-3xl space-y-4">
-        <p className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold">
-          Doctrine & Command Profile
-        </p>
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white">
-          Defense Craft. Grounded in Absolute Integrity.
-        </h1>
-        <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
-          Founded to eliminate vulnerabilities in commercial infrastructure and high-value transit, JossyShield provides corporations, diplomatic missions, and energy assets with disciplined, technological defense.
-        </p>
-      </div>
-
-      {/* Mission / Vision / Standards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="tactical-surface rounded-3xl p-8 space-y-3">
-          <div className="w-8 h-8 rounded-lg bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20 flex items-center justify-center">
-            <Target className="w-4 h-4" />
-          </div>
-          <h3 className="text-lg font-bold text-white tracking-tight">Our Mission</h3>
-          <p className="text-xs text-zinc-400 leading-relaxed">
-            To eliminate perimeter risks and asset compromise by deploying rigorously screened, tactically trained security personnel backed by continuous central telemetry.
-          </p>
-        </div>
-
-        <div className="tactical-surface rounded-3xl p-8 space-y-3">
-          <div className="w-8 h-8 rounded-lg bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20 flex items-center justify-center">
-            <Shield className="w-4 h-4" />
-          </div>
-          <h3 className="text-lg font-bold text-white tracking-tight">Our Vision</h3>
-          <p className="text-xs text-zinc-400 leading-relaxed">
-            To serve as the most trusted commercial defense partner in West Africa, renowned for zero-breach records, rapid dispatch, and transparent accountability.
-          </p>
-        </div>
-
-        <div className="tactical-surface rounded-3xl p-8 space-y-3">
-          <div className="w-8 h-8 rounded-lg bg-[#0066FF]/10 text-[#0066FF] border border-[#0066FF]/20 flex items-center justify-center">
-            <Award className="w-4 h-4" />
-          </div>
-          <h3 className="text-lg font-bold text-white tracking-tight">Our Standards</h3>
-          <p className="text-xs text-zinc-400 leading-relaxed">
-            Category A licensing from NSCDC, ISO 27001 physical security compliance, full background biometric audits, and mandatory continuous retraining.
-          </p>
-        </div>
-      </div>
-
-      {/* Leadership & Command Staff */}
-      <div id="leadership" className="tactical-surface rounded-3xl p-8 sm:p-12 space-y-8">
-        <div>
-          <p className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold">
-            Command Leadership
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-            Governed by Seasoned Defense Professionals
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="bg-[#070A0F] border border-white/[0.06] rounded-2xl p-6 space-y-2">
-            <div className="w-10 h-10 rounded-full bg-zinc-800 text-white font-bold text-xs flex items-center justify-center font-mono">
-              JU
-            </div>
-            <h4 className="text-base font-bold text-white">Col. J. Udoh (Rtd.)</h4>
-            <p className="text-[11px] font-mono text-[#0066FF]">Chief Executive & Commander</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              26+ years active military intelligence, counter-insurgency doctrine, and industrial facility defense.
+    <div className="bg-[#F8FAFC] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 border-b border-[#E2E8F0] pb-14 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">
+            <p className="font-heading text-[12px] font-semibold uppercase tracking-[0.14em] text-[#B45309]">
+              Company Profile & Standards
             </p>
+            <h1 className="mt-2 font-heading text-[36px] font-bold leading-[1.08] text-[#0F172A] sm:text-[46px]">
+              Structured commercial security engineered for zero-excuse accountability.
+            </h1>
+            <p className="mt-4 text-[15px] leading-[1.7] text-[#475569]">
+              Josie Shield Security Services provides physical guarding, facility risk consultancy,
+              and guard academy training for commercial towers, industrial depots, maritime
+              terminals, and diplomatic compounds across Nigeria.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/marketplace"
+                className="inline-flex items-center gap-2 rounded-[4px] bg-[#0F172A] px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-[#1E293B]"
+              >
+                Request a Service <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/careers"
+                className="inline-flex items-center gap-2 rounded-[4px] border border-[#E2E8F0] bg-white px-5 py-2.5 text-[13px] font-semibold text-[#0F172A] hover:border-[#0F172A]"
+              >
+                Explore Careers
+              </Link>
+            </div>
           </div>
 
-          <div className="bg-[#070A0F] border border-white/[0.06] rounded-2xl p-6 space-y-2">
-            <div className="w-10 h-10 rounded-full bg-zinc-800 text-white font-bold text-xs flex items-center justify-center font-mono">
-              MB
-            </div>
-            <h4 className="text-base font-bold text-white">Capt. Marcus Briggs</h4>
-            <p className="text-[11px] font-mono text-[#0066FF]">Director of Field Operations</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Former Special Boat Service operative specializing in maritime transit security, armed convoys, and rapid intervention.
-            </p>
+          <div className="lg:col-span-5">
+            <figure className="overflow-hidden rounded-[4px] border border-[#E2E8F0] bg-white">
+              <div className="aspect-[16/10] overflow-hidden bg-[#0F172A]">
+                <img
+                  src="/images/training-operations-drill.jpg"
+                  alt="Josie Shield commercial operations training and dispatch briefing"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="border-t border-[#E2E8F0] px-4 py-3 font-mono text-[12px] text-[#475569]">
+                SECTOR OPERATIONS DESK · IKEJA HEAD OFFICE, LAGOS
+              </figcaption>
+            </figure>
           </div>
+        </div>
 
-          <div className="bg-[#070A0F] border border-white/[0.06] rounded-2xl p-6 space-y-2">
-            <div className="w-10 h-10 rounded-full bg-zinc-800 text-white font-bold text-xs flex items-center justify-center font-mono">
-              EA
+        {/* Credentials Strip */}
+        <div className="grid grid-cols-1 gap-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+          {OPERATIONAL_CREDENTIALS.map((c) => (
+            <div key={c.label} className="rounded-[4px] border border-[#E2E8F0] bg-white p-5">
+              <p className="text-[12px] font-medium text-[#475569]">{c.label}</p>
+              <p className="mt-2 font-heading text-[30px] font-bold leading-none text-[#0F172A] tabular-nums">
+                {c.value}
+              </p>
+              <p className="mt-2 text-[12px] text-[#475569]">{c.detail}</p>
             </div>
-            <h4 className="text-base font-bold text-white">Evelyn Alabi, CPP</h4>
-            <p className="text-[11px] font-mono text-[#0066FF]">Head of Vetting Academy</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Certified Protection Professional overseeing our multi-tier background screening, biometric audits, and crisis de-escalation curricula.
-            </p>
-          </div>
+          ))}
+        </div>
+
+        {/* Mission, Vision & Operating Standards */}
+        <div className="grid grid-cols-1 gap-6 border-t border-[#E2E8F0] py-12 md:grid-cols-3">
+          {COMMAND_PRINCIPLES.map((p) => (
+            <div key={p.code} className="rounded-[4px] border border-[#E2E8F0] bg-white p-6">
+              <span className="font-mono text-[12px] font-semibold text-[#B45309]">{p.code}</span>
+              <h2 className="mt-2 font-heading text-[22px] font-semibold text-[#0F172A]">
+                {p.title}
+              </h2>
+              <p className="mt-2.5 text-[14px] leading-relaxed text-[#475569]">{p.detail}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
