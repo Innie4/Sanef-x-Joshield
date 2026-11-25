@@ -13,14 +13,14 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#E2E8F0] bg-white">
       <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Left: Josie Shield Security Services wordmark */}
+        {/* Left: JossyShield Security Services wordmark */}
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-[#0F172A] text-white">
             <Shield className="h-4 w-4 text-[#B45309]" />
           </span>
           <div className="leading-none">
             <span className="block font-heading text-[18px] font-bold uppercase tracking-[0.02em] text-[#0F172A]">
-              Josie Shield
+              JossyShield
             </span>
             <span className="mt-0.5 block text-[12px] font-semibold uppercase tracking-[0.12em] text-[#475569]">
               Security Services

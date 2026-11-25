@@ -598,3 +598,75 @@ export const SANEF_TESTIMONIALS = [
     role: "Programme Director, West Africa Civic Fund",
   },
 ];
+
+export async function getLiveProjects(): Promise<SANEFProjectRecord[]> {
+  try {
+    const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+    const res = await fetch(`${dashboardApi}/api/content?type=projects`, { next: { revalidate: 10 } });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data && json.data.length > 0) {
+        return json.data.map((p: any) => ({
+          slug: p.title ? p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "community-project",
+          refId: p.referenceCode || `SAN-PRJ-2026-0${p.id.substring(0, 3)}`,
+          title: p.title,
+          category: p.category || "Solar Corridors",
+          location: p.location || "Lagos, Nigeria",
+          date: p.date || "2026",
+          year: p.year || "2026",
+          summary: p.summary || "",
+          detailedDescription: p.summary || "",
+          outcomesSummary: p.outcomes || "Field verified community impact.",
+          outcomesMetrics: [
+            { label: "Audit Status", value: p.status || "Audited" },
+            { label: "Attached Records", value: `${p.photoCount || 4} Photos · ${p.pdfCount || 1} Report` },
+          ],
+          partners: p.partnerNames || ["Ajeromi-Ifelodun Ward Council"],
+          coverImage: "/images/ajegunle-solar-dusk.jpg",
+          coverCaption: `${p.title} · ${p.location}`,
+          gallery: [
+            { src: "/images/ajegunle-solar-dusk.jpg", caption: "Field site overview." },
+            { src: "/images/ajegunle-lux-check.jpg", caption: "Photometric audit verification." },
+          ],
+          photoCount: p.photoCount || 4,
+          pdfCount: p.pdfCount || 1,
+          reports: p.reports || [],
+          featured: Boolean(p.featured),
+        }));
+      }
+    }
+  } catch (e) {
+    // Fall back to static projects
+  }
+  return SANEF_PROJECTS;
+}
+
+export async function getLivePartners(): Promise<PartnerProfile[]> {
+  try {
+    const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+    const res = await fetch(`${dashboardApi}/api/content?type=partnerships`, { next: { revalidate: 10 } });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data && json.data.length > 0) {
+        return json.data.map((p: any) => ({
+          slug: p.partnerName ? p.partnerName.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "partner",
+          name: p.partnerName,
+          monogram: p.partnerName ? p.partnerName.slice(0, 2).toUpperCase() : "PA",
+          partnershipPeriod: p.partnershipPeriod || "2024 – Present",
+          partnershipType: p.partnershipType || "Technical Partner",
+          website: "#",
+          overview: p.contributions || "Strategic partner for community safety development.",
+          jointProjects: (p.jointProjects || []).map((t: string) => ({ title: t, slug: "project" })),
+          sanefContribution: "Field deployment, engineering monitoring, and community liaison.",
+          partnerContribution: p.contributions || "Institutional support and co-funding.",
+          outcomesSummary: p.outcomes || "Active community execution.",
+          linkedEvidence: [],
+        }));
+      }
+    }
+  } catch (e) {
+    // Fall back to static partners
+  }
+  return SANEF_PARTNERS;
+}
+

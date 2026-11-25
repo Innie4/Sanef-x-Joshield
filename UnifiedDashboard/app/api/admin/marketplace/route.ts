@@ -105,3 +105,29 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing request id" }, { status: 400 });
+    }
+
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          await supabase.from("marketplace_requests").delete().eq("id", id);
+        }
+      } catch (e) {
+        console.error("Error deleting marketplace request from Supabase:", e);
+      }
+    }
+
+    const deleted = db.deleteMarketplaceRequest(id);
+    return NextResponse.json({ success: true, deleted });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}

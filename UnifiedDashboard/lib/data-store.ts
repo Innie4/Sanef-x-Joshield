@@ -1,14 +1,14 @@
 // ==============================================================================
 // UNIFIED MULTI-ORGANISATION PLATFORM DATA STORE
-// Organisations: Safe Neighborhood Foundation (SANEF) & Josie Shield Security Services
+// Organisations: Safe Neighborhood Foundation (SANEF) & JossyShield Security Services
 // Strict organisation-scoped isolation & RBAC metadata
 // ==============================================================================
 
-export type OrgId = "org-sanef" | "org-josieshield";
+export type OrgId = "org-sanef" | "org-josieshield" | "org-jossyshield";
 
 export interface Organization {
   id: OrgId;
-  slug: "sanef" | "josieshield";
+  slug: "sanef" | "josieshield" | "jossyshield";
   name: string;
   shortName: string;
   type: "ngo" | "commercial_security";
@@ -304,12 +304,12 @@ export interface ActivityLog {
 export const ORGANIZATIONS: Organization[] = [
   {
     id: "org-josieshield",
-    slug: "josieshield",
-    name: "Josie Shield Security Services",
-    shortName: "Josie Shield",
+    slug: "jossyshield",
+    name: "JossyShield Security Services",
+    shortName: "JossyShield",
     type: "commercial_security",
     dotColor: "#0F172A",
-    websiteDomain: "josieshield.ng",
+    websiteDomain: "jossyshield.ng",
     localUrl: process.env.NEXT_PUBLIC_JOSSIESHIELD_URL || "https://sanef-x-joshield.vercel.app",
     userRole: "Super Admin",
     tagline: "Commercial security operations, advisory consultancy, training, and vetted talent pool.",
@@ -825,7 +825,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
       "Specific Requirements": "Container gatehouse access control, weighbridge seal verification, and dual-handler night perimeter sweep.",
     },
     followUpTimeline: [
-      { id: "ft-1", timestamp: "2026-11-24 09:14", author: "System", entry: "Service request JS-REQ-2026-0418 submitted via Josie Shield Marketplace." },
+      { id: "ft-1", timestamp: "2026-11-24 09:14", author: "System", entry: "Service request JS-REQ-2026-0418 submitted via JossyShield Marketplace." },
       { id: "ft-2", timestamp: "2026-11-24 10:02", author: "Tamuno Briggs", entry: "Assigned to Rivers Maritime desk; site survey scheduled for 26 Nov." },
     ],
   },
@@ -1185,7 +1185,7 @@ export const SERVICE_OFFERINGS: ServiceOfferingRecord[] = [
 export const TESTIMONIALS_DATA: TestimonialRecord[] = [
   { id: "tst-1", organizationId: "org-josieshield", refId: "JS-TST-019", clientName: "Bankole Coker", organisation: "Meridian Towers Facilities, VI", category: "Security Services", quote: "Shift handovers run to the minute. Every visitor badge and basement sweep is logged without us having to chase supervisors.", approvedDate: "2026-10-14", status: "Approved" },
   { id: "tst-2", organizationId: "org-josieshield", refId: "JS-TST-016", clientName: "Kemi Adesina", organisation: "Zenith Diplomatic Advisory, Abuja", category: "Consultancy", quote: "Their physical vulnerability audit uncovered three rear-perimeter blind spots our previous vendor missed for two years.", approvedDate: "2026-09-28", status: "Approved" },
-  { id: "tst-3", organizationId: "org-josieshield", refId: "JS-TST-012", clientName: "Uche Nnamdi", organisation: "Oba Akran Distribution Depot", category: "Training", quote: "Within one week of Josie Shield's gatehouse drill, weighbridge manifest discrepancies dropped to zero across all three shifts.", approvedDate: "2026-08-19", status: "Approved" },
+  { id: "tst-3", organizationId: "org-josieshield", refId: "JS-TST-012", clientName: "Uche Nnamdi", organisation: "Oba Akran Distribution Depot", category: "Training", quote: "Within one week of JossyShield's gatehouse drill, weighbridge manifest discrepancies dropped to zero across all three shifts.", approvedDate: "2026-08-19", status: "Approved" },
 ];
 
 export const MEDIA_ASSETS: MediaAsset[] = [
@@ -1201,10 +1201,10 @@ export const MEDIA_ASSETS: MediaAsset[] = [
 
 export const PLATFORM_USERS: PlatformUser[] = [
   { id: "pu-1", name: "Inimfon Udoh", email: "i.udoh@platform.ng", sanefRole: "Super Admin", josieRole: "Super Admin", lastActive: "2026-11-25 06:18", status: "Active", permissionsSummary: "Full platform administration, org memberships, audit logs" },
-  { id: "pu-2", name: "Jane Okonkwo", email: "jane.okonkwo@platform.ng", sanefRole: "Blog Editor", josieRole: "Recruitment Manager", lastActive: "2026-11-24 18:42", status: "Active", permissionsSummary: "SANEF: blog.create/edit/publish · Josie Shield: careers, applications, interviews, talent_pool" },
-  { id: "pu-3", name: "Evelyn Alabi", email: "e.alabi@josieshield.ng", sanefRole: null, josieRole: "Recruitment Manager", lastActive: "2026-11-24 17:15", status: "Active", permissionsSummary: "Josie Shield only: applications.manage, interviews.manage, talent_pool.manage" },
+  { id: "pu-2", name: "Jane Okonkwo", email: "jane.okonkwo@platform.ng", sanefRole: "Blog Editor", josieRole: "Recruitment Manager", lastActive: "2026-11-24 18:42", status: "Active", permissionsSummary: "SANEF: blog.create/edit/publish · JossyShield: careers, applications, interviews, talent_pool" },
+  { id: "pu-3", name: "Evelyn Alabi", email: "e.alabi@jossyshield.ng", sanefRole: null, josieRole: "Recruitment Manager", lastActive: "2026-11-24 17:15", status: "Active", permissionsSummary: "JossyShield only: applications.manage, interviews.manage, talent_pool.manage" },
   { id: "pu-4", name: "Fatima Bello", email: "fatima.bello@sanefoundation.org.ng", sanefRole: "SANEF Administrator", josieRole: null, lastActive: "2026-11-24 16:04", status: "Active", permissionsSummary: "SANEF only: portfolio.manage, partnerships.manage, donations.view, media.upload" },
-  { id: "pu-5", name: "Capt. Tunde Bakare", email: "t.bakare@josieshield.ng", sanefRole: null, josieRole: "Service Manager", lastActive: "2026-11-24 14:51", status: "Active", permissionsSummary: "Josie Shield only: marketplace_requests.manage, services.edit" },
+  { id: "pu-5", name: "Capt. Tunde Bakare", email: "t.bakare@jossyshield.ng", sanefRole: null, josieRole: "Service Manager", lastActive: "2026-11-24 14:51", status: "Active", permissionsSummary: "JossyShield only: marketplace_requests.manage, services.edit" },
   { id: "pu-6", name: "Chidinma Nwosu", email: "c.nwosu@sanefoundation.org.ng", sanefRole: "Partnerships Manager", josieRole: null, lastActive: "2026-11-23 19:20", status: "Active", permissionsSummary: "SANEF only: partnerships.manage, projects.edit, events.manage" },
 ];
 
@@ -1222,10 +1222,22 @@ export const ACTIVITY_LOGS: ActivityLog[] = [
 ];
 
 // ==============================================================================
+// IN-MEMORY MUTABLE COLLECTIONS
+// ==============================================================================
+
+let sanefPartnerships: SANEFPartnership[] = [...SANEF_PARTNERSHIPS];
+let eventsData: EventRecord[] = [...EVENTS_DATA];
+let vacanciesData: VacancyRecord[] = [...VACANCIES_DATA];
+let serviceOfferings: ServiceOfferingRecord[] = [...SERVICE_OFFERINGS];
+let testimonialsData: TestimonialRecord[] = [...TESTIMONIALS_DATA];
+let blogPosts: BlogPost[] = [...BLOG_POSTS];
+
+// ==============================================================================
 // IN-MEMORY API REPOSITORY (Preserves live REST API compatibility)
 // ==============================================================================
 
 export const db = {
+  // --- SANEF Projects ---
   getSANEFProjects() {
     return sanefProjects;
   },
@@ -1240,19 +1252,181 @@ export const db = {
       date: payload.date || "November 2026",
       year: "2026",
       partnerNames: payload.partnerNames || ["Ajeromi-Ifelodun Ward Council"],
-      photoCount: payload.photoCount ?? 0,
-      pdfCount: payload.pdfCount ?? 0,
-      status: payload.status || "Draft",
+      photoCount: payload.photoCount ?? 4,
+      pdfCount: payload.pdfCount ?? 1,
+      status: payload.status || "Published",
       featured: Boolean(payload.featured),
       summary: payload.summary || "",
       outcomes: payload.outcomes || "Pending field verification.",
-      reports: payload.reports || [],
+      reports: payload.reports || [{ title: "Initial_Field_Audit_Dossier.pdf", size: "1.4 MB", date: new Date().toISOString().slice(0, 10) }],
     };
     sanefProjects = [created, ...sanefProjects];
     return created;
   },
+  updateSANEFProject(id: string, updates: Partial<SANEFProject>) {
+    sanefProjects = sanefProjects.map((p) => (p.id === id ? { ...p, ...updates } : p));
+    return sanefProjects.find((p) => p.id === id);
+  },
+  deleteSANEFProject(id: string) {
+    const target = sanefProjects.find((p) => p.id === id);
+    sanefProjects = sanefProjects.filter((p) => p.id !== id);
+    return Boolean(target);
+  },
+
+  // --- SANEF Partnerships ---
+  getSANEFPartnerships() {
+    return sanefPartnerships;
+  },
+  createSANEFPartnership(payload: Partial<SANEFPartnership>) {
+    const created: SANEFPartnership = {
+      id: `part-${Date.now()}`,
+      organizationId: "org-sanef",
+      partnerName: payload.partnerName || "New Strategic Partner",
+      partnershipPeriod: payload.partnershipPeriod || "2026 – Present",
+      partnershipType: payload.partnershipType || "Technical Partner",
+      jointProjects: payload.jointProjects || ["Civic Safety Initiative"],
+      contributions: payload.contributions || "Collaboration on community safety development.",
+      outcomes: payload.outcomes || "Under active implementation.",
+      status: payload.status || "Active",
+      evidenceCount: payload.evidenceCount ?? 2,
+    };
+    sanefPartnerships = [created, ...sanefPartnerships];
+    return created;
+  },
+  updateSANEFPartnership(id: string, updates: Partial<SANEFPartnership>) {
+    sanefPartnerships = sanefPartnerships.map((p) => (p.id === id ? { ...p, ...updates } : p));
+    return sanefPartnerships.find((p) => p.id === id);
+  },
+  deleteSANEFPartnership(id: string) {
+    const target = sanefPartnerships.find((p) => p.id === id);
+    sanefPartnerships = sanefPartnerships.filter((p) => p.id !== id);
+    return Boolean(target);
+  },
+
+  // --- Events ---
+  getEvents(orgId?: string) {
+    if (!orgId) return eventsData;
+    return eventsData.filter((e) => e.organizationId === orgId);
+  },
+  createEvent(payload: Partial<EventRecord>) {
+    const created: EventRecord = {
+      id: `ev-${Date.now()}`,
+      organizationId: payload.organizationId || "org-sanef",
+      refId: `SAN-EVT-0${eventsData.length + 50}`,
+      title: payload.title || "Community Field Event",
+      date: payload.date || new Date().toISOString().slice(0, 10),
+      location: payload.location || "Lagos, Nigeria",
+      type: payload.type || "Upcoming",
+      registrations: payload.registrations ?? 0,
+      status: payload.status || "Published",
+    };
+    eventsData = [created, ...eventsData];
+    return created;
+  },
+  updateEvent(id: string, updates: Partial<EventRecord>) {
+    eventsData = eventsData.map((e) => (e.id === id ? { ...e, ...updates } : e));
+    return eventsData.find((e) => e.id === id);
+  },
+  deleteEvent(id: string) {
+    const target = eventsData.find((e) => e.id === id);
+    eventsData = eventsData.filter((e) => e.id !== id);
+    return Boolean(target);
+  },
+
+  // --- JossyShield Services ---
+  getServices(orgId?: string) {
+    if (!orgId) return serviceOfferings;
+    return serviceOfferings.filter((s) => s.organizationId === orgId);
+  },
+  createService(payload: Partial<ServiceOfferingRecord>) {
+    const pillarCode = payload.pillar === "Security Services" ? "SEC" : payload.pillar === "Consultancy" ? "CON" : "TRN";
+    const created: ServiceOfferingRecord = {
+      id: `srv-${Date.now()}`,
+      organizationId: payload.organizationId || "org-josieshield",
+      code: payload.code || `JS-${pillarCode}-0${serviceOfferings.length + 1}`,
+      pillar: payload.pillar || "Security Services",
+      name: payload.name || "New Security Service Line",
+      slaStandard: payload.slaStandard || "24/7 Shifted Protocol",
+      activeClients: payload.activeClients ?? 0,
+      status: payload.status || "Published",
+    };
+    serviceOfferings = [created, ...serviceOfferings];
+    return created;
+  },
+  updateService(id: string, updates: Partial<ServiceOfferingRecord>) {
+    serviceOfferings = serviceOfferings.map((s) => (s.id === id ? { ...s, ...updates } : s));
+    return serviceOfferings.find((s) => s.id === id);
+  },
+  deleteService(id: string) {
+    const target = serviceOfferings.find((s) => s.id === id);
+    serviceOfferings = serviceOfferings.filter((s) => s.id !== id);
+    return Boolean(target);
+  },
+
+  // --- JossyShield Vacancies / Careers ---
+  getVacancies(orgId?: string) {
+    if (!orgId) return vacanciesData;
+    return vacanciesData.filter((v) => v.organizationId === orgId);
+  },
+  createVacancy(payload: Partial<VacancyRecord>) {
+    const created: VacancyRecord = {
+      id: `vac-${Date.now()}`,
+      organizationId: payload.organizationId || "org-josieshield",
+      refId: `JS-VAC-0${vacanciesData.length + 50}`,
+      title: payload.title || "New Security Personnel Role",
+      department: payload.department || "Field Operations",
+      location: payload.location || "Lagos Command",
+      type: payload.type || "Full-Time",
+      deadline: payload.deadline || "2026-12-31",
+      applicantsCount: 0,
+      status: payload.status || "Open",
+    };
+    vacanciesData = [created, ...vacanciesData];
+    return created;
+  },
+  updateVacancy(id: string, updates: Partial<VacancyRecord>) {
+    vacanciesData = vacanciesData.map((v) => (v.id === id ? { ...v, ...updates } : v));
+    return vacanciesData.find((v) => v.id === id);
+  },
+  deleteVacancy(id: string) {
+    const target = vacanciesData.find((v) => v.id === id);
+    vacanciesData = vacanciesData.filter((v) => v.id !== id);
+    return Boolean(target);
+  },
+
+  // --- JossyShield Testimonials ---
+  getTestimonials(orgId?: string) {
+    if (!orgId) return testimonialsData;
+    return testimonialsData.filter((t) => t.organizationId === orgId);
+  },
+  createTestimonial(payload: Partial<TestimonialRecord>) {
+    const created: TestimonialRecord = {
+      id: `tst-${Date.now()}`,
+      organizationId: payload.organizationId || "org-josieshield",
+      refId: `JS-TST-0${testimonialsData.length + 20}`,
+      clientName: payload.clientName || "Corporate Client",
+      organisation: payload.organisation || "Commercial Facility",
+      category: payload.category || "Security Services",
+      quote: payload.quote || "Professional service delivery and exemplary discipline.",
+      approvedDate: new Date().toISOString().slice(0, 10),
+      status: payload.status || "Approved",
+    };
+    testimonialsData = [created, ...testimonialsData];
+    return created;
+  },
+  updateTestimonial(id: string, updates: Partial<TestimonialRecord>) {
+    testimonialsData = testimonialsData.map((t) => (t.id === id ? { ...t, ...updates } : t));
+    return testimonialsData.find((t) => t.id === id);
+  },
+  deleteTestimonial(id: string) {
+    const target = testimonialsData.find((t) => t.id === id);
+    testimonialsData = testimonialsData.filter((t) => t.id !== id);
+    return Boolean(target);
+  },
+
+  // --- Recruitment / Applications ---
   getJobApplications(orgId: string) {
-    return jobApplications.filter((a) => a.organizationId === orgId);
+    return jobApplications.filter((a) => a.organizationId === orgId || (orgId === "org-jossyshield" && a.organizationId === "org-josieshield"));
   },
   updateApplicationStatus(id: string, stage?: RecruitmentStage, noteText?: string) {
     jobApplications = jobApplications.map((app) => {
@@ -1277,8 +1451,15 @@ export const db = {
     });
     return jobApplications.find((a) => a.id === id);
   },
+  deleteJobApplication(id: string) {
+    const target = jobApplications.find((a) => a.id === id);
+    jobApplications = jobApplications.filter((a) => a.id !== id);
+    return Boolean(target);
+  },
+
+  // --- Talent Pool ---
   getTalentPool(orgId: string) {
-    return talentPool.filter((t) => t.organizationId === orgId);
+    return talentPool.filter((t) => t.organizationId === orgId || (orgId === "org-jossyshield" && t.organizationId === "org-josieshield"));
   },
   updateTalentPoolAvailability(id: string, availabilityStatus: PoolAvailability) {
     const today = new Date().toISOString().slice(0, 10);
@@ -1302,8 +1483,15 @@ export const db = {
     });
     return talentPool.find((p) => p.id === id);
   },
+  deleteTalentPoolProfile(id: string) {
+    const target = talentPool.find((p) => p.id === id);
+    talentPool = talentPool.filter((p) => p.id !== id);
+    return Boolean(target);
+  },
+
+  // --- Marketplace Requests ---
   getMarketplaceRequests(orgId: string) {
-    return marketplaceRequests.filter((r) => r.organizationId === orgId);
+    return marketplaceRequests.filter((r) => r.organizationId === orgId || (orgId === "org-jossyshield" && r.organizationId === "org-josieshield"));
   },
   updateMarketplaceRequestStatus(id: string, status?: RequestStatus, note?: string) {
     marketplaceRequests = marketplaceRequests.map((r) => {
@@ -1325,5 +1513,10 @@ export const db = {
       };
     });
     return marketplaceRequests.find((r) => r.id === id);
+  },
+  deleteMarketplaceRequest(id: string) {
+    const target = marketplaceRequests.find((r) => r.id === id);
+    marketplaceRequests = marketplaceRequests.filter((r) => r.id !== id);
+    return Boolean(target);
   },
 };

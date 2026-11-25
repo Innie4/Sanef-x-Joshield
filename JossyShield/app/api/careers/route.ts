@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       success: true,
       applicantId,
       pipelineStatus: "New Application",
-      message: "Application logged in Josie Shield recruitment pipeline.",
+      message: "Application logged in JossyShield recruitment pipeline.",
       data: {
         ...body,
         applicantId,

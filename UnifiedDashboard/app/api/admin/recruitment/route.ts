@@ -122,3 +122,34 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    const isPool = searchParams.get("type") === "talent_pool";
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing id" }, { status: 400 });
+    }
+
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          if (isPool) {
+            await supabase.from("talent_pool_profiles").delete().eq("id", id);
+          } else {
+            await supabase.from("job_applications").delete().eq("id", id);
+          }
+        }
+      } catch (e) {
+        console.error("Error deleting candidate from Supabase:", e);
+      }
+    }
+
+    const deleted = isPool ? db.deleteTalentPoolProfile(id) : db.deleteJobApplication(id);
+    return NextResponse.json({ success: true, deleted });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}

@@ -20,7 +20,7 @@ const COMMAND_PRINCIPLES = [
     code: "STD-03",
     title: "Independent Commercial Operations",
     detail:
-      "Josie Shield Security Services operates strictly as a licensed private commercial enterprise with dedicated sector managers in Lagos, Abuja, and Rivers.",
+      "JossyShield Security Services operates strictly as a licensed private commercial enterprise with dedicated sector managers in Lagos, Abuja, and Rivers.",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
               Structured commercial security engineered for zero-excuse accountability.
             </h1>
             <p className="mt-4 text-[15px] leading-[1.7] text-[#475569]">
-              Josie Shield Security Services provides physical guarding, facility risk consultancy,
+              JossyShield Security Services provides physical guarding, facility risk consultancy,
               and guard academy training for commercial towers, industrial depots, maritime
               terminals, and diplomatic compounds across Nigeria.
             </p>
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="aspect-[16/10] overflow-hidden bg-[#0F172A]">
                 <img
                   src="/images/training-operations-drill.jpg"
-                  alt="Josie Shield commercial operations training and dispatch briefing"
+                  alt="JossyShield commercial operations training and dispatch briefing"
                   className="h-full w-full object-cover"
                 />
               </div>

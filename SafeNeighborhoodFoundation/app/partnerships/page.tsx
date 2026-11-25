@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight, FileText, Globe } from "lucide-react";
 import PartnerMark from "@/components/PartnerMark";
-import { SANEF_PARTNERS } from "@/lib/data";
+import { SANEF_PARTNERS, type PartnerProfile } from "@/lib/data";
 
 const TYPES = [
   "All",
@@ -15,12 +15,45 @@ const TYPES = [
 ] as const;
 
 export default function PartnershipsPage() {
+  const [partnersList, setPartnersList] = useState<PartnerProfile[]>(SANEF_PARTNERS);
   const [activeType, setActiveType] = useState<string>("All");
+
+  useEffect(() => {
+    async function loadPartners() {
+      try {
+        const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+        const res = await fetch(`${dashboardApi}/api/content?type=partnerships`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && json.data.length > 0) {
+            const mapped = json.data.map((p: any) => ({
+              slug: p.slug || (p.partnerName ? p.partnerName.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "partner"),
+              name: p.partnerName || p.name,
+              monogram: (p.partnerName || p.name || "PA").slice(0, 2).toUpperCase(),
+              partnershipPeriod: p.partnershipPeriod || "2024 – Present",
+              partnershipType: p.partnershipType || "Technical Partner",
+              website: "#",
+              overview: p.contributions || p.profileSummary || "Strategic partner for community safety development.",
+              jointProjects: (p.jointProjects || []).map((t: string) => ({ title: t, slug: "project" })),
+              sanefContribution: "Field deployment, engineering monitoring, and community liaison.",
+              partnerContribution: p.contributions || "Institutional support and co-funding.",
+              outcomesSummary: p.outcomes || "Active community execution.",
+              linkedEvidence: [],
+            }));
+            setPartnersList(mapped);
+          }
+        }
+      } catch (e) {
+        // Fall back to SANEF_PARTNERS
+      }
+    }
+    loadPartners();
+  }, []);
 
   const filtered =
     activeType === "All"
-      ? SANEF_PARTNERS
-      : SANEF_PARTNERS.filter((p) => p.partnershipType === activeType);
+      ? partnersList
+      : partnersList.filter((p) => p.partnershipType === activeType);
 
   return (
     <div className="bg-[#FAF8F5] py-12 lg:py-16">

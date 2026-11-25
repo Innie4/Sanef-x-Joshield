@@ -1,5 +1,5 @@
 // ==============================================================================
-// JOSIE SHIELD SECURITY SERVICES — COMMERCIAL OPERATIONS DATA
+// JOSSYSHIELD SECURITY SERVICES — COMMERCIAL OPERATIONS DATA
 // ==============================================================================
 
 export type ServiceCategoryKey = "security" | "consultancy" | "training";
@@ -140,7 +140,7 @@ export const CLIENT_TESTIMONIALS: ClientTestimonial[] = [
   {
     id: "t-3",
     quote:
-      "Within ten days of Josie Shield's gatehouse protocol drill, weighbridge manifest discrepancies across our three depot shifts dropped to zero. Practical training with zero classroom fluff.",
+      "Within ten days of JossyShield's gatehouse protocol drill, weighbridge manifest discrepancies across our three depot shifts dropped to zero. Practical training with zero classroom fluff.",
     clientName: "Uche Nnamdi",
     role: "Depot Logistics Manager",
     organisation: "Oba Akran Distribution Yard, Ikeja",
@@ -219,3 +219,83 @@ export const SECURITY_VACANCIES: SecurityVacancy[] = [
     ],
   },
 ];
+
+export async function getLiveServices(): Promise<ServicePillar[]> {
+  try {
+    const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+    const res = await fetch(`${dashboardApi}/api/content?type=services`, { next: { revalidate: 10 } });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data && json.data.length > 0) {
+        // Return pillars updated with live services
+        return SERVICE_PILLARS.map((p) => {
+          const matching = json.data.filter((s: any) =>
+            s.pillar.toLowerCase().includes(p.key) || s.category === p.key
+          );
+          if (matching.length > 0) {
+            return {
+              ...p,
+              scopes: matching.map((m: any) => m.name || m.title),
+            };
+          }
+          return p;
+        });
+      }
+    }
+  } catch (e) {
+    // Fall back to static pillars
+  }
+  return SERVICE_PILLARS;
+}
+
+export async function getLiveVacancies(): Promise<SecurityVacancy[]> {
+  try {
+    const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+    const res = await fetch(`${dashboardApi}/api/content?type=vacancies`, { next: { revalidate: 10 } });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data && json.data.length > 0) {
+        return json.data.map((v: any) => ({
+          id: v.id,
+          refId: v.refId || `JS-VAC-${v.id.substring(0, 4)}`,
+          title: v.title,
+          department: v.department || "Field Security Operations",
+          location: v.location,
+          roleType: v.type || "Full-Time",
+          deadline: v.deadline || "Open Until Filled",
+          experience: v.experience || "2+ years security experience",
+          summary: v.summary || "Standard vetted commercial security operational role.",
+          requirements: v.requirements || ["Verified identification", "Clean vetting background"],
+        }));
+      }
+    }
+  } catch (e) {
+    // Fall back to static vacancies
+  }
+  return SECURITY_VACANCIES;
+}
+
+export async function getLiveTestimonials(): Promise<ClientTestimonial[]> {
+  try {
+    const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+    const res = await fetch(`${dashboardApi}/api/content?type=testimonials`, { next: { revalidate: 10 } });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data && json.data.length > 0) {
+        return json.data.map((t: any) => ({
+          id: t.id,
+          quote: t.quote,
+          clientName: t.clientName || t.client_name,
+          role: t.role || "Operations Manager",
+          organisation: t.organisation || t.client_title || "Commercial Facility",
+          category: t.category || "Security Services",
+          contractDuration: t.contractDuration || "Active Retainer",
+        }));
+      }
+    }
+  } catch (e) {
+    // Fall back to static testimonials
+  }
+  return CLIENT_TESTIMONIALS;
+}
+

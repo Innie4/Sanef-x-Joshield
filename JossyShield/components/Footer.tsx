@@ -13,7 +13,7 @@ export default function Footer() {
                 <Shield className="h-4 w-4 text-[#B45309]" />
               </span>
               <span className="font-heading text-[18px] font-bold uppercase tracking-[0.03em] text-white">
-                Josie Shield Security Services
+                JossyShield Security Services
               </span>
             </div>
             <p className="mt-4 max-w-[380px] text-[14px] leading-relaxed text-[#94A3B8]">
@@ -52,7 +52,7 @@ export default function Footer() {
               Company & Recruitment
             </h3>
             <ul className="mt-4 space-y-2.5 text-[14px] text-[#CBD5E1]">
-              <li><Link href="/about" className="hover:text-white">About Josie Shield</Link></li>
+              <li><Link href="/about" className="hover:text-white">About JossyShield</Link></li>
               <li><Link href="/careers" className="hover:text-white">Active Vacancies & Talent Pool</Link></li>
               <li><Link href="/testimonials" className="hover:text-white">Approved Client Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-white">Operations Offices & Contact</Link></li>
@@ -64,8 +64,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-[12px] text-[#94A3B8] sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Josie Shield Security Services Ltd. All rights reserved.</p>
-          <p className="font-mono">ops@josieshield.ng · NSCDC Licensed Private Security Operator</p>
+          <p>© {new Date().getFullYear()} JossyShield Security Services Ltd. All rights reserved.</p>
+          <p className="font-mono">ops@jossyshield.ng · NSCDC Licensed Private Security Operator</p>
         </div>
       </div>
     </footer>

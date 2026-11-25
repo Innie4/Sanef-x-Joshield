@@ -233,7 +233,7 @@ export default function JobApplicationModal({
                 <p>
                   <strong className="text-[#0F172A]">Privacy & Data Retention Notice:</strong>{" "}
                   Uploaded CVs, references, and assessment records are restricted to authorised
-                  Josie Shield recruitment staff, never exposed publicly, and retained for up to
+                  JossyShield recruitment staff, never exposed publicly, and retained for up to
                   12 months unless you request earlier removal or opt into our Ready-to-Work Talent Pool.
                 </p>
               </div>

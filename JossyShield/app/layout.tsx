@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Josie Shield Security Services — Commercial Security, Consultancy & Training",
+  title: "JossyShield Security Services — Commercial Security, Consultancy & Training",
   description:
     "Authoritative commercial guarding, physical risk consultancy, and certified security personnel training across Nigeria.",
 };

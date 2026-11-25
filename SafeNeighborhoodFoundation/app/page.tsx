@@ -1,7 +1,17 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { SANEF_PROJECTS, SANEF_PARTNERS, SANEF_TESTIMONIALS } from "@/lib/data";
+import {
+  SANEF_PROJECTS,
+  SANEF_PARTNERS,
+  SANEF_TESTIMONIALS,
+  getLiveProjects,
+  getLivePartners,
+  type SANEFProjectRecord,
+  type PartnerProfile,
+} from "@/lib/data";
 
 const SHORT_TITLES: Record<string, string> = {
   "ajegunle-orile-solar-corridor": "Solar lights on the school route",
@@ -17,8 +27,19 @@ const NUMBERS = [
 ];
 
 export default function HomePage() {
-  const projects = SANEF_PROJECTS.slice(0, 3);
+  const [projects, setProjects] = useState<SANEFProjectRecord[]>(SANEF_PROJECTS.slice(0, 3));
+  const [partners, setPartners] = useState<PartnerProfile[]>(SANEF_PARTNERS);
   const voice = SANEF_TESTIMONIALS[0];
+
+  useEffect(() => {
+    async function load() {
+      const p = await getLiveProjects();
+      if (p.length > 0) setProjects(p.slice(0, 3));
+      const parts = await getLivePartners();
+      if (parts.length > 0) setPartners(parts);
+    }
+    load();
+  }, []);
 
   return (
     <div className="bg-[#FAF8F5] text-[#1C1917]">
@@ -142,7 +163,7 @@ export default function HomePage() {
       <section className="border-b border-[#E7E5E4] py-10">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-10 gap-y-3 px-4 sm:px-6 lg:px-8">
           <span className="text-[14px] text-[#57534E]">With</span>
-          {SANEF_PARTNERS.map((p) => (
+          {partners.map((p) => (
             <Link
               key={p.slug}
               href="/partnerships"

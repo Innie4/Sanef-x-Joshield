@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
-import { SERVICE_PILLARS, CLIENT_TESTIMONIALS } from "@/lib/data";
+import { SERVICE_PILLARS, CLIENT_TESTIMONIALS, getLiveServices, getLiveTestimonials, type ServicePillar, type ClientTestimonial } from "@/lib/data";
 
 const FACTS = [
   { value: "98%", label: "on-time shift check-ins" },
@@ -16,7 +18,18 @@ const SHORT_TITLES: Record<string, { title: string; line: string }> = {
 };
 
 export default function HomePage() {
-  const quote = CLIENT_TESTIMONIALS[0];
+  const [pillars, setPillars] = useState<ServicePillar[]>(SERVICE_PILLARS);
+  const [quote, setQuote] = useState<ClientTestimonial>(CLIENT_TESTIMONIALS[0]);
+
+  useEffect(() => {
+    async function load() {
+      const s = await getLiveServices();
+      setPillars(s);
+      const t = await getLiveTestimonials();
+      if (t.length > 0) setQuote(t[0]);
+    }
+    load();
+  }, []);
 
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A]">
@@ -24,7 +37,7 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden bg-[#0B1120] text-white">
         <img
           src="/images/hero-commercial-guard.jpg"
-          alt="Josie Shield officer checking visitor credentials at a commercial lobby"
+          alt="JossyShield officer checking visitor credentials at a commercial lobby"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[center_20%] opacity-60"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 to-transparent" />
@@ -77,8 +90,8 @@ export default function HomePage() {
           </h2>
 
           <div className="mt-12 divide-y divide-[#E2E8F0] border-y border-[#E2E8F0]">
-            {SERVICE_PILLARS.map((pillar, i) => {
-              const copy = SHORT_TITLES[pillar.key];
+            {pillars.map((pillar, i) => {
+              const copy = SHORT_TITLES[pillar.key] || { title: pillar.title, line: pillar.description || "" };
               return (
                 <Link
                   key={pillar.key}

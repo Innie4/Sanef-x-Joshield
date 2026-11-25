@@ -1,17 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { CLIENT_TESTIMONIALS } from "@/lib/data";
+import { CLIENT_TESTIMONIALS, getLiveTestimonials, type ClientTestimonial } from "@/lib/data";
 
 export default function TestimonialsPage() {
+  const [testimonialsList, setTestimonialsList] = useState<ClientTestimonial[]>(CLIENT_TESTIMONIALS);
   const [filter, setFilter] = useState("All");
   const cats = ["All", "Security Services", "Consultancy", "Training"];
 
+  useEffect(() => {
+    async function load() {
+      const data = await getLiveTestimonials();
+      setTestimonialsList(data);
+    }
+    load();
+  }, []);
+
   const filtered =
     filter === "All"
-      ? CLIENT_TESTIMONIALS
-      : CLIENT_TESTIMONIALS.filter((t) => t.category === filter);
+      ? testimonialsList
+      : testimonialsList.filter((t) => t.category === filter);
 
   return (
     <div className="bg-[#F8FAFC] py-12 lg:py-16">

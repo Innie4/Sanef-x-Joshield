@@ -78,3 +78,66 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
+
+export async function PUT(req: Request) {
+  try {
+    const { id, ...updates } = await req.json();
+
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          await supabase
+            .from("projects")
+            .update({
+              title: updates.title,
+              summary: updates.summary,
+              category: updates.category,
+              location: updates.location,
+              status: updates.status,
+            })
+            .eq("id", id);
+        }
+      } catch (e) {
+        console.error("Error updating project in Supabase:", e);
+      }
+    }
+
+    const updated = db.updateSANEFProject(id, updates);
+    return NextResponse.json({
+      success: true,
+      project: updated,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing project id" }, { status: 400 });
+    }
+
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getSupabaseAdmin();
+        if (supabase) {
+          await supabase.from("projects").delete().eq("id", id);
+        }
+      } catch (e) {
+        console.error("Error deleting project in Supabase:", e);
+      }
+    }
+
+    const deleted = db.deleteSANEFProject(id);
+    return NextResponse.json({
+      success: true,
+      deleted,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}

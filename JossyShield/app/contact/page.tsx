@@ -47,7 +47,7 @@ export default function ContactPage() {
               24/7 Operations & Regional Offices
             </p>
             <h1 className="mt-2 font-heading text-[36px] font-bold leading-[1.08] text-[#0F172A] sm:text-[44px]">
-              Contact Josie Shield
+              Contact JossyShield
             </h1>
             <p className="mt-3 text-[15px] leading-relaxed text-[#475569]">
               Speak directly with our duty operations desk for urgent site mobilisation, vendor
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#B45309]" />
                 <div>
                   <p className="text-[13px] font-semibold text-[#0F172A]">Commercial Desk</p>
-                  <p className="font-mono text-[13px] text-[#475569]">ops@josieshield.ng</p>
+                  <p className="font-mono text-[13px] text-[#475569]">ops@jossyshield.ng</p>
                 </div>
               </div>
               <div className="border-t border-[#E2E8F0] pt-4">

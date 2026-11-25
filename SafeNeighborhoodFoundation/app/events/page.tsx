@@ -1,15 +1,53 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapPin, CheckCircle2 } from "lucide-react";
-import { SANEF_EVENTS } from "@/lib/data";
+import { SANEF_EVENTS, type CommunityEvent } from "@/lib/data";
 
 export default function EventsPage() {
+  const [eventsList, setEventsList] = useState<CommunityEvent[]>(SANEF_EVENTS);
   const [filter, setFilter] = useState<"All" | "Upcoming" | "Past">("All");
   const [registeredIds, setRegisteredIds] = useState<string[]>([]);
 
+  useEffect(() => {
+    async function loadEvents() {
+      try {
+        const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+        const res = await fetch(`${dashboardApi}/api/content?type=events&org=org-sanef`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && json.data.length > 0) {
+            const mapped: CommunityEvent[] = json.data.map((e: any) => {
+              const d = e.date ? new Date(e.date) : new Date();
+              const day = e.date ? e.date.split("-")[2] || "15" : "15";
+              const month = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+              const year = e.date ? e.date.split("-")[0] || "2026" : "2026";
+              return {
+                id: e.id,
+                day,
+                month,
+                year,
+                fullDate: `${day} ${month} ${year}`,
+                title: e.title,
+                location: e.location || "Lagos, Nigeria",
+                status: (e.type === "Past" || e.status === "Completed") ? "Past" : "Upcoming",
+                category: e.category || "Community Briefing",
+                description: e.description || e.title,
+                registrationLabel: e.status === "Completed" ? "Event Concluded" : "Register Attendance",
+              };
+            });
+            setEventsList(mapped);
+          }
+        }
+      } catch (err) {
+        // Fall back to SANEF_EVENTS
+      }
+    }
+    loadEvents();
+  }, []);
+
   const items =
-    filter === "All" ? SANEF_EVENTS : SANEF_EVENTS.filter((e) => e.status === filter);
+    filter === "All" ? eventsList : eventsList.filter((e) => e.status === filter);
 
   return (
     <div className="bg-[#FAF8F5] py-12 lg:py-16">

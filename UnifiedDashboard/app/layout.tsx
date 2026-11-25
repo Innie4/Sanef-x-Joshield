@@ -4,9 +4,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Unified Platform Console | SANEF & Josie Shield Security Services",
+  title: "Unified Platform Console | SANEF & JossyShield Security Services",
   description:
-    "Multi-organisation administration platform for Safe Neighborhood Foundation (SANEF) and Josie Shield Security Services.",
+    "Multi-organisation administration platform for Safe Neighborhood Foundation (SANEF) and JossyShield Security Services.",
 };
 
 export default function RootLayout({

@@ -1,24 +1,33 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { MapPin, Calendar, UserCheck, ArrowRight } from "lucide-react";
-import { SECURITY_VACANCIES } from "@/lib/data";
+import { SECURITY_VACANCIES, getLiveVacancies, type SecurityVacancy } from "@/lib/data";
 import JobApplicationModal from "@/components/JobApplicationModal";
 
 const LOCATION_FILTERS = ["All", "Lagos", "Abuja", "Port Harcourt"] as const;
 
 export default function CareersPage() {
+  const [vacanciesList, setVacanciesList] = useState<SecurityVacancy[]>(SECURITY_VACANCIES);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalRole, setModalRole] = useState("");
   const [isGeneralPool, setIsGeneralPool] = useState(false);
   const [locationFilter, setLocationFilter] = useState<string>("All");
 
+  useEffect(() => {
+    async function load() {
+      const data = await getLiveVacancies();
+      setVacanciesList(data);
+    }
+    load();
+  }, []);
+
   const filteredVacancies = useMemo(() => {
-    if (locationFilter === "All") return SECURITY_VACANCIES;
-    return SECURITY_VACANCIES.filter((v) =>
+    if (locationFilter === "All") return vacanciesList;
+    return vacanciesList.filter((v) =>
       v.location.toLowerCase().includes(locationFilter.toLowerCase())
     );
-  }, [locationFilter]);
+  }, [locationFilter, vacanciesList]);
 
   const openModal = (role: string, general: boolean) => {
     setModalRole(role);
@@ -80,8 +89,8 @@ export default function CareersPage() {
               {LOCATION_FILTERS.map((loc) => {
                 const count =
                   loc === "All"
-                    ? SECURITY_VACANCIES.length
-                    : SECURITY_VACANCIES.filter((v) =>
+                    ? vacanciesList.length
+                    : vacanciesList.filter((v) =>
                         v.location.toLowerCase().includes(loc.toLowerCase())
                       ).length;
                 const active = locationFilter === loc;

@@ -700,7 +700,7 @@ export default function MarketplaceWizard({
                 Service Request Logged
               </p>
               <h2 className="mt-1 font-heading text-[28px] font-semibold text-[#0F172A]">
-                Your request has been queued with Josie Shield Operations.
+                Your request has been queued with JossyShield Operations.
               </h2>
               <div className="mt-4 inline-flex items-center gap-3 rounded-[4px] border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-2.5">
                 <span className="text-[12px] font-medium text-[#475569]">Reference Number</span>

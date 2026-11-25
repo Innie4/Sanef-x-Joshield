@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       success: true,
       referenceNumber,
       status: "New",
-      message: "Service request recorded in Josie Shield operations queue.",
+      message: "Service request recorded in JossyShield operations queue.",
       data: {
         ...body,
         referenceNumber,

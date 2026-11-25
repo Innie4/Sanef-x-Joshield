@@ -1,9 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { SERVICE_PILLARS } from "@/lib/data";
+import { SERVICE_PILLARS, getLiveServices, type ServicePillar } from "@/lib/data";
 
 export default function ServicesPage() {
+  const [pillars, setPillars] = useState<ServicePillar[]>(SERVICE_PILLARS);
+
+  useEffect(() => {
+    async function load() {
+      const data = await getLiveServices();
+      setPillars(data);
+    }
+    load();
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] py-12 lg:py-16">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
@@ -31,7 +43,7 @@ export default function ServicesPage() {
 
         {/* Jump Tabs */}
         <div className="mt-6 flex flex-wrap gap-2">
-          {SERVICE_PILLARS.map((p) => (
+          {pillars.map((p) => (
             <a
               key={p.key}
               href={`#${p.key}`}
@@ -43,7 +55,7 @@ export default function ServicesPage() {
         </div>
 
         <div className="mt-10 space-y-10">
-          {SERVICE_PILLARS.map((pillar) => (
+          {pillars.map((pillar) => (
             <section
               key={pillar.key}
               id={pillar.key}

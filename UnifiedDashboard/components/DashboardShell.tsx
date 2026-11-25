@@ -33,8 +33,11 @@ import {
   Check,
   CalendarClock,
   FileCheck2,
+  Edit,
+  Trash2,
 } from "lucide-react";
 import SlideOverDrawer from "./SlideOverDrawer";
+import EntityEditModal, { ModalConfig, EntityType } from "./EntityEditModal";
 import {
   ORGANIZATIONS,
   CURRENT_USER,
@@ -64,6 +67,10 @@ import {
   type SANEFPartnership,
   type EnquiryRecord,
   type DonationRecord,
+  type EventRecord,
+  type ServiceOfferingRecord,
+  type VacancyRecord,
+  type TestimonialRecord,
 } from "@/lib/data-store";
 
 type NavItem = {
@@ -232,8 +239,202 @@ export default function DashboardShell() {
   const [sanefProjects, setSanefProjects] = useState<SANEFProject[]>(() =>
     db.getSANEFProjects()
   );
+  const [partnerships, setPartnerships] = useState<SANEFPartnership[]>(() =>
+    db.getSANEFPartnerships()
+  );
+  const [events, setEvents] = useState<EventRecord[]>(() => db.getEvents());
+  const [services, setServices] = useState<ServiceOfferingRecord[]>(() => db.getServices());
+  const [vacancies, setVacancies] = useState<VacancyRecord[]>(() => db.getVacancies());
+  const [testimonials, setTestimonials] = useState<TestimonialRecord[]>(() =>
+    db.getTestimonials()
+  );
+  const [modalConfig, setModalConfig] = useState<ModalConfig | null>(null);
   const [enquiries, setEnquiries] = useState<EnquiryRecord[]>(ENQUIRIES_DATA);
   const [activities, setActivities] = useState(ACTIVITY_LOGS);
+
+  const handleSaveEntity = async (type: EntityType, mode: "create" | "edit", formData: any) => {
+    try {
+      if (type === "project") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/projects", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.project || db.createSANEFProject(formData);
+          setSanefProjects((prev) => [item, ...prev]);
+          showToast(`Created project ${item.title}`);
+        } else {
+          await fetch("/api/admin/projects", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const item = db.updateSANEFProject(formData.id, formData);
+          setSanefProjects((prev) => prev.map((p) => (p.id === formData.id ? { ...p, ...formData } : p)));
+          showToast(`Updated project ${formData.title}`);
+        }
+      } else if (type === "partner") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/partnerships", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.partnership || db.createSANEFPartnership(formData);
+          setPartnerships((prev) => [item, ...prev]);
+          showToast(`Added partner ${item.partnerName}`);
+        } else {
+          await fetch("/api/admin/partnerships", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          db.updateSANEFPartnership(formData.id, formData);
+          setPartnerships((prev) => prev.map((p) => (p.id === formData.id ? { ...p, ...formData } : p)));
+          showToast(`Updated partner ${formData.partnerName}`);
+        }
+      } else if (type === "event") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/events", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.event || db.createEvent(formData);
+          setEvents((prev) => [item, ...prev]);
+          showToast(`Created event ${item.title}`);
+        } else {
+          await fetch("/api/admin/events", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          db.updateEvent(formData.id, formData);
+          setEvents((prev) => prev.map((e) => (e.id === formData.id ? { ...e, ...formData } : e)));
+          showToast(`Updated event ${formData.title}`);
+        }
+      } else if (type === "service") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/services", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.service || db.createService(formData);
+          setServices((prev) => [item, ...prev]);
+          showToast(`Added service ${item.name}`);
+        } else {
+          await fetch("/api/admin/services", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          db.updateService(formData.id, formData);
+          setServices((prev) => prev.map((s) => (s.id === formData.id ? { ...s, ...formData } : s)));
+          showToast(`Updated service ${formData.name}`);
+        }
+      } else if (type === "vacancy") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/jobs", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.vacancy || db.createVacancy(formData);
+          setVacancies((prev) => [item, ...prev]);
+          showToast(`Created vacancy ${item.title}`);
+        } else {
+          await fetch("/api/admin/jobs", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          db.updateVacancy(formData.id, formData);
+          setVacancies((prev) => prev.map((v) => (v.id === formData.id ? { ...v, ...formData } : v)));
+          showToast(`Updated vacancy ${formData.title}`);
+        }
+      } else if (type === "testimonial") {
+        if (mode === "create") {
+          const res = await fetch("/api/admin/testimonials", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          const json = await res.json();
+          const item = json.testimonial || db.createTestimonial(formData);
+          setTestimonials((prev) => [item, ...prev]);
+          showToast(`Added testimonial for ${item.clientName}`);
+        } else {
+          await fetch("/api/admin/testimonials", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+          db.updateTestimonial(formData.id, formData);
+          setTestimonials((prev) => prev.map((t) => (t.id === formData.id ? { ...t, ...formData } : t)));
+          showToast(`Updated testimonial for ${formData.clientName}`);
+        }
+      }
+    } catch (e: any) {
+      showToast(`Error: ${e.message}`);
+    }
+  };
+
+  const handleDeleteEntity = async (type: EntityType | "marketplace" | "application", id: string, name?: string) => {
+    if (!confirm(`Are you sure you want to delete this ${type} record (${name || id})?`)) return;
+
+    try {
+      if (type === "project") {
+        await fetch(`/api/admin/projects?id=${id}`, { method: "DELETE" });
+        db.deleteSANEFProject(id);
+        setSanefProjects((prev) => prev.filter((p) => p.id !== id));
+        showToast("Project deleted");
+      } else if (type === "partner") {
+        await fetch(`/api/admin/partnerships?id=${id}`, { method: "DELETE" });
+        db.deleteSANEFPartnership(id);
+        setPartnerships((prev) => prev.filter((p) => p.id !== id));
+        showToast("Partner profile deleted");
+      } else if (type === "event") {
+        await fetch(`/api/admin/events?id=${id}`, { method: "DELETE" });
+        db.deleteEvent(id);
+        setEvents((prev) => prev.filter((e) => e.id !== id));
+        showToast("Event deleted");
+      } else if (type === "service") {
+        await fetch(`/api/admin/services?id=${id}`, { method: "DELETE" });
+        db.deleteService(id);
+        setServices((prev) => prev.filter((s) => s.id !== id));
+        showToast("Service line deleted");
+      } else if (type === "vacancy") {
+        await fetch(`/api/admin/jobs?id=${id}`, { method: "DELETE" });
+        db.deleteVacancy(id);
+        setVacancies((prev) => prev.filter((v) => v.id !== id));
+        showToast("Vacancy deleted");
+      } else if (type === "testimonial") {
+        await fetch(`/api/admin/testimonials?id=${id}`, { method: "DELETE" });
+        db.deleteTestimonial(id);
+        setTestimonials((prev) => prev.filter((t) => t.id !== id));
+        showToast("Testimonial deleted");
+      } else if (type === "marketplace") {
+        await fetch(`/api/admin/marketplace?id=${id}`, { method: "DELETE" });
+        db.deleteMarketplaceRequest(id);
+        setRequests((prev) => prev.filter((r) => r.id !== id));
+        showToast("Marketplace request removed");
+      } else if (type === "application") {
+        await fetch(`/api/admin/recruitment?id=${id}`, { method: "DELETE" });
+        db.deleteJobApplication(id);
+        setApplications((prev) => prev.filter((a) => a.id !== id));
+        showToast("Candidate application removed");
+      }
+    } catch (e: any) {
+      showToast(`Delete failed: ${e.message}`);
+    }
+  };
 
   // Filters: Applications
   const [appSearch, setAppSearch] = useState("");
@@ -834,7 +1035,7 @@ export default function DashboardShell() {
           {/* Org-Scoped Navigation Links */}
           <nav className="flex-1 space-y-0.5 overflow-y-auto px-2.5 py-3" aria-label="Organisation Navigation">
             <p className="mb-1.5 px-2.5 text-[12px] font-medium text-[#71717A]">
-              {activeOrgId === "org-sanef" ? "SANEF workspace" : "Josie Shield workspace"}
+              {activeOrgId === "org-sanef" ? "SANEF workspace" : "JossyShield workspace"}
             </p>
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -1353,7 +1554,7 @@ export default function DashboardShell() {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <p className="font-mono text-[12px] text-[#71717A]">
-                      Josie Shield Recruitment · 10-Stage Pipeline
+                      JossyShield Recruitment · 10-Stage Pipeline
                     </p>
                     <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
                       Applications & Recruitment Pipeline
@@ -1776,16 +1977,7 @@ export default function DashboardShell() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => {
-                      const created = db.createSANEFProject({
-                        title: "Bariga Market Footbridge Solar Beacon Draft",
-                        category: "Solar Infrastructure",
-                        location: "Bariga, Lagos",
-                        status: "Draft",
-                      });
-                      setSanefProjects((prev) => [created, ...prev]);
-                      showToast(`Created draft project ${created.referenceCode}`);
-                    }}
+                    onClick={() => setModalConfig({ type: "project", mode: "create" })}
                     className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#2563EB] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#1D4ED8]"
                   >
                     <Plus className="h-3.5 w-3.5" /> New Project Record
@@ -1803,19 +1995,19 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">Location</th>
                           <th className="px-4 py-2.5">Attached Evidence</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
                         {sanefProjects.map((prj) => (
                           <tr
                             key={prj.id}
-                            onClick={() => setSelectedProject(prj)}
-                            className="cursor-pointer hover:bg-[#FAFAFA]"
+                            className="hover:bg-[#FAFAFA]"
                           >
-                            <td className="px-4 py-3 font-mono text-[12px] text-[#52525B] whitespace-nowrap">
+                            <td onClick={() => setSelectedProject(prj)} className="cursor-pointer px-4 py-3 font-mono text-[12px] text-[#52525B] whitespace-nowrap">
                               {prj.referenceCode}
                             </td>
-                            <td className="px-4 py-3">
+                            <td onClick={() => setSelectedProject(prj)} className="cursor-pointer px-4 py-3">
                               <p className="font-medium text-[#09090B]">{prj.title}</p>
                               <p className="text-[12px] text-[#71717A]">{prj.date}</p>
                             </td>
@@ -1832,6 +2024,32 @@ export default function DashboardShell() {
                                 tone={prj.status === "Published" ? "green" : "amber"}
                               />
                             </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setModalConfig({ type: "project", mode: "edit", item: prj });
+                                  }}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Project"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteEntity("project", prj.id, prj.title);
+                                  }}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Project"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -1843,13 +2061,22 @@ export default function DashboardShell() {
 
             {activeModule === "partnerships" && activeOrgId === "org-sanef" && (
               <div className="space-y-4">
-                <div>
-                  <p className="font-mono text-[12px] text-[#71717A]">
-                    SANEF Partner Profiles & Collaboration Records
-                  </p>
-                  <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
-                    Partnerships Directory
-                  </h1>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-[12px] text-[#71717A]">
+                      SANEF Partner Profiles & Collaboration Records
+                    </p>
+                    <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
+                      Partnerships Directory
+                    </h1>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalConfig({ type: "partner", mode: "create" })}
+                    className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#2563EB] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#1D4ED8]"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> Add Partner Profile
+                  </button>
                 </div>
                 <div className="overflow-hidden rounded-[6px] border border-[#E4E4E7] bg-white">
                   <div className="overflow-x-auto" data-bleed>
@@ -1862,16 +2089,16 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">Joint Projects</th>
                           <th className="px-4 py-2.5">Evidence</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
-                        {SANEF_PARTNERSHIPS.map((pt) => (
+                        {partnerships.map((pt) => (
                           <tr
                             key={pt.id}
-                            onClick={() => setSelectedPartner(pt)}
-                            className="cursor-pointer hover:bg-[#FAFAFA]"
+                            className="hover:bg-[#FAFAFA]"
                           >
-                            <td className="px-4 py-3 font-medium text-[#09090B]">{pt.partnerName}</td>
+                            <td onClick={() => setSelectedPartner(pt)} className="cursor-pointer px-4 py-3 font-medium text-[#09090B]">{pt.partnerName}</td>
                             <td className="px-4 py-3 text-[#52525B]">{pt.partnershipType}</td>
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">
                               {pt.partnershipPeriod}
@@ -1885,6 +2112,32 @@ export default function DashboardShell() {
                                 label={pt.status}
                                 tone={pt.status === "Active" ? "green" : "neutral"}
                               />
+                            </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setModalConfig({ type: "partner", mode: "edit", item: pt });
+                                  }}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Partner"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteEntity("partner", pt.id, pt.partnerName);
+                                  }}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Partner"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -1991,11 +2244,20 @@ export default function DashboardShell() {
 
             {activeModule === "events" && activeOrgId === "org-sanef" && (
               <div className="space-y-4">
-                <div>
-                  <p className="font-mono text-[12px] text-[#71717A]">SANEF Public Engagement</p>
-                  <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
-                    Events & Townhalls
-                  </h1>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-[12px] text-[#71717A]">SANEF Public Engagement</p>
+                    <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
+                      Events & Townhalls
+                    </h1>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalConfig({ type: "event", mode: "create" })}
+                    className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#2563EB] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#1D4ED8]"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> New Event
+                  </button>
                 </div>
                 <div className="overflow-hidden rounded-[6px] border border-[#E4E4E7] bg-white">
                   <div className="overflow-x-auto" data-bleed>
@@ -2008,10 +2270,11 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">Date</th>
                           <th className="px-4 py-2.5">Registrations</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
-                        {EVENTS_DATA.map((ev) => (
+                        {events.map((ev) => (
                           <tr key={ev.id} className="hover:bg-[#FAFAFA]">
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">{ev.refId}</td>
                             <td className="px-4 py-3 font-medium text-[#09090B]">{ev.title}</td>
@@ -2023,6 +2286,26 @@ export default function DashboardShell() {
                                 label={ev.type}
                                 tone={ev.type === "Upcoming" ? "blue" : "neutral"}
                               />
+                            </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalConfig({ type: "event", mode: "edit", item: ev })}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Event"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteEntity("event", ev.id, ev.title)}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Event"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -2146,13 +2429,22 @@ export default function DashboardShell() {
 
             {activeModule === "careers" && (
               <div className="space-y-4">
-                <div>
-                  <p className="font-mono text-[12px] text-[#71717A]">
-                    Vacancy Management · {activeOrg.shortName}
-                  </p>
-                  <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
-                    Active Vacancies
-                  </h1>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-[12px] text-[#71717A]">
+                      Vacancy Management · {activeOrg.shortName}
+                    </p>
+                    <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
+                      Active Vacancies
+                    </h1>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalConfig({ type: "vacancy", mode: "create" })}
+                    className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#09090B] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#27272A]"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> Post New Vacancy
+                  </button>
                 </div>
                 <div className="overflow-hidden rounded-[6px] border border-[#E4E4E7] bg-white">
                   <div className="overflow-x-auto" data-bleed>
@@ -2166,10 +2458,13 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">Applicants</th>
                           <th className="px-4 py-2.5">Deadline</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
-                        {orgVacancies.map((v) => (
+                        {vacancies
+                          .filter((v) => v.organizationId === activeOrgId || (activeOrgId === "org-josieshield" && v.organizationId === "org-josieshield"))
+                          .map((v) => (
                           <tr key={v.id} className="hover:bg-[#FAFAFA]">
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">{v.refId}</td>
                             <td className="px-4 py-3 font-medium text-[#09090B]">{v.title}</td>
@@ -2182,6 +2477,26 @@ export default function DashboardShell() {
                             <td className="px-4 py-3">
                               <StatusPill label={v.status} tone="green" />
                             </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalConfig({ type: "vacancy", mode: "edit", item: v })}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Vacancy"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteEntity("vacancy", v.id, v.title)}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Vacancy"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -2193,11 +2508,20 @@ export default function DashboardShell() {
 
             {activeModule === "services" && activeOrgId === "org-josieshield" && (
               <div className="space-y-4">
-                <div>
-                  <p className="font-mono text-[12px] text-[#71717A]">Josie Shield Commercial Catalogue</p>
-                  <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
-                    Security, Consultancy & Training Services
-                  </h1>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-[12px] text-[#71717A]">JossyShield Commercial Catalogue</p>
+                    <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
+                      Security, Consultancy & Training Services
+                    </h1>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalConfig({ type: "service", mode: "create" })}
+                    className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#09090B] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#27272A]"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> Add Service Line
+                  </button>
                 </div>
                 <div className="overflow-hidden rounded-[6px] border border-[#E4E4E7] bg-white">
                   <div className="overflow-x-auto" data-bleed>
@@ -2210,10 +2534,11 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">SLA / Standard</th>
                           <th className="px-4 py-2.5">Active Clients</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
-                        {SERVICE_OFFERINGS.map((s) => (
+                        {services.map((s) => (
                           <tr key={s.id} className="hover:bg-[#FAFAFA]">
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">{s.code}</td>
                             <td className="px-4 py-3">
@@ -2224,6 +2549,26 @@ export default function DashboardShell() {
                             <td className="px-4 py-3 font-mono text-[12px] text-[#09090B]">{s.activeClients}</td>
                             <td className="px-4 py-3">
                               <StatusPill label={s.status} tone="green" />
+                            </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalConfig({ type: "service", mode: "edit", item: s })}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Service"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteEntity("service", s.id, s.name)}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Service"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -2300,11 +2645,20 @@ export default function DashboardShell() {
 
             {activeModule === "testimonials" && activeOrgId === "org-josieshield" && (
               <div className="space-y-4">
-                <div>
-                  <p className="font-mono text-[12px] text-[#71717A]">Approved Client Endorsements</p>
-                  <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
-                    Client Testimonials
-                  </h1>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-[12px] text-[#71717A]">Approved Client Endorsements</p>
+                    <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-[#09090B]">
+                      Client Testimonials
+                    </h1>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setModalConfig({ type: "testimonial", mode: "create" })}
+                    className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#09090B] px-3.5 py-2 text-[13px] font-medium text-white hover:bg-[#27272A]"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> Add Testimonial
+                  </button>
                 </div>
                 <div className="overflow-hidden rounded-[6px] border border-[#E4E4E7] bg-white">
                   <div className="overflow-x-auto" data-bleed>
@@ -2316,10 +2670,11 @@ export default function DashboardShell() {
                           <th className="px-4 py-2.5">Category</th>
                           <th className="px-4 py-2.5">Excerpt</th>
                           <th className="px-4 py-2.5">Status</th>
+                          <th className="px-4 py-2.5 text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
-                        {TESTIMONIALS_DATA.map((t) => (
+                        {testimonials.map((t) => (
                           <tr key={t.id} className="hover:bg-[#FAFAFA]">
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">{t.refId}</td>
                             <td className="px-4 py-3">
@@ -2332,6 +2687,26 @@ export default function DashboardShell() {
                             <td className="max-w-[360px] px-4 py-3 text-[#3F3F46]">{t.quote}</td>
                             <td className="px-4 py-3">
                               <StatusPill label={t.status} tone="green" />
+                            </td>
+                            <td className="px-4 py-3 text-right whitespace-nowrap">
+                              <div className="inline-flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setModalConfig({ type: "testimonial", mode: "edit", item: t })}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-[#2563EB] hover:text-[#2563EB]"
+                                  title="Edit Testimonial"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteEntity("testimonial", t.id, t.clientName)}
+                                  className="rounded-[4px] border border-[#E4E4E7] bg-white p-1.5 text-[#52525B] hover:border-red-600 hover:text-red-600"
+                                  title="Delete Testimonial"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -2413,7 +2788,7 @@ export default function DashboardShell() {
                         <tr className="border-b border-[#E4E4E7] bg-[#FAFAFA] text-[12px] font-medium text-[#71717A]">
                           <th className="px-4 py-2.5">User</th>
                           <th className="px-4 py-2.5">SANEF Access</th>
-                          <th className="px-4 py-2.5">Josie Shield Access</th>
+                          <th className="px-4 py-2.5">JossyShield Access</th>
                           <th className="px-4 py-2.5">Permission Scope</th>
                           <th className="px-4 py-2.5 text-right">Last Active</th>
                         </tr>
@@ -3130,6 +3505,14 @@ export default function DashboardShell() {
           </div>
         )}
       </SlideOverDrawer>
+
+      {/* Dynamic Add / Edit Modal for all Content Entities */}
+      <EntityEditModal
+        isOpen={Boolean(modalConfig)}
+        config={modalConfig}
+        onClose={() => setModalConfig(null)}
+        onSave={handleSaveEntity}
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, Suspense } from "react";
+import React, { useMemo, useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -20,6 +20,7 @@ function PortfolioArchiveContent() {
   const searchParams = useSearchParams();
   const initialSlug = searchParams.get("project");
 
+  const [projectsList, setProjectsList] = useState<SANEFProjectRecord[]>(SANEF_PROJECTS);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(initialSlug);
   const [category, setCategory] = useState<string>("All");
   const [year, setYear] = useState<string>("All");
@@ -27,15 +28,60 @@ function PortfolioArchiveContent() {
   const [query, setQuery] = useState("");
   const [downloadNotice, setDownloadNotice] = useState<string | null>(null);
 
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const dashboardApi = process.env.NEXT_PUBLIC_DASHBOARD_API_URL || "http://localhost:3000";
+        const res = await fetch(`${dashboardApi}/api/content?type=projects`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && json.data.length > 0) {
+            const mapped = json.data.map((p: any) => ({
+              slug: p.slug || (p.title ? p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "project"),
+              refId: p.referenceCode || p.refId || `SAN-PRJ-2026-0${p.id.substring(0, 3)}`,
+              title: p.title,
+              category: p.category || "Solar Corridors",
+              location: p.location || "Lagos, Nigeria",
+              date: p.date || "2026",
+              year: p.year || "2026",
+              summary: p.summary || "",
+              detailedDescription: p.detailedDescription || p.summary || "",
+              outcomesSummary: p.outcomes || p.outcomesSummary || "Field verified community impact.",
+              outcomesMetrics: p.outcomesMetrics || [
+                { label: "Audit Status", value: p.status || "Audited" },
+                { label: "Attached Records", value: `${p.photoCount || 4} Photos · ${p.pdfCount || 1} Report` },
+              ],
+              partners: p.partners || p.partnerNames || ["Ajeromi-Ifelodun Ward Council"],
+              coverImage: p.coverImage || "/images/ajegunle-solar-dusk.jpg",
+              coverCaption: `${p.title} · ${p.location}`,
+              gallery: p.gallery || [
+                { src: "/images/ajegunle-solar-dusk.jpg", caption: "Field site overview." },
+                { src: "/images/ajegunle-lux-check.jpg", caption: "Photometric audit verification." },
+              ],
+              photoCount: p.photoCount || 4,
+              pdfCount: p.pdfCount || 1,
+              reports: p.reports || [],
+              featured: Boolean(p.featured),
+            }));
+            setProjectsList(mapped);
+          }
+        }
+      } catch (e) {
+        // Fall back to SANEF_PROJECTS
+      }
+    }
+    loadProjects();
+  }, []);
+
   const categories = ["All", "Solar Corridors", "Youth Mediation", "School Safety", "Community Watch"];
   const years = ["All", "2026", "2025"];
   const allPartners = useMemo(
-    () => ["All", ...Array.from(new Set(SANEF_PROJECTS.flatMap((p) => p.partners)))],
-    []
+    () => ["All", ...Array.from(new Set(projectsList.flatMap((p) => p.partners)))],
+    [projectsList]
   );
 
   const filteredProjects = useMemo(() => {
-    return SANEF_PROJECTS.filter((p) => {
+    return projectsList.filter((p) => {
       if (category !== "All" && p.category !== category) return false;
       if (year !== "All" && p.year !== year) return false;
       if (partner !== "All" && !p.partners.includes(partner)) return false;
@@ -50,10 +96,10 @@ function PortfolioArchiveContent() {
       }
       return true;
     });
-  }, [category, year, partner, query]);
+  }, [projectsList, category, year, partner, query]);
 
   const activeProject: SANEFProjectRecord | null =
-    SANEF_PROJECTS.find((p) => p.slug === selectedSlug) || null;
+    projectsList.find((p) => p.slug === selectedSlug) || null;
 
   const triggerDownloadFeedback = (fileName: string) => {
     setDownloadNotice(`Prepared verified PDF archive file: ${fileName}`);
