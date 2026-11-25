@@ -17,8 +17,9 @@ module.exports = {
         stone600: "#57534E",
       },
       fontFamily: {
-        serif: ["'Newsreader Variable'", "Newsreader", "Georgia", "serif"],
-        sans: ["'Plus Jakarta Sans Variable'", "'Plus Jakarta Sans'", "-apple-system", "sans-serif"],
+        serif: ["'Bricolage Grotesque Variable'", "'Bricolage Grotesque'", "sans-serif"],
+        sans: ["'Bricolage Grotesque Variable'", "'Bricolage Grotesque'", "-apple-system", "sans-serif"],
+        accent: ["'Newsreader Variable'", "Newsreader", "Georgia", "serif"],
         mono: ["'IBM Plex Mono'", "monospace"],
       },
       borderRadius: {

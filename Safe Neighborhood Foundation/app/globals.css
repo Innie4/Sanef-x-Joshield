@@ -10,7 +10,8 @@
   }
 
   h1, h2, h3, .font-editorial {
-    font-family: 'Newsreader Variable', Newsreader, Georgia, serif;
+    font-family: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', sans-serif;
+    letter-spacing: -0.03em;
   }
 
   .tabular-nums {

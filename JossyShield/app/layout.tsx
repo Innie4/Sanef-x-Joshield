@@ -1,7 +1,4 @@
-import "@fontsource/barlow/500.css";
-import "@fontsource/barlow/600.css";
-import "@fontsource/barlow/700.css";
-import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/jetbrains-mono/index.css";
 import "./globals.css";
 import type { Metadata } from "next";

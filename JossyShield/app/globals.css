@@ -10,8 +10,13 @@
   }
 
   h1, h2, h3, .font-heading {
-    font-family: 'Barlow', sans-serif;
-    letter-spacing: -0.015em;
+    font-family: 'Archivo Variable', Archivo, sans-serif;
+    font-stretch: 112%;
+    letter-spacing: -0.02em;
+  }
+
+  .font-condensed {
+    font-stretch: 75%;
   }
 
   .tabular-nums {

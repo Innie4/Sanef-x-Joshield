@@ -1,6 +1,5 @@
-import "@fontsource-variable/newsreader/index.css";
+import "@fontsource-variable/bricolage-grotesque/opsz.css";
 import "@fontsource-variable/newsreader/wght-italic.css";
-import "@fontsource-variable/plus-jakarta-sans/index.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";

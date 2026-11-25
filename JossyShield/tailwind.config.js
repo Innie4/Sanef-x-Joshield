@@ -17,8 +17,8 @@ module.exports = {
         slate600: "#475569",
       },
       fontFamily: {
-        heading: ["'Barlow'", "sans-serif"],
-        sans: ["'Inter Variable'", "Inter", "-apple-system", "sans-serif"],
+        heading: ["'Archivo Variable'", "Archivo", "sans-serif"],
+        sans: ["'Archivo Variable'", "Archivo", "-apple-system", "sans-serif"],
         mono: ["'JetBrains Mono Variable'", "'JetBrains Mono'", "monospace"],
       },
       borderRadius: {
