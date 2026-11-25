@@ -18,13 +18,13 @@ A unified multi-organization platform supporting two distinct public website exp
 │   ├── lib/                         # Service definitions, jobs, and testimonials
 │   └── package.json
 │
-├── Safe Neighborhood Foundation/     # Next.js 14 Web App — SANEF Public Site & Evidence Archive
+├── SafeNeighborhoodFoundation/     # Next.js 14 Web App — SANEF Public Site & Evidence Archive
 │   ├── app/                         # App Router (Home, About, Evidence Archive, Partnerships, Events, Blog, Donate)
 │   ├── components/                  # Responsive civic navbar, footer
 │   ├── lib/                         # Audited projects, partners, events, and campaign data
 │   └── package.json
 │
-├── Unified Dashboard/               # Next.js 14 Admin Console — Multi-Tenant Command Center
+├── UnifiedDashboard/               # Next.js 14 Admin Console — Multi-Tenant Command Center
 │   ├── app/                         # App Router & Multi-Tenant REST APIs (/api/tenants, /api/admin/...)
 │   ├── components/                  # Dynamic Dashboard Shell with 1-click Tenant Switcher & RBAC Matrix
 │   ├── lib/                         # Centralized multi-tenant repository & data engine
@@ -63,7 +63,7 @@ npm run dev
 
 ### 2. Safe Neighborhood Foundation (Port 3002)
 ```bash
-cd "Safe Neighborhood Foundation"
+cd "SafeNeighborhoodFoundation"
 npm install
 npm run dev
 # Opens at http://localhost:3002
@@ -71,7 +71,7 @@ npm run dev
 
 ### 3. Unified Dashboard (Port 3000)
 ```bash
-cd "Unified Dashboard"
+cd "UnifiedDashboard"
 npm install
 npm run dev
 # Opens at http://localhost:3000
@@ -87,6 +87,6 @@ Each project can be deployed directly to Vercel:
 2. In the Vercel Dashboard, click **Add New Project** and select this repository.
 3. In the project configuration:
    - For **JossyShield**: Set **Root Directory** to `JossyShield`.
-   - For **Safe Neighborhood Foundation**: Set **Root Directory** to `Safe Neighborhood Foundation`.
-   - For **Unified Dashboard**: Set **Root Directory** to `Unified Dashboard`.
+   - For **Safe Neighborhood Foundation**: Set **Root Directory** to `SafeNeighborhoodFoundation`.
+   - For **Unified Dashboard**: Set **Root Directory** to `UnifiedDashboard`.
 4. Deploy! All three applications are pre-configured for Vercel with zero external configuration required.
