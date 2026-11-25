@@ -4,7 +4,7 @@ import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const orgId = searchParams.get("organizationId") || "org-josieshield";
+  const orgId = searchParams.get("organizationId") || "org-jossyshield";
 
   if (isSupabaseConfigured()) {
     try {

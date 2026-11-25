@@ -177,7 +177,7 @@
   - [ ] `HOST-01.2`: Cloud object storage buckets (Public & Private)
   - [ ] `HOST-01.3`: Secrets management & env configuration
 - [ ] **HOST-02**: Reverse Proxy, Domain Routing & SSL (Urgency: High | Dependencies: HOST-01)
-  - [ ] `HOST-02.1`: Ingress routing (`sanef.example`, `josieshield.example`, `admin.example`, `api.example`)
+  - [ ] `HOST-02.1`: Ingress routing (`sanef.example`, `jossyshield.example`, `admin.example`, `api.example`)
   - [ ] `HOST-02.2`: Automated SSL/TLS certificates
   - [ ] `HOST-02.3`: Security headers configuration (HSTS, CSP, CORS)
 - [ ] **HOST-03**: Staging Deployment & UAT (Urgency: High | Dependencies: HOST-02, All)

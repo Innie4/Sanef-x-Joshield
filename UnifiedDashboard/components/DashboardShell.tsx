@@ -219,7 +219,7 @@ function isMonoField(key: string, val: string) {
 }
 
 export default function DashboardShell() {
-  const [activeOrgId, setActiveOrgId] = useState<OrgId>("org-josieshield");
+  const [activeOrgId, setActiveOrgId] = useState<OrgId>("org-jossyshield");
   const [orgMenuOpen, setOrgMenuOpen] = useState(false);
   const [mobileOrgMenuOpen, setMobileOrgMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -228,13 +228,13 @@ export default function DashboardShell() {
   const [activePersona, setActivePersona] = useState<"super_admin" | "shared_jane">("super_admin");
 
   const [applications, setApplications] = useState<JobApplication[]>(() =>
-    db.getJobApplications("org-josieshield")
+    db.getJobApplications("org-jossyshield")
   );
   const [talentPool, setTalentPool] = useState<TalentPoolProfile[]>(() =>
-    db.getTalentPool("org-josieshield")
+    db.getTalentPool("org-jossyshield")
   );
   const [requests, setRequests] = useState<MarketplaceRequest[]>(() =>
-    db.getMarketplaceRequests("org-josieshield")
+    db.getMarketplaceRequests("org-jossyshield")
   );
   const [sanefProjects, setSanefProjects] = useState<SANEFProject[]>(() =>
     db.getSANEFProjects()
@@ -575,7 +575,7 @@ export default function DashboardShell() {
         id: "enquiries",
         label: "Enquiries",
         icon: Mail,
-        badge: enquiries.filter((e) => e.organizationId === "org-josieshield" && e.status === "New").length,
+        badge: enquiries.filter((e) => e.organizationId === "org-jossyshield" && e.status === "New").length,
       },
       { id: "media", label: "Media Library", icon: ImageIcon },
       { id: "users", label: "Users & Roles", icon: Users },
@@ -685,7 +685,7 @@ export default function DashboardShell() {
       prev.map((a) => (a.id === appId ? { ...a, stage: nextStage } : a))
     );
     if (target) {
-      pushActivity("org-josieshield", target.referenceCode, `Stage changed to ${nextStage} (${target.applicantName})`, "Applications");
+      pushActivity("org-jossyshield", target.referenceCode, `Stage changed to ${nextStage} (${target.applicantName})`, "Applications");
       showToast(`${target.applicantName} moved to "${nextStage}"`);
     }
     try {
@@ -739,7 +739,7 @@ export default function DashboardShell() {
       )
     );
     setInterviewForm((f) => ({ ...f, feedback: "" }));
-    pushActivity("org-josieshield", selectedApp.referenceCode, `Interview scheduled for ${selectedApp.applicantName} on ${entry.date}`, "Interviews");
+    pushActivity("org-jossyshield", selectedApp.referenceCode, `Interview scheduled for ${selectedApp.applicantName} on ${entry.date}`, "Interviews");
     showToast(`Interview scheduled for ${selectedApp.applicantName}`);
   };
 
@@ -754,7 +754,7 @@ export default function DashboardShell() {
     if (!exists) {
       const newProfile: TalentPoolProfile = {
         id: `tp-${Date.now()}`,
-        organizationId: "org-josieshield",
+        organizationId: "org-jossyshield",
         applicationRef: app.referenceCode,
         fullName: app.applicantName,
         phone: app.phone,
@@ -780,7 +780,7 @@ export default function DashboardShell() {
       };
       setTalentPool((prev) => [newProfile, ...prev]);
     }
-    pushActivity("org-josieshield", app.referenceCode, `Added ${app.applicantName} to Ready-to-Work Talent Pool`, "Talent Pool");
+    pushActivity("org-jossyshield", app.referenceCode, `Added ${app.applicantName} to Ready-to-Work Talent Pool`, "Talent Pool");
     showToast(`${app.applicantName} added to Ready-to-Work Talent Pool`);
   };
 
@@ -810,7 +810,7 @@ export default function DashboardShell() {
       )
     );
     if (target) {
-      pushActivity("org-josieshield", target.applicationRef, `Confirmed availability (${nextAvail}) for ${target.fullName}`, "Talent Pool");
+      pushActivity("org-jossyshield", target.applicationRef, `Confirmed availability (${nextAvail}) for ${target.fullName}`, "Talent Pool");
       showToast(`Confirmed ${target.fullName} as ${nextAvail} (${today})`);
     }
     try {
@@ -880,7 +880,7 @@ export default function DashboardShell() {
       )
     );
     if (target) {
-      pushActivity("org-josieshield", target.referenceNumber, `Marketplace request marked ${nextStatus}`, "Marketplace Requests");
+      pushActivity("org-jossyshield", target.referenceNumber, `Marketplace request marked ${nextStatus}`, "Marketplace Requests");
       showToast(`${target.referenceNumber} status set to ${nextStatus}`);
     }
     try {
@@ -1215,7 +1215,7 @@ export default function DashboardShell() {
                         style={{ backgroundColor: activeOrg.dotColor }}
                       />
                       <span className="font-mono text-[12px] font-medium text-[#52525B]">
-                        {activeOrgId === "org-sanef" ? "org-sanef · NGO workspace" : "org-josieshield · Security operations"}
+                        {activeOrgId === "org-sanef" ? "org-sanef · NGO workspace" : "org-jossyshield · Security operations"}
                       </span>
                     </div>
                     <h1 className="mt-1 text-[22px] font-semibold tracking-[-0.02em] text-[#09090B]">
@@ -1223,7 +1223,7 @@ export default function DashboardShell() {
                     </h1>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
-                    {activeOrgId === "org-josieshield" ? (
+                    {activeOrgId === "org-jossyshield" ? (
                       <>
                         <button
                           type="button"
@@ -1264,7 +1264,7 @@ export default function DashboardShell() {
 
                 {/* Role-Scoped 4-Card KPI Strip (2x2 compact grid on mobile 390px!) */}
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
-                  {(activeOrgId === "org-josieshield"
+                  {(activeOrgId === "org-jossyshield"
                     ? [
                         {
                           label: "Marketplace Requests",
@@ -1339,7 +1339,7 @@ export default function DashboardShell() {
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
                   {/* Flat Solid Distribution Bar (Zero gradients/shadows) */}
                   <div className="rounded-[6px] border border-[#E4E4E7] bg-white p-4 lg:col-span-6">
-                    {activeOrgId === "org-josieshield" ? (
+                    {activeOrgId === "org-jossyshield" ? (
                       <>
                         <div className="flex items-center justify-between">
                           <h2 className="text-[14px] font-semibold text-[#09090B]">
@@ -1403,7 +1403,7 @@ export default function DashboardShell() {
                       <span className="text-[12px] text-[#71717A]">{currentRoleLabel}</span>
                     </div>
                     <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-                      {(activeOrgId === "org-josieshield"
+                      {(activeOrgId === "org-jossyshield"
                         ? [
                             {
                               label: "Screen New Applications",
@@ -1549,7 +1549,7 @@ export default function DashboardShell() {
             {/* ================================================================= */}
             {/* SCREEN 2: JOSIE SHIELD — APPLICATIONS & RECRUITMENT PIPELINE      */}
             {/* ================================================================= */}
-            {activeModule === "applications" && activeOrgId === "org-josieshield" && (
+            {activeModule === "applications" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
@@ -1714,7 +1714,7 @@ export default function DashboardShell() {
             {/* ================================================================= */}
             {/* SCREEN 3: JOSIE SHIELD — READY-TO-WORK TALENT POOL                */}
             {/* ================================================================= */}
-            {activeModule === "talent-pool" && activeOrgId === "org-josieshield" && (
+            {activeModule === "talent-pool" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
@@ -1848,7 +1848,7 @@ export default function DashboardShell() {
             {/* ================================================================= */}
             {/* SCREEN 4: JOSIE SHIELD — MARKETPLACE SERVICE REQUESTS             */}
             {/* ================================================================= */}
-            {activeModule === "marketplace" && activeOrgId === "org-josieshield" && (
+            {activeModule === "marketplace" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
@@ -2463,7 +2463,7 @@ export default function DashboardShell() {
                       </thead>
                       <tbody className="divide-y divide-[#E4E4E7] text-[13px]">
                         {vacancies
-                          .filter((v) => v.organizationId === activeOrgId || (activeOrgId === "org-josieshield" && v.organizationId === "org-josieshield"))
+                          .filter((v) => v.organizationId === activeOrgId || (activeOrgId === "org-jossyshield" && v.organizationId === "org-jossyshield"))
                           .map((v) => (
                           <tr key={v.id} className="hover:bg-[#FAFAFA]">
                             <td className="px-4 py-3 font-mono text-[12px] text-[#52525B]">{v.refId}</td>
@@ -2506,7 +2506,7 @@ export default function DashboardShell() {
               </div>
             )}
 
-            {activeModule === "services" && activeOrgId === "org-josieshield" && (
+            {activeModule === "services" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
@@ -2579,7 +2579,7 @@ export default function DashboardShell() {
               </div>
             )}
 
-            {activeModule === "interviews" && activeOrgId === "org-josieshield" && (
+            {activeModule === "interviews" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div>
                   <p className="font-mono text-[12px] text-[#71717A]">
@@ -2643,7 +2643,7 @@ export default function DashboardShell() {
               </div>
             )}
 
-            {activeModule === "testimonials" && activeOrgId === "org-josieshield" && (
+            {activeModule === "testimonials" && activeOrgId === "org-jossyshield" && (
               <div className="space-y-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
@@ -2808,8 +2808,8 @@ export default function DashboardShell() {
                               )}
                             </td>
                             <td className="px-4 py-3 whitespace-nowrap">
-                              {u.josieRole ? (
-                                <StatusPill label={u.josieRole} tone="slate" />
+                              {u.jossyRole ? (
+                                <StatusPill label={u.jossyRole} tone="slate" />
                               ) : (
                                 <span className="text-[12px] text-[#A1A1AA]">None</span>
                               )}

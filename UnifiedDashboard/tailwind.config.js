@@ -16,7 +16,8 @@ module.exports = {
         ink: "#09090B",
         muted: "#71717A",
         sanef: "#1B4332",
-        josie: "#0F172A",
+        jossy: "#0F172A",
+        jossyshield: "#0F172A",
       },
       fontFamily: {
         sans: ["'Inter Variable'", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],

@@ -20,7 +20,7 @@
                  ▼                                ▼                                ▼
   ┌─────────────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────────┐
   │      SANEF Public Site      │  │  JossyShield Public Site   │  │  Unified Admin Dashboard    │
-  │     (sanef.example)         │  │    (josieshield.example)    │  │      (admin.example)        │
+  │     (sanef.example)         │  │    (jossyshield.example)    │  │      (admin.example)        │
   └──────────────┬──────────────┘  └──────────────┬──────────────┘  └──────────────┬──────────────┘
                  │                                │                                │
                  └────────────────────────────────┼────────────────────────────────┘
@@ -522,7 +522,7 @@
 - **Subtasks**:
   - `HOST-02.1`: Configure reverse proxy / ingress rules:
     - Route `sanef.example` (and `www.sanef.example`) -> SANEF Public Website
-    - Route `josieshield.example` (and `www.josieshield.example`) -> JossyShield Public Website
+    - Route `jossyshield.example` (and `www.jossyshield.example`) -> JossyShield Public Website
     - Route `admin.example` -> Unified Admin Dashboard
     - Route `api.example` (or `/api`) -> Backend API
   - `HOST-02.2`: Automated SSL/TLS certificate provisioning and renewal (Let's Encrypt / Cloudflare Edge).

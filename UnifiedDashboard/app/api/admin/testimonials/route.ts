@@ -22,7 +22,7 @@ export async function GET(req: Request) {
         if (data && data.length > 0) {
           const mapped = data.map((row: any) => ({
             id: row.id,
-            organizationId: orgId || "org-josieshield",
+            organizationId: orgId || "org-jossyshield",
             refId: `JS-TST-0${row.id.substring(0, 2)}`,
             clientName: row.client_name,
             organisation: row.client_title || "Commercial Client",

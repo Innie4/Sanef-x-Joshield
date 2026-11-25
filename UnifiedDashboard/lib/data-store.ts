@@ -4,11 +4,11 @@
 // Strict organisation-scoped isolation & RBAC metadata
 // ==============================================================================
 
-export type OrgId = "org-sanef" | "org-josieshield" | "org-jossyshield";
+export type OrgId = "org-sanef" | "org-jossyshield" | "org-jossyshield";
 
 export interface Organization {
   id: OrgId;
-  slug: "sanef" | "josieshield" | "jossyshield";
+  slug: "sanef" | "jossyshield" | "jossyshield";
   name: string;
   shortName: string;
   type: "ngo" | "commercial_security";
@@ -280,7 +280,7 @@ export interface PlatformUser {
   name: string;
   email: string;
   sanefRole: string | null;
-  josieRole: string | null;
+  jossyRole: string | null;
   lastActive: string;
   status: "Active" | "Invited";
   permissionsSummary: string;
@@ -303,14 +303,14 @@ export interface ActivityLog {
 
 export const ORGANIZATIONS: Organization[] = [
   {
-    id: "org-josieshield",
+    id: "org-jossyshield",
     slug: "jossyshield",
     name: "JossyShield Security Services",
     shortName: "JossyShield",
     type: "commercial_security",
     dotColor: "#0F172A",
     websiteDomain: "jossyshield.ng",
-    localUrl: process.env.NEXT_PUBLIC_JOSSIESHIELD_URL || "https://sanef-x-joshield.vercel.app",
+    localUrl: process.env.NEXT_PUBLIC_JOSSYSHIELD_URL || "https://sanef-x-joshield.vercel.app",
     userRole: "Super Admin",
     tagline: "Commercial security operations, advisory consultancy, training, and vetted talent pool.",
   },
@@ -340,7 +340,7 @@ export const CURRENT_USER: User = {
 let jobApplications: JobApplication[] = [
   {
     id: "app-01",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0318",
     applicantName: "Emmanuel Okafor",
     email: "e.okafor@guardmail.ng",
@@ -381,7 +381,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-02",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0315",
     applicantName: "Fatima Al-Hassan",
     email: "fatima.alhassan@abujasec.ng",
@@ -422,7 +422,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-03",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0312",
     applicantName: "Sadiq Danladi",
     email: "s.danladi@apapaguard.ng",
@@ -453,7 +453,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-04",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0309",
     applicantName: "Kelechi Iheanacho",
     email: "k.iheanacho@patrol.ng",
@@ -477,7 +477,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-05",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0305",
     applicantName: "Chinedu Eze",
     email: "chinedu.eze99@portmail.ng",
@@ -518,7 +518,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-06",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0302",
     applicantName: "Amina Yusuf",
     email: "amina.yusuf@shieldops.ng",
@@ -549,7 +549,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-07",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0299",
     applicantName: "Babatunde Adeleke",
     email: "b.adeleke@lagosguards.ng",
@@ -583,7 +583,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-08",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0294",
     applicantName: "Obinna Nwankwo",
     email: "o.nwankwo@riversguard.ng",
@@ -614,7 +614,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-09",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0288",
     applicantName: "Tosin Adeyemi",
     email: "tosin.adeyemi@mail.ng",
@@ -645,7 +645,7 @@ let jobApplications: JobApplication[] = [
   },
   {
     id: "app-10",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceCode: "JS-APP-2026-0283",
     applicantName: "Musa Garba",
     email: "m.garba@northsec.ng",
@@ -679,7 +679,7 @@ let jobApplications: JobApplication[] = [
 let talentPool: TalentPoolProfile[] = [
   {
     id: "tp-01",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0305",
     fullName: "Chinedu Eze",
     phone: "+234 803 888 1234",
@@ -700,7 +700,7 @@ let talentPool: TalentPoolProfile[] = [
   },
   {
     id: "tp-02",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0271",
     fullName: "Nnamdi Okonkwo",
     phone: "+234 806 312 7741",
@@ -720,7 +720,7 @@ let talentPool: TalentPoolProfile[] = [
   },
   {
     id: "tp-03",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0264",
     fullName: "Yusuf Abdullahi",
     phone: "+234 809 740 1128",
@@ -740,7 +740,7 @@ let talentPool: TalentPoolProfile[] = [
   },
   {
     id: "tp-04",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0258",
     fullName: "Grace Etim",
     phone: "+234 813 205 6610",
@@ -760,7 +760,7 @@ let talentPool: TalentPoolProfile[] = [
   },
   {
     id: "tp-05",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0244",
     fullName: "Segun Fashola",
     phone: "+234 805 612 9084",
@@ -780,7 +780,7 @@ let talentPool: TalentPoolProfile[] = [
   },
   {
     id: "tp-06",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     applicationRef: "JS-APP-2026-0231",
     fullName: "Ifeanyi Mbah",
     phone: "+234 802 589 4412",
@@ -803,7 +803,7 @@ let talentPool: TalentPoolProfile[] = [
 let marketplaceRequests: MarketplaceRequest[] = [
   {
     id: "mreq-01",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0418",
     clientName: "Damilola Adelaja",
     organisationName: "Apex Maritime Logistics Ltd",
@@ -831,7 +831,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
   },
   {
     id: "mreq-02",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0415",
     clientName: "Kemi Adesina",
     organisationName: "Zenith Diplomatic Advisory",
@@ -858,7 +858,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
   },
   {
     id: "mreq-03",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0411",
     clientName: "Uche Nnamdi",
     organisationName: "Oba Akran Distribution Depot",
@@ -886,7 +886,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
   },
   {
     id: "mreq-04",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0406",
     clientName: "Bankole Coker",
     organisationName: "Meridian Towers Facilities",
@@ -914,7 +914,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
   },
   {
     id: "mreq-05",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0399",
     clientName: "Olumide Balogun",
     organisationName: "First Marina Clearing House",
@@ -942,7 +942,7 @@ let marketplaceRequests: MarketplaceRequest[] = [
   },
   {
     id: "mreq-06",
-    organizationId: "org-josieshield",
+    organizationId: "org-jossyshield",
     referenceNumber: "JS-REQ-2026-0394",
     clientName: "Dr. Hadiza Suleiman",
     organisationName: "Individual Enrolment",
@@ -1131,10 +1131,10 @@ export const CMS_PAGES: CMSPage[] = [
   { id: "pg-s3", organizationId: "org-sanef", slug: "/portfolio", title: "Portfolio & Evidence Archive", template: "Structured Archive", status: "Published", lastUpdated: "2026-11-22", updatedBy: "Fatima Bello" },
   { id: "pg-s4", organizationId: "org-sanef", slug: "/partnerships", title: "Partnerships Directory", template: "Partner Index", status: "Published", lastUpdated: "2026-11-15", updatedBy: "Chidinma Nwosu" },
   { id: "pg-s5", organizationId: "org-sanef", slug: "/donate", title: "Donate & Campaign Support", template: "Campaign Ledger", status: "In Review", lastUpdated: "2026-11-23", updatedBy: "Inimfon Udoh" },
-  { id: "pg-j1", organizationId: "org-josieshield", slug: "/", title: "Home / Operations Overview", template: "Corporate Hero", status: "Published", lastUpdated: "2026-11-24", updatedBy: "Inimfon Udoh" },
-  { id: "pg-j2", organizationId: "org-josieshield", slug: "/services", title: "Security, Consultancy & Training", template: "Service Pillars", status: "Published", lastUpdated: "2026-11-20", updatedBy: "Capt. Tunde Bakare" },
-  { id: "pg-j3", organizationId: "org-josieshield", slug: "/marketplace", title: "Marketplace / Request a Service", template: "Dynamic Lead Flow", status: "Published", lastUpdated: "2026-11-24", updatedBy: "Inimfon Udoh" },
-  { id: "pg-j4", organizationId: "org-josieshield", slug: "/careers", title: "Careers & Personnel Talent Pool", template: "Vacancies + Pool", status: "Published", lastUpdated: "2026-11-21", updatedBy: "Evelyn Alabi" },
+  { id: "pg-j1", organizationId: "org-jossyshield", slug: "/", title: "Home / Operations Overview", template: "Corporate Hero", status: "Published", lastUpdated: "2026-11-24", updatedBy: "Inimfon Udoh" },
+  { id: "pg-j2", organizationId: "org-jossyshield", slug: "/services", title: "Security, Consultancy & Training", template: "Service Pillars", status: "Published", lastUpdated: "2026-11-20", updatedBy: "Capt. Tunde Bakare" },
+  { id: "pg-j3", organizationId: "org-jossyshield", slug: "/marketplace", title: "Marketplace / Request a Service", template: "Dynamic Lead Flow", status: "Published", lastUpdated: "2026-11-24", updatedBy: "Inimfon Udoh" },
+  { id: "pg-j4", organizationId: "org-jossyshield", slug: "/careers", title: "Careers & Personnel Talent Pool", template: "Vacancies + Pool", status: "Published", lastUpdated: "2026-11-21", updatedBy: "Evelyn Alabi" },
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -1160,32 +1160,32 @@ export const DONATIONS_DATA: DonationRecord[] = [
 export const ENQUIRIES_DATA: EnquiryRecord[] = [
   { id: "enq-s1", organizationId: "org-sanef", refId: "SAN-ENQ-2026-0214", senderName: "Folake Adeyemi", organisation: "Alimosho Residents Forum", email: "folake@alimosho.org", channel: "Web Form", subject: "Ward lighting survey request for Egbeda school corridor", receivedDate: "2026-11-23", status: "New", assignedTo: "Chidinma Nwosu", message: "Requesting a field assessment team visit for three unlit secondary school junctions off Egbeda road." },
   { id: "enq-s2", organizationId: "org-sanef", refId: "SAN-ENQ-2026-0209", senderName: "Dr. Samuel Ojo", organisation: "Lagos Civic Research Lab", email: "s.ojo@civiclab.ng", channel: "Email", subject: "Data citation permission for 2026 Ajegunle Lux Audit", receivedDate: "2026-11-20", status: "Responded", assignedTo: "Fatima Bello", message: "Seeking permission to cite the Q3 Ajegunle corridor baseline metrics in our urban infrastructure brief." },
-  { id: "enq-j1", organizationId: "org-josieshield", refId: "JS-ENQ-2026-0142", senderName: "Tunde Fashina", organisation: "Atlantic Cold Chain Ltd", email: "t.fashina@atlanticcold.ng", channel: "WhatsApp", subject: "Weekend perimeter audit quote for Lekki Free Zone depot", receivedDate: "2026-11-24", status: "New", assignedTo: "Ngozi Okafor", message: "Need an urgent security vulnerability review before December cold-storage commissioning." },
-  { id: "enq-j2", organizationId: "org-josieshield", refId: "JS-ENQ-2026-0137", senderName: "Grace Nwoke", organisation: "Harbourview Medical Centre", email: "g.nwoke@harbourview.ng", channel: "Web Form", subject: "Reception conflict de-escalation training for 16 staff", receivedDate: "2026-11-21", status: "Responded", assignedTo: "Capt. Tunde Bakare", message: "Enquiring about half-day on-site de-escalation workshops for hospital front-desk and gate officers." },
+  { id: "enq-j1", organizationId: "org-jossyshield", refId: "JS-ENQ-2026-0142", senderName: "Tunde Fashina", organisation: "Atlantic Cold Chain Ltd", email: "t.fashina@atlanticcold.ng", channel: "WhatsApp", subject: "Weekend perimeter audit quote for Lekki Free Zone depot", receivedDate: "2026-11-24", status: "New", assignedTo: "Ngozi Okafor", message: "Need an urgent security vulnerability review before December cold-storage commissioning." },
+  { id: "enq-j2", organizationId: "org-jossyshield", refId: "JS-ENQ-2026-0137", senderName: "Grace Nwoke", organisation: "Harbourview Medical Centre", email: "g.nwoke@harbourview.ng", channel: "Web Form", subject: "Reception conflict de-escalation training for 16 staff", receivedDate: "2026-11-21", status: "Responded", assignedTo: "Capt. Tunde Bakare", message: "Enquiring about half-day on-site de-escalation workshops for hospital front-desk and gate officers." },
 ];
 
 export const VACANCIES_DATA: VacancyRecord[] = [
-  { id: "vac-j1", organizationId: "org-josieshield", refId: "JS-VAC-044", title: "Convoy & Executive Escort Lead", department: "Field Operations", location: "Victoria Island, Lagos", type: "Full-Time", deadline: "2026-12-12", applicantsCount: 19, status: "Open" },
-  { id: "vac-j2", organizationId: "org-josieshield", refId: "JS-VAC-043", title: "Control Room CCTV & Access Operator", department: "Monitoring Desk", location: "Maitama, Abuja", type: "Shift Roster", deadline: "2026-12-08", applicantsCount: 27, status: "Open" },
-  { id: "vac-j3", organizationId: "org-josieshield", refId: "JS-VAC-041", title: "Corporate Facility Shift Supervisor", department: "Commercial Guarding", location: "Ikeja & VI, Lagos", type: "Full-Time", deadline: "2026-12-18", applicantsCount: 14, status: "Open" },
-  { id: "vac-j4", organizationId: "org-josieshield", refId: "JS-VAC-039", title: "Security Risk Auditor (Consultancy)", department: "Advisory", location: "Port Harcourt / Hybrid", type: "Contract", deadline: "2026-11-30", applicantsCount: 11, status: "Open" },
+  { id: "vac-j1", organizationId: "org-jossyshield", refId: "JS-VAC-044", title: "Convoy & Executive Escort Lead", department: "Field Operations", location: "Victoria Island, Lagos", type: "Full-Time", deadline: "2026-12-12", applicantsCount: 19, status: "Open" },
+  { id: "vac-j2", organizationId: "org-jossyshield", refId: "JS-VAC-043", title: "Control Room CCTV & Access Operator", department: "Monitoring Desk", location: "Maitama, Abuja", type: "Shift Roster", deadline: "2026-12-08", applicantsCount: 27, status: "Open" },
+  { id: "vac-j3", organizationId: "org-jossyshield", refId: "JS-VAC-041", title: "Corporate Facility Shift Supervisor", department: "Commercial Guarding", location: "Ikeja & VI, Lagos", type: "Full-Time", deadline: "2026-12-18", applicantsCount: 14, status: "Open" },
+  { id: "vac-j4", organizationId: "org-jossyshield", refId: "JS-VAC-039", title: "Security Risk Auditor (Consultancy)", department: "Advisory", location: "Port Harcourt / Hybrid", type: "Contract", deadline: "2026-11-30", applicantsCount: 11, status: "Open" },
   { id: "vac-s1", organizationId: "org-sanef", refId: "SAN-VAC-012", title: "Community Field Coordinator (Lagos Mainland)", department: "Programmes", location: "Surulere, Lagos", type: "Full-Time", deadline: "2026-12-15", applicantsCount: 22, status: "Open" },
   { id: "vac-s2", organizationId: "org-sanef", refId: "SAN-VAC-011", title: "Monitoring, Evaluation & Evidence Analyst", department: "Evidence Archive", location: "Yaba, Lagos", type: "Full-Time", deadline: "2026-12-20", applicantsCount: 16, status: "Open" },
 ];
 
 export const SERVICE_OFFERINGS: ServiceOfferingRecord[] = [
-  { id: "srv-1", organizationId: "org-josieshield", code: "JS-SEC-01", pillar: "Security Services", name: "Static Commercial & Perimeter Guarding", slaStandard: "98.4% Check-In SLA", activeClients: 14, status: "Published" },
-  { id: "srv-2", organizationId: "org-josieshield", code: "JS-SEC-02", pillar: "Security Services", name: "Executive, Bullion & Transit Convoy Escort", slaStandard: "UHF Tracked 24/7", activeClients: 5, status: "Published" },
-  { id: "srv-3", organizationId: "org-josieshield", code: "JS-CON-01", pillar: "Consultancy", name: "Physical Site Risk & Vulnerability Audits", slaStandard: "14-Day Written Report", activeClients: 8, status: "Published" },
-  { id: "srv-4", organizationId: "org-josieshield", code: "JS-CON-02", pillar: "Consultancy", name: "Access Control Architecture & SOP Design", slaStandard: "ISO 27001 Aligned", activeClients: 4, status: "Published" },
-  { id: "srv-5", organizationId: "org-josieshield", code: "JS-TRN-01", pillar: "Training", name: "Guard Certification & De-escalation Drills", slaStandard: "NSCDC Compliant", activeClients: 11, status: "Published" },
-  { id: "srv-6", organizationId: "org-josieshield", code: "JS-TRN-02", pillar: "Training", name: "Corporate Travel & Situational Awareness", slaStandard: "Individual / Cohort", activeClients: 6, status: "Published" },
+  { id: "srv-1", organizationId: "org-jossyshield", code: "JS-SEC-01", pillar: "Security Services", name: "Static Commercial & Perimeter Guarding", slaStandard: "98.4% Check-In SLA", activeClients: 14, status: "Published" },
+  { id: "srv-2", organizationId: "org-jossyshield", code: "JS-SEC-02", pillar: "Security Services", name: "Executive, Bullion & Transit Convoy Escort", slaStandard: "UHF Tracked 24/7", activeClients: 5, status: "Published" },
+  { id: "srv-3", organizationId: "org-jossyshield", code: "JS-CON-01", pillar: "Consultancy", name: "Physical Site Risk & Vulnerability Audits", slaStandard: "14-Day Written Report", activeClients: 8, status: "Published" },
+  { id: "srv-4", organizationId: "org-jossyshield", code: "JS-CON-02", pillar: "Consultancy", name: "Access Control Architecture & SOP Design", slaStandard: "ISO 27001 Aligned", activeClients: 4, status: "Published" },
+  { id: "srv-5", organizationId: "org-jossyshield", code: "JS-TRN-01", pillar: "Training", name: "Guard Certification & De-escalation Drills", slaStandard: "NSCDC Compliant", activeClients: 11, status: "Published" },
+  { id: "srv-6", organizationId: "org-jossyshield", code: "JS-TRN-02", pillar: "Training", name: "Corporate Travel & Situational Awareness", slaStandard: "Individual / Cohort", activeClients: 6, status: "Published" },
 ];
 
 export const TESTIMONIALS_DATA: TestimonialRecord[] = [
-  { id: "tst-1", organizationId: "org-josieshield", refId: "JS-TST-019", clientName: "Bankole Coker", organisation: "Meridian Towers Facilities, VI", category: "Security Services", quote: "Shift handovers run to the minute. Every visitor badge and basement sweep is logged without us having to chase supervisors.", approvedDate: "2026-10-14", status: "Approved" },
-  { id: "tst-2", organizationId: "org-josieshield", refId: "JS-TST-016", clientName: "Kemi Adesina", organisation: "Zenith Diplomatic Advisory, Abuja", category: "Consultancy", quote: "Their physical vulnerability audit uncovered three rear-perimeter blind spots our previous vendor missed for two years.", approvedDate: "2026-09-28", status: "Approved" },
-  { id: "tst-3", organizationId: "org-josieshield", refId: "JS-TST-012", clientName: "Uche Nnamdi", organisation: "Oba Akran Distribution Depot", category: "Training", quote: "Within one week of JossyShield's gatehouse drill, weighbridge manifest discrepancies dropped to zero across all three shifts.", approvedDate: "2026-08-19", status: "Approved" },
+  { id: "tst-1", organizationId: "org-jossyshield", refId: "JS-TST-019", clientName: "Bankole Coker", organisation: "Meridian Towers Facilities, VI", category: "Security Services", quote: "Shift handovers run to the minute. Every visitor badge and basement sweep is logged without us having to chase supervisors.", approvedDate: "2026-10-14", status: "Approved" },
+  { id: "tst-2", organizationId: "org-jossyshield", refId: "JS-TST-016", clientName: "Kemi Adesina", organisation: "Zenith Diplomatic Advisory, Abuja", category: "Consultancy", quote: "Their physical vulnerability audit uncovered three rear-perimeter blind spots our previous vendor missed for two years.", approvedDate: "2026-09-28", status: "Approved" },
+  { id: "tst-3", organizationId: "org-jossyshield", refId: "JS-TST-012", clientName: "Uche Nnamdi", organisation: "Oba Akran Distribution Depot", category: "Training", quote: "Within one week of JossyShield's gatehouse drill, weighbridge manifest discrepancies dropped to zero across all three shifts.", approvedDate: "2026-08-19", status: "Approved" },
 ];
 
 export const MEDIA_ASSETS: MediaAsset[] = [
@@ -1193,27 +1193,27 @@ export const MEDIA_ASSETS: MediaAsset[] = [
   { id: "med-s2", organizationId: "org-sanef", refId: "SAN-MED-402", fileName: "lekki-community.jpg", type: "Image", url: "/images/lekki-community.jpg", fileSize: "191 KB", uploadedBy: "Segun Adebayo", uploadedAt: "2026-11-16", accessScope: "Public" },
   { id: "med-s3", organizationId: "org-sanef", refId: "SAN-MED-403", fileName: "lagos-digital-hub.jpg", type: "Image", url: "/images/lagos-digital-hub.jpg", fileSize: "224 KB", uploadedBy: "Musa Abdullahi", uploadedAt: "2026-11-12", accessScope: "Public" },
   { id: "med-s4", organizationId: "org-sanef", refId: "SAN-MED-404", fileName: "Ajegunle_Corridor_Lux_Audit_2026.pdf", type: "PDF Report", url: "#", fileSize: "3.2 MB", uploadedBy: "Fatima Bello", uploadedAt: "2026-11-10", accessScope: "Public" },
-  { id: "med-j1", organizationId: "org-josieshield", refId: "JS-MED-201", fileName: "guard-shoulder.jpg", type: "Image", url: "/images/guard-shoulder.jpg", fileSize: "236 KB", uploadedBy: "Capt. Tunde Bakare", uploadedAt: "2026-11-19", accessScope: "Public" },
-  { id: "med-j2", organizationId: "org-josieshield", refId: "JS-MED-202", fileName: "gate-checkpoint.jpg", type: "Image", url: "/images/gate-checkpoint.jpg", fileSize: "249 KB", uploadedBy: "Tamuno Briggs", uploadedAt: "2026-11-17", accessScope: "Public" },
-  { id: "med-j3", organizationId: "org-josieshield", refId: "JS-MED-203", fileName: "uhf-radios.jpg", type: "Image", url: "/images/uhf-radios.jpg", fileSize: "341 KB", uploadedBy: "Ngozi Okafor", uploadedAt: "2026-11-14", accessScope: "Public" },
-  { id: "med-j4", organizationId: "org-josieshield", refId: "JS-MED-204", fileName: "Emmanuel_Okafor_CV_2026.pdf", type: "Policy Doc", url: "#", fileSize: "1.4 MB", uploadedBy: "Evelyn Alabi", uploadedAt: "2026-11-18", accessScope: "Restricted (Org Only)" },
+  { id: "med-j1", organizationId: "org-jossyshield", refId: "JS-MED-201", fileName: "guard-shoulder.jpg", type: "Image", url: "/images/guard-shoulder.jpg", fileSize: "236 KB", uploadedBy: "Capt. Tunde Bakare", uploadedAt: "2026-11-19", accessScope: "Public" },
+  { id: "med-j2", organizationId: "org-jossyshield", refId: "JS-MED-202", fileName: "gate-checkpoint.jpg", type: "Image", url: "/images/gate-checkpoint.jpg", fileSize: "249 KB", uploadedBy: "Tamuno Briggs", uploadedAt: "2026-11-17", accessScope: "Public" },
+  { id: "med-j3", organizationId: "org-jossyshield", refId: "JS-MED-203", fileName: "uhf-radios.jpg", type: "Image", url: "/images/uhf-radios.jpg", fileSize: "341 KB", uploadedBy: "Ngozi Okafor", uploadedAt: "2026-11-14", accessScope: "Public" },
+  { id: "med-j4", organizationId: "org-jossyshield", refId: "JS-MED-204", fileName: "Emmanuel_Okafor_CV_2026.pdf", type: "Policy Doc", url: "#", fileSize: "1.4 MB", uploadedBy: "Evelyn Alabi", uploadedAt: "2026-11-18", accessScope: "Restricted (Org Only)" },
 ];
 
 export const PLATFORM_USERS: PlatformUser[] = [
-  { id: "pu-1", name: "Inimfon Udoh", email: "i.udoh@platform.ng", sanefRole: "Super Admin", josieRole: "Super Admin", lastActive: "2026-11-25 06:18", status: "Active", permissionsSummary: "Full platform administration, org memberships, audit logs" },
-  { id: "pu-2", name: "Jane Okonkwo", email: "jane.okonkwo@platform.ng", sanefRole: "Blog Editor", josieRole: "Recruitment Manager", lastActive: "2026-11-24 18:42", status: "Active", permissionsSummary: "SANEF: blog.create/edit/publish · JossyShield: careers, applications, interviews, talent_pool" },
-  { id: "pu-3", name: "Evelyn Alabi", email: "e.alabi@jossyshield.ng", sanefRole: null, josieRole: "Recruitment Manager", lastActive: "2026-11-24 17:15", status: "Active", permissionsSummary: "JossyShield only: applications.manage, interviews.manage, talent_pool.manage" },
-  { id: "pu-4", name: "Fatima Bello", email: "fatima.bello@sanefoundation.org.ng", sanefRole: "SANEF Administrator", josieRole: null, lastActive: "2026-11-24 16:04", status: "Active", permissionsSummary: "SANEF only: portfolio.manage, partnerships.manage, donations.view, media.upload" },
-  { id: "pu-5", name: "Capt. Tunde Bakare", email: "t.bakare@jossyshield.ng", sanefRole: null, josieRole: "Service Manager", lastActive: "2026-11-24 14:51", status: "Active", permissionsSummary: "JossyShield only: marketplace_requests.manage, services.edit" },
-  { id: "pu-6", name: "Chidinma Nwosu", email: "c.nwosu@sanefoundation.org.ng", sanefRole: "Partnerships Manager", josieRole: null, lastActive: "2026-11-23 19:20", status: "Active", permissionsSummary: "SANEF only: partnerships.manage, projects.edit, events.manage" },
+  { id: "pu-1", name: "Inimfon Udoh", email: "i.udoh@platform.ng", sanefRole: "Super Admin", jossyRole: "Super Admin", lastActive: "2026-11-25 06:18", status: "Active", permissionsSummary: "Full platform administration, org memberships, audit logs" },
+  { id: "pu-2", name: "Jane Okonkwo", email: "jane.okonkwo@platform.ng", sanefRole: "Blog Editor", jossyRole: "Recruitment Manager", lastActive: "2026-11-24 18:42", status: "Active", permissionsSummary: "SANEF: blog.create/edit/publish · JossyShield: careers, applications, interviews, talent_pool" },
+  { id: "pu-3", name: "Evelyn Alabi", email: "e.alabi@jossyshield.ng", sanefRole: null, jossyRole: "Recruitment Manager", lastActive: "2026-11-24 17:15", status: "Active", permissionsSummary: "JossyShield only: applications.manage, interviews.manage, talent_pool.manage" },
+  { id: "pu-4", name: "Fatima Bello", email: "fatima.bello@sanefoundation.org.ng", sanefRole: "SANEF Administrator", jossyRole: null, lastActive: "2026-11-24 16:04", status: "Active", permissionsSummary: "SANEF only: portfolio.manage, partnerships.manage, donations.view, media.upload" },
+  { id: "pu-5", name: "Capt. Tunde Bakare", email: "t.bakare@jossyshield.ng", sanefRole: null, jossyRole: "Service Manager", lastActive: "2026-11-24 14:51", status: "Active", permissionsSummary: "JossyShield only: marketplace_requests.manage, services.edit" },
+  { id: "pu-6", name: "Chidinma Nwosu", email: "c.nwosu@sanefoundation.org.ng", sanefRole: "Partnerships Manager", jossyRole: null, lastActive: "2026-11-23 19:20", status: "Active", permissionsSummary: "SANEF only: partnerships.manage, projects.edit, events.manage" },
 ];
 
 export const ACTIVITY_LOGS: ActivityLog[] = [
-  { id: "act-j1", organizationId: "org-josieshield", refId: "JS-REQ-2026-0418", action: "New Security Services request submitted (Apex Maritime Logistics)", module: "Marketplace Requests", actor: "Public Portal", timestamp: "2026-11-24 09:14", severity: "Info" },
-  { id: "act-j2", organizationId: "org-josieshield", refId: "JS-APP-2026-0305", action: "Availability confirmed (Available) in Ready-to-Work Talent Pool", module: "Talent Pool", actor: "Tamuno Briggs", timestamp: "2026-11-24 08:40", severity: "Update" },
-  { id: "act-j3", organizationId: "org-josieshield", refId: "JS-APP-2026-0318", action: "Moved Emmanuel Okafor to Approved / Qualified after field drill", module: "Applications", actor: "Evelyn Alabi", timestamp: "2026-11-23 16:52", severity: "Update" },
-  { id: "act-j4", organizationId: "org-josieshield", refId: "JS-REQ-2026-0415", action: "Consultancy proposal dispatched to Zenith Diplomatic Advisory", module: "Marketplace Requests", actor: "Ibrahim Danjuma", timestamp: "2026-11-23 11:30", severity: "Info" },
-  { id: "act-j5", organizationId: "org-josieshield", refId: "AUD-RBAC-091", action: "Restricted CV downloaded (Emmanuel_Okafor_CV_2026.pdf)", module: "Audit & Security", actor: "Evelyn Alabi", timestamp: "2026-11-23 10:15", severity: "Security" },
+  { id: "act-j1", organizationId: "org-jossyshield", refId: "JS-REQ-2026-0418", action: "New Security Services request submitted (Apex Maritime Logistics)", module: "Marketplace Requests", actor: "Public Portal", timestamp: "2026-11-24 09:14", severity: "Info" },
+  { id: "act-j2", organizationId: "org-jossyshield", refId: "JS-APP-2026-0305", action: "Availability confirmed (Available) in Ready-to-Work Talent Pool", module: "Talent Pool", actor: "Tamuno Briggs", timestamp: "2026-11-24 08:40", severity: "Update" },
+  { id: "act-j3", organizationId: "org-jossyshield", refId: "JS-APP-2026-0318", action: "Moved Emmanuel Okafor to Approved / Qualified after field drill", module: "Applications", actor: "Evelyn Alabi", timestamp: "2026-11-23 16:52", severity: "Update" },
+  { id: "act-j4", organizationId: "org-jossyshield", refId: "JS-REQ-2026-0415", action: "Consultancy proposal dispatched to Zenith Diplomatic Advisory", module: "Marketplace Requests", actor: "Ibrahim Danjuma", timestamp: "2026-11-23 11:30", severity: "Info" },
+  { id: "act-j5", organizationId: "org-jossyshield", refId: "AUD-RBAC-091", action: "Restricted CV downloaded (Emmanuel_Okafor_CV_2026.pdf)", module: "Audit & Security", actor: "Evelyn Alabi", timestamp: "2026-11-23 10:15", severity: "Security" },
   { id: "act-s1", organizationId: "org-sanef", refId: "SAN-ENQ-2026-0214", action: "Ward lighting survey enquiry received from Alimosho Residents Forum", module: "Enquiries", actor: "Public Portal", timestamp: "2026-11-23 15:22", severity: "Info" },
   { id: "act-s2", organizationId: "org-sanef", refId: "SAN-DON-2026-1104", action: "Institutional grant verified (₦8,500,000 — West Africa Civic Fund)", module: "Donations", actor: "Fatima Bello", timestamp: "2026-11-21 14:10", severity: "Update" },
   { id: "act-s3", organizationId: "org-sanef", refId: "SAN-PRJ-2026-014", action: "Attached PDF audit report Ajegunle_Corridor_Lux_Audit_2026.pdf", module: "Projects & Evidence", actor: "Chidinma Nwosu", timestamp: "2026-11-20 11:05", severity: "Update" },
@@ -1342,7 +1342,7 @@ export const db = {
     const pillarCode = payload.pillar === "Security Services" ? "SEC" : payload.pillar === "Consultancy" ? "CON" : "TRN";
     const created: ServiceOfferingRecord = {
       id: `srv-${Date.now()}`,
-      organizationId: payload.organizationId || "org-josieshield",
+      organizationId: payload.organizationId || "org-jossyshield",
       code: payload.code || `JS-${pillarCode}-0${serviceOfferings.length + 1}`,
       pillar: payload.pillar || "Security Services",
       name: payload.name || "New Security Service Line",
@@ -1371,7 +1371,7 @@ export const db = {
   createVacancy(payload: Partial<VacancyRecord>) {
     const created: VacancyRecord = {
       id: `vac-${Date.now()}`,
-      organizationId: payload.organizationId || "org-josieshield",
+      organizationId: payload.organizationId || "org-jossyshield",
       refId: `JS-VAC-0${vacanciesData.length + 50}`,
       title: payload.title || "New Security Personnel Role",
       department: payload.department || "Field Operations",
@@ -1402,7 +1402,7 @@ export const db = {
   createTestimonial(payload: Partial<TestimonialRecord>) {
     const created: TestimonialRecord = {
       id: `tst-${Date.now()}`,
-      organizationId: payload.organizationId || "org-josieshield",
+      organizationId: payload.organizationId || "org-jossyshield",
       refId: `JS-TST-0${testimonialsData.length + 20}`,
       clientName: payload.clientName || "Corporate Client",
       organisation: payload.organisation || "Commercial Facility",
@@ -1426,7 +1426,7 @@ export const db = {
 
   // --- Recruitment / Applications ---
   getJobApplications(orgId: string) {
-    return jobApplications.filter((a) => a.organizationId === orgId || (orgId === "org-jossyshield" && a.organizationId === "org-josieshield"));
+    return jobApplications.filter((a) => a.organizationId === orgId || (orgId === "org-jossyshield" && a.organizationId === "org-jossyshield"));
   },
   updateApplicationStatus(id: string, stage?: RecruitmentStage, noteText?: string) {
     jobApplications = jobApplications.map((app) => {
@@ -1459,7 +1459,7 @@ export const db = {
 
   // --- Talent Pool ---
   getTalentPool(orgId: string) {
-    return talentPool.filter((t) => t.organizationId === orgId || (orgId === "org-jossyshield" && t.organizationId === "org-josieshield"));
+    return talentPool.filter((t) => t.organizationId === orgId || (orgId === "org-jossyshield" && t.organizationId === "org-jossyshield"));
   },
   updateTalentPoolAvailability(id: string, availabilityStatus: PoolAvailability) {
     const today = new Date().toISOString().slice(0, 10);
@@ -1491,7 +1491,7 @@ export const db = {
 
   // --- Marketplace Requests ---
   getMarketplaceRequests(orgId: string) {
-    return marketplaceRequests.filter((r) => r.organizationId === orgId || (orgId === "org-jossyshield" && r.organizationId === "org-josieshield"));
+    return marketplaceRequests.filter((r) => r.organizationId === orgId || (orgId === "org-jossyshield" && r.organizationId === "org-jossyshield"));
   },
   updateMarketplaceRequestStatus(id: string, status?: RequestStatus, note?: string) {
     marketplaceRequests = marketplaceRequests.map((r) => {
